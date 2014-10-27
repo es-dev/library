@@ -107,5 +107,17 @@ namespace Library.Template.MVVM
             } 
         }
 
+        public void Load(IEnumerable<TEntity> objDtos)
+        {
+            try
+            {
+                Load(objDtos.ToList());
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            } 
+        }
+
     }
 }
