@@ -18,7 +18,7 @@ using Gizmox.WebGUI.Common.Interfaces;
 
 namespace Library.Template.Controls
 {
-    public partial class TemplateEditOra : UserControl, IEditControl, IEditValue<TimeSpan?>
+    public partial class TemplateEditOra : UserControl, IEditControl, IEditValue<TimeSpan?>     //todo: creare controllo EditOra
     {
         const string mask = "--";
         private string JQScript = null;
