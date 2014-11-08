@@ -18,7 +18,7 @@ using Gizmox.WebGUI.Common.Interfaces;
 
 namespace Library.Template.Controls
 {
-    public partial class TemplateEditOra : UserControl, IEditControl
+    public partial class TemplateEditOra : UserControl, IEditControl, IEditValue<TimeSpan?>
     {
         const string mask = "--";
         private string JQScript = null;
@@ -98,9 +98,9 @@ namespace Library.Template.Controls
             }
         }
 
-        private object _value = null;
-        
-        public object Value
+        private TimeSpan? _value = null;
+
+        public TimeSpan? Value
         {
             get
             {
@@ -224,7 +224,7 @@ namespace Library.Template.Controls
             }
         }
 
-        private void SetValue(object value)
+        private void SetValue(TimeSpan? value)
         {
             try
             {
@@ -251,7 +251,7 @@ namespace Library.Template.Controls
             }
         }
 
-        private object GetValue()
+        private TimeSpan? GetValue()
         {
             try
             {

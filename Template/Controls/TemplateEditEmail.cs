@@ -17,7 +17,7 @@ using Gizmox.WebGUI.Common.Interfaces;
 
 namespace Library.Template.Controls
 {
-    public partial class TemplateEditEmail : UserControl, IEditControl
+    public partial class TemplateEditEmail : UserControl, IEditControl, IEditValue<string>
     {
         const string mask = "---";
         private string JQScript = null;
@@ -97,9 +97,9 @@ namespace Library.Template.Controls
             }
         }
 
-        private object _value = null;
-        
-        public object Value
+        private string _value = null;
+
+        public string Value
         {
             get
             {

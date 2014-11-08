@@ -16,15 +16,15 @@ using Library.Code;
 
 namespace Library.Template.Controls
 {
-    public partial class TemplateEditDataOra : UserControl , IEditControl
+    public partial class TemplateEditDataOra : UserControl, IEditControl, IEditValue<DateTime?>
     {
         public TemplateEditDataOra()
         {
             InitializeComponent();
         }
 
-        private object _value = null;
-        public object Value
+        private DateTime? _value = null;
+        public DateTime? Value
         {
             get
             {
@@ -38,7 +38,7 @@ namespace Library.Template.Controls
             }
         }
 
-        private void SetValue(object _value)
+        private void SetValue(DateTime? _value)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace Library.Template.Controls
             }
         }
 
-        private object GetValue()
+        private DateTime? GetValue()
         {
             try
             {

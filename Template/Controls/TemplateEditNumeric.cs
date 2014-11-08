@@ -11,14 +11,61 @@ using Gizmox.WebGUI.Common;
 using Gizmox.WebGUI.Forms;
 using Library.Interfaces;
 using Library.Code;
+using Gizmox.WebGUI.Common.Interfaces;
 
 
 #endregion
 
 namespace Library.Template.Controls
 {
-    public partial class TemplateEditCheckBox : UserControl, IEditControl, IEditValue<bool?>
+    public partial class TemplateEditNumeric : UserControl, IEditControl, IEditValue<int?>
     {
+        const string mask = "---";
+        private string JQScript = null;
+        protected override void Render(IContext objContext, IResponseWriter objWriter, long lngRequestID)
+        {
+            try
+            {
+                base.Render(objContext, objWriter, lngRequestID);
+                InitJQ();
+                ExecuteJQ();
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        public void InitJQ()
+        {
+            try
+            {
+                var jquery = new UtilityJQuery();
+                JQScript = jquery.GetEditText(editValue,mask);
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        public void ExecuteJQ()
+        {
+            try
+            {
+                if (!DesignMode)
+                {
+                    if (JQScript != null && JQScript.Length > 0)
+                        InvokeScript(JQScript);
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+
+        }
+
         private string label = null;
         
         public string Label
@@ -36,9 +83,10 @@ namespace Library.Template.Controls
             }
         }
 
+        
         private int labelWidth = 108;
         
-        public int LabelWidth
+        public virtual int LabelWidth
         {
             get
             {
@@ -51,40 +99,8 @@ namespace Library.Template.Controls
             }
         }
 
-        private string textTrue = null;
-        
-        public string TextTrue
-        {
-            get
-            {
-                textTrue =UtilityWeb.GetText( editTrue);
-                return textTrue;
-            }
-            set
-            {
-                textTrue = value;
-                UtilityWeb.SetText(editTrue,textTrue);
-            }
-        }
-
-        private string textFalse =null;
-        
-        public string TextFalse
-        {
-            get
-            {
-                textFalse =UtilityWeb.GetText(editFalse);
-                return textFalse;
-            }
-            set
-            {
-                textFalse = value;
-                UtilityWeb.SetText(editFalse,textFalse);
-            }
-        }
-
-        private bool? _value = null;
-        public bool? Value
+        private int? _value = null;
+        public int? Value
         {
             get
             {
@@ -93,12 +109,37 @@ namespace Library.Template.Controls
             }
             set
             {
-                _value = (bool?)value;
-               SetValue(_value);
+                _value = value;
+                SetValue(_value);
             }
         }
 
-      
+        private void SetValue(int? value)
+        {
+            try
+            {
+                UtilityWeb.SetText(editValue, value, mask);
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            } 
+        }
+
+        private int? GetValue()
+        {
+            try
+            {
+                var value = int.Parse(UtilityWeb.GetText(editValue, mask));
+                return value;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
         private object oldValue = null;
         private bool editing = false;
         
@@ -112,6 +153,7 @@ namespace Library.Template.Controls
             {
                 editing = value;
                 SetEditing(editing);
+                SetReadOnly(!editing || readOnly);
                 bool verified = IsVerified(required);
                 SetVerified(verified);
             }
@@ -124,6 +166,7 @@ namespace Library.Template.Controls
             get
             {
                 verified = IsVerified(required);
+                SetVerified(verified);
                 return verified;
             }
         }
@@ -155,7 +198,7 @@ namespace Library.Template.Controls
             set
             {
                 readOnly = value;
-               // SetReadOnly(readOnly);
+                SetReadOnly(readOnly);
             }
         }
 
@@ -174,87 +217,19 @@ namespace Library.Template.Controls
             }
         }
 
-        public TemplateEditCheckBox()
+        public TemplateEditNumeric()
         {
             InitializeComponent();
         }
 
-        private void TemplateEditCheckBox_Load(object sender, EventArgs e)
+        private void TemplateEditText_Load(object sender, EventArgs e)
         {
             try
             {
                 SetEditing(editing);
-                //SetReadOnly(!editing || readOnly);
+                SetReadOnly(!editing || readOnly);
                 bool verified = IsVerified(required);
                 SetVerified(verified);
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-        }
-
-        private bool? GetValue()
-        {
-            try
-            {
-                bool? value = null;
-                if(editTrue!=null && editFalse!=null)
-                {
-                    bool? trueValue=(bool?)editTrue.Tag;
-                    bool? falseValue=(bool?)editFalse.Tag;
-                    if(trueValue!=null && falseValue!=null)
-                    {
-                        if (trueValue == true && falseValue == false)
-                            value = true;
-                        else if (trueValue == false && falseValue == true)
-                            value = false;
-                    }
-                }
-                return value;
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-            return null;
-        }
-
-        private void SetValue(bool? value)
-        {
-            try
-            {
-                if (value != null)
-                {
-                    bool enable = (bool)value;
-                    SetTrueFalse(enable, !enable);
-                }
-                else
-                    SetTrueFalse(false, false);
-            }
-            catch (Exception ex)
-            {
-                Library.Code.UtilityError.Write(ex);
-            }
-        }
-
-        private void SetTrueFalse(bool trueValue, bool falseValue)
-        {
-            try
-            {
-                editTrue.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.None;
-                editTrue.BorderWidth = 0;
-                editTrue.BorderColor = Color.Transparent;
-                editTrue.BackColor = (trueValue ? Color.FromArgb(0, 45, 100) : Color.White);
-                editTrue.ForeColor = (trueValue ? Color.White : Color.Black);
-                editTrue.Image = (trueValue ? "Images.on.png" : "Images.off.png");
-
-                editFalse.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.None;
-                editFalse.BorderWidth = 0;
-                editFalse.BorderColor = Color.Transparent;
-                editFalse.BackColor = (falseValue ? Color.FromArgb(0, 45, 100) : Color.White);
-                editFalse.ForeColor = (falseValue ? Color.White : Color.Black);
-                editFalse.Image = (falseValue ? "Images.on.png" : "Images.off.png");
             }
             catch (Exception ex)
             {
@@ -269,6 +244,7 @@ namespace Library.Template.Controls
                 if (editing)
                     oldValue = _value;
                 UtilityWeb.SetImage(editing, changed, verified, imgEdit);
+                UtilityWeb.SetBackColor(editValue,editing);
             }
             catch (Exception ex)
             {
@@ -280,11 +256,11 @@ namespace Library.Template.Controls
         {
             try
             {
-                if (editTrue != null && editFalse != null)
+                if (editValue != null)
                 {
-                    bool? value = GetValue();
-                    bool compiled = (value != null);
-                    bool verified = (required && compiled) || (!required && (!compiled || compiled));
+                    string value = UtilityWeb.GetText(editValue, mask);
+                    bool compiled = (value != null && value.Length > 0);
+                    bool verified = (required && compiled) || (!required && (!compiled || (compiled)));
                     return verified;
                 }
             }
@@ -299,10 +275,10 @@ namespace Library.Template.Controls
         {
             try
             {
-                if (editTrue != null && editFalse!=null)
+                if (editValue != null)
                 {
-                    bool? value = GetValue();
-                    bool changed = (value != (bool?)oldValue);
+                    string value = UtilityWeb.GetText(editValue, mask);
+                    bool changed = (value != (string)oldValue);
                     return changed;
                 }
             }
@@ -339,15 +315,15 @@ namespace Library.Template.Controls
             }
         }
 
-        private void SetLabelWidth()
+        public virtual void SetLabelWidth()
         {
             try
             {
-                if (panelCheck != null && editLabel != null)
+                if (editValue != null && editLabel != null)
                 {
                     editLabel.Width = labelWidth;
-                    panelCheck.Left = editLabel.Left + editLabel.Width;
-                    panelCheck.Width = this.Width - labelWidth - imgEdit.Width;
+                    editValue.Left = editLabel.Left + editLabel.Width;
+                    editValue.Width = this.Width - labelWidth - imgEdit.Width;
                 }
             }
             catch (Exception ex)
@@ -356,17 +332,15 @@ namespace Library.Template.Controls
             }
         }
 
-        private void editTrue_Click(object sender, EventArgs e)
+        private void SetReadOnly(bool readOnly)
         {
             try
             {
-                if (editing && !readOnly)
+                if (editValue!=null)
                 {
-                    editTrue.Tag = true;
-                    editFalse.Tag = false;
-                    SetValue(true);
-                    bool changed = IsChanged();
-                    SetChanged(changed);
+                    editValue.ReadOnly = readOnly;
+                    InitJQ();
+                    ExecuteJQ();
                 }
             }
             catch (Exception ex)
@@ -375,17 +349,15 @@ namespace Library.Template.Controls
             }
         }
 
-        private void editFalse_Click(object sender, EventArgs e)
+        private void SetMultiline(bool multiline)
         {
             try
             {
-                if (editing && !readOnly)
+                if (editValue != null)
                 {
-                    editTrue.Tag = false;
-                    editFalse.Tag = true;
-                    SetValue(false);
-                    bool changed = IsChanged();
-                    SetChanged(changed);
+                    editValue.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
+                    if (multiline)
+                        editValue.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom;
                 }
             }
             catch (Exception ex)
@@ -394,6 +366,21 @@ namespace Library.Template.Controls
             }
         }
 
-       
+        private void editValue_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                if (editing)
+                {
+                    bool changed = IsChanged();
+                    SetChanged(changed);
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.Code.UtilityError.Write(ex);
+            }
+        }
+
     }
 }

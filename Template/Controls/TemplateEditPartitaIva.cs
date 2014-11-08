@@ -18,7 +18,7 @@ using Gizmox.WebGUI.Common.Interfaces;
 
 namespace Library.Template.Controls
 {
-    public partial class TemplateEditPartitaIva : UserControl, IEditControl
+    public partial class TemplateEditPartitaIva : UserControl, IEditControl, IEditValue<string>
     {
         const string mask = "---";
         private string JQScript = null;
@@ -67,7 +67,6 @@ namespace Library.Template.Controls
         }
 
         private string label = null;
-        
         public string Label
         {
             get
@@ -84,7 +83,6 @@ namespace Library.Template.Controls
         }
 
         private int labelWidth = 108;
-        
         public int LabelWidth
         {
             get
@@ -98,9 +96,8 @@ namespace Library.Template.Controls
             }
         }
 
-        private object _value = null;
-        
-        public object Value
+        private string _value = null;
+        public string Value
         {
             get
             {

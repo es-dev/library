@@ -18,7 +18,7 @@ using Gizmox.WebGUI.Common.Interfaces;
 
 namespace Library.Template.Controls
 {
-    public partial class TemplateEditCodiceFiscale : UserControl, IEditControl
+    public partial class TemplateEditCodiceFiscale : UserControl, IEditControl, IEditValue<string>
     {
         const string mask = "---";
         private string JQScript = null;
@@ -67,7 +67,6 @@ namespace Library.Template.Controls
         }
 
         private string label = null;
-        
         public string Label
         {
             get
@@ -84,7 +83,6 @@ namespace Library.Template.Controls
         }
 
         private int labelWidth = 108;
-        
         public int LabelWidth
         {
             get
@@ -98,20 +96,45 @@ namespace Library.Template.Controls
             }
         }
 
-        private object _value = null;
-        
-        public object Value
+        private string _value = null;
+        public string Value
         {
             get
             {
-                _value = UtilityWeb.GetText(editValue, mask);
+                _value = GetValue();
                 return _value;
             }
             set
             {
-                _value = value;
-                UtilityWeb.SetText(editValue, _value, mask);
+                _value = (string)value;
+                SetValue(_value);
             }
+        }
+
+        private void SetValue(string value)
+        {
+            try
+            {
+                UtilityWeb.SetText(editValue, value, mask);
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private string GetValue()
+        {
+            try
+            {
+                var value = UtilityWeb.GetText(editValue, mask);
+                return value;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
         }
 
         private object oldValue = null;

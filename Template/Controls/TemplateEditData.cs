@@ -17,7 +17,7 @@ using Library.Interfaces;
 
 namespace Library.Template.Controls
 {
-    public partial class TemplateEditData : EditData, IEditControl
+    public partial class TemplateEditData : EditData, IEditControl, IEditValue<DateTime?>
     {
         public TemplateEditData()
             : base()
@@ -25,9 +25,8 @@ namespace Library.Template.Controls
             InitializeComponent();
         }
         
-        public object _value = null;
-        
-        public new object Value
+        public DateTime? _value = null;
+        public new DateTime? Value
         {
             get
             {
@@ -42,7 +41,6 @@ namespace Library.Template.Controls
         }
 
         private string label = null;
-        
         public string Label
         {
             get

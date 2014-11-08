@@ -251,7 +251,7 @@ namespace Library.Code
             return null;
         }
 
-        internal static void SetBackColor(TextBox editValue, bool editing)
+        internal static void SetBackColor(Control editValue, bool editing)
         {
             try
             {

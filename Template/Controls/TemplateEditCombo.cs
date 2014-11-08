@@ -111,8 +111,6 @@ namespace Library.Template.Controls
 
         
         public event ComboConfirmHanlder ComboConfirm;
-       
-        
         public event ComboCancelHanlder ComboCancel;
 
         private void OnConfirm()

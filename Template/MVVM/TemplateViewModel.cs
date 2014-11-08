@@ -79,7 +79,7 @@ namespace Library.Template.MVVM
 
         public virtual bool Delete(object model) { return false; }
 
-        public virtual object Read(object model) { return null; }
+        public virtual object Read(object Id) { return null; }
 
         public void Load(IList<TEntity> objDtos)
         {

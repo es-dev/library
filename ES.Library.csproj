@@ -12,7 +12,6 @@
     <AssemblyName>ES.Library</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
@@ -304,6 +303,7 @@
     <Compile Include="Controls\Popup.designer.cs">
       <DependentUpon>Popup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IEditValue.cs" />
     <Compile Include="Template\Controls\TemplateEditCheckBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -357,6 +357,12 @@
     </Compile>
     <Compile Include="Template\Controls\TemplateEditPassword.Designer.cs">
       <DependentUpon>TemplateEditPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Template\Controls\TemplateEditNumeric.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Template\Controls\TemplateEditNumeric.Designer.cs">
+      <DependentUpon>TemplateEditNumeric.cs</DependentUpon>
     </Compile>
     <Compile Include="Template\Controls\TemplateEditText.cs">
       <SubType>UserControl</SubType>
@@ -463,6 +469,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditPassword.resx">
       <DependentUpon>TemplateEditPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Template\Controls\TemplateEditNumeric.resx">
+      <DependentUpon>TemplateEditNumeric.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditText.resx">
       <DependentUpon>TemplateEditText.cs</DependentUpon>
