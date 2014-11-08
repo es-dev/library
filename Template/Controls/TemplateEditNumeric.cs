@@ -118,7 +118,7 @@ namespace Library.Template.Controls
         {
             try
             {
-                UtilityWeb.SetText(editValue, value, mask);
+                UtilityWeb.SetInteger(editValue, value, mask);
             }
             catch (Exception ex)
             {
@@ -130,7 +130,7 @@ namespace Library.Template.Controls
         {
             try
             {
-                var value = int.Parse(UtilityWeb.GetText(editValue, mask));
+                var value = UtilityWeb.GetInteger(editValue, mask);
                 return value;
             }
             catch (Exception ex)
@@ -222,7 +222,7 @@ namespace Library.Template.Controls
             InitializeComponent();
         }
 
-        private void TemplateEditText_Load(object sender, EventArgs e)
+        private void TemplateEditNumeric_Load(object sender, EventArgs e)
         {
             try
             {

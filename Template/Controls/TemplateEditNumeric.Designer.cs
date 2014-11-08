@@ -34,9 +34,8 @@ namespace Library.Template.Controls
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TemplateEditNumeric));
             this.editLabel = new Gizmox.WebGUI.Forms.Label();
             this.imgEdit = new Gizmox.WebGUI.Forms.PictureBox();
-            this.editValue = new Gizmox.WebGUI.Forms.NumericUpDown();
+            this.editValue = new Gizmox.WebGUI.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.imgEdit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.editValue)).BeginInit();
             this.SuspendLayout();
             // 
             // editLabel
@@ -69,19 +68,18 @@ namespace Library.Template.Controls
             // 
             this.editValue.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)(((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Left) 
             | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
-            this.editValue.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
             this.editValue.BackColor = System.Drawing.Color.Transparent;
-            this.editValue.CurrentValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.editValue.Font = new System.Drawing.Font("Segoe UI", 14.25F);
+            this.editValue.BorderColor = new Gizmox.WebGUI.Forms.BorderColor(System.Drawing.Color.WhiteSmoke);
+            this.editValue.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.None;
+            this.editValue.BorderWidth = new Gizmox.WebGUI.Forms.BorderWidth(0);
+            this.editValue.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
             this.editValue.Location = new System.Drawing.Point(122, 0);
             this.editValue.Name = "editValue";
-            this.editValue.Size = new System.Drawing.Size(332, 33);
-            this.editValue.TabIndex = 3;
+            this.editValue.ReadOnly = true;
+            this.editValue.Size = new System.Drawing.Size(332, 29);
+            this.editValue.TabIndex = 1;
+            this.editValue.Leave += new System.EventHandler(this.editValue_Leave);
             // 
             // TemplateEditNumeric
             // 
@@ -94,9 +92,8 @@ namespace Library.Template.Controls
             this.Controls.Add(this.editLabel);
             this.Size = new System.Drawing.Size(481, 30);
             this.Text = "EditControl";
-            this.Load += new System.EventHandler(this.TemplateEditText_Load);
+            this.Load += new System.EventHandler(this.TemplateEditNumeric_Load);
             ((System.ComponentModel.ISupportInitialize)(this.imgEdit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.editValue)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -105,7 +102,7 @@ namespace Library.Template.Controls
 
         public Label editLabel;
         public PictureBox imgEdit;
-        private NumericUpDown editValue;
+        public TextBox editValue;
 
 
 

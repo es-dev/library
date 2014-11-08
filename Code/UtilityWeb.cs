@@ -183,6 +183,20 @@ namespace Library.Code
             }
         }
 
+        public static void SetInteger(Control control, int? value, string mask = null)
+        {
+            try
+            {
+                if (control != null)
+                    control.Text = (value == null ? mask : value.ToString());
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+
         public static void SetImage(bool editing, bool changed, bool verified, PictureBox imgEdit)
         {
             try
