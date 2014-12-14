@@ -421,7 +421,8 @@ namespace Library.Template.MVVM
                             {
                                 if (creating)
                                 {
-                                    model = viewModel.Read(model);
+                                    var id = UtilityPOCO.GetValue(model, "Id");
+                                    model = viewModel.Read(id);
                                     BindView(model);
                                     BindViewSubTitle(model);
                                 }

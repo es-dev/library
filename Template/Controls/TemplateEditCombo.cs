@@ -13,23 +13,24 @@ using System.Linq;
 
 namespace Library.Template.Controls
 {
-	public partial class TemplateEditCombo : TemplateEditText
+    public partial class TemplateEditCombo : EditControl
 	{
-        private int labelWidth = 108;
-        
-        public override int LabelWidth
+
+        public TemplateEditCombo()
         {
-            get
+            InitializeComponent();
+            try
             {
-                return labelWidth;
+                base.MaskControl = editControl;
+                editControl.ComboClick -= editControl_ComboClick;
+                editControl.ComboClick += editControl_ComboClick;
             }
-            set
+            catch (Exception ex)
             {
-                labelWidth = value;
-                SetLabelWidth();
-            }
+                UtilityError.Write(ex);
+            } 
         }
-        
+               
         private object model = null;
         public object Model
         {
@@ -52,21 +53,15 @@ namespace Library.Template.Controls
             }
         }
 
-		public TemplateEditCombo()
-		{
-			InitializeComponent();
-		}
-
         IView view = null;
         public void Show(IView view)
         {
             try
             {
-                if (!editValue.ReadOnly)
+                this.view = view;
+                if (view != null)
                 {
-                    
-                    this.view = view;
-                    SetLayoutControl();
+                    SetLayoutView(view);
                     var owner = this.Parent;
                     var popup = new Popup(owner, TypeDirection.Vertical);
                     popup.Confirm += OnConfirm;
@@ -80,7 +75,7 @@ namespace Library.Template.Controls
             }
         }
 
-        private void SetLayoutControl()
+        private void SetLayoutView(IView view)
         {
             try
             {
@@ -92,9 +87,9 @@ namespace Library.Template.Controls
                         var controls=control.Controls;
                         if(controls!=null)
                         {
-                            var controlPanel = (from Control q in controls where q.Name == "panelCommands" select q).FirstOrDefault();
-                            if(controlPanel!=null)
-                                controlPanel.Visible = false;
+                            var panelCommands = (from Control q in controls where q.Name == "panelCommands" select q).FirstOrDefault();
+                            if(panelCommands!=null)
+                                panelCommands.Visible = false;
                         }
                     }
                      
@@ -107,23 +102,22 @@ namespace Library.Template.Controls
         }
 
         public delegate void ComboConfirmHanlder(object model);
-        public delegate void ComboCancelHanlder();
-
-        
         public event ComboConfirmHanlder ComboConfirm;
-        public event ComboCancelHanlder ComboCancel;
 
         private void OnConfirm()
         {
             try
             {
-                var item = view.SelectedItem;
-                if (item != null)
+                if (view != null)
                 {
-                    model = item.Model;
-                    editValue.Focus();
-                    if (ComboConfirm != null)
-                        ComboConfirm(model);
+                    var item = view.SelectedItem;
+                    if (item != null)
+                    {
+                        model = item.Model;
+                        editControl.Focus();
+                        if (ComboConfirm != null)
+                            ComboConfirm(model);
+                    }
                 }
             }
             catch (Exception ex)
@@ -131,6 +125,9 @@ namespace Library.Template.Controls
                 UtilityError.Write(ex);
             }
         }
+
+        public delegate void ComboCancelHanlder();
+        public event ComboCancelHanlder ComboCancel;
 
         private void OnCancel()
         {
@@ -148,12 +145,15 @@ namespace Library.Template.Controls
         public delegate void ComboClickHandler();
         public event ComboClickHandler ComboClick;
 
-        private void showCombo_Click(object sender, EventArgs e)
+        private void editControl_ComboClick()
         {
             try
             {
-                if (ComboClick != null)
-                    ComboClick();
+                if (editControl != null && !editControl.ReadOnly)
+                {
+                    if (ComboClick != null)
+                        ComboClick();
+                }
             }
             catch (Exception ex)
             {
@@ -161,22 +161,16 @@ namespace Library.Template.Controls
             }
         }
 
-        public override void SetLabelWidth()
+        public new string Value
         {
-            try
+            get
             {
-                if (editValue != null && editLabel != null)
-                {
-                    editLabel.Width = labelWidth;
-                    editValue.Left = editLabel.Left + editLabel.Width;
-                    editValue.Width = this.Width - labelWidth - imgEdit.Width;
-                }
+                return (string)editControl.Value;
             }
-            catch (Exception ex)
+            set
             {
-                Library.Code.UtilityError.Write(ex);
+                editControl.Value = value;
             }
-        }        
-
-	}
+        }
+    }
 }

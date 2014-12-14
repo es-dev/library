@@ -1,6 +1,7 @@
 ﻿using Gizmox.WebGUI.Common.Interfaces;
 using Gizmox.WebGUI.Forms;
 using Library.Controls;
+using Library.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -131,7 +132,7 @@ namespace Library.Code
         {
             try
             {
-                if (label != null && control != null)
+                if (control != null && label != null && label.Length>0)
                 {
                     var site = control.Site;
                     if (site != null)
@@ -151,112 +152,76 @@ namespace Library.Code
             }
         }
 
-        public static string GetText(Control control, string mask = null)
+        public static void SetCheckItems(ListView editCheckList, ItemCheckEventArgs objArgs)
         {
             try
             {
-                if (control != null)
+                bool multiSelect = editCheckList.MultiSelect;
+                if (editCheckList.CheckedItems.Count > 0)
                 {
-                    string text = control.Text;
-                    if (mask != null)
-                        text = text.Replace(mask, null);
-                    return text;
-                }
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-            return null;
-        }
-
-        public static void SetText(Control control, object value, string mask = null)
-        {
-            try
-            {
-                if (control != null)
-                    control.Text = (value == null || (string)value == "" ? mask : (string)value);
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-        }
-
-        public static void SetInteger(Control control, int? value, string mask = null)
-        {
-            try
-            {
-                if (control != null)
-                    control.Text = (value == null ? mask : value.ToString());
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-        }
-
-
-        public static void SetImage(bool editing, bool changed, bool verified, PictureBox imgEdit)
-        {
-            try
-            {
-                imgEdit.Visible = false;
-                if (editing)
-                {
-                    if (verified)
+                    if (objArgs.NewValue == CheckState.Checked)
                     {
-                        if (changed)
+                        var itemChecked = editCheckList.Items[objArgs.Index];
+                        itemChecked.Selected = true;
+                        if (!multiSelect)
                         {
-                            imgEdit.Image = "Images.edit_lightblue.png";
-                            imgEdit.Visible = true;
+                            foreach (ListViewItem item in editCheckList.Items)
+                            {
+                                if (item != itemChecked)
+                                {
+                                    item.Checked = false;
+                                    item.Selected = false;
+                                }
+                            }
                         }
-                        else
-                            imgEdit.Image = "";
-                    }
-                    else
-                    {
-                        imgEdit.Image = "Images.edit_red.png";
-                        imgEdit.Visible = true;
                     }
                 }
-                else
-                    imgEdit.Image = "";
             }
             catch (Exception ex)
             {
                 UtilityError.Write(ex);
             }
         }
+       
 
-        internal static int GetInteger(Control control, string mask)
+        public static Point GetLocation(Control control)
         {
             try
             {
-                var value = GetIntegerNothing(control, mask);
-                if (value != null)
-                    return (int)value;
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-            return 0;
-        }
-
-        internal static int? GetIntegerNothing(Control control, string mask)
-        {
-            try
-            {
-                if (control != null)
+                int top = 0;
+                int left = 0;
+                if (!(control is Form))
                 {
-                    string text = GetText(control, mask);
-                    if (text != null && UtilityValidation.IsNumeric(text))
-                    {
-                        int value = Convert.ToInt32(text);
-                        return value;
-                    }
+                    left = control.Left;
+                    top = control.Top;
                 }
+                var parent = control.Parent;
+                if (parent != null)
+                {
+                    var location = GetLocation(parent);
+                    top += location.Y;
+                    left += location.X;
+                }
+                return new Point(left, top);
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return default(Point);
+        }
+
+        public static JQContainer GetJQContainer(Form parentForm)
+        {
+            try
+            {
+                var container = new JQContainer();
+                container.JQOpacity = 0.25;
+                container.JQBackColor = Color.Black;
+                container.Location = new Point(0, 0);
+                container.Size = parentForm.Size;
+                container.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom;
+                return container;
             }
             catch (Exception ex)
             {
@@ -265,17 +230,74 @@ namespace Library.Code
             return null;
         }
 
-        internal static void SetBackColor(Control editValue, bool editing)
+        public static void AddJQControl(Control owner, Control control, JQTypePosition position = JQTypePosition.Center)
         {
             try
             {
-                if (editValue != null)
-                    editValue.BackColor = (editing ? Color.WhiteSmoke : Color.Transparent);
+                var parentForm = GetParentForm(owner);
+                if (parentForm != null)
+                {
+                    var jqContainer = GetJQContainer(parentForm);
+                    if (jqContainer != null)
+                    {
+                        if (position == JQTypePosition.Center)
+                        {
+                            control.Top = (parentForm.Height - control.Height) / 2;
+                            control.Left = (parentForm.Width - control.Width) / 2;
+                        }
+                        else if (position == JQTypePosition.Docked)
+                        {
+                            var location = GetLocation(owner);
+                            int left = location.X + control.Left;
+                            if (left + control.Width > parentForm.Width)
+                                left = location.X - control.Width;
+                            int top = location.Y + owner.Height;
+                            if (top + control.Height > parentForm.Height)
+                                top = location.Y - control.Height;
+                            control.Top = top;
+                            control.Left = left;
+                        }
+                        parentForm.Controls.Add(jqContainer);
+                        parentForm.Controls.Add(control);
+                        jqContainer.BringToFront();
+                        control.BringToFront();
+                        control.Tag = jqContainer;
+                    }
+                }
             }
             catch (Exception ex)
             {
                 UtilityError.Write(ex);
             }
         }
+
+        public enum JQTypePosition
+        {
+            Center,
+            Docked
+        }
+
+        public static void RemoveJQControl(Control control)
+        {
+            try
+            {
+                var parentForm = GetParentForm(control);
+                if (parentForm != null)
+                {
+                    var jqContainer = (JQContainer)control.Tag;
+                    if (jqContainer != null)
+                    {
+                        parentForm.Controls.Remove(jqContainer);
+                        parentForm.Controls.Remove(control);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+       
     }
 }

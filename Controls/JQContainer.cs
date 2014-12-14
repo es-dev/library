@@ -14,8 +14,32 @@ namespace Library.Controls
 {
 	public partial class JQContainer : Panel, IJQControl
 	{
-        private string JQScript = null;
-		public JQContainer()
+        private string jqscript = null;
+        public string JQScript
+        {
+            get
+            {
+                jqscript = GetJQScript();
+                return jqscript;
+            }
+        }
+
+        private string GetJQScript()
+        {
+            try
+            {
+                var jquery = new UtilityJQuery();
+                var jqscript = jquery.GetOpacity(this, jqBackColor, jqOpacity);
+                return jqscript;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+        
+        public JQContainer()
 		{
 			InitializeComponent();
 		}
@@ -25,7 +49,6 @@ namespace Library.Controls
             try
             {
                 base.Render(objContext, objWriter, lngRequestID);
-                InitJQ();
                 ExecuteJQ();
             }
             catch (Exception ex)
@@ -34,18 +57,7 @@ namespace Library.Controls
             }
         }
 
-        public void InitJQ()
-        {
-            try
-            {
-                var jquery = new UtilityJQuery();
-                JQScript = jquery.GetOpacity(this, JQBackColor, JQOpacity);
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-        }
+       
 
         public void ExecuteJQ()
         {
@@ -53,8 +65,9 @@ namespace Library.Controls
             {
                 if (!DesignMode)
                 {
-                    if (JQScript != null && JQScript.Length > 0)
-                        InvokeScript(JQScript);
+                    var jqscript = GetJQScript();
+                    if (jqscript != null && jqscript.Length > 0)
+                        InvokeScript(jqscript);
                 }
             }
             catch (Exception ex)

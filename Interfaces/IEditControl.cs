@@ -13,5 +13,6 @@ namespace Library.Interfaces
         bool Verified { get; }
         bool Required { get; set; }
         bool Changed { get; }
+        object Value { get; set; }
     }
 }

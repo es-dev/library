@@ -8,7 +8,6 @@ namespace Library.Interfaces
 {
     public interface IJQControl
     {
-        void InitJQ();
         void ExecuteJQ();
     }
 }

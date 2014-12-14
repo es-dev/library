@@ -8,7 +8,6 @@ using Library.Interfaces;
 
 namespace Library.Template.MVVM
 {
-
     public class TemplateViewModel<TEntity, TItem> : IViewModel
     {
         private ISpace space = null;
@@ -79,7 +78,7 @@ namespace Library.Template.MVVM
 
         public virtual bool Delete(object model) { return false; }
 
-        public virtual object Read(object Id) { return null; }
+        public virtual object Read(object id) { return null; }
 
         public void Load(IList<TEntity> objDtos)
         {

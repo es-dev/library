@@ -31,80 +31,35 @@ namespace Library.Template.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TemplateEditPartitaIva));
-            this.editLabel = new Gizmox.WebGUI.Forms.Label();
-            this.editValue = new Gizmox.WebGUI.Forms.TextBox();
-            this.imgEdit = new Gizmox.WebGUI.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.imgEdit)).BeginInit();
+            this.editControl = new Library.Controls.TextBox();
             this.SuspendLayout();
             // 
-            // editLabel
+            // editControl
             // 
-            this.editLabel.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)(((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Bottom) 
-            | Gizmox.WebGUI.Forms.AnchorStyles.Left)));
-            this.editLabel.BackColor = System.Drawing.Color.Transparent;
-            this.editLabel.BorderWidth = new Gizmox.WebGUI.Forms.BorderWidth(0);
-            this.editLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editLabel.ForeColor = System.Drawing.Color.Gray;
-            this.editLabel.Location = new System.Drawing.Point(0, 0);
-            this.editLabel.MinimumSize = new System.Drawing.Size(108, 26);
-            this.editLabel.Name = "editLabel";
-            this.editLabel.Size = new System.Drawing.Size(119, 26);
-            this.editLabel.TabIndex = 0;
-            this.editLabel.Text = "Partita IVA";
-            this.editLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // editValue
-            // 
-            this.editValue.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)(((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Left) 
+            this.editControl.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Bottom) 
+            | Gizmox.WebGUI.Forms.AnchorStyles.Left) 
             | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
-            this.editValue.BackColor = System.Drawing.Color.Transparent;
-            this.editValue.BorderColor = new Gizmox.WebGUI.Forms.BorderColor(System.Drawing.Color.Transparent);
-            this.editValue.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.None;
-            this.editValue.BorderWidth = new Gizmox.WebGUI.Forms.BorderWidth(0);
-            this.editValue.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.editValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
-            this.editValue.Location = new System.Drawing.Point(122, 0);
-            this.editValue.MaxLength = 11;
-            this.editValue.Name = "editValue";
-            this.editValue.Size = new System.Drawing.Size(332, 29);
-            this.editValue.TabIndex = 2;
-            this.editValue.Leave += new System.EventHandler(this.editValue_Leave);
-            // 
-            // imgEdit
-            // 
-            this.imgEdit.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
-            this.imgEdit.BackColor = System.Drawing.Color.Transparent;
-            this.imgEdit.BorderWidth = new Gizmox.WebGUI.Forms.BorderWidth(0);
-            this.imgEdit.Image = new Gizmox.WebGUI.Common.Resources.ImageResourceHandle(resources.GetString("imgEdit.Image"));
-            this.imgEdit.Location = new System.Drawing.Point(457, 0);
-            this.imgEdit.Name = "imgEdit";
-            this.imgEdit.Size = new System.Drawing.Size(24, 24);
-            this.imgEdit.TabIndex = 2;
-            this.imgEdit.TabStop = false;
+            this.editControl.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.editControl.BorderWidth = new Gizmox.WebGUI.Forms.BorderWidth(0);
+            this.editControl.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editControl.Location = new System.Drawing.Point(100, 1);
+            this.editControl.Name = "editControl";
+            this.editControl.Size = new System.Drawing.Size(351, 27);
+            this.editControl.TabIndex = 3;
             // 
             // TemplateEditPartitaIva
             // 
-            this.BackColor = System.Drawing.Color.Transparent;
-            this.BorderColor = new Gizmox.WebGUI.Forms.BorderColor(System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224))))));
-            this.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.FixedSingle;
-            this.BorderWidth = new Gizmox.WebGUI.Forms.BorderWidth(0, 0, 0, 1);
-            this.Controls.Add(this.imgEdit);
-            this.Controls.Add(this.editValue);
-            this.Controls.Add(this.editLabel);
-            this.Size = new System.Drawing.Size(481, 30);
-            this.Text = "TemplateEditCodiceFiscale";
-            this.Load += new System.EventHandler(this.TemplateEditPartitaIva_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.imgEdit)).EndInit();
+            this.Controls.Add(this.editControl);
+            this.Text = "TemplateEditPartitaIva";
+            this.Controls.SetChildIndex(this.editControl, 0);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        public Label editLabel;
-        private TextBox editValue;
-        private PictureBox imgEdit;
+        private Library.Controls.TextBox editControl;
+
 
 
     }

@@ -10,15 +10,49 @@ namespace Library.Code
 {
     public class UtilityJQuery
     {
+        public string GetNumeric(Control control, string mask)
+        {
+            try
+            {
+                var script = GetJScript("Numeric.js");
+                var vwgId = GetVWGId(control);
+                script = script.Replace("$vwgId$", vwgId);
+                script = script.Replace("$mask$", mask);
+                return script;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        public string GetDecimal(Control control, string mask)
+        {
+            try
+            {
+                var script = GetJScript("Decimal.js");
+                var vwgId = GetVWGId(control);
+                script = script.Replace("$vwgId$", vwgId);
+                script = script.Replace("$mask$", mask);
+                return script;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
         public string GetOpacity(Control control, Color backColor, double opacity = 0.5,  int duration = 0)
         {
             try
             {
                 var script = GetJScript("Opacity.js");
-                var vwgID = GetVWGID(control);
+                var vwgId = GetVWGId(control);
                 string backColorHtml = backColor.ToArgb().ToString("X");
                 backColorHtml = "#" + backColorHtml.Substring(2);
-                script = script.Replace("$vwgID$", vwgID);
+                script = script.Replace("$vwgId$", vwgId);
                 script = script.Replace("$opacity$", opacity.ToString().Replace(",", "."));
                 script = script.Replace("$backColor$", backColorHtml);
                 script = script.Replace("$duration$", duration.ToString());
@@ -32,17 +66,15 @@ namespace Library.Code
             return null;
         }
 
-        public string GetEditData(Control editDay, Control editMonth, Control editYear, string mask)
+        public string GetOra(Control editHour, Control editMinutes, string mask)
         {
             try
             {
-                var script = GetJScript("EditData.js");
-                var vwgEditDay = GetVWGID(editDay);
-                var vwgEditMonth = GetVWGID(editMonth);
-                var vwgEditYear = GetVWGID(editYear);
-                script = script.Replace("$VWGDay$", vwgEditDay);
-                script = script.Replace("$VWGMonth$", vwgEditMonth);
-                script = script.Replace("$VWGYear$", vwgEditYear);
+                var script = GetJScript("Ora.js");
+                var vwgHourId = GetVWGId(editHour);
+                var vwgMinuteId = GetVWGId(editMinutes);
+                script = script.Replace("$vwgHourId$", vwgHourId);
+                script = script.Replace("$vwgMinuteId$", vwgMinuteId);
                 script = script.Replace("$mask$", mask);
                 return script;
             }
@@ -53,19 +85,17 @@ namespace Library.Code
             return null;
         }
 
-        public string GetEditOra(Control editHour, Control editMinutes, Control minuteUP, Control minuteDown, string mask)
+        public string GetData(Control editDay, Control editMonth, Control editYear, string mask)
         {
             try
             {
-                var script = GetJScript("EditOra.js");
-                var vwgEditHour = GetVWGID(editHour);
-                var vwgEditMinute = GetVWGID(editMinutes);
-                var vwgMinuteUP = GetVWGID(minuteUP);
-                var vwgMinuteDown = GetVWGID(minuteDown);
-                script = script.Replace("$VWGHour$", vwgEditHour);
-                script = script.Replace("$VWGMinute$", vwgEditMinute);
-                script = script.Replace("$VWGMinuteUP$", vwgMinuteUP);
-                script = script.Replace("$VWGMinuteDown$", vwgMinuteDown);
+                var script = GetJScript("Data.js");
+                var vwgDayId = GetVWGId(editDay);
+                var vwgMonthId = GetVWGId(editMonth);
+                var vwgYearId = GetVWGId(editYear);
+                script = script.Replace("$vwgDayId$", vwgDayId);
+                script = script.Replace("$vwgMonthId$", vwgMonthId);
+                script = script.Replace("$vwgYearId$", vwgYearId);
                 script = script.Replace("$mask$", mask);
                 return script;
             }
@@ -76,13 +106,15 @@ namespace Library.Code
             return null;
         }
 
-        public string GetEditText(Control editControl, string mask)
+        
+
+        public string GetMask(Control control, string mask)
         {
             try
             {
-                var script = GetJScript("EditText.js");
-                var vwgEditControl = GetVWGID(editControl);
-                script = script.Replace("$VWGEditControlID$", vwgEditControl);
+                var script = GetJScript("Mask.js");
+                var vwgId = GetVWGId(control);
+                script = script.Replace("$vwgId$", vwgId);
                 script = script.Replace("$mask$", mask);
                 return script;
             }
@@ -93,31 +125,13 @@ namespace Library.Code
             return null;
         }
 
-        public string GetEditPassword(Control editControl, string mask)
+        public string GetPartitaIva(Control control, string mask)
         {
             try
             {
-                var script = GetJScript("EditPassword.js");
-                var vwgEditControl = GetVWGID(editControl);
-                script = script.Replace("$VWGEditControlID$", vwgEditControl);
-                script = script.Replace("$mask$", mask);
-
-                return script;
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-            return null;
-        }
-
-        public string GetEditPartitaIva(Control editControl, string mask)
-        {
-            try
-            {
-                var script = GetJScript("EditPartitaIva.js");
-                var vwgEditControl = GetVWGID(editControl);
-                script = script.Replace("$VWGEditControlID$", vwgEditControl);
+                var script = GetJScript("PartitaIva.js");
+                var vwgId = GetVWGId(control);
+                script = script.Replace("$vwgId$", vwgId);
                 script = script.Replace("$mask$", mask);
                 return script;
             }
@@ -128,14 +142,13 @@ namespace Library.Code
             return null;
         }
 
-
-        public string GetEditCodiceFiscale(Control editControl, string mask)
+        public string GetCodiceFiscale(Control control, string mask)
         {
-           try
+            try
             {
-                var script = GetJScript("EditCodiceFiscale.js");
-                var vwgEditControl = GetVWGID(editControl);
-                script = script.Replace("$VWGEditControlID$", vwgEditControl);
+                var script = GetJScript("CodiceFiscale.js");
+                var vwgId = GetVWGId(control);
+                script = script.Replace("$vwgId$", vwgId);
                 script = script.Replace("$mask$", mask);
                 return script;
             }
@@ -143,8 +156,9 @@ namespace Library.Code
             {
                 UtilityError.Write(ex);
             }
-           return null;
+            return null;
         }
+
 
         private string GetJScript(string fileJS)
         {
@@ -167,7 +181,7 @@ namespace Library.Code
             return null;
         }
 
-        private string GetVWGID(Control control)
+        private string GetVWGId(Control control)
         {
             try
             {
@@ -184,10 +198,6 @@ namespace Library.Code
         }
 
 
-
-
-
-
-
+       
     }
 }

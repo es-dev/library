@@ -15,6 +15,6 @@ namespace Library.Interfaces
         void Load(int skip, int take);
         bool Save(object model, bool creating);
         bool Delete(object model);
-        object Read(object Id);
+        object Read(object id);
     }
 }

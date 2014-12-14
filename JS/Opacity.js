@@ -1,1 +1,1 @@
-﻿$('#$vwgID$').animate({ opacity: '$opacity$', backgroundColor: '$backColor$' }, $duration$);
+﻿$('#$vwgId$').animate({ opacity: '$opacity$', backgroundColor: '$backColor$' }, $duration$);

@@ -261,17 +261,41 @@
     <Compile Include="Controls\ButtonSeparatorV.Designer.cs">
       <DependentUpon>ButtonSeparatorV.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\EditCalendar.cs">
+    <Compile Include="Controls\Calendar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\EditCalendar.Designer.cs">
-      <DependentUpon>EditCalendar.cs</DependentUpon>
+    <Compile Include="Controls\Calendar.Designer.cs">
+      <DependentUpon>Calendar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\EditData.cs">
+    <Compile Include="Controls\CheckButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\EditData.Designer.cs">
-      <DependentUpon>EditData.cs</DependentUpon>
+    <Compile Include="Controls\CheckButton.Designer.cs">
+      <DependentUpon>CheckButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DateAndTime.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DateAndTime.Designer.cs">
+      <DependentUpon>DateAndTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DateCalendar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DateCalendar.Designer.cs">
+      <DependentUpon>DateCalendar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Intervals.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Intervals.Designer.cs">
+      <DependentUpon>Intervals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TextBox.Designer.cs">
+      <DependentUpon>TextBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\JQContainer.cs">
       <SubType>Component</SubType>
@@ -303,7 +327,25 @@
     <Compile Include="Controls\Popup.designer.cs">
       <DependentUpon>Popup.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\IEditValue.cs" />
+    <Compile Include="Controls\EditControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\EditControl.Designer.cs">
+      <DependentUpon>EditControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TextCombo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TextCombo.Designer.cs">
+      <DependentUpon>TextCombo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TimeIntervals.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TimeIntervals.Designer.cs">
+      <DependentUpon>TimeIntervals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\IMaskControl.cs" />
     <Compile Include="Template\Controls\TemplateEditCheckBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -331,7 +373,7 @@
     <Compile Include="Template\Controls\TemplateEditDataOra.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Template\Controls\TemplateEditDataOra.Designer.cs">
+    <Compile Include="Template\Controls\TemplateEditDataOra.designer.cs">
       <DependentUpon>TemplateEditDataOra.cs</DependentUpon>
     </Compile>
     <Compile Include="Template\Controls\TemplateEditEmail.cs">
@@ -339,6 +381,18 @@
     </Compile>
     <Compile Include="Template\Controls\TemplateEditEmail.Designer.cs">
       <DependentUpon>TemplateEditEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Template\Controls\TemplateEditDecimal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Template\Controls\TemplateEditDecimal.Designer.cs">
+      <DependentUpon>TemplateEditDecimal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Template\Controls\TemplateEditNumeric.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Template\Controls\TemplateEditNumeric.Designer.cs">
+      <DependentUpon>TemplateEditNumeric.cs</DependentUpon>
     </Compile>
     <Compile Include="Template\Controls\TemplateEditOra.cs">
       <SubType>UserControl</SubType>
@@ -357,12 +411,6 @@
     </Compile>
     <Compile Include="Template\Controls\TemplateEditPassword.Designer.cs">
       <DependentUpon>TemplateEditPassword.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Template\Controls\TemplateEditNumeric.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Template\Controls\TemplateEditNumeric.Designer.cs">
-      <DependentUpon>TemplateEditNumeric.cs</DependentUpon>
     </Compile>
     <Compile Include="Template\Controls\TemplateEditText.cs">
       <SubType>UserControl</SubType>
@@ -417,12 +465,23 @@
       <DependentUpon>ButtonSeparatorH.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\EditCalendar.resx">
-      <DependentUpon>EditCalendar.cs</DependentUpon>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Controls\Calendar.resx">
+      <DependentUpon>Calendar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\EditData.resx">
-      <DependentUpon>EditData.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\CheckButton.resx">
+      <DependentUpon>CheckButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DateAndTime.resx">
+      <DependentUpon>DateAndTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DateCalendar.resx">
+      <DependentUpon>DateCalendar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Intervals.resx">
+      <DependentUpon>Intervals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TextBox.resx">
+      <DependentUpon>TextBox.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\JQContainer.resx">
@@ -437,41 +496,47 @@
     <EmbeddedResource Include="Controls\Popup.resx">
       <DependentUpon>Popup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\EditControl.resx">
+      <DependentUpon>EditControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TextCombo.resx">
+      <DependentUpon>TextCombo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TimeIntervals.resx">
+      <DependentUpon>TimeIntervals.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditCheckBox.resx">
       <DependentUpon>TemplateEditCheckBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditCodiceFiscale.resx">
       <DependentUpon>TemplateEditCodiceFiscale.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditCombo.resx">
       <DependentUpon>TemplateEditCombo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditData.resx">
       <DependentUpon>TemplateEditData.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditDataOra.resx">
       <DependentUpon>TemplateEditDataOra.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditEmail.resx">
       <DependentUpon>TemplateEditEmail.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Template\Controls\TemplateEditOra.resx">
-      <DependentUpon>TemplateEditOra.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Template\Controls\TemplateEditPartitaIva.resx">
-      <DependentUpon>TemplateEditPartitaIva.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Template\Controls\TemplateEditPassword.resx">
-      <DependentUpon>TemplateEditPassword.cs</DependentUpon>
+    <EmbeddedResource Include="Template\Controls\TemplateEditDecimal.resx">
+      <DependentUpon>TemplateEditDecimal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditNumeric.resx">
       <DependentUpon>TemplateEditNumeric.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Template\Controls\TemplateEditOra.resx">
+      <DependentUpon>TemplateEditOra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Template\Controls\TemplateEditPartitaIva.resx">
+      <DependentUpon>TemplateEditPartitaIva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Template\Controls\TemplateEditPassword.resx">
+      <DependentUpon>TemplateEditPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditText.resx">
       <DependentUpon>TemplateEditText.cs</DependentUpon>
@@ -507,28 +572,30 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="JS\EditData.js" />
+    <EmbeddedResource Include="JS\Data.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="JS\EditText.js" />
+    <EmbeddedResource Include="JS\Mask.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="JS\EditOra.js" />
+    <EmbeddedResource Include="JS\Ora.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="JS\EditPassword.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="JS\EditPartitaIva.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="JS\EditCodiceFiscale.js" />
+    <EmbeddedResource Include="JS\PartitaIva.js" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="JS\Numeric.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="JS\CodiceFiscale.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="JS\Decimal.js" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Condition="" Project="$(MSBuildExtensionsPath)\Gizmox\v12.0\Gizmox.VWGLibrary.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

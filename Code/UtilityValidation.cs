@@ -58,15 +58,24 @@ namespace Library.Code
         {
             try
             {
-                if (text != null && text!="")
-                {
-                    foreach (Char c in text)
-                    {
-                        if (!Char.IsNumber(c))
-                            return false;
-                    }
-                    return true;
-                }
+                int value = 0;
+                bool isNumeric = int.TryParse(text, out value);
+                return isNumeric;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
+        }
+
+        public static bool IsDecimal(string text)
+        {
+            try
+            {
+                decimal value = 0;
+                bool isDecimal = decimal.TryParse(text, out value);
+                return isDecimal;
             }
             catch (Exception ex)
             {
@@ -90,6 +99,40 @@ namespace Library.Code
             }
             return null;
         }
+
+
+        internal static int GetInteger(string text)
+        {
+            try
+            {
+                var value = GetIntegerNothing(text);
+                if (value != null)
+                    return (int)value;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return 0;
+        }
+
+        internal static int? GetIntegerNothing(string text)
+        {
+            try
+            {
+                if (text != null && UtilityValidation.IsNumeric(text))
+                {
+                    int value = Convert.ToInt32(text);
+                    return value;
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+       
 
         public static bool IsEmail(string text)
         {
