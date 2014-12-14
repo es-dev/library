@@ -280,7 +280,16 @@ namespace Library.Controls
         {
             try
             {
-                var text = (string)value;
+                string text = null;
+                if (value != null)
+                {
+                    if (behavior == TypeBehavior.Numeric)
+                        text = value.ToString();
+                    else if (behavior == TypeBehavior.Decimal)
+                        text = value.ToString();
+                    else
+                        text = (string)value;
+                }
                 SetText(text);
             }
             catch (Exception ex)
