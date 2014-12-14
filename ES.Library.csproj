@@ -285,6 +285,18 @@
     <Compile Include="Controls\DateCalendar.Designer.cs">
       <DependentUpon>DateCalendar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\EditCalendar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\EditCalendar.Designer.cs">
+      <DependentUpon>EditCalendar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EditData.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\EditData.Designer.cs">
+      <DependentUpon>EditData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Intervals.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -477,6 +489,12 @@
     <EmbeddedResource Include="Controls\DateCalendar.resx">
       <DependentUpon>DateCalendar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\EditCalendar.resx">
+      <DependentUpon>EditCalendar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\EditData.resx">
+      <DependentUpon>EditData.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\Intervals.resx">
       <DependentUpon>Intervals.cs</DependentUpon>
     </EmbeddedResource>
@@ -595,6 +613,14 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="JS\Decimal.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="JS\EditCodiceFiscale.js" />
+    <Content Include="JS\EditData.js" />
+    <Content Include="JS\EditOra.js" />
+    <Content Include="JS\EditPartitaIva.js" />
+    <Content Include="JS\EditPassword.js" />
+    <Content Include="JS\EditText.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Condition="" Project="$(MSBuildExtensionsPath)\Gizmox\v12.0\Gizmox.VWGLibrary.targets" />
