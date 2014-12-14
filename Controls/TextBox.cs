@@ -266,7 +266,14 @@ namespace Library.Controls
         {
             try
             {
-                var value = GetText();
+                object value = null;
+                var text = GetText();
+                if (behavior == TypeBehavior.Numeric)
+                    value = int.Parse(text);
+                else if (behavior == TypeBehavior.Decimal)
+                    value = decimal.Parse(text);
+                else
+                    value = text;
                 return value;
             }
             catch (Exception ex)
@@ -284,9 +291,9 @@ namespace Library.Controls
                 if (value != null)
                 {
                     if (behavior == TypeBehavior.Numeric)
-                        text = value.ToString();
+                        text = ((int)value).ToString("0");
                     else if (behavior == TypeBehavior.Decimal)
-                        text = value.ToString();
+                        text = ((decimal)value).ToString("0.00");
                     else
                         text = (string)value;
                 }
