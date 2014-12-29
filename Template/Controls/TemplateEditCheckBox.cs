@@ -22,7 +22,7 @@ namespace Library.Template.Controls
     {
 
         private string textTrue = "SI";
-        public string TextTrue
+        public string TextTrue 
         {
             get
             {
