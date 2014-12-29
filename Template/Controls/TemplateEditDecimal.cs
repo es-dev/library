@@ -41,47 +41,14 @@ namespace Library.Template.Controls
         {
             get
             {
-                _value = GetValue();
-                return _value;
+                return (decimal?)editControl.Value; 
             }
             set
             {
-                _value = value;
-                SetValue(_value);
+                editControl.Value = value;
             }
         }
 
-        private void SetValue(decimal? _value)
-        {
-            try
-            {
-                editControl.Value = _value;
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            } 
-        }
-
-        private decimal? GetValue()
-        {
-            try
-            {
-                var text = (string)editControl.Value;
-                if (text != null && UtilityValidation.IsDecimal(text))
-                {
-                    var value = decimal.Parse(text.Replace(".",","));
-                    return value;
-                }
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-            return null;
-        }
-
-             
 
     }
 }

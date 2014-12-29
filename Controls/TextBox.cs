@@ -268,13 +268,16 @@ namespace Library.Controls
             {
                 object value = null;
                 var text = GetText();
-                if (behavior == TypeBehavior.Numeric)
-                    value = int.Parse(text);
-                else if (behavior == TypeBehavior.Decimal)
-                    value = decimal.Parse(text);
-                else
-                    value = text;
-                return value;
+                if (text != null)
+                {
+                    if (behavior == TypeBehavior.Numeric)
+                        value = int.Parse(text);
+                    else if (behavior == TypeBehavior.Decimal)
+                        value = decimal.Parse(text.Replace(".",","));
+                    else
+                        value = text;
+                    return value;
+                }
             }
             catch (Exception ex)
             {
