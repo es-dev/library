@@ -36,7 +36,6 @@ namespace Library.Template.Controls
             } 
         }
 
-        private int? _value = null;
         public new int? Value
         {
             get

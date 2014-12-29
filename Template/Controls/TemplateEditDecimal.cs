@@ -36,7 +36,6 @@ namespace Library.Template.Controls
             } 
         }
 
-        private decimal? _value = null;
         public new decimal? Value
         {
             get

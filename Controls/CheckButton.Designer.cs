@@ -44,7 +44,7 @@ namespace Library.Controls
             this.editTrue.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.editTrue.Location = new System.Drawing.Point(0, 0);
             this.editTrue.Name = "editTrue";
-            this.editTrue.Size = new System.Drawing.Size(134, 30);
+            this.editTrue.Size = new System.Drawing.Size(134, 28);
             this.editTrue.TabIndex = 0;
             this.editTrue.TabStop = false;
             this.editTrue.Text = "True";
@@ -61,7 +61,7 @@ namespace Library.Controls
             this.editFalse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.editFalse.Location = new System.Drawing.Point(134, 0);
             this.editFalse.Name = "editFalse";
-            this.editFalse.Size = new System.Drawing.Size(134, 30);
+            this.editFalse.Size = new System.Drawing.Size(134, 28);
             this.editFalse.TabIndex = 0;
             this.editFalse.TabStop = false;
             this.editFalse.Text = "False";
