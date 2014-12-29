@@ -242,6 +242,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\UtilityAsync.cs" />
     <Compile Include="Code\UtilityCollections.cs" />
     <Compile Include="Code\UtilityError.cs" />
     <Compile Include="Code\UtilityJQuery.cs" />
