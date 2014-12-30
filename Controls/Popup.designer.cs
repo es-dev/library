@@ -41,11 +41,13 @@ namespace Library.Controls
             // 
             this.btnConfirm.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Bottom | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
             this.btnConfirm.Location = new System.Drawing.Point(873, 224);
+            this.btnConfirm.TabIndex = 999;
             // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Bottom | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
             this.btnCancel.Location = new System.Drawing.Point(772, 224);
+            this.btnCancel.TabIndex = 999;
             // 
             // panelMessage
             // 

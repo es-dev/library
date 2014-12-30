@@ -48,7 +48,7 @@ namespace Library.Controls
             this.monthCalendar.SelectionRange = new Gizmox.WebGUI.Forms.SelectionRange(new System.DateTime(2014, 7, 25, 0, 0, 0, 0), new System.DateTime(2014, 7, 25, 0, 0, 0, 0));
             this.monthCalendar.SelectionStart = new System.DateTime(2014, 7, 25, 9, 39, 33, 811);
             this.monthCalendar.Size = new System.Drawing.Size(227, 162);
-            this.monthCalendar.TabIndex = 0;
+            this.monthCalendar.TabIndex = 999;
             this.monthCalendar.TodayDate = new System.DateTime(2014, 12, 7, 0, 0, 0, 0);
             this.monthCalendar.Value = new System.DateTime(2014, 7, 25, 9, 39, 33, 811);
             // 
@@ -61,7 +61,7 @@ namespace Library.Controls
             this.btnCancel.Location = new System.Drawing.Point(173, 165);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(24, 24);
-            this.btnCancel.TabIndex = 1;
+            this.btnCancel.TabIndex = 999;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnConfirm
@@ -73,7 +73,7 @@ namespace Library.Controls
             this.btnConfirm.Location = new System.Drawing.Point(200, 165);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(24, 24);
-            this.btnConfirm.TabIndex = 1;
+            this.btnConfirm.TabIndex = 999;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // Calendar

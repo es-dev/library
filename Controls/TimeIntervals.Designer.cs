@@ -74,7 +74,7 @@ namespace Library.Controls
             this.lblSeparator.Location = new System.Drawing.Point(44, 0);
             this.lblSeparator.Name = "lblSeparator";
             this.lblSeparator.Size = new System.Drawing.Size(16, 30);
-            this.lblSeparator.TabIndex = 1;
+            this.lblSeparator.TabIndex = 999;
             this.lblSeparator.Text = ":";
             this.lblSeparator.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 

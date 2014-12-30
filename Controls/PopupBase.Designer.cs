@@ -59,12 +59,13 @@ namespace Library.Controls
             this.btnCancel.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
             this.btnCancel.BackColor = System.Drawing.Color.Transparent;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
             this.btnCancel.ImageButton = null;
             this.btnCancel.ImageSeparator = "Image.separator_ht_small.png";
             this.btnCancel.Location = new System.Drawing.Point(744, 218);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 72);
-            this.btnCancel.TabIndex = 0;
+            this.btnCancel.TabIndex = 999;
             this.btnCancel.TextButton = "Annulla";
             this.btnCancel.Click += new Library.Controls.ButtonSeparatorV.ButtonSeparatorClick(this.btnCancel_Click);
             // 
@@ -74,12 +75,13 @@ namespace Library.Controls
             this.btnConfirm.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
             this.btnConfirm.BackColor = System.Drawing.Color.Transparent;
             this.btnConfirm.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirm.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
             this.btnConfirm.ImageButton = null;
             this.btnConfirm.ImageSeparator = "Image.separator_ht_small.png";
             this.btnConfirm.Location = new System.Drawing.Point(845, 218);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(100, 72);
-            this.btnConfirm.TabIndex = 0;
+            this.btnConfirm.TabIndex = 999;
             this.btnConfirm.TextButton = "OK";
             this.btnConfirm.Click += new Library.Controls.ButtonSeparatorV.ButtonSeparatorClick(this.btnConfirm_Click);
             // 

@@ -51,7 +51,7 @@ namespace Library.Controls
             this.btnConfirm.Location = new System.Drawing.Point(166, 282);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(24, 24);
-            this.btnConfirm.TabIndex = 1;
+            this.btnConfirm.TabIndex = 999;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // btnCancel
@@ -64,7 +64,7 @@ namespace Library.Controls
             this.btnCancel.Location = new System.Drawing.Point(139, 282);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(24, 24);
-            this.btnCancel.TabIndex = 1;
+            this.btnCancel.TabIndex = 999;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // listIntervals
