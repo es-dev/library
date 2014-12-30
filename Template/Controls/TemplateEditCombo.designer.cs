@@ -43,7 +43,7 @@ namespace Library.Template.Controls
             this.editControl.Name = "editControl";
             this.editControl.ReadOnly = false;
             this.editControl.Size = new System.Drawing.Size(357, 30);
-            this.editControl.TabIndex = 3;
+            this.editControl.TabIndex = 0;
             this.editControl.Text = null;
             this.editControl.Value = null;
             // 

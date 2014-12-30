@@ -50,7 +50,7 @@ namespace Library.Template.Controls
             this.editControl.ReadOnly = false;
             this.editControl.Size = new System.Drawing.Size(137, 32);
             this.editControl.StartInterval = System.TimeSpan.Parse("07:00:00");
-            this.editControl.TabIndex = 3;
+            this.editControl.TabIndex = 0;
             this.editControl.Text = ":";
             this.editControl.Value = null;
             // 
