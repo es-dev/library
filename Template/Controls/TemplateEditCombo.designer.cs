@@ -38,11 +38,13 @@ namespace Library.Template.Controls
             this.editControl.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
             this.editControl.BackColor = System.Drawing.Color.Transparent;
             this.editControl.Location = new System.Drawing.Point(100, -4);
+            this.editControl.Mask = "---";
             this.editControl.Name = "editControl";
+            this.editControl.ReadOnly = false;
             this.editControl.Size = new System.Drawing.Size(357, 30);
-            this.editControl.TabIndex = 3;
-            this.editControl.Text = "TextCombo";
-            this.editControl.Value = "";
+            this.editControl.TabIndex = 0;
+            this.editControl.Text = null;
+            this.editControl.Value = null;
             // 
             // TemplateEditCombo
             // 

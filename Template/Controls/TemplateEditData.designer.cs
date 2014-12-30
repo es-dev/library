@@ -39,10 +39,12 @@ namespace Library.Template.Controls
             this.editControl.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
             this.editControl.BackColor = System.Drawing.Color.Transparent;
             this.editControl.Location = new System.Drawing.Point(102, 0);
+            this.editControl.Mask = "--";
             this.editControl.Name = "editControl";
+            this.editControl.ReadOnly = false;
             this.editControl.Size = new System.Drawing.Size(185, 30);
-            this.editControl.TabIndex = 3;
-            this.editControl.Text = "TemplateEditData";
+            this.editControl.TabIndex = 0;
+            this.editControl.Text = "//";
             this.editControl.Value = null;
             // 
             // TemplateEditData
