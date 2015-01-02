@@ -5,7 +5,8 @@
     '39': 'rightarrow',
     '9': 'tab',
     '188': 'comma',
-    '190': 'period'
+    '190': 'period',
+    '110': '.canc'
 };
 
 $('#$vwgId$').unbind('keydown');
