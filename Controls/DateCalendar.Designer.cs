@@ -87,7 +87,7 @@ namespace Library.Controls
             this.lblSeparator1.Location = new System.Drawing.Point(37, 1);
             this.lblSeparator1.Name = "lblSeparator1";
             this.lblSeparator1.Size = new System.Drawing.Size(17, 29);
-            this.lblSeparator1.TabIndex = 1;
+            this.lblSeparator1.TabIndex = 999;
             this.lblSeparator1.Text = "/";
             this.lblSeparator1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -98,7 +98,7 @@ namespace Library.Controls
             this.lblSeparator2.Location = new System.Drawing.Point(91, 1);
             this.lblSeparator2.Name = "lblSeparator2";
             this.lblSeparator2.Size = new System.Drawing.Size(16, 29);
-            this.lblSeparator2.TabIndex = 4;
+            this.lblSeparator2.TabIndex = 999;
             this.lblSeparator2.Text = "/";
             this.lblSeparator2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -111,7 +111,7 @@ namespace Library.Controls
             this.btnCalendar.Location = new System.Drawing.Point(160, 2);
             this.btnCalendar.Name = "btnCalendar";
             this.btnCalendar.Size = new System.Drawing.Size(24, 23);
-            this.btnCalendar.TabIndex = 5;
+            this.btnCalendar.TabIndex = 999;
             this.btnCalendar.TabStop = false;
             this.btnCalendar.Click += new System.EventHandler(this.btnCalendar_Click);
             // 

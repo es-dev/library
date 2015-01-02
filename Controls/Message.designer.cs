@@ -37,17 +37,15 @@ namespace Library.Controls
             ((System.ComponentModel.ISupportInitialize)(this.imgIcon)).BeginInit();
             this.SuspendLayout();
             // 
-            // jqContainer
-            // 
-            this.jqContainer.JQOpacity = 0.5D;
-            // 
             // btnConfirm
             // 
             this.btnConfirm.Location = new System.Drawing.Point(822, 157);
+            this.btnConfirm.TabIndex = 999;
             // 
             // btnCancel
             // 
             this.btnCancel.Location = new System.Drawing.Point(722, 157);
+            this.btnCancel.TabIndex = 999;
             // 
             // panelMessage
             // 

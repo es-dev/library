@@ -77,6 +77,7 @@ namespace Library.Template.MVVM
             // 
             this.btnClose.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
             this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
             this.btnClose.ImageButton = "Images.left24.png";
             this.btnClose.ImageSeparator = "Images.separator_ht_small.png";
             this.btnClose.Location = new System.Drawing.Point(0, 1);
@@ -91,6 +92,7 @@ namespace Library.Template.MVVM
             this.btnRefresh.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Bottom | Gizmox.WebGUI.Forms.AnchorStyles.Left)));
             this.btnRefresh.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
             this.btnRefresh.BackColor = System.Drawing.Color.Transparent;
+            this.btnRefresh.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
             this.btnRefresh.ImageButton = "Images.refresh24.png";
             this.btnRefresh.ImageSeparator = "Images.separator_ht_small.png";
             this.btnRefresh.Location = new System.Drawing.Point(0, 519);
@@ -104,6 +106,7 @@ namespace Library.Template.MVVM
             // 
             this.btnAdd.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
             this.btnAdd.BackColor = System.Drawing.Color.Transparent;
+            this.btnAdd.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
             this.btnAdd.ImageButton = "Images.add24.png";
             this.btnAdd.ImageSeparator = "Images.separator_ht_small.png";
             this.btnAdd.Location = new System.Drawing.Point(0, 73);
@@ -122,7 +125,7 @@ namespace Library.Template.MVVM
             this.txtSearch.Location = new System.Drawing.Point(872, 14);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(140, 25);
-            this.txtSearch.TabIndex = 7;
+            this.txtSearch.TabIndex = 0;
             // 
             // container
             // 

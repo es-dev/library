@@ -40,9 +40,11 @@ namespace Library.Controls
             this.editDate.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
             this.editDate.BackColor = System.Drawing.Color.Transparent;
             this.editDate.Location = new System.Drawing.Point(0, 0);
+            this.editDate.Mask = "--";
             this.editDate.Name = "editDate";
+            this.editDate.ReadOnly = false;
             this.editDate.Size = new System.Drawing.Size(192, 30);
-            this.editDate.TabIndex = 0;
+            this.editDate.TabIndex = 999;
             this.editDate.Text = "//";
             this.editDate.Value = null;
             // 
@@ -56,10 +58,12 @@ namespace Library.Controls
             this.editTime.EndInterval = System.TimeSpan.Parse("21:00:00");
             this.editTime.Interval = System.TimeSpan.Parse("00:15:00");
             this.editTime.Location = new System.Drawing.Point(192, -2);
+            this.editTime.Mask = "--";
             this.editTime.Name = "editTime";
+            this.editTime.ReadOnly = false;
             this.editTime.Size = new System.Drawing.Size(137, 32);
             this.editTime.StartInterval = System.TimeSpan.Parse("07:00:00");
-            this.editTime.TabIndex = 1;
+            this.editTime.TabIndex = 999;
             this.editTime.Text = ":";
             this.editTime.Value = null;
             // 

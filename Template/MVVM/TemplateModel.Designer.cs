@@ -33,6 +33,7 @@ namespace Library.Template.MVVM
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TemplateModel));
             this.container = new Gizmox.WebGUI.Forms.Panel();
+            this.lblEditing = new Gizmox.WebGUI.Forms.Label();
             this.infoSubtitle = new Gizmox.WebGUI.Forms.Label();
             this.infoSubtitleImage = new Gizmox.WebGUI.Forms.PictureBox();
             this.infoTitle = new Gizmox.WebGUI.Forms.Label();
@@ -41,7 +42,6 @@ namespace Library.Template.MVVM
             this.btnUpdateCancel = new Library.Controls.ButtonSeparatorV();
             this.btnSave = new Library.Controls.ButtonSeparatorV();
             this.btnClose = new Library.Controls.ButtonSeparatorV();
-            this.lblEditing = new Gizmox.WebGUI.Forms.Label();
             this.container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infoSubtitleImage)).BeginInit();
             this.panelCommands.SuspendLayout();
@@ -64,6 +64,22 @@ namespace Library.Template.MVVM
             this.container.Size = new System.Drawing.Size(923, 591);
             this.container.TabIndex = 6;
             // 
+            // lblEditing
+            // 
+            this.lblEditing.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
+            this.lblEditing.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblEditing.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEditing.ForeColor = System.Drawing.Color.White;
+            this.lblEditing.Image = new Gizmox.WebGUI.Common.Resources.ImageResourceHandle(resources.GetString("lblEditing.Image"));
+            this.lblEditing.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblEditing.Location = new System.Drawing.Point(354, 3);
+            this.lblEditing.Name = "lblEditing";
+            this.lblEditing.Size = new System.Drawing.Size(248, 27);
+            this.lblEditing.TabIndex = 999;
+            this.lblEditing.Text = "     MODIFICA ABILITATA";
+            this.lblEditing.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblEditing.Visible = false;
+            // 
             // infoSubtitle
             // 
             this.infoSubtitle.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
@@ -72,7 +88,7 @@ namespace Library.Template.MVVM
             this.infoSubtitle.Location = new System.Drawing.Point(668, 3);
             this.infoSubtitle.Name = "infoSubtitle";
             this.infoSubtitle.Size = new System.Drawing.Size(250, 55);
-            this.infoSubtitle.TabIndex = 1;
+            this.infoSubtitle.TabIndex = 999;
             this.infoSubtitle.Text = "SUBTITLE";
             // 
             // infoSubtitleImage
@@ -119,6 +135,7 @@ namespace Library.Template.MVVM
             this.btnDelete.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Bottom | Gizmox.WebGUI.Forms.AnchorStyles.Left)));
             this.btnDelete.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
             this.btnDelete.BackColor = System.Drawing.Color.Transparent;
+            this.btnDelete.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
             this.btnDelete.ImageButton = "Images.delete24.png";
             this.btnDelete.ImageSeparator = "Images.separator_ht_small.png";
             this.btnDelete.Location = new System.Drawing.Point(0, 519);
@@ -132,6 +149,7 @@ namespace Library.Template.MVVM
             // 
             this.btnUpdateCancel.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
             this.btnUpdateCancel.BackColor = System.Drawing.Color.Transparent;
+            this.btnUpdateCancel.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
             this.btnUpdateCancel.ImageButton = "Images.edit24.png";
             this.btnUpdateCancel.ImageSeparator = "Images.separator_ht_small.png";
             this.btnUpdateCancel.Location = new System.Drawing.Point(0, 145);
@@ -145,6 +163,7 @@ namespace Library.Template.MVVM
             // 
             this.btnSave.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
             this.btnSave.BackColor = System.Drawing.Color.Transparent;
+            this.btnSave.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
             this.btnSave.ImageButton = "Images.save24.png";
             this.btnSave.ImageSeparator = "Images.separator_ht_small.png";
             this.btnSave.Location = new System.Drawing.Point(0, 73);
@@ -158,6 +177,7 @@ namespace Library.Template.MVVM
             // 
             this.btnClose.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
             this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
             this.btnClose.ImageButton = "Images.left24.png";
             this.btnClose.ImageSeparator = "Images.separator_ht_small.png";
             this.btnClose.Location = new System.Drawing.Point(0, 1);
@@ -166,22 +186,6 @@ namespace Library.Template.MVVM
             this.btnClose.TabIndex = 1;
             this.btnClose.TextButton = "Chiudi";
             this.btnClose.Click += new Library.Controls.ButtonSeparatorV.ButtonSeparatorClick(this.btnClose_Click);
-            // 
-            // lblEditing
-            // 
-            this.lblEditing.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
-            this.lblEditing.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblEditing.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEditing.ForeColor = System.Drawing.Color.White;
-            this.lblEditing.Image = new Gizmox.WebGUI.Common.Resources.ImageResourceHandle(resources.GetString("lblEditing.Image"));
-            this.lblEditing.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblEditing.Location = new System.Drawing.Point(354, 3);
-            this.lblEditing.Name = "lblEditing";
-            this.lblEditing.Size = new System.Drawing.Size(248, 27);
-            this.lblEditing.TabIndex = 1;
-            this.lblEditing.Text = "     MODIFICA ABILITATA";
-            this.lblEditing.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblEditing.Visible = false;
             // 
             // TemplateModel
             // 

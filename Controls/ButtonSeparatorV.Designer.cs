@@ -59,7 +59,7 @@ namespace Library.Controls
             this.btnControl.Location = new System.Drawing.Point(6, 4);
             this.btnControl.Name = "btnControl";
             this.btnControl.Size = new System.Drawing.Size(86, 51);
-            this.btnControl.TabIndex = 0;
+            this.btnControl.TabIndex = 999;
             this.btnControl.TextImageRelation = Gizmox.WebGUI.Forms.TextImageRelation.ImageAboveText;
             this.btnControl.Click += new System.EventHandler(this.btnControl_Click);
             // 
