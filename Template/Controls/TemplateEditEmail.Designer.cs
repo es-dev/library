@@ -39,24 +39,19 @@ namespace Library.Template.Controls
             this.editControl.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Bottom) 
             | Gizmox.WebGUI.Forms.AnchorStyles.Left) 
             | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
-            this.editControl.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
             this.editControl.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.editControl.Behavior = Library.Controls.TextBox.TypeBehavior.Text;
             this.editControl.BorderWidth = new Gizmox.WebGUI.Forms.BorderWidth(0);
             this.editControl.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editControl.Location = new System.Drawing.Point(100, 1);
-            this.editControl.Mask = "---";
             this.editControl.Name = "editControl";
-            this.editControl.ReadOnly = false;
             this.editControl.Size = new System.Drawing.Size(351, 27);
-            this.editControl.TabIndex = 0;
-            this.editControl.Text = null;
-            this.editControl.Value = null;
+            this.editControl.TabIndex = 3;
             // 
             // TemplateEditEmail
             // 
             this.Controls.Add(this.editControl);
             this.Text = "TemplateEditEmail";
+            this.Controls.SetChildIndex(this.editControl, 0);
             this.ResumeLayout(false);
 
         }

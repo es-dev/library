@@ -42,6 +42,7 @@ namespace Library.Template.Controls
             this.editControl.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.FixedSingle;
             this.editControl.BorderWidth = new Gizmox.WebGUI.Forms.BorderWidth(0, 0, 0, 1);
             this.editControl.EndInterval = System.TimeSpan.Parse("21:00:00");
+            this.editControl.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editControl.Interval = System.TimeSpan.Parse("00:15:00");
             this.editControl.Location = new System.Drawing.Point(100, 1);
             this.editControl.Mask = "--";
@@ -49,7 +50,7 @@ namespace Library.Template.Controls
             this.editControl.ReadOnly = false;
             this.editControl.Size = new System.Drawing.Size(137, 32);
             this.editControl.StartInterval = System.TimeSpan.Parse("07:00:00");
-            this.editControl.TabIndex = 0;
+            this.editControl.TabIndex = 3;
             this.editControl.Text = ":";
             this.editControl.Value = null;
             // 

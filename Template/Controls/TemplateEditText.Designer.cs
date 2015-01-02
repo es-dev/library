@@ -42,12 +42,13 @@ namespace Library.Template.Controls
             this.editControl.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
             this.editControl.BackColor = System.Drawing.Color.Transparent;
             this.editControl.Behavior = Library.Controls.TextBox.TypeBehavior.Text;
+            this.editControl.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editControl.Location = new System.Drawing.Point(100, 1);
             this.editControl.Mask = "---";
             this.editControl.Name = "editControl";
             this.editControl.ReadOnly = false;
             this.editControl.Size = new System.Drawing.Size(340, 30);
-            this.editControl.TabIndex = 0;
+            this.editControl.TabIndex = 3;
             this.editControl.Text = null;
             this.editControl.Value = null;
             // 
