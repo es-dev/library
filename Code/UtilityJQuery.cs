@@ -45,7 +45,7 @@ namespace Library.Code
         }
 
         internal string GetMouseOverColor(Control control, Control container, Color enterBackColor, Color leaveBackColor, Color downBackColor,
-                Color enterBorderColor, Color leaveBorderColor, int duration = 125)
+                Color enterBorderColor, Color leaveBorderColor, int durationEnter = 125, int durationLeave=500)
         {
             try
             {
@@ -69,7 +69,8 @@ namespace Library.Code
                 script = script.Replace("$downBackColor$", downBackColorHtml);
                 script = script.Replace("$enterBorderColor$", enterBorderColorHtml);
                 script = script.Replace("$leaveBorderColor$", leaveBorderColorHtml);
-                script = script.Replace("$duration$", duration.ToString());
+                script = script.Replace("$durationEnter$", durationEnter.ToString());
+                script = script.Replace("$durationLeave$", durationLeave.ToString());
 
                 return script;
             }

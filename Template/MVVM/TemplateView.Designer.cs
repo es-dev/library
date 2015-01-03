@@ -42,6 +42,7 @@ namespace Library.Template.MVVM
             this.btnOrderBy = new Library.Controls.ButtonSeparatorH();
             this.btnAdvancedSearch = new Library.Controls.ButtonSeparatorH();
             this.imgSeparator = new Gizmox.WebGUI.Forms.PictureBox();
+            this.editCount = new Gizmox.WebGUI.Forms.Label();
             this.panelCommands.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgSeparator)).BeginInit();
             this.SuspendLayout();
@@ -68,7 +69,7 @@ namespace Library.Template.MVVM
             this.panelCommands.Controls.Add(this.btnClose);
             this.panelCommands.Controls.Add(this.btnRefresh);
             this.panelCommands.Controls.Add(this.btnAdd);
-            this.panelCommands.Location = new System.Drawing.Point(0, 47);
+            this.panelCommands.Location = new System.Drawing.Point(0, 68);
             this.panelCommands.Name = "panelCommands";
             this.panelCommands.Size = new System.Drawing.Size(101, 591);
             this.panelCommands.TabIndex = 1;
@@ -80,7 +81,7 @@ namespace Library.Template.MVVM
             this.btnClose.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
             this.btnClose.ImageButton = "Images.left24.png";
             this.btnClose.ImageSeparator = "Images.separator_ht_small.png";
-            this.btnClose.Location = new System.Drawing.Point(0, 1);
+            this.btnClose.Location = new System.Drawing.Point(0, 0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(101, 72);
             this.btnClose.TabIndex = 1;
@@ -109,7 +110,7 @@ namespace Library.Template.MVVM
             this.btnAdd.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
             this.btnAdd.ImageButton = "Images.add24.png";
             this.btnAdd.ImageSeparator = "Images.separator_ht_small.png";
-            this.btnAdd.Location = new System.Drawing.Point(0, 73);
+            this.btnAdd.Location = new System.Drawing.Point(0, 72);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(101, 72);
             this.btnAdd.TabIndex = 1;
@@ -122,7 +123,7 @@ namespace Library.Template.MVVM
             this.txtSearch.CustomStyle = "STB";
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.ForeColor = System.Drawing.Color.SteelBlue;
-            this.txtSearch.Location = new System.Drawing.Point(872, 14);
+            this.txtSearch.Location = new System.Drawing.Point(872, 2);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(140, 25);
             this.txtSearch.TabIndex = 0;
@@ -138,7 +139,7 @@ namespace Library.Template.MVVM
             this.container.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.FixedSingle;
             this.container.BorderWidth = new Gizmox.WebGUI.Forms.BorderWidth(0);
             this.container.Count = 0;
-            this.container.Location = new System.Drawing.Point(101, 58);
+            this.container.Location = new System.Drawing.Point(101, 79);
             this.container.Name = "container";
             this.container.PagingControls = null;
             this.container.Size = new System.Drawing.Size(923, 580);
@@ -153,7 +154,7 @@ namespace Library.Template.MVVM
             this.btnOrderBy.BackColor = System.Drawing.Color.Transparent;
             this.btnOrderBy.ImageButton = "";
             this.btnOrderBy.ImageSeparator = "Images.separator_vr.png";
-            this.btnOrderBy.Location = new System.Drawing.Point(574, 14);
+            this.btnOrderBy.Location = new System.Drawing.Point(574, 2);
             this.btnOrderBy.Name = "btnOrderBy";
             this.btnOrderBy.Size = new System.Drawing.Size(144, 27);
             this.btnOrderBy.TabIndex = 9;
@@ -166,7 +167,7 @@ namespace Library.Template.MVVM
             this.btnAdvancedSearch.BackColor = System.Drawing.Color.Transparent;
             this.btnAdvancedSearch.ImageButton = "";
             this.btnAdvancedSearch.ImageSeparator = "Images.separator_vr.png";
-            this.btnAdvancedSearch.Location = new System.Drawing.Point(718, 14);
+            this.btnAdvancedSearch.Location = new System.Drawing.Point(718, 2);
             this.btnAdvancedSearch.Name = "btnAdvancedSearch";
             this.btnAdvancedSearch.Size = new System.Drawing.Size(151, 27);
             this.btnAdvancedSearch.TabIndex = 10;
@@ -178,16 +179,30 @@ namespace Library.Template.MVVM
             | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
             this.imgSeparator.BackColor = System.Drawing.Color.Transparent;
             this.imgSeparator.Image = new Gizmox.WebGUI.Common.Resources.ImageResourceHandle(resources.GetString("imgSeparator.Image"));
-            this.imgSeparator.Location = new System.Drawing.Point(101, 47);
+            this.imgSeparator.Location = new System.Drawing.Point(101, 68);
             this.imgSeparator.Name = "imgSeparator";
             this.imgSeparator.Size = new System.Drawing.Size(923, 11);
             this.imgSeparator.SizeMode = Gizmox.WebGUI.Forms.PictureBoxSizeMode.StretchImage;
             this.imgSeparator.TabIndex = 12;
             this.imgSeparator.TabStop = false;
             // 
+            // editCount
+            // 
+            this.editCount.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
+            this.editCount.BackColor = System.Drawing.Color.Transparent;
+            this.editCount.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editCount.ForeColor = System.Drawing.Color.DarkRed;
+            this.editCount.Location = new System.Drawing.Point(574, 38);
+            this.editCount.Name = "editCount";
+            this.editCount.Size = new System.Drawing.Size(438, 17);
+            this.editCount.TabIndex = 0;
+            this.editCount.Text = "Voci presenti in archivio (0)";
+            this.editCount.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // TemplateView
             // 
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.editCount);
             this.Controls.Add(this.imgSeparator);
             this.Controls.Add(this.btnAdvancedSearch);
             this.Controls.Add(this.btnOrderBy);
@@ -195,7 +210,7 @@ namespace Library.Template.MVVM
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.panelCommands);
             this.Controls.Add(this.infoTitle);
-            this.Size = new System.Drawing.Size(1024, 638);
+            this.Size = new System.Drawing.Size(1024, 659);
             this.Load += new System.EventHandler(this.TemplateView_Load);
             this.panelCommands.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgSeparator)).EndInit();
@@ -215,6 +230,7 @@ namespace Library.Template.MVVM
         public Library.Controls.ButtonSeparatorH btnAdvancedSearch;
         public Library.Controls.ButtonSeparatorV btnRefresh;
         public Library.Controls.ButtonSeparatorV btnClose;
+        private Label editCount;
 
 
     }

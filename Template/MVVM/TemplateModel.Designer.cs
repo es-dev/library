@@ -61,7 +61,7 @@ namespace Library.Template.MVVM
             this.container.Controls.Add(this.infoSubtitleImage);
             this.container.Location = new System.Drawing.Point(101, 47);
             this.container.Name = "container";
-            this.container.Size = new System.Drawing.Size(923, 591);
+            this.container.Size = new System.Drawing.Size(923, 612);
             this.container.TabIndex = 6;
             // 
             // lblEditing
@@ -125,7 +125,7 @@ namespace Library.Template.MVVM
             this.panelCommands.Controls.Add(this.btnUpdateCancel);
             this.panelCommands.Controls.Add(this.btnSave);
             this.panelCommands.Controls.Add(this.btnClose);
-            this.panelCommands.Location = new System.Drawing.Point(0, 47);
+            this.panelCommands.Location = new System.Drawing.Point(0, 68);
             this.panelCommands.Name = "panelCommands";
             this.panelCommands.Size = new System.Drawing.Size(101, 591);
             this.panelCommands.TabIndex = 1;
@@ -140,7 +140,7 @@ namespace Library.Template.MVVM
             this.btnDelete.ImageSeparator = "Images.separator_ht_small.png";
             this.btnDelete.Location = new System.Drawing.Point(0, 519);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(100, 72);
+            this.btnDelete.Size = new System.Drawing.Size(101, 72);
             this.btnDelete.TabIndex = 1;
             this.btnDelete.TextButton = "Elimina";
             this.btnDelete.Click += new Library.Controls.ButtonSeparatorV.ButtonSeparatorClick(this.btnDelete_Click);
@@ -154,7 +154,7 @@ namespace Library.Template.MVVM
             this.btnUpdateCancel.ImageSeparator = "Images.separator_ht_small.png";
             this.btnUpdateCancel.Location = new System.Drawing.Point(0, 145);
             this.btnUpdateCancel.Name = "btnUpdateCancel";
-            this.btnUpdateCancel.Size = new System.Drawing.Size(100, 72);
+            this.btnUpdateCancel.Size = new System.Drawing.Size(101, 72);
             this.btnUpdateCancel.TabIndex = 1;
             this.btnUpdateCancel.TextButton = "Modifica";
             this.btnUpdateCancel.Click += new Library.Controls.ButtonSeparatorV.ButtonSeparatorClick(this.btnUpdateCancel_Click);
@@ -168,7 +168,7 @@ namespace Library.Template.MVVM
             this.btnSave.ImageSeparator = "Images.separator_ht_small.png";
             this.btnSave.Location = new System.Drawing.Point(0, 73);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(100, 72);
+            this.btnSave.Size = new System.Drawing.Size(101, 72);
             this.btnSave.TabIndex = 1;
             this.btnSave.TextButton = "Salva";
             this.btnSave.Click += new Library.Controls.ButtonSeparatorV.ButtonSeparatorClick(this.btnSave_Click);
@@ -182,7 +182,7 @@ namespace Library.Template.MVVM
             this.btnClose.ImageSeparator = "Images.separator_ht_small.png";
             this.btnClose.Location = new System.Drawing.Point(0, 1);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(100, 72);
+            this.btnClose.Size = new System.Drawing.Size(101, 72);
             this.btnClose.TabIndex = 1;
             this.btnClose.TextButton = "Chiudi";
             this.btnClose.Click += new Library.Controls.ButtonSeparatorV.ButtonSeparatorClick(this.btnClose_Click);
@@ -193,7 +193,7 @@ namespace Library.Template.MVVM
             this.Controls.Add(this.panelCommands);
             this.Controls.Add(this.infoTitle);
             this.Controls.Add(this.container);
-            this.Size = new System.Drawing.Size(1024, 638);
+            this.Size = new System.Drawing.Size(1024, 659);
             this.Load += new System.EventHandler(this.TemplateModel_Load);
             this.container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.infoSubtitleImage)).EndInit();

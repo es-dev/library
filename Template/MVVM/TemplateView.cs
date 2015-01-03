@@ -56,7 +56,20 @@ namespace Library.Template.MVVM
             set
             {
                 items=value;
-                container.PagingControls=GetPagingControls(items);
+                SetItems(items);
+            }
+        }
+
+        private void SetItems(IList<IItem> items)
+        {
+            try
+            {
+                var controls = GetPagingControls(items);
+                container.PagingControls = controls;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
             }
         }
 
@@ -135,7 +148,21 @@ namespace Library.Template.MVVM
             set
             {
                 count = value;
+                SetCount(count);
+                
+            }
+        }
+
+        private void SetCount(int count)
+        {
+            try
+            {
                 container.Count = count;
+                editCount.Text = "Voci trovate in archivio (" + count.ToString() + ")";
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
             }
         }
 
@@ -156,14 +183,14 @@ namespace Library.Template.MVVM
         public TemplateView()
         {
             InitializeComponent();
-            //try
-            //{
-            //    Init();
-            //}
-            //catch (Exception ex)
-            //{
-            //    UtilityError.Write(ex);
-            //} 
+            try
+            {
+                Init();
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            } 
         }
 
         public virtual string TitleSpace { get; set; }
@@ -174,9 +201,8 @@ namespace Library.Template.MVVM
         {
             try
             {
-                Init();
                 LoadItems();
-                SetLayout();
+                SetLayout();                
             }
             catch (Exception ex)
             {
@@ -210,8 +236,7 @@ namespace Library.Template.MVVM
                 UtilityError.Write(ex);
             }
         }
-
-
+        
         public IList<Control> GetPagingControls(IList<IItem> items)
         {
             try
@@ -221,6 +246,7 @@ namespace Library.Template.MVVM
                     var pagingControls = new List<Control>();
                     foreach (var item in items)
                         pagingControls.Add(item.Control);
+
                     return pagingControls;
                 }
             }
@@ -247,8 +273,7 @@ namespace Library.Template.MVVM
             } 
         }
        
-
-        public void RefreshItems()
+        public virtual void RefreshItems()
         {
             try
             {
@@ -346,6 +371,34 @@ namespace Library.Template.MVVM
             {
                 UtilityError.Write(ex);
             } 
+        }
+
+        public event CloseSpaceHandler ClosedSpace;
+        public void CloseSpace()
+        {
+            try
+            {
+                if (ClosedSpace != null)
+                    ClosedSpace();
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        public event OpenSpaceHandler OpenedSpace;
+        public void OpenSpace()
+        {
+            try
+            {
+                if (OpenedSpace != null)
+                    OpenedSpace();
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
         }
     }
 }

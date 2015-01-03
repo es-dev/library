@@ -488,6 +488,34 @@ namespace Library.Template.MVVM
                 UtilityError.Write(ex);
             } 
         }
+
+        public event CloseSpaceHandler ClosedSpace;
+        public void CloseSpace()
+        {
+            try
+            {
+                if (ClosedSpace != null)
+                    ClosedSpace();
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        public event OpenSpaceHandler OpenedSpace;
+        public void OpenSpace()
+        {
+            try
+            {
+                if (OpenedSpace != null)
+                    OpenedSpace();
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
     }
 
    

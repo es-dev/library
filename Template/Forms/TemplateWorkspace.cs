@@ -37,10 +37,12 @@ namespace Library.Template.Forms
                     }
                     space.Workspace = this;
                     space.Control.Dock = DockStyle.Fill;
-                    this.Title = space.TitleSpace;
+                    if(space.TitleSpace!=null)
+                        this.Title = space.TitleSpace;
                     container.Controls.Clear();
                     container.Controls.Add(space.Control);
                     space.Control.BringToFront();
+                    space.OpenSpace();
                 }
             }
             catch (Exception ex)
@@ -49,7 +51,7 @@ namespace Library.Template.Forms
             }
         }
 
-        public ISpace GetSpace()
+        private ISpace GetSpace()
         {
             try
             {
@@ -65,7 +67,7 @@ namespace Library.Template.Forms
             return null;
         }
 
-        public void RemoveSpace(ISpace space)
+        private void RemoveSpace(ISpace space)
         {
             try
             {
@@ -84,6 +86,7 @@ namespace Library.Template.Forms
             {
                 if (space != null)
                 {
+                    space.CloseSpace();
                     var ownerSpace = space.OwnerSpace;
                     if (ownerSpace != null)
                     {

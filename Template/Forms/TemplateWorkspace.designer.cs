@@ -57,7 +57,7 @@ namespace Library.Template.Forms
             this.progressBar,
             this.lblProgressBar});
             // 
-            // editTitle
+            // infoTitle
             // 
             this.infoTitle.Location = new System.Drawing.Point(455, 42);
             this.infoTitle.Size = new System.Drawing.Size(461, 32);
@@ -84,15 +84,15 @@ namespace Library.Template.Forms
             this.container.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Bottom) 
             | Gizmox.WebGUI.Forms.AnchorStyles.Left) 
             | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
-            this.container.Location = new System.Drawing.Point(0, 105);
+            this.container.Location = new System.Drawing.Point(0, 84);
             this.container.Name = "container";
-            this.container.Size = new System.Drawing.Size(1024, 638);
+            this.container.Size = new System.Drawing.Size(1024, 659);
             this.container.TabIndex = 7;
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.toolStripSeparator3.Name = "toolStripSeparator1";
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 6);
             // 
             // progressBar
