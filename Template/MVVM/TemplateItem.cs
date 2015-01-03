@@ -18,7 +18,7 @@ using Library.Controls;
 
 namespace Library.Template.MVVM
 {
-    public partial class TemplateItem : UserControl, IItem
+    public partial class TemplateItem : JQPanel, IItem
     {
         private IWorkspace workspace = null;
         public IWorkspace Workspace

@@ -44,6 +44,42 @@ namespace Library.Code
             return null;
         }
 
+        internal string GetMouseOverColor(Control control, Control container, Color enterBackColor, Color leaveBackColor, Color downBackColor,
+                Color enterBorderColor, Color leaveBorderColor, int duration = 125)
+        {
+            try
+            {
+                var script = GetJScript("MouseOverColor.js");
+                string enterBackColorHtml = enterBackColor.ToArgb().ToString("X");
+                enterBackColorHtml = "#" + enterBackColorHtml.Substring(2);
+                string leaveBackColorHtml = leaveBackColor.ToArgb().ToString("X");
+                leaveBackColorHtml = "#" + leaveBackColorHtml.Substring(2);
+                string downBackColorHtml = downBackColor.ToArgb().ToString("X");
+                downBackColorHtml = "#" + downBackColorHtml.Substring(2);
+                string enterBorderColorHtml = enterBorderColor.ToArgb().ToString("X");
+                enterBorderColorHtml = "#" + enterBorderColorHtml.Substring(2);
+                string leaveBorderColorHtml = leaveBorderColor.ToArgb().ToString("X");
+                leaveBorderColorHtml = "#" + leaveBorderColorHtml.Substring(2);
+                var vwgId = GetVWGId(control);
+                var vwgContainerId = GetVWGId(container);
+                script = script.Replace("$vwgId$", vwgId);
+                script = script.Replace("$vwgContainerId$", vwgContainerId);
+                script = script.Replace("$enterBackColor$", enterBackColorHtml);
+                script = script.Replace("$leaveBackColor$", leaveBackColorHtml);
+                script = script.Replace("$downBackColor$", downBackColorHtml);
+                script = script.Replace("$enterBorderColor$", enterBorderColorHtml);
+                script = script.Replace("$leaveBorderColor$", leaveBorderColorHtml);
+                script = script.Replace("$duration$", duration.ToString());
+
+                return script;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
         public string GetOpacity(Control control, Color backColor, double opacity = 0.5,  int duration = 0)
         {
             try
@@ -186,8 +222,8 @@ namespace Library.Code
             try
             {
                 var prefix = (control.GetType() == typeof(TextBox) ? "TRG" : "VWG");
-                var vwgID = prefix + "_" + control.ID.ToString();
-                return vwgID;
+                var vwgId = prefix + "_" + control.ID.ToString();
+                return vwgId;
 
             }
             catch (Exception ex)
