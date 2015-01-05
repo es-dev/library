@@ -55,7 +55,7 @@ namespace Library.Template.MVVM
             this.infoTitle.ForeColor = System.Drawing.Color.DarkRed;
             this.infoTitle.Location = new System.Drawing.Point(101, 0);
             this.infoTitle.Name = "infoTitle";
-            this.infoTitle.Size = new System.Drawing.Size(473, 47);
+            this.infoTitle.Size = new System.Drawing.Size(473, 68);
             this.infoTitle.TabIndex = 4;
             this.infoTitle.Text = "TITLE";
             // 
@@ -123,7 +123,7 @@ namespace Library.Template.MVVM
             this.txtSearch.CustomStyle = "STB";
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.ForeColor = System.Drawing.Color.SteelBlue;
-            this.txtSearch.Location = new System.Drawing.Point(872, 2);
+            this.txtSearch.Location = new System.Drawing.Point(872, 39);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(140, 25);
             this.txtSearch.TabIndex = 0;
@@ -154,7 +154,7 @@ namespace Library.Template.MVVM
             this.btnOrderBy.BackColor = System.Drawing.Color.Transparent;
             this.btnOrderBy.ImageButton = "";
             this.btnOrderBy.ImageSeparator = "Images.separator_vr.png";
-            this.btnOrderBy.Location = new System.Drawing.Point(574, 2);
+            this.btnOrderBy.Location = new System.Drawing.Point(574, 39);
             this.btnOrderBy.Name = "btnOrderBy";
             this.btnOrderBy.Size = new System.Drawing.Size(144, 27);
             this.btnOrderBy.TabIndex = 9;
@@ -167,7 +167,7 @@ namespace Library.Template.MVVM
             this.btnAdvancedSearch.BackColor = System.Drawing.Color.Transparent;
             this.btnAdvancedSearch.ImageButton = "";
             this.btnAdvancedSearch.ImageSeparator = "Images.separator_vr.png";
-            this.btnAdvancedSearch.Location = new System.Drawing.Point(718, 2);
+            this.btnAdvancedSearch.Location = new System.Drawing.Point(718, 39);
             this.btnAdvancedSearch.Name = "btnAdvancedSearch";
             this.btnAdvancedSearch.Size = new System.Drawing.Size(151, 27);
             this.btnAdvancedSearch.TabIndex = 10;
@@ -192,7 +192,7 @@ namespace Library.Template.MVVM
             this.editCount.BackColor = System.Drawing.Color.Transparent;
             this.editCount.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editCount.ForeColor = System.Drawing.Color.DarkRed;
-            this.editCount.Location = new System.Drawing.Point(574, 38);
+            this.editCount.Location = new System.Drawing.Point(574, 1);
             this.editCount.Name = "editCount";
             this.editCount.Size = new System.Drawing.Size(438, 17);
             this.editCount.TabIndex = 0;

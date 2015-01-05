@@ -180,7 +180,7 @@ namespace Library.Template.MVVM
             this.btnClose.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
             this.btnClose.ImageButton = "Images.left24.png";
             this.btnClose.ImageSeparator = "Images.separator_ht_small.png";
-            this.btnClose.Location = new System.Drawing.Point(0, 1);
+            this.btnClose.Location = new System.Drawing.Point(0, 0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(101, 72);
             this.btnClose.TabIndex = 1;
