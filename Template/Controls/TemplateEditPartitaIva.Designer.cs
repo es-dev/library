@@ -56,6 +56,7 @@ namespace Library.Template.Controls
             // TemplateEditPartitaIva
             // 
             this.Controls.Add(this.editControl);
+            this.Label = "Partita IVA";
             this.Text = "TemplateEditPartitaIva";
             this.ResumeLayout(false);
 

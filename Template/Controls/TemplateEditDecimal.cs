@@ -40,7 +40,7 @@ namespace Library.Template.Controls
         {
             get
             {
-                return (decimal?)editControl.Value; 
+                return (decimal?)editControl.Value;
             }
             set
             {

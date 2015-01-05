@@ -56,6 +56,7 @@ namespace Library.Template.Controls
             // TemplateEditPassword
             // 
             this.Controls.Add(this.editControl);
+            this.Label = "Password";
             this.ResumeLayout(false);
 
         }
