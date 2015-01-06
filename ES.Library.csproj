@@ -419,6 +419,12 @@
     <Compile Include="Template\Controls\TemplateEditPassword.Designer.cs">
       <DependentUpon>TemplateEditPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="Template\Controls\TemplateEditDropDown.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Template\Controls\TemplateEditDropDown.Designer.cs">
+      <DependentUpon>TemplateEditDropDown.cs</DependentUpon>
+    </Compile>
     <Compile Include="Template\Controls\TemplateEditText.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -548,6 +554,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditPassword.resx">
       <DependentUpon>TemplateEditPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Template\Controls\TemplateEditDropDown.resx">
+      <DependentUpon>TemplateEditDropDown.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditText.resx">
       <DependentUpon>TemplateEditText.cs</DependentUpon>
