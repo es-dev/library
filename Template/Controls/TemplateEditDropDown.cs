@@ -48,12 +48,11 @@ namespace Library.Template.Controls
             }
         }
 
-        private ICollection items = null;
-        public ICollection Items
+        private IList<string> items = null;
+        public IList<string> Items
         {
             get
             {
-                items = GetItems();
                 return items;
             }
             set
@@ -63,7 +62,7 @@ namespace Library.Template.Controls
             }
         }
 
-        private void SetItems(ICollection items)
+        private void SetItems(IList<string> items)
         {
             try
             {
@@ -73,20 +72,6 @@ namespace Library.Template.Controls
             {
                 UtilityError.Write(ex);
             }
-        }
-
-        private ICollection GetItems()
-        {
-            try
-            {
-                var items = editControl.Items;
-                return items;
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-            return null;
         }
     }
 }

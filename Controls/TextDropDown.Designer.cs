@@ -52,7 +52,7 @@ namespace Library.Controls
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.editText);
             this.Size = new System.Drawing.Size(340, 30);
-            this.Text = "TextCombo";
+            this.Text = "TextDropDown";
             this.ResumeLayout(false);
 
         }

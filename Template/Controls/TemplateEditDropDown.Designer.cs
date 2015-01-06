@@ -51,7 +51,7 @@ namespace Library.Template.Controls
             this.editControl.Text = null;
             this.editControl.Value = null;
             // 
-            // TemplateEditText
+            // TemplateEditDropDown
             // 
             this.Controls.Add(this.editControl);
             this.ResumeLayout(false);

@@ -249,12 +249,11 @@ namespace Library.Controls
         }
 
 
-        private ICollection items = null;
-        public ICollection Items
+        private IList<string> items = null;
+        public IList<string> Items
         {
             get
             {
-                items = GetItems();
                 return items;
             }
             set
@@ -264,11 +263,16 @@ namespace Library.Controls
             }
         }
 
-        private void SetItems(ICollection items)
+        private void SetItems(IList<string> items)
         {
             try
             {
-                editText.Items.AddRange(items);
+                editText.Items.Clear();
+                if (items != null)
+                {
+                    foreach (var item in items)
+                        editText.Items.Add(item);
+                }
             }
             catch (Exception ex)
             {
@@ -276,19 +280,7 @@ namespace Library.Controls
             }
         }
 
-        private ICollection GetItems()
-        {
-            try
-            {
-                var items = editText.Items;
-                return items;
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-            return null;
-        }
+       
 
     }
 }
