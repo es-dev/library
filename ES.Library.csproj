@@ -383,6 +383,12 @@
     <Compile Include="Template\Controls\TemplateEditDataOra.designer.cs">
       <DependentUpon>TemplateEditDataOra.cs</DependentUpon>
     </Compile>
+    <Compile Include="Template\Controls\TemplateEditDropDown.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Template\Controls\TemplateEditDropDown.Designer.cs">
+      <DependentUpon>TemplateEditDropDown.cs</DependentUpon>
+    </Compile>
     <Compile Include="Template\Controls\TemplateEditEmail.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -418,12 +424,6 @@
     </Compile>
     <Compile Include="Template\Controls\TemplateEditPassword.Designer.cs">
       <DependentUpon>TemplateEditPassword.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Template\Controls\TemplateEditDropDown.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Template\Controls\TemplateEditDropDown.Designer.cs">
-      <DependentUpon>TemplateEditDropDown.cs</DependentUpon>
     </Compile>
     <Compile Include="Template\Controls\TemplateEditText.cs">
       <SubType>UserControl</SubType>
@@ -537,6 +537,9 @@
     <EmbeddedResource Include="Template\Controls\TemplateEditDataOra.resx">
       <DependentUpon>TemplateEditDataOra.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Template\Controls\TemplateEditDropDown.resx">
+      <DependentUpon>TemplateEditDropDown.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditEmail.resx">
       <DependentUpon>TemplateEditEmail.cs</DependentUpon>
     </EmbeddedResource>
@@ -554,9 +557,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditPassword.resx">
       <DependentUpon>TemplateEditPassword.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Template\Controls\TemplateEditDropDown.resx">
-      <DependentUpon>TemplateEditDropDown.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditText.resx">
       <DependentUpon>TemplateEditText.cs</DependentUpon>
