@@ -35,7 +35,7 @@ namespace Library.Controls
             try
             {
                 var jquery = new UtilityJQuery();
-                var jqscript = jquery.GetMask(editText, mask);
+                var jqscript = jquery.GetMask(editTextRead, mask);
                 return jqscript;
             }
             catch (Exception ex)
@@ -101,7 +101,13 @@ namespace Library.Controls
         {
             try
             {
-                editText.Enabled = !readOnly;
+                editTextRead.ReadOnly = readOnly;
+                editText.Visible = !readOnly;
+                editTextRead.Visible = readOnly;
+                if (readOnly)
+                    editTextRead.Text = (string)editText.SelectedItem;
+                else
+                    editText.SelectedItem = editTextRead.Text;
             }
             catch (Exception ex)
             {
@@ -113,7 +119,7 @@ namespace Library.Controls
         {
             try
             {
-                var readOnly = !editText.Enabled;
+                var readOnly = editTextRead.ReadOnly;
                 return readOnly;
             }
             catch (Exception ex)
@@ -143,6 +149,7 @@ namespace Library.Controls
             {
                 base.BackColor = backColor;
                 editText.BackColor=backColor;
+                editTextRead.BackColor = backColor;
             }
             catch (Exception ex)
             {
@@ -170,6 +177,7 @@ namespace Library.Controls
             try
             {
                 editText.Text = (text == null || text.Length == 0 ? mask : text);
+                editTextRead.Text = (text == null || text.Length == 0 ? mask : text);
             }
             catch (Exception ex)
             {
