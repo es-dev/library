@@ -276,6 +276,7 @@ namespace Library.Controls
             try
             {
                 editText.Items.Clear();
+                editText.Items.Add(mask);
                 if (items != null)
                 {
                     foreach (var item in items)
