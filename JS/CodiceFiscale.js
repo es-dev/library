@@ -12,7 +12,7 @@ $('#$vwgId$').bind('keydown', function (e) {
         var text = $(this).val();
         if (text != null) {
             var length = text.length;
-            if (length > 16 && !(e.keyCode in editingKeys))
+            if (length >= 16 && !(e.keyCode in editingKeys))
                 return false;
             else
                 return true;
