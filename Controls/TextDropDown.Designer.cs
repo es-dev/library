@@ -1,9 +1,9 @@
 using Gizmox.WebGUI.Forms;
 using Gizmox.WebGUI.Common;
 
-namespace Library.Template.Controls
+namespace Library.Controls
 {
-    partial class TemplateEditDropDown
+    partial class TextDropDown
     {
         /// <summary>
         /// Required designer variable.
@@ -31,36 +31,36 @@ namespace Library.Template.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            this.editControl = new Library.Controls.TextDropDown();
+            this.editText = new Gizmox.WebGUI.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // editControl
+            // editText
             // 
-            this.editControl.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Bottom) 
+            this.editText.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Bottom) 
             | Gizmox.WebGUI.Forms.AnchorStyles.Left) 
             | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
-            this.editControl.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
-            this.editControl.BackColor = System.Drawing.Color.Transparent;
-            this.editControl.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editControl.Location = new System.Drawing.Point(100, 1);
-            this.editControl.Mask = "---";
-            this.editControl.Name = "editControl";
-            this.editControl.ReadOnly = false;
-            this.editControl.Size = new System.Drawing.Size(340, 30);
-            this.editControl.TabIndex = 0;
-            this.editControl.Text = null;
-            this.editControl.Value = null;
+            this.editText.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.None;
+            this.editText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editText.FormattingEnabled = true;
+            this.editText.Location = new System.Drawing.Point(0, 1);
+            this.editText.Name = "editText";
+            this.editText.Size = new System.Drawing.Size(337, 30);
+            this.editText.TabIndex = 0;
             // 
-            // TemplateEditText
+            // TextDropDown
             // 
-            this.Controls.Add(this.editControl);
+            this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.editText);
+            this.Size = new System.Drawing.Size(340, 30);
+            this.Text = "TextCombo";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Library.Controls.TextDropDown editControl;
+        private ComboBox editText;
+
 
 
     }

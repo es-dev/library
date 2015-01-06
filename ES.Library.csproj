@@ -340,6 +340,12 @@
     <Compile Include="Controls\EditControl.Designer.cs">
       <DependentUpon>EditControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TextDropDown.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TextDropDown.Designer.cs">
+      <DependentUpon>TextDropDown.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TextCombo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -514,6 +520,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\EditControl.resx">
       <DependentUpon>EditControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TextDropDown.resx">
+      <DependentUpon>TextDropDown.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\TextCombo.resx">
       <DependentUpon>TextCombo.cs</DependentUpon>
