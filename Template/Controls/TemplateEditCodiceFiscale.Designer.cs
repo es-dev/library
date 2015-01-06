@@ -56,6 +56,7 @@ namespace Library.Template.Controls
             // TemplateEditCodiceFiscale
             // 
             this.Controls.Add(this.editControl);
+            this.Label = "Codice Fiscale";
             this.Text = "TemplateEditCodiceFiscale";
             this.ResumeLayout(false);
 

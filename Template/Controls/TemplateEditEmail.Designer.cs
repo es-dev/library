@@ -56,6 +56,7 @@ namespace Library.Template.Controls
             // TemplateEditEmail
             // 
             this.Controls.Add(this.editControl);
+            this.Label = "Email";
             this.Text = "TemplateEditEmail";
             this.ResumeLayout(false);
 
