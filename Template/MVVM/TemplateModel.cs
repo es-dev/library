@@ -379,7 +379,7 @@ namespace Library.Template.MVVM
             {
                 bool changed = IsChanged();
                 if (editing && changed)
-                    UtilityMessage.Show(this, "ATTENZIONE!", "Sono state rilevate delle modifiche alle informazioni. Continuando tutte le modifiche apportate ai dati andranno perse.", TypeMessage.Alert, OnUpdateCancel);
+                    UtilityMessage.Show(this, "ATTENZIONE!", "Sono state rilevate delle modifiche alle informazioni. Continuando tutte le modifiche apportate ai dati andranno perse.", TypeMessage.Confirm, OnUpdateCancel);
                 else
                     OnUpdateCancel();
             }

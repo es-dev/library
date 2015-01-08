@@ -51,7 +51,7 @@ namespace Library.Code
                     var property = type.GetProperty(propertyName);
                     if (property != null)
                     {
-                        var value = property.GetValue(obj);
+                        var value = property.GetValue(obj, null);
                         return value;
                     }
                 }
