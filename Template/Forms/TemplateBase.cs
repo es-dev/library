@@ -48,6 +48,34 @@ namespace Library.Template.Forms
             }
         }
 
+        private string logoAziendale = null;
+        public string LogoAziendale
+        {
+            get
+            {
+                return logoAziendale;
+            }
+            set
+            {
+                logoAziendale = value;
+                imgLogoAziendale.Image = logoAziendale;
+            }
+        }
+
+        private string logoESD = null;
+        public string LogoESD
+        {
+            get
+            {
+                return logoESD;
+            }
+            set
+            {
+                logoESD = value;
+                imgLogoESD.Image = logoESD;
+            }
+        }
+
         public TemplateBase()
         {
             InitializeComponent();

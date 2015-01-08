@@ -114,7 +114,7 @@ namespace Library.Template.Forms
             this.imgLogoESD.Location = new System.Drawing.Point(921, 3);
             this.imgLogoESD.Name = "imgLogoESD";
             this.imgLogoESD.Size = new System.Drawing.Size(103, 71);
-            this.imgLogoESD.SizeMode = Gizmox.WebGUI.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgLogoESD.SizeMode = Gizmox.WebGUI.Forms.PictureBoxSizeMode.CenterImage;
             this.imgLogoESD.TabIndex = 3;
             this.imgLogoESD.TabStop = false;
             // 
@@ -353,6 +353,7 @@ namespace Library.Template.Forms
             // TemplateBase
             // 
             this.BackColor = System.Drawing.Color.Transparent;
+            this.BackgroundImageLayout = Gizmox.WebGUI.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.panelInfo);
             this.Controls.Add(this.imgSeparator2);
             this.Controls.Add(this.imgLogoAziendale);
@@ -383,7 +384,6 @@ namespace Library.Template.Forms
         public Button bntPortaleWebAziendale;
         public Button btnSupportoTecnico;
         public Button btnInformazioni;
-        public PictureBox imgLogoESD;
         public ToolStrip toolStrip;
         public ToolStripButton btnPrivacy;
         public Label infoTitle;
@@ -399,8 +399,9 @@ namespace Library.Template.Forms
         private Button btnInfoAzienda;
         private Label lblPoweredBy;
         public Panel panelInfo;
-        private PictureBox imgLogoAziendale;
         private PictureBox imgSeparator2;
+        private PictureBox imgLogoESD;
+        private PictureBox imgLogoAziendale;
 
 
     }

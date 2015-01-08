@@ -35,7 +35,6 @@ namespace Library.Template.Forms
             this.toolStripSeparator3 = new Gizmox.WebGUI.Forms.ToolStripSeparator();
             this.progressBar = new Gizmox.WebGUI.Forms.ToolStripProgressBar();
             this.lblProgressBar = new Gizmox.WebGUI.Forms.ToolStripLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.imgLogoESD)).BeginInit();
             this.SuspendLayout();
             // 
             // bntPortaleWebAziendale
@@ -113,12 +112,10 @@ namespace Library.Template.Forms
             this.Controls.SetChildIndex(this.bntPortaleWebAziendale, 0);
             this.Controls.SetChildIndex(this.btnSupportoTecnico, 0);
             this.Controls.SetChildIndex(this.btnInformazioni, 0);
-            this.Controls.SetChildIndex(this.imgLogoESD, 0);
             this.Controls.SetChildIndex(this.infoTitle, 0);
             this.Controls.SetChildIndex(this.toolStrip, 0);
             this.Controls.SetChildIndex(this.btnAccount, 0);
             this.Controls.SetChildIndex(this.panelInfo, 0);
-            ((System.ComponentModel.ISupportInitialize)(this.imgLogoESD)).EndInit();
             this.ResumeLayout(false);
 
 		}
