@@ -55,13 +55,13 @@ namespace Library.Template.Forms
             this.panelInfo = new Gizmox.WebGUI.Forms.Panel();
             this.lblPoweredBy = new Gizmox.WebGUI.Forms.Label();
             this.btnInfoAzienda = new Gizmox.WebGUI.Forms.Button();
-            this.imgLogoAziendale = new Gizmox.WebGUI.Forms.PictureBox();
+            this.imgLogoSoftware = new Gizmox.WebGUI.Forms.PictureBox();
             this.imgSeparator2 = new Gizmox.WebGUI.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoESD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgSeparator1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgInfo)).BeginInit();
             this.panelInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgLogoAziendale)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLogoSoftware)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgSeparator2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -327,15 +327,15 @@ namespace Library.Template.Forms
             this.btnInfoAzienda.Text = "    Informazioni aziendali";
             this.btnInfoAzienda.Click += new System.EventHandler(this.btnInfoAzienda_Click);
             // 
-            // imgLogoAziendale
+            // imgLogoSoftware
             // 
-            this.imgLogoAziendale.BackColor = System.Drawing.Color.Transparent;
-            this.imgLogoAziendale.Location = new System.Drawing.Point(0, 3);
-            this.imgLogoAziendale.Name = "imgLogoAziendale";
-            this.imgLogoAziendale.Size = new System.Drawing.Size(347, 71);
-            this.imgLogoAziendale.SizeMode = Gizmox.WebGUI.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgLogoAziendale.TabIndex = 3;
-            this.imgLogoAziendale.TabStop = false;
+            this.imgLogoSoftware.BackColor = System.Drawing.Color.Transparent;
+            this.imgLogoSoftware.Location = new System.Drawing.Point(0, 3);
+            this.imgLogoSoftware.Name = "imgLogoSoftware";
+            this.imgLogoSoftware.Size = new System.Drawing.Size(420, 70);
+            this.imgLogoSoftware.SizeMode = Gizmox.WebGUI.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgLogoSoftware.TabIndex = 3;
+            this.imgLogoSoftware.TabStop = false;
             // 
             // imgSeparator2
             // 
@@ -356,7 +356,7 @@ namespace Library.Template.Forms
             this.BackgroundImageLayout = Gizmox.WebGUI.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.panelInfo);
             this.Controls.Add(this.imgSeparator2);
-            this.Controls.Add(this.imgLogoAziendale);
+            this.Controls.Add(this.imgLogoSoftware);
             this.Controls.Add(this.infoTitle);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.imgLogoESD);
@@ -369,7 +369,7 @@ namespace Library.Template.Forms
             ((System.ComponentModel.ISupportInitialize)(this.imgSeparator1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgInfo)).EndInit();
             this.panelInfo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.imgLogoAziendale)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLogoSoftware)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgSeparator2)).EndInit();
             this.ResumeLayout(false);
 
@@ -401,7 +401,7 @@ namespace Library.Template.Forms
         public Panel panelInfo;
         private PictureBox imgSeparator2;
         private PictureBox imgLogoESD;
-        private PictureBox imgLogoAziendale;
+        private PictureBox imgLogoSoftware;
 
 
     }

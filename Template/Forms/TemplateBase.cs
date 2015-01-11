@@ -48,17 +48,29 @@ namespace Library.Template.Forms
             }
         }
 
-        private string logoAziendale = null;
-        public string LogoAziendale
+        private string urlHomePortal = "http://www.es-dev.it.it";
+        public string UrlHomePortal
         {
             get
             {
-                return logoAziendale;
+                return urlHomePortal;
             }
             set
             {
-                logoAziendale = value;
-                imgLogoAziendale.Image = logoAziendale;
+                urlHomePortal = value;
+            }
+        }
+        private string logoSoftware = null;
+        public string LogoSoftware
+        {
+            get
+            {
+                return logoSoftware;
+            }
+            set
+            {
+                logoSoftware = value;
+                imgLogoSoftware.Image = logoSoftware;
             }
         }
 
@@ -135,7 +147,7 @@ namespace Library.Template.Forms
         {
             try
             {
-                Context.Redirect("http://www.portaleaziendale.it");
+                Context.Redirect(urlHomePortal);
             }
             catch (Exception ex)
             {
