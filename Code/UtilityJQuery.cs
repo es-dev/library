@@ -27,6 +27,23 @@ namespace Library.Code
             return null;
         }
 
+        public string GetCap(Control control, string mask)
+        {
+            try
+            {
+                var script = GetJScript("Cap.js");
+                var vwgId = GetVWGId(control);
+                script = script.Replace("$vwgId$", vwgId);
+                script = script.Replace("$mask$", mask);
+                return script;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
         public string GetDecimal(Control control, string mask)
         {
             try

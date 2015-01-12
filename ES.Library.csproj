@@ -409,6 +409,12 @@
     <Compile Include="Template\Controls\TemplateEditDecimal.Designer.cs">
       <DependentUpon>TemplateEditDecimal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Template\Controls\TemplateEditCap.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Template\Controls\TemplateEditCap.Designer.cs">
+      <DependentUpon>TemplateEditCap.cs</DependentUpon>
+    </Compile>
     <Compile Include="Template\Controls\TemplateEditNumeric.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -557,6 +563,9 @@
     <EmbeddedResource Include="Template\Controls\TemplateEditDecimal.resx">
       <DependentUpon>TemplateEditDecimal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Template\Controls\TemplateEditCap.resx">
+      <DependentUpon>TemplateEditCap.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditNumeric.resx">
       <DependentUpon>TemplateEditNumeric.cs</DependentUpon>
     </EmbeddedResource>
@@ -626,6 +635,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="JS\Decimal.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="JS\Cap.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Condition="" Project="$(MSBuildExtensionsPath)\Gizmox\v12.0\Gizmox.VWGLibrary.targets" />

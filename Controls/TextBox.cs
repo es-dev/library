@@ -28,7 +28,8 @@ namespace Library.Controls
             Decimal,
             CodiceFiscale,
             PartitaIva,
-            Email
+            Email,
+            Cap
         }
 
         private TypeBehavior behavior = TypeBehavior.Text;
@@ -86,6 +87,8 @@ namespace Library.Controls
                     jqscript = jquery.GetPartitaIva(editText, mask);
                 else if (behavior == TypeBehavior.CodiceFiscale)
                     jqscript = jquery.GetCodiceFiscale(editText, mask);
+                else if (behavior == TypeBehavior.Cap)
+                    jqscript = jquery.GetCap(editText, mask);
                 else
                     jqscript = jquery.GetMask(editText, mask);
                 return jqscript;
@@ -333,6 +336,8 @@ namespace Library.Controls
                     mask = "-----------";
                 else if (behavior == TypeBehavior.PartitaIva)
                     mask = "-----------";
+                else if (behavior == TypeBehavior.Cap)
+                    mask = "-----";
                 return mask;
             }
             catch (Exception ex)
