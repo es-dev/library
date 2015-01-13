@@ -67,16 +67,11 @@ namespace Library.Code
             try
             {
                 var script = GetJScript("MouseOverColor.js");
-                string enterBackColorHtml = enterBackColor.ToArgb().ToString("X");
-                enterBackColorHtml = "#" + enterBackColorHtml.Substring(2);
-                string leaveBackColorHtml = leaveBackColor.ToArgb().ToString("X");
-                leaveBackColorHtml = "#" + leaveBackColorHtml.Substring(2);
-                string downBackColorHtml = downBackColor.ToArgb().ToString("X");
-                downBackColorHtml = "#" + downBackColorHtml.Substring(2);
-                string enterBorderColorHtml = enterBorderColor.ToArgb().ToString("X");
-                enterBorderColorHtml = "#" + enterBorderColorHtml.Substring(2);
-                string leaveBorderColorHtml = leaveBorderColor.ToArgb().ToString("X");
-                leaveBorderColorHtml = "#" + leaveBorderColorHtml.Substring(2);
+                string enterBackColorHtml = GetColor(enterBackColor);
+                string leaveBackColorHtml = GetColor(leaveBackColor);
+                string downBackColorHtml =GetColor(downBackColor);
+                string enterBorderColorHtml =GetColor(enterBorderColor);
+                string leaveBorderColorHtml = GetColor(leaveBorderColor);
                 var vwgId = GetVWGId(control);
                 var vwgContainerId = GetVWGId(container);
                 script = script.Replace("$vwgId$", vwgId);
@@ -98,14 +93,29 @@ namespace Library.Code
             return null;
         }
 
+        private string GetColor(Color color)
+        {
+            try
+            {
+                string colorHtml = color.ToArgb().ToString("X");
+                if(colorHtml.Length>=3)
+                    colorHtml = "#" + colorHtml.Substring(2);
+                return colorHtml;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
         public string GetOpacity(Control control, Color backColor, double opacity = 0.5,  int duration = 0)
         {
             try
             {
                 var script = GetJScript("Opacity.js");
                 var vwgId = GetVWGId(control);
-                string backColorHtml = backColor.ToArgb().ToString("X");
-                backColorHtml = "#" + backColorHtml.Substring(2);
+                string backColorHtml = GetColor(backColor);
                 script = script.Replace("$vwgId$", vwgId);
                 script = script.Replace("$opacity$", opacity.ToString().Replace(",", "."));
                 script = script.Replace("$backColor$", backColorHtml);
@@ -166,7 +176,7 @@ namespace Library.Code
             {
                 var script = GetJScript("ReadOnly.js");
                 var vwgId = GetVWGId(control);
-                string foreColor = "#" + control.ForeColor.ToArgb().ToString("X").Substring(2);
+                string foreColor = GetColor(control.ForeColor);
                 script = script.Replace("$vwgId$", vwgId);
                 script = script.Replace("$foreColor$", foreColor);
                 return script;
