@@ -12,7 +12,7 @@ using Gizmox.WebGUI.Forms;
 using Library.Interfaces;
 using Library.Code;
 using Gizmox.WebGUI.Common.Interfaces;
-
+using System.Linq;
 
 #endregion
 
@@ -332,6 +332,7 @@ namespace Library.Controls
                 if (maskControl!=null)
                 {
                     maskControl.ReadOnly= readOnly;
+                    SetReadOnlyColor(maskControl, readOnly);
                 }
             }
             catch (Exception ex)
@@ -339,6 +340,30 @@ namespace Library.Controls
                 UtilityError.Write(ex);
             }
         }
+
+        private void SetReadOnlyColor(IMaskControl control, bool readOnly)
+        {
+            try
+            {
+                if (readOnly)
+                {
+                    var editTextControls = (from q in control.Controls.OfType<Gizmox.WebGUI.Forms.TextBox>()  select q).ToList();
+                    foreach (var editText in editTextControls)
+                    {
+                        var jquery = new UtilityJQuery();
+                        var jqscript = jquery.GetReadOnly(editText);
+                        if (jqscript != null && jqscript.Length > 0)
+                            InvokeScript(jqscript);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+
+        }
+
         private void SetMaskControlEvents(IMaskControl maskControl)
         {
             try

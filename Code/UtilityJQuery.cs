@@ -160,7 +160,24 @@ namespace Library.Code
             return null;
         }
 
-        
+        public string GetReadOnly(Control control)
+        {
+            try
+            {
+                var script = GetJScript("ReadOnly.js");
+                var vwgId = GetVWGId(control);
+                string foreColor = "#" + control.ForeColor.ToArgb().ToString("X").Substring(2);
+                script = script.Replace("$vwgId$", vwgId);
+                script = script.Replace("$foreColor$", foreColor);
+                return script;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
 
         public string GetMask(Control control, string mask)
         {

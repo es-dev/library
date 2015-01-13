@@ -540,6 +540,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="JS\Cap.js" />
     <EmbeddedResource Include="JS\MouseOverColor.js" />
+    <EmbeddedResource Include="JS\ReadOnly.js" />
     <EmbeddedResource Include="Template\Controls\TemplateEditCap.resx">
       <DependentUpon>TemplateEditCap.cs</DependentUpon>
     </EmbeddedResource>
