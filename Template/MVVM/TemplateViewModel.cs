@@ -36,15 +36,15 @@ namespace Library.Template.MVVM
             }
         }
 
-        private int count = 0;
-        public int Count
-        {
-            get
-            {
-                count = GetCount();
-                return count;
-            }
-        }
+        //private int count = 0;
+        //public int Count
+        //{
+        //    get
+        //    {                
+        //        count = GetCount();
+        //        return count;
+        //    }
+        //}
 
         public TemplateViewModel(ISpace space)
         {
@@ -70,9 +70,9 @@ namespace Library.Template.MVVM
             }
         }
 
-        public virtual void Load(int skip, int take) {}
+        public virtual void Load(int skip, int take, string search=null) {}
 
-        public virtual int GetCount() { return 0; }
+        public virtual int GetCount(string search=null) { return 0; }
 
         public virtual bool Save(object model, bool creating) { return false; }
 

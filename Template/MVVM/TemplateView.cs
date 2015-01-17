@@ -227,8 +227,9 @@ namespace Library.Template.MVVM
         {
             try
             {
-                viewModel.Load(skip, take);
-                this.Count = viewModel.GetCount();
+                string search = txtSearch.Text;
+                viewModel.Load(skip, take, search);
+                this.Count = viewModel.GetCount(search);
                 this.Items = viewModel.Items;
             }
             catch (Exception ex)
@@ -291,9 +292,12 @@ namespace Library.Template.MVVM
         {
             try
             {
-                viewModel.Items.Remove(item);  //todo: revisione eliminazione ownerItem tramite ricerca per Id dell'Item
-                this.Count = viewModel.GetCount();
-                this.Items = viewModel.Items;
+                bool removed = viewModel.Items.Remove(item);  //todo: revisione eliminazione ownerItem tramite ricerca per Id dell'Item
+                if (removed)
+                {
+                    this.Count -= 1;
+                    this.Items = viewModel.Items;
+                }
             }
             catch (Exception ex)
             {
@@ -394,6 +398,44 @@ namespace Library.Template.MVVM
             {
                 if (OpenedSpace != null)
                     OpenedSpace();
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void txtSearch_Search(object sender, EventArgs e)
+        {
+            try
+            {
+                RefreshItems();
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void txtSearch_EnterKeyDown(object objSender, KeyEventArgs objArgs)
+        {
+            try
+            {
+                var search=txtSearch.Text;
+                if(search==null || search.Length==0)
+                    RefreshItems();
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void txtSearch_Clear(object sender, EventArgs e)
+        {
+            try
+            {
+                RefreshItems();
             }
             catch (Exception ex)
             {

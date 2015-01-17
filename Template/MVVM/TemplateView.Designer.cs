@@ -127,6 +127,9 @@ namespace Library.Template.MVVM
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(140, 25);
             this.txtSearch.TabIndex = 0;
+            this.txtSearch.Search += new System.EventHandler(this.txtSearch_Search);
+            this.txtSearch.Clear += new System.EventHandler(this.txtSearch_Clear);
+            this.txtSearch.EnterKeyDown += new Gizmox.WebGUI.Forms.KeyEventHandler(this.txtSearch_EnterKeyDown);
             // 
             // container
             // 
