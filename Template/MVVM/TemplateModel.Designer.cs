@@ -205,15 +205,15 @@ namespace Library.Template.MVVM
         #endregion
 
         private Label infoTitle;
-        private Panel panelCommands;
-        private Library.Controls.ButtonSeparatorV btnClose;
-        private Library.Controls.ButtonSeparatorV btnDelete;
-        private Library.Controls.ButtonSeparatorV btnUpdateCancel;
-        private Library.Controls.ButtonSeparatorV btnSave;
         public Panel container;
         public Label infoSubtitle;
         public PictureBox infoSubtitleImage;
         private Label lblEditing;
+        public Panel panelCommands;
+        public Library.Controls.ButtonSeparatorV btnClose;
+        public Library.Controls.ButtonSeparatorV btnDelete;
+        public Library.Controls.ButtonSeparatorV btnUpdateCancel;
+        public Library.Controls.ButtonSeparatorV btnSave;
 
 
 
