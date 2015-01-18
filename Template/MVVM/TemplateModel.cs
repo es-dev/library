@@ -346,10 +346,19 @@ namespace Library.Template.MVVM
             try
             {
                 var editControls = new List<IEditControl>();
-                foreach(Control control in controls)
+                foreach (Control control in controls)
                 {
-                    if (control is IEditControl)
-                        editControls.Add((IEditControl)control);    
+                    if (control is IEditControl) //controllo di tipo edit
+                        editControls.Add((IEditControl)control);
+                    else
+                    {
+                        if (control.HasChildren) //per controlli di tipo container (panel, tab, etc...) verifico se ci sono edit all'interno
+                        {
+                            var editChildControls = GetEditControls(control.Controls);
+                            if (editChildControls != null)
+                                editControls.AddRange(editChildControls);
+                        }
+                    }
                 }
                 return editControls;
             }
