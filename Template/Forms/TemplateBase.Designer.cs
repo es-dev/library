@@ -364,6 +364,7 @@ namespace Library.Template.Forms
             // 
             // TemplateBase
             // 
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Transparent;
             this.BackgroundImageLayout = Gizmox.WebGUI.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.panelInfo);
