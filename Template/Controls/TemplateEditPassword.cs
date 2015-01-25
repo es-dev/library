@@ -19,10 +19,10 @@ using Library.Controls;
 
 namespace Library.Template.Controls
 {
-    public partial class TemplateEditPassword : EditControl
+    public partial class editPassword : EditControl
     {
 
-        public TemplateEditPassword()
+        public editPassword()
         {
             InitializeComponent();
             try

@@ -48,7 +48,7 @@ namespace Library.Controls
             this.editHour.BorderWidth = new Gizmox.WebGUI.Forms.BorderWidth(0);
             this.editHour.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editHour.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
-            this.editHour.Location = new System.Drawing.Point(1, 0);
+            this.editHour.Location = new System.Drawing.Point(0, 0);
             this.editHour.MaxLength = 2;
             this.editHour.Name = "editHour";
             this.editHour.Size = new System.Drawing.Size(40, 30);

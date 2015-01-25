@@ -19,10 +19,10 @@ using Library.Controls;
 
 namespace Library.Template.Controls
 {
-    public partial class TemplateEditPartitaIva : EditControl
+    public partial class editPartitaIVA : EditControl
     {
 
-        public TemplateEditPartitaIva()
+        public editPartitaIVA()
         {
             InitializeComponent();
             try

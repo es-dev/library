@@ -57,6 +57,7 @@ namespace Library.Template.Forms
             this.btnInfoAzienda = new Gizmox.WebGUI.Forms.Button();
             this.imgLogoSoftware = new Gizmox.WebGUI.Forms.PictureBox();
             this.imgSeparator2 = new Gizmox.WebGUI.Forms.PictureBox();
+            this.container = new Gizmox.WebGUI.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoESD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgSeparator1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgInfo)).BeginInit();
@@ -266,7 +267,7 @@ namespace Library.Template.Forms
             this.lblTitleInfo.Name = "lblTitleInfo";
             this.lblTitleInfo.Size = new System.Drawing.Size(280, 33);
             this.lblTitleInfo.TabIndex = 1;
-            this.lblTitleInfo.Text = "Enteprise System";
+            this.lblTitleInfo.Text = "Enteprise Manager";
             // 
             // imgInfo
             // 
@@ -350,11 +351,23 @@ namespace Library.Template.Forms
             this.imgSeparator2.TabIndex = 3;
             this.imgSeparator2.TabStop = false;
             // 
+            // container
+            // 
+            this.container.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Bottom) 
+            | Gizmox.WebGUI.Forms.AnchorStyles.Left) 
+            | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
+            this.container.BackgroundImageLayout = Gizmox.WebGUI.Forms.ImageLayout.Stretch;
+            this.container.Location = new System.Drawing.Point(0, 84);
+            this.container.Name = "container";
+            this.container.Size = new System.Drawing.Size(1024, 659);
+            this.container.TabIndex = 7;
+            // 
             // TemplateBase
             // 
             this.BackColor = System.Drawing.Color.Transparent;
             this.BackgroundImageLayout = Gizmox.WebGUI.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.panelInfo);
+            this.Controls.Add(this.container);
             this.Controls.Add(this.imgSeparator2);
             this.Controls.Add(this.imgLogoSoftware);
             this.Controls.Add(this.infoTitle);
@@ -402,6 +415,7 @@ namespace Library.Template.Forms
         private PictureBox imgSeparator2;
         private PictureBox imgLogoESD;
         private PictureBox imgLogoSoftware;
+        public Panel container;
 
 
     }

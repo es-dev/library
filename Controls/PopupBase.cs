@@ -104,12 +104,9 @@ namespace Library.Controls
             }
         }        
 
-        public delegate void ClosePopupHanlder();
+        public delegate void ConfirmPopupHanlder();
 
-        
-        public event ClosePopupHanlder Confirm;
-        
-        public event ClosePopupHanlder Cancel;
+        public event ConfirmPopupHanlder Confirm;
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
@@ -132,8 +129,6 @@ namespace Library.Controls
             {
                 if (parent != null)
                     parent.Controls.Remove(this);
-                if (Cancel != null)
-                    Cancel();
             }
             catch (Exception ex)
             {

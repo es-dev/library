@@ -19,10 +19,10 @@ using Library.Controls;
 
 namespace Library.Template.Controls
 {
-    public partial class TemplateEditCodiceFiscale : EditControl
+    public partial class editCodiceFiscale : EditControl
     {
 
-        public TemplateEditCodiceFiscale()
+        public editCodiceFiscale()
         {
             InitializeComponent();
             try

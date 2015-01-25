@@ -3,7 +3,7 @@ using Gizmox.WebGUI.Common;
 
 namespace Library.Template.Controls
 {
-    partial class TemplateEditCodiceFiscale
+    partial class editCodiceFiscale
     {
         /// <summary>
         /// Required designer variable.
@@ -48,15 +48,16 @@ namespace Library.Template.Controls
             this.editControl.Mask = "---";
             this.editControl.Name = "editControl";
             this.editControl.ReadOnly = false;
-            this.editControl.Size = new System.Drawing.Size(351, 27);
+            this.editControl.Size = new System.Drawing.Size(350, 30);
             this.editControl.TabIndex = 0;
             this.editControl.Text = null;
             this.editControl.Value = null;
             // 
-            // TemplateEditCodiceFiscale
+            // editCodiceFiscale
             // 
             this.Controls.Add(this.editControl);
             this.Label = "Codice Fiscale";
+            this.Name = "editCodiceFiscale";
             this.Text = "TemplateEditCodiceFiscale";
             this.ResumeLayout(false);
 

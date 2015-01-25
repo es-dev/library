@@ -18,6 +18,34 @@ namespace Library.Template.Forms
 {
     public partial class TemplateBase : Form
     {
+        private Gizmox.WebGUI.Common.Resources.ResourceHandle backgroundImage = null;
+        public override Gizmox.WebGUI.Common.Resources.ResourceHandle BackgroundImage
+        {
+            get
+            {
+                backgroundImage = base.BackgroundImage;
+                return backgroundImage;
+            }
+            set
+            {
+                backgroundImage = value;
+                SetBackgroundImage(backgroundImage);
+            }
+        }
+
+        private void SetBackgroundImage(Gizmox.WebGUI.Common.Resources.ResourceHandle backgroundImage)
+        {
+            try
+            {
+                base.BackgroundImage = backgroundImage;
+                container.BackgroundImage = backgroundImage;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
         private string title = null;
         public string Title
         {

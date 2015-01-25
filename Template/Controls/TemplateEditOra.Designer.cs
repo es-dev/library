@@ -36,6 +36,9 @@ namespace Library.Template.Controls
             // 
             // editControl
             // 
+            this.editControl.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Bottom) 
+            | Gizmox.WebGUI.Forms.AnchorStyles.Left) 
+            | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
             this.editControl.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
             this.editControl.BackColor = System.Drawing.Color.Transparent;
             this.editControl.BorderColor = new Gizmox.WebGUI.Forms.BorderColor(System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224))))));
@@ -48,7 +51,7 @@ namespace Library.Template.Controls
             this.editControl.Mask = "--";
             this.editControl.Name = "editControl";
             this.editControl.ReadOnly = false;
-            this.editControl.Size = new System.Drawing.Size(137, 32);
+            this.editControl.Size = new System.Drawing.Size(350, 30);
             this.editControl.StartInterval = System.TimeSpan.Parse("07:00:00");
             this.editControl.TabIndex = 0;
             this.editControl.Text = ":";

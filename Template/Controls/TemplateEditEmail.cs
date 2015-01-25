@@ -18,10 +18,10 @@ using Library.Controls;
 
 namespace Library.Template.Controls
 {
-    public partial class TemplateEditEmail : EditControl
+    public partial class editEmail : EditControl
     {
 
-        public TemplateEditEmail()
+        public editEmail()
         {
             InitializeComponent();
             try

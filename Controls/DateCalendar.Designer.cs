@@ -47,7 +47,7 @@ namespace Library.Controls
             this.editDay.BorderWidth = new Gizmox.WebGUI.Forms.BorderWidth(0);
             this.editDay.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.editDay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
-            this.editDay.Location = new System.Drawing.Point(3, 1);
+            this.editDay.Location = new System.Drawing.Point(0, 0);
             this.editDay.MaxLength = 2;
             this.editDay.Name = "editDay";
             this.editDay.Size = new System.Drawing.Size(31, 29);
@@ -61,7 +61,7 @@ namespace Library.Controls
             this.editMonth.BorderWidth = new Gizmox.WebGUI.Forms.BorderWidth(0);
             this.editMonth.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.editMonth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
-            this.editMonth.Location = new System.Drawing.Point(57, 1);
+            this.editMonth.Location = new System.Drawing.Point(54, 0);
             this.editMonth.MaxLength = 2;
             this.editMonth.Name = "editMonth";
             this.editMonth.Size = new System.Drawing.Size(31, 29);
@@ -74,7 +74,7 @@ namespace Library.Controls
             this.editYear.BorderWidth = new Gizmox.WebGUI.Forms.BorderWidth(0);
             this.editYear.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.editYear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
-            this.editYear.Location = new System.Drawing.Point(110, 1);
+            this.editYear.Location = new System.Drawing.Point(107, 0);
             this.editYear.MaxLength = 4;
             this.editYear.Name = "editYear";
             this.editYear.Size = new System.Drawing.Size(46, 29);
@@ -84,7 +84,7 @@ namespace Library.Controls
             // 
             this.lblSeparator1.BackColor = System.Drawing.Color.White;
             this.lblSeparator1.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.lblSeparator1.Location = new System.Drawing.Point(37, 1);
+            this.lblSeparator1.Location = new System.Drawing.Point(34, 0);
             this.lblSeparator1.Name = "lblSeparator1";
             this.lblSeparator1.Size = new System.Drawing.Size(17, 29);
             this.lblSeparator1.TabIndex = 999;
@@ -95,7 +95,7 @@ namespace Library.Controls
             // 
             this.lblSeparator2.BackColor = System.Drawing.Color.White;
             this.lblSeparator2.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.lblSeparator2.Location = new System.Drawing.Point(91, 1);
+            this.lblSeparator2.Location = new System.Drawing.Point(88, 0);
             this.lblSeparator2.Name = "lblSeparator2";
             this.lblSeparator2.Size = new System.Drawing.Size(16, 29);
             this.lblSeparator2.TabIndex = 999;

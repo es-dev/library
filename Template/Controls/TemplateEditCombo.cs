@@ -65,7 +65,6 @@ namespace Library.Template.Controls
                     var owner = this.Parent;
                     var popup = new Popup(owner, TypeDirection.Vertical);
                     popup.Confirm += OnConfirm;
-                    popup.Cancel += OnCancel;
                     popup.Show(view.Control);
                 }
             }
@@ -126,21 +125,6 @@ namespace Library.Template.Controls
             }
         }
 
-        public delegate void ComboCancelHanlder();
-        public event ComboCancelHanlder ComboCancel;
-
-        private void OnCancel()
-        {
-            try
-            {
-                if (ComboCancel != null)
-                    ComboCancel();
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-        }
 
         public delegate void ComboClickHandler();
         public event ComboClickHandler ComboClick;

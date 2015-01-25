@@ -388,7 +388,7 @@ namespace Library.Template.MVVM
             {
                 bool changed = IsChanged();
                 if (editing && changed)
-                    UtilityMessage.Show(this, "ATTENZIONE!", "Sono state rilevate delle modifiche alle informazioni. Continuando tutte le modifiche apportate ai dati andranno perse.", TypeMessage.Confirm, OnUpdateCancel);
+                    UtilityMessage.Show(this, "ATTENZIONE!", "Si è scelto di non salvare i dati, tuttavia sono state rilevate delle variazioni alle informazioni contenute in archivio centrale. Continuando tutte le modifiche apportate ai dati in questa sessione di lavoro andranno perse. Vuoi continuare e perdere le modifiche?", TypeMessage.Question, OnUpdateCancel);
                 else
                     OnUpdateCancel();
             }

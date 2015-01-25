@@ -75,12 +75,12 @@ namespace Library.Controls
                     btnConfirm.Visible = true;
                     btnConfirm.TextButton = "Chiudi";
                 }
-                else if (typeMessage == TypeMessage.Confirm)
+                else if (typeMessage == TypeMessage.Question)
                 {
-                    imgIcon.BackgroundImage = "Images.messageConfirm.png";
+                    imgIcon.BackgroundImage = "Images.messageQuestion.png";
                     btnCancel.Visible = true;
                     btnConfirm.Visible = true;
-                    btnConfirm.TextButton = "Accetta";
+                    btnConfirm.TextButton = "Continua";
                 }
                 btnCancel.TextButton = "Annulla";
             }
@@ -94,7 +94,7 @@ namespace Library.Controls
     public enum TypeMessage
     {
         Info,
-        Confirm,
+        Question,
         Alert
     }
 }

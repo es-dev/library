@@ -10,20 +10,14 @@ namespace Library.Code
 {
     public class UtilityMessage
     {
-        public static void Show(Control owner, string title, string description, TypeMessage typeMessage, Action confirm = null, Action cancel = null)
+        public static void Show(Control owner, string title, string description, TypeMessage typeMessage, Action confirm = null)
         {
             try
             {
                 var message= new Message(owner);
                 message.Confirm += () => 
                 {
-                    if (confirm != null)
-                        confirm.Invoke();        
-                };
-                message.Cancel += () => 
-                {
-                    if (cancel != null)
-                        cancel.Invoke();
+                    OnMessageConfirm(confirm);  
                 };
                 message.Show(title, description, typeMessage);
             }
@@ -32,6 +26,20 @@ namespace Library.Code
                 UtilityError.Write(ex);
             }
         }
+
+        private static void OnMessageConfirm(Action confirm)
+        {
+            try
+            {
+                if (confirm != null)
+                    confirm.Invoke();      
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
 
     }
 }

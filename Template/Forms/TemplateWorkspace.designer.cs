@@ -31,7 +31,6 @@ namespace Library.Template.Forms
 		private void InitializeComponent()
 		{
             this.btnAccount = new Gizmox.WebGUI.Forms.Button();
-            this.container = new Gizmox.WebGUI.Forms.Panel();
             this.toolStripSeparator3 = new Gizmox.WebGUI.Forms.ToolStripSeparator();
             this.progressBar = new Gizmox.WebGUI.Forms.ToolStripProgressBar();
             this.lblProgressBar = new Gizmox.WebGUI.Forms.ToolStripLabel();
@@ -78,16 +77,6 @@ namespace Library.Template.Forms
             this.btnAccount.TabIndex = 6;
             this.btnAccount.Text = "Account utente";
             // 
-            // container
-            // 
-            this.container.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Bottom) 
-            | Gizmox.WebGUI.Forms.AnchorStyles.Left) 
-            | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
-            this.container.Location = new System.Drawing.Point(0, 84);
-            this.container.Name = "container";
-            this.container.Size = new System.Drawing.Size(1024, 659);
-            this.container.TabIndex = 7;
-            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.ForeColor = System.Drawing.SystemColors.ControlDark;
@@ -107,8 +96,6 @@ namespace Library.Template.Forms
             // TemplateWorkspace
             // 
             this.Controls.Add(this.btnAccount);
-            this.Controls.Add(this.container);
-            this.Controls.SetChildIndex(this.container, 0);
             this.Controls.SetChildIndex(this.bntPortaleWebAziendale, 0);
             this.Controls.SetChildIndex(this.btnSupportoTecnico, 0);
             this.Controls.SetChildIndex(this.btnInformazioni, 0);
@@ -122,7 +109,6 @@ namespace Library.Template.Forms
 
 		#endregion
 
-        private Gizmox.WebGUI.Forms.Panel container;
         private Gizmox.WebGUI.Forms.ToolStripProgressBar progressBar;
         private Gizmox.WebGUI.Forms.ToolStripLabel lblProgressBar;
         public Gizmox.WebGUI.Forms.Button btnAccount;
