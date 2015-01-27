@@ -36,10 +36,10 @@ namespace Library.Template.Forms
                         space.OwnerSpace = ownerSpace;
                     }
                     space.Workspace = this;
-                    space.Control.Dock = DockStyle.Fill;
                     if(space.TitleSpace!=null)
                         this.Title = space.TitleSpace;
                     container.Controls.Clear();
+                    space.Control.Dock = DockStyle.Fill;
                     container.Controls.Add(space.Control);
                     space.Control.BringToFront();
                     space.OpenSpace();

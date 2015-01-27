@@ -358,6 +358,7 @@ namespace Library.Template.Forms
             | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
             this.container.BackgroundImageLayout = Gizmox.WebGUI.Forms.ImageLayout.Stretch;
             this.container.Location = new System.Drawing.Point(0, 84);
+            this.container.MinimumSize = new System.Drawing.Size(1020, 650);
             this.container.Name = "container";
             this.container.Size = new System.Drawing.Size(1024, 659);
             this.container.TabIndex = 7;
