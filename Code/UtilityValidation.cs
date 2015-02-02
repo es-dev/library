@@ -206,5 +206,19 @@ namespace Library.Code
             }
             return false;
         }
+
+        public static decimal GetDecimal(decimal? value)
+        {
+            try
+            {
+                if (value != null)
+                    return value.Value;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return 0;
+        }
     }
 }
