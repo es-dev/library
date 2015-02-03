@@ -13,6 +13,7 @@ using Library.Code;
 using Gizmox.WebGUI.Common.Interfaces;
 using Library.Controls;
 using Library.Interfaces;
+using Library.Code.Enum;
 
 #endregion
 
@@ -332,7 +333,7 @@ namespace Library.Controls
                 intervals.EndInterval = endInterval;
                 intervals.Confirm += OnConfirm;
 
-                UtilityWeb.AddJQControl(btnIntervals, intervals, UtilityWeb.JQTypePosition.Docked);
+                UtilityWeb.AddJQControl(btnIntervals, intervals, JQTypePosition.Docked);
 
             }
             catch (Exception ex)

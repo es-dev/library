@@ -12,6 +12,7 @@ using Gizmox.WebGUI.Forms;
 using Library.Code;
 using Gizmox.WebGUI.Common.Interfaces;
 using Library.Interfaces;
+using Library.Code.Enum;
 
 #endregion
 
@@ -297,7 +298,7 @@ namespace Library.Controls
                 calendar.Value = (DateTime?)_value;
                 calendar.Confirm += Calendar_Confirm;
 
-                UtilityWeb.AddJQControl(btnCalendar, calendar, UtilityWeb.JQTypePosition.Docked);
+                UtilityWeb.AddJQControl(btnCalendar, calendar, JQTypePosition.Docked);
             }
             catch (Exception ex)
             {

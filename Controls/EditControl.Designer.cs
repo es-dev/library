@@ -49,7 +49,6 @@ namespace Library.Controls
             this.editLabel.Name = "editLabel";
             this.editLabel.Size = new System.Drawing.Size(100, 26);
             this.editLabel.TabIndex = 0;
-            this.editLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // imgEdit
             // 

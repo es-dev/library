@@ -8,6 +8,7 @@ using System.Text;
 using Library.Controls;
 using Gizmox.WebGUI.Forms;
 using Library.Code;
+using Library.Code.Enum;
 
 namespace Library.Controls
 {
@@ -82,6 +83,13 @@ namespace Library.Controls
                     btnConfirm.Visible = true;
                     btnConfirm.TextButton = "Continua";
                 }
+                else if (typeMessage == TypeMessage.Confirm)
+                {
+                    imgIcon.BackgroundImage = "Images.messageConfirm.png";
+                    btnCancel.Visible = false;
+                    btnConfirm.Visible = true;
+                    btnConfirm.TextButton = "Chiudi";
+                }
                 btnCancel.TextButton = "Annulla";
             }
             catch (Exception ex)
@@ -91,10 +99,5 @@ namespace Library.Controls
         }       
     }
 
-    public enum TypeMessage
-    {
-        Info,
-        Question,
-        Alert
-    }
+    
 }

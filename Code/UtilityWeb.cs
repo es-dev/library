@@ -1,5 +1,6 @@
 ﻿using Gizmox.WebGUI.Common.Interfaces;
 using Gizmox.WebGUI.Forms;
+using Library.Code.Enum;
 using Library.Controls;
 using Library.Interfaces;
 using System;
@@ -271,11 +272,7 @@ namespace Library.Code
             }
         }
 
-        public enum JQTypePosition
-        {
-            Center,
-            Docked
-        }
+      
 
         public static void RemoveJQControl(Control control)
         {

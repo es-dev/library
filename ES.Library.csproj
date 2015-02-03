@@ -248,6 +248,7 @@
   <ItemGroup>
     <Compile Include="Code\UtilityAsync.cs" />
     <Compile Include="Code\UtilityCollections.cs" />
+    <Compile Include="Code\UtilityEnum.cs" />
     <Compile Include="Code\UtilityError.cs" />
     <Compile Include="Code\UtilityJQuery.cs" />
     <Compile Include="Code\UtilityMessage.cs" />
@@ -342,6 +343,12 @@
     <Compile Include="Controls\EditControl.Designer.cs">
       <DependentUpon>EditControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TextStato.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TextStato.Designer.cs">
+      <DependentUpon>TextStato.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TextDropDown.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -361,6 +368,12 @@
       <DependentUpon>TimeIntervals.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IMaskControl.cs" />
+    <Compile Include="Template\Controls\TemplateEditStato.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Template\Controls\TemplateEditStato.Designer.cs">
+      <DependentUpon>TemplateEditStato.cs</DependentUpon>
+    </Compile>
     <Compile Include="Template\Controls\TemplateEditCap.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -529,6 +542,9 @@
     <EmbeddedResource Include="Controls\EditControl.resx">
       <DependentUpon>EditControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TextStato.resx">
+      <DependentUpon>TextStato.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\TextDropDown.resx">
       <DependentUpon>TextDropDown.cs</DependentUpon>
     </EmbeddedResource>
@@ -541,6 +557,9 @@
     <EmbeddedResource Include="JS\Cap.js" />
     <EmbeddedResource Include="JS\MouseOverColor.js" />
     <EmbeddedResource Include="JS\ReadOnly.js" />
+    <EmbeddedResource Include="Template\Controls\TemplateEditStato.resx">
+      <DependentUpon>TemplateEditStato.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditCap.resx">
       <DependentUpon>TemplateEditCap.cs</DependentUpon>
     </EmbeddedResource>

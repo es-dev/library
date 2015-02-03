@@ -14,6 +14,7 @@ using Library.Interfaces;
 
 using Gizmox.WebGUI.Common.Interfaces;
 using Library.Controls;
+using Library.Code.Enum;
 
 #endregion
 
@@ -28,7 +29,7 @@ namespace Library.Template.Controls
             try
             {
                 base.MaskControl = editControl;
-                editControl.Behavior = Library.Controls.TextBox.TypeBehavior.PartitaIva;
+                editControl.Behavior = TypeBehavior.PartitaIva;
 
             }
             catch (Exception ex)

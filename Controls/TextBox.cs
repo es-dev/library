@@ -12,6 +12,7 @@ using Gizmox.WebGUI.Forms;
 using Library.Code;
 using Library.Interfaces;
 using Gizmox.WebGUI.Common.Interfaces;
+using Library.Code.Enum;
 
 #endregion
 
@@ -19,19 +20,6 @@ namespace Library.Controls
 {
     public partial class TextBox : UserControl, IJQControl, IMaskControl
     {
-
-        public enum TypeBehavior
-        {
-            Text,
-            Password,
-            Numeric,
-            Decimal,
-            CodiceFiscale,
-            PartitaIva,
-            Email,
-            Cap
-        }
-
         private TypeBehavior behavior = TypeBehavior.Text;
         public TypeBehavior Behavior
         {
