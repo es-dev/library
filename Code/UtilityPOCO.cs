@@ -258,7 +258,7 @@ namespace Library.Code
                 {
                     var property = dto.GetType().GetProperty(propertyName);
                     if (property != null)
-                        property.SetValue(dto, value);
+                        property.SetValue(dto, value, null);
                 }
             }
             catch (Exception ex)

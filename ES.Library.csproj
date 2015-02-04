@@ -343,12 +343,6 @@
     <Compile Include="Controls\EditControl.Designer.cs">
       <DependentUpon>EditControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\TextStato.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\TextStato.Designer.cs">
-      <DependentUpon>TextStato.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\TextDropDown.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -361,6 +355,12 @@
     <Compile Include="Controls\TextCombo.Designer.cs">
       <DependentUpon>TextCombo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TextStato.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TextStato.Designer.cs">
+      <DependentUpon>TextStato.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TimeIntervals.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -368,12 +368,6 @@
       <DependentUpon>TimeIntervals.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IMaskControl.cs" />
-    <Compile Include="Template\Controls\TemplateEditStato.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Template\Controls\TemplateEditStato.Designer.cs">
-      <DependentUpon>TemplateEditStato.cs</DependentUpon>
-    </Compile>
     <Compile Include="Template\Controls\TemplateEditCap.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -451,6 +445,12 @@
     </Compile>
     <Compile Include="Template\Controls\TemplateEditPassword.Designer.cs">
       <DependentUpon>TemplateEditPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Template\Controls\TemplateEditStato.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Template\Controls\TemplateEditStato.Designer.cs">
+      <DependentUpon>TemplateEditStato.cs</DependentUpon>
     </Compile>
     <Compile Include="Template\Controls\TemplateEditText.cs">
       <SubType>UserControl</SubType>
@@ -542,14 +542,14 @@
     <EmbeddedResource Include="Controls\EditControl.resx">
       <DependentUpon>EditControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\TextStato.resx">
-      <DependentUpon>TextStato.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Controls\TextDropDown.resx">
       <DependentUpon>TextDropDown.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\TextCombo.resx">
       <DependentUpon>TextCombo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TextStato.resx">
+      <DependentUpon>TextStato.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\TimeIntervals.resx">
       <DependentUpon>TimeIntervals.cs</DependentUpon>
@@ -557,9 +557,6 @@
     <EmbeddedResource Include="JS\Cap.js" />
     <EmbeddedResource Include="JS\MouseOverColor.js" />
     <EmbeddedResource Include="JS\ReadOnly.js" />
-    <EmbeddedResource Include="Template\Controls\TemplateEditStato.resx">
-      <DependentUpon>TemplateEditStato.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditCap.resx">
       <DependentUpon>TemplateEditCap.cs</DependentUpon>
     </EmbeddedResource>
@@ -598,6 +595,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditPassword.resx">
       <DependentUpon>TemplateEditPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Template\Controls\TemplateEditStato.resx">
+      <DependentUpon>TemplateEditStato.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditText.resx">
       <DependentUpon>TemplateEditText.cs</DependentUpon>
