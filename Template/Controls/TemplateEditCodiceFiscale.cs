@@ -20,10 +20,10 @@ using Library.Code.Enum;
 
 namespace Library.Template.Controls
 {
-    public partial class editCodiceFiscale : EditControl
+    public partial class TemplateEditCodiceFiscale : EditControl
     {
 
-        public editCodiceFiscale()
+        public TemplateEditCodiceFiscale()
         {
             InitializeComponent();
             try

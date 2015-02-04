@@ -4,7 +4,7 @@ using Library.Code.Enum;
 
 namespace Library.Template.Controls
 {
-    partial class editCodiceFiscale
+    partial class TemplateEditCodiceFiscale
     {
         /// <summary>
         /// Required designer variable.

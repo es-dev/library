@@ -20,10 +20,10 @@ using Library.Code.Enum;
 
 namespace Library.Template.Controls
 {
-    public partial class editPassword : EditControl
+    public partial class TemplateEditPassword : EditControl
     {
 
-        public editPassword()
+        public TemplateEditPassword()
         {
             InitializeComponent();
             try

@@ -4,7 +4,7 @@ using Library.Code.Enum;
 
 namespace Library.Template.Controls
 {
-    partial class editEmail
+    partial class TemplateEditEmail
     {
         /// <summary>
         /// Required designer variable.

@@ -20,10 +20,10 @@ using Library.Code.Enum;
 
 namespace Library.Template.Controls
 {
-    public partial class editPartitaIVA : EditControl
+    public partial class TemplateEditPartitaIva : EditControl
     {
 
-        public editPartitaIVA()
+        public TemplateEditPartitaIva()
         {
             InitializeComponent();
             try

@@ -19,10 +19,10 @@ using Library.Code.Enum;
 
 namespace Library.Template.Controls
 {
-    public partial class editEmail : EditControl
+    public partial class TemplateEditEmail : EditControl
     {
 
-        public editEmail()
+        public TemplateEditEmail()
         {
             InitializeComponent();
             try

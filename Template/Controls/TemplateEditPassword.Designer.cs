@@ -4,7 +4,7 @@ using Library.Code.Enum;
 
 namespace Library.Template.Controls
 {
-    partial class editPassword
+    partial class TemplateEditPassword
     {
         /// <summary>
         /// Required designer variable.
