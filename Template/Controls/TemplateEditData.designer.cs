@@ -50,6 +50,7 @@ namespace Library.Template.Controls
             this.editControl.TabIndex = 0;
             this.editControl.Text = "//";
             this.editControl.Value = null;
+            this.editControl.Confirm += new Library.Controls.DateCalendar.ConfirmHanlder(this.editControl_Confirm);
             // 
             // TemplateEditData
             // 

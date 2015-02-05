@@ -8,7 +8,7 @@ using Library.Interfaces;
 
 namespace Library.Template.MVVM
 {
-    public class TemplateViewModel<TEntity, TItem> : IViewModel
+    public class TemplateViewModel<TDto, TItem> : IViewModel
     {
         private ISpace space = null;
         public ISpace Space
@@ -80,7 +80,7 @@ namespace Library.Template.MVVM
 
         public virtual object Read(object id) { return null; }
 
-        public void Load(IList<TEntity> objDtos)
+        public void Load(IList<TDto> objDtos)
         {
             try
             {
@@ -106,7 +106,7 @@ namespace Library.Template.MVVM
             } 
         }
 
-        public void Load(IEnumerable<TEntity> objDtos)
+        public void Load(IEnumerable<TDto> objDtos)
         {
             try
             {

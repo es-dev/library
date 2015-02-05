@@ -306,11 +306,16 @@ namespace Library.Controls
             }
         }
 
+        public delegate void ConfirmHanlder(DateTime? value);
+        public event ConfirmHanlder Confirm;
+
         void Calendar_Confirm(DateTime? date)
         {
             try
             {
                 SetValue(date);
+                if (Confirm != null)
+                    Confirm(date);
             }
             catch (Exception ex)
             {

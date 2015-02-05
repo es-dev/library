@@ -32,16 +32,66 @@ namespace Library.Template.Controls
             } 
         }
 
+        private DateTime? _value = null;
         public new DateTime? Value
         {
             get
             {
-                return (DateTime?)editControl.Value;
+                _value = GetValue();
+                return _value;
             }
             set
             {
-                editControl.Value = value;
+                _value = value;
+                SetValue();
             }
         }
+
+        private void SetValue()
+        {
+            try
+            {
+                editControl.Value = _value;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private DateTime? GetValue()
+        {
+            try
+            {
+                var _value = (DateTime?)editControl.Value;
+                return _value;
+
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        public delegate void ConfirmHanlder(DateTime? value);
+        public event ConfirmHanlder Confirm;
+
+        private void editControl_Confirm(DateTime? value)
+        {
+            try
+            {
+                if (Confirm != null)
+                {
+                    Confirm(value);
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+       
     }
 }
