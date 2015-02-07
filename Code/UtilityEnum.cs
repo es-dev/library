@@ -6,11 +6,6 @@ using System.Threading.Tasks;
 
 namespace Library.Code.Enum
 {
-    public class UtilityEnum
-    {
-       
-    }
-
     public enum TypeStato
     {
         None,
@@ -50,6 +45,64 @@ namespace Library.Code.Enum
         PartitaIva,
         Email,
         Cap
+    }
+
+    public class StatoDescrizione
+    {
+        private string separator = "{;}";
+        public TypeStato Stato = TypeStato.None;
+        public string Descrizione = null;
+
+        public StatoDescrizione(TypeStato stato, string descrizione)
+        {
+            try
+            {
+                this.Stato = stato;
+                this.Descrizione = descrizione;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        public class UtilityEnum
+        {
+
+        }
+
+        public StatoDescrizione(string value)
+        {
+            try
+            {
+                var splits = value.Split(new string[] { separator }, StringSplitOptions.RemoveEmptyEntries);
+                if (splits.Length >= 2)
+                {
+                    string _stato = splits[0].Trim();
+                    string descrizione = splits[1].Trim();
+                    this.Stato = (TypeStato)System.Enum.Parse(typeof(TypeStato), _stato);
+                    this.Descrizione = descrizione;
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        public string ToString()
+        {
+            try
+            {
+                var value = Stato.ToString() + separator + Descrizione;
+                return value;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
     }
 
 }

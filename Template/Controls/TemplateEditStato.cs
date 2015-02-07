@@ -36,7 +36,7 @@ namespace Library.Template.Controls
             } 
         }
 
-        private string _value = null; //formato della variabile di stato --> Stato | Descrizione
+        private string _value = null; 
         public new string Value
         {
             get
@@ -47,25 +47,20 @@ namespace Library.Template.Controls
             set
             {
                 _value = value;
-                SetValue(_value); 
+                SetValue(_value);
             }
         }
-
+        
         private void SetValue(string value)
         {
             try
             {
                 if (value != null && value.Length > 0)
                 {
-                    var splits = value.Split(new string[] { "|" }, StringSplitOptions.RemoveEmptyEntries);
-                    if (splits.Length >= 2)
-                    {
-                        string _stato = splits[0].Trim();
-                        string descrizione = splits[1].Trim();
-                        var stato = (TypeStato)Enum.Parse(typeof(TypeStato), _stato);
-                        editControl.Value = descrizione;
-                        editControl.Stato = stato;
-                    }
+                    statoDescrizione = new StatoDescrizione(value);
+                    editControl.Value = statoDescrizione.Descrizione;
+                    editControl.Stato = statoDescrizione.Stato;
+
                 }
             }
             catch (Exception ex)
@@ -76,11 +71,12 @@ namespace Library.Template.Controls
 
         private string GetValue()
         {
-            try  
+            try
             {
                 string descrizione = (string)editControl.Value;
                 var stato = editControl.Stato;
-                string value = stato.ToString() + " | " + descrizione;
+                statoDescrizione = new StatoDescrizione(stato, descrizione);
+                var value = statoDescrizione.ToString();
                 return value;
             }
             catch (Exception ex)
@@ -89,6 +85,23 @@ namespace Library.Template.Controls
             }
             return null;
         }
+
+        private StatoDescrizione statoDescrizione = null;
+        public StatoDescrizione StatoDescrizione
+        {
+            get
+            {
+                return statoDescrizione;
+            }
+            set
+            {
+                statoDescrizione = value;
+                _value = statoDescrizione.ToString();
+            }
+        }
+
+        
+
 
     }
 }
