@@ -252,7 +252,7 @@ namespace Library.Template.MVVM
 
         public virtual void SetLayout() { }
 
-        private void Init()
+        public virtual void Init()
         {
             try
             {

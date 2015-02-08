@@ -149,7 +149,7 @@ namespace Library.Controls
         }
 
 
-        private IList<Comune> ReadComuni()
+        public IList<Comune> ReadComuni()
         {
             try
             {
@@ -159,7 +159,7 @@ namespace Library.Controls
                               {
                                   CodiceCatastale = q.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries)[0],
                                   Provincia = q.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries)[1],
-                                  Denominazione = q.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries)[2]
+                                  Denominazione = q.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries)[2].Replace("\r\n", "")
                               }).ToList();
                
                 return comuni;
