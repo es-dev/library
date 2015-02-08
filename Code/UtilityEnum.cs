@@ -50,15 +50,39 @@ namespace Library.Code.Enum
     public class StatoDescrizione
     {
         private string separator = "{;}";
-        public TypeStato Stato = TypeStato.None;
-        public string Descrizione = null;
+
+        private TypeStato stato = TypeStato.None;
+        public TypeStato Stato
+        {
+            get
+            {
+                return stato;
+            }
+            set
+            {
+                stato = value;
+            }
+        }
+
+        private string descrizione = null;
+        public string Descrizione
+        {
+            get
+            {
+                return descrizione;
+            }
+            set
+            {
+                descrizione = value;
+            }
+        }
 
         public StatoDescrizione(TypeStato stato, string descrizione)
         {
             try
             {
-                this.Stato = stato;
-                this.Descrizione = descrizione;
+                this.stato = stato;
+                this.descrizione = descrizione;
             }
             catch (Exception ex)
             {
@@ -80,8 +104,8 @@ namespace Library.Code.Enum
                 {
                     string _stato = splits[0].Trim();
                     string descrizione = splits[1].Trim();
-                    this.Stato = (TypeStato)System.Enum.Parse(typeof(TypeStato), _stato);
-                    this.Descrizione = descrizione;
+                    this.stato = (TypeStato)System.Enum.Parse(typeof(TypeStato), _stato);
+                    this.descrizione = descrizione;
                 }
             }
             catch (Exception ex)
@@ -90,11 +114,11 @@ namespace Library.Code.Enum
             }
         }
 
-        public string ToString()
+        public new string ToString()
         {
             try
             {
-                var value = Stato.ToString() + separator + Descrizione;
+                var value = stato.ToString() + separator + descrizione;
                 return value;
             }
             catch (Exception ex)

@@ -99,7 +99,7 @@ namespace Library.Controls
             this.btnIntervals.Location = new System.Drawing.Point(112, 4);
             this.btnIntervals.Name = "btnIntervals";
             this.btnIntervals.Size = new System.Drawing.Size(24, 24);
-            this.btnIntervals.TabIndex = 3;
+            this.btnIntervals.TabIndex = 999;
             this.btnIntervals.Click += new System.EventHandler(this.btnIntervals_Click);
             // 
             // TimeIntervals

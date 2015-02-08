@@ -108,5 +108,17 @@ namespace Library.Controls
             }
             return null;
         }
+
+        private void btnGoToday_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                monthCalendar.Value = DateTime.Today;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
     }
 }

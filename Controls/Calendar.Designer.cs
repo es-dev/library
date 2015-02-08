@@ -35,6 +35,7 @@ namespace Library.Controls
             this.monthCalendar = new Gizmox.WebGUI.Forms.MonthCalendar();
             this.btnCancel = new Gizmox.WebGUI.Forms.Button();
             this.btnConfirm = new Gizmox.WebGUI.Forms.Button();
+            this.btnGoToday = new Gizmox.WebGUI.Forms.Button();
             this.SuspendLayout();
             // 
             // monthCalendar
@@ -76,11 +77,24 @@ namespace Library.Controls
             this.btnConfirm.TabIndex = 999;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
+            // btnGoToday
+            // 
+            this.btnGoToday.CustomStyle = "F";
+            this.btnGoToday.FlatStyle = Gizmox.WebGUI.Forms.FlatStyle.Flat;
+            this.btnGoToday.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGoToday.Location = new System.Drawing.Point(0, 165);
+            this.btnGoToday.Name = "btnGoToday";
+            this.btnGoToday.Size = new System.Drawing.Size(76, 24);
+            this.btnGoToday.TabIndex = 1000;
+            this.btnGoToday.Text = "Vai ad oggi";
+            this.btnGoToday.Click += new System.EventHandler(this.btnGoToday_Click);
+            // 
             // Calendar
             // 
             this.BackColor = System.Drawing.Color.Transparent;
             this.BorderColor = new Gizmox.WebGUI.Forms.BorderColor(System.Drawing.Color.DimGray);
             this.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.btnGoToday);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.monthCalendar);
@@ -96,6 +110,7 @@ namespace Library.Controls
         private MonthCalendar monthCalendar;
         private Button btnCancel;
         private Button btnConfirm;
+        private Button btnGoToday;
 
 
     }

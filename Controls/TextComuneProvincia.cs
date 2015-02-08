@@ -6,19 +6,19 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
-using System.Linq;
+
 using Gizmox.WebGUI.Common;
 using Gizmox.WebGUI.Forms;
 using Library.Code;
-using Gizmox.WebGUI.Common.Interfaces;
 using Library.Interfaces;
+using Gizmox.WebGUI.Common.Interfaces;
 using Library.Code.Enum;
 
 #endregion
 
 namespace Library.Controls
 {
-    public partial class DateCalendar : UserControl, IJQControl, IMaskControl
+    public partial class TextComuneProvincia : UserControl, IJQControl, IMaskControl
     {
         private string jqscript = null;
         public string JQScript
@@ -35,7 +35,7 @@ namespace Library.Controls
             try
             {
                 var jquery = new UtilityJQuery();
-                var jqscript = jquery.GetData(editDay, editMonth, editYear, mask);
+                var jqscript = jquery.GetComuneProvincia(editComune, editProvincia, mask);
                 return jqscript;
             }
             catch (Exception ex)
@@ -44,7 +44,7 @@ namespace Library.Controls
             }
             return null;
         }
-        
+
         protected override void Render(IContext objContext, IResponseWriter objWriter, long lngRequestID)
         {
             try
@@ -76,6 +76,12 @@ namespace Library.Controls
 
         }
 
+        public TextComuneProvincia()
+        {
+            InitializeComponent();
+        }
+
+
         private bool readOnly = false;
         public bool ReadOnly
         {
@@ -95,10 +101,9 @@ namespace Library.Controls
         {
             try
             {
-                editDay.ReadOnly = readOnly;
-                editMonth.ReadOnly = readOnly;
-                editYear.ReadOnly = readOnly;
-                btnCalendar.Enabled = !readOnly;
+                editComune.ReadOnly = readOnly;
+                btnCombo.Visible = !readOnly;
+                editProvincia.ReadOnly = readOnly;
             }
             catch (Exception ex)
             {
@@ -110,7 +115,7 @@ namespace Library.Controls
         {
             try
             {
-                var readOnly = editDay.ReadOnly && editMonth.ReadOnly && editYear.ReadOnly;
+                var readOnly = editComune.ReadOnly;
                 return readOnly;
             }
             catch (Exception ex)
@@ -139,13 +144,69 @@ namespace Library.Controls
             try
             {
                 base.BackColor = backColor;
-                lblSeparator1.BackColor = (backColor==Color.Transparent? Color.White: backColor);
-                lblSeparator2.BackColor = (backColor == Color.Transparent ? Color.White : backColor); 
+                editComune.BackColor = backColor;
+                btnCombo.BackColor = backColor;
+                editProvincia.BackColor = backColor;
             }
             catch (Exception ex)
             {
                 UtilityError.Write(ex);
             }
+        }
+
+        private string text = null;
+        public override string Text
+        {
+            get
+            {
+                text = GetText();
+                return text;
+            }
+            set
+            {
+                text = value;
+                SetText(text);
+            }
+        }
+
+
+        private void SetText(string text)
+        {
+            try
+            {
+                var denominazioneCodiceCatastale = mask;
+                var provincia = mask;
+                if (text != null && text.Length > 0)
+                {
+                    var comune = new ComuniProvince.Comune(text);
+                    denominazioneCodiceCatastale = comune.DenominazioneCodiceCatastale;
+                    provincia = comune.Provincia;
+                }
+                editComune.Text = (denominazioneCodiceCatastale == null || denominazioneCodiceCatastale.Length == 0 ? mask : denominazioneCodiceCatastale);
+                editProvincia.Text = (provincia == null || provincia.Length == 0 ? mask : provincia);
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private string GetText()
+        {
+            try
+            {
+                var comune = (ComuniProvince.Comune)editComune.Tag;
+                if(comune!=null)
+                {
+                    var text = comune.ToString();
+                    return text;
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
         }
 
         private object _value = null;
@@ -167,14 +228,8 @@ namespace Library.Controls
         {
             try
             {
-                if (editDay != null && editMonth != null && editYear != null)
-                {
-                    string day = editDay.Text.Replace(mask,null);
-                    string month = editMonth.Text.Replace(mask, null);
-                    string year = editYear.Text.Replace(mask+mask, null);
-                    var value = UtilityValidation.GetDate(day, month, year);
-                    return value;
-                }
+                var value = (ComuniProvince.Comune)editComune.Tag;
+                return value;
             }
             catch (Exception ex)
             {
@@ -187,118 +242,12 @@ namespace Library.Controls
         {
             try
             {
-                if (editDay != null && editMonth != null && editYear != null)
-                {
-                    if (value != null)
-                    {
-                        var date = (DateTime)value;
-                        editDay.Text = date.Day.ToString("00");
-                        editMonth.Text = date.Month.ToString("00");
-                        editYear.Text = date.Year.ToString("00");
-                    }
-                    else
-                    {
-                        editDay.Text = mask;
-                        editMonth.Text = mask;
-                        editYear.Text = mask+mask;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-        }
-
-        private string text= null;
-        public override string Text
-        {
-            get
-            {
-                text = GetText();
-                return text;
-            }
-            set
-            {
-                text = value;
+                var comune = (ComuniProvince.Comune)value;
+                string text = null;
+                if (comune != null)
+                    text = comune.ToString();
                 SetText(text);
-            }
-        }
-
-        private void SetText(string text)
-        {
-            try
-            {
-                var splits = text.Split(new string[] {"/"}, StringSplitOptions.None);
-                if (splits.Length >= 1)
-                {
-                    string day = splits[0];
-                    editDay.Text = day;
-                }
-                if (splits.Length >= 2)
-                {
-                    string month = splits[1];
-                    editMonth.Text = month;
-                }
-                if (splits.Length >= 3)
-                {
-                    string year = splits[2];
-                    editYear.Text = year;
-                }
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            } 
-        }
-
-        private string GetText()
-        {
-            try
-            {
-                string day = editDay.Text.Replace(mask, null);
-                string month = editMonth.Text.Replace(mask, null);
-                string year = editYear.Text.Replace(mask+mask, null);
-                var text = day + "/" + month + "/" + year;
-                return text;
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-            return null;
-        }
-
-        
-        public DateCalendar()
-        {
-            InitializeComponent();
-        }
-
-        private void EditDateCalendar_Load(object sender, EventArgs e)
-        {
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-        }
-    
-
-        private void btnCalendar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var calendar = new Calendar(this);
-                calendar.BackColor = Color.White;
-                _value = GetValue();
-                calendar.Value = (DateTime?)_value;
-                calendar.Confirm += Calendar_Confirm;
-
-                UtilityWeb.AddJQControl(btnCalendar, calendar, JQTypePosition.Docked);
+                editComune.Tag = comune;
             }
             catch (Exception ex)
             {
@@ -306,24 +255,7 @@ namespace Library.Controls
             }
         }
 
-        public delegate void ConfirmHanlder(DateTime? value);
-        public event ConfirmHanlder Confirm;
-
-        void Calendar_Confirm(DateTime? value)
-        {
-            try
-            {
-                SetValue(value);
-                if (Confirm != null)
-                    Confirm(value);
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-        }
-
-        private string mask = "--";
+        private string mask = "---";
         public string Mask
         {
             get
@@ -335,5 +267,69 @@ namespace Library.Controls
                 mask = value;
             }
         }
+
+        private void btnCombo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                try
+                {
+                    var comuniProvince = new ComuniProvince(this);
+                    comuniProvince.Confirm += ComuniProvince_Confirm;
+
+                    UtilityWeb.AddJQControl(btnCombo, comuniProvince, JQTypePosition.Docked);
+                }
+                catch (Exception ex)
+                {
+                    UtilityError.Write(ex);
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        public delegate void ConfirmlHanlder(ComuniProvince.Comune value);
+        public event ConfirmlHanlder Confirm;
+
+        void ComuniProvince_Confirm(ComuniProvince.Comune value)
+        {
+            try
+            {
+                if (value != null)
+                {
+                    SetValue(value);
+                    if (Confirm != null)
+                        Confirm(value);
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+
+        private void editComune_EnterKeyDown(object objSender, KeyEventArgs objArgs)
+        {
+            try
+            {
+                if (objArgs.KeyCode == Keys.Enter)
+                {
+                    var search = editComune.Text;
+                    var comuniProvince = new ComuniProvince(this, search);
+                    comuniProvince.Confirm += ComuniProvince_Confirm;
+
+                    UtilityWeb.AddJQControl(btnCombo, comuniProvince, JQTypePosition.Docked);
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+
     }
 }

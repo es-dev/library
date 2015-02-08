@@ -61,7 +61,7 @@ namespace Library.Controls
             this.editTextRead.Location = new System.Drawing.Point(0, 0);
             this.editTextRead.Name = "editTextRead";
             this.editTextRead.Size = new System.Drawing.Size(337, 30);
-            this.editTextRead.TabIndex = 999;
+            this.editTextRead.TabIndex = 0;
             // 
             // TextDropDown
             // 

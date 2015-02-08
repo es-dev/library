@@ -44,7 +44,7 @@ namespace Library.Controls
             this.editDate.Name = "editDate";
             this.editDate.ReadOnly = false;
             this.editDate.Size = new System.Drawing.Size(192, 30);
-            this.editDate.TabIndex = 999;
+            this.editDate.TabIndex = 0;
             this.editDate.Text = "//";
             this.editDate.Value = null;
             // 
@@ -63,7 +63,7 @@ namespace Library.Controls
             this.editTime.ReadOnly = false;
             this.editTime.Size = new System.Drawing.Size(137, 32);
             this.editTime.StartInterval = System.TimeSpan.Parse("07:00:00");
-            this.editTime.TabIndex = 999;
+            this.editTime.TabIndex = 1;
             this.editTime.Text = ":";
             this.editTime.Value = null;
             // 

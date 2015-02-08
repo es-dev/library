@@ -46,7 +46,7 @@ namespace Library.Controls
             this.editText.Location = new System.Drawing.Point(0, 0);
             this.editText.Name = "editText";
             this.editText.Size = new System.Drawing.Size(302, 30);
-            this.editText.TabIndex = 999;
+            this.editText.TabIndex = 0;
             this.editText.Click += new System.EventHandler(this.TextCombo_Click);
             // 
             // btnCombo

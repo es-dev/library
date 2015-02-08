@@ -170,6 +170,26 @@ namespace Library.Code
             return null;
         }
 
+
+        public string GetComuneProvincia(Control editComune, Control editProvincia, string mask)
+        {
+            try
+            {
+                var script = GetJScript("ComuneProvincia.js");
+                var vwgComuneId = GetVWGId(editComune);
+                var vwgProvinciaId = GetVWGId(editProvincia);
+                script = script.Replace("$vwgComuneId$", vwgComuneId);
+                script = script.Replace("$vwgProvinciaId$", vwgProvinciaId);
+                script = script.Replace("$mask$", mask);
+                return script;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
         public string GetReadOnly(Control control)
         {
             try
@@ -245,14 +265,16 @@ namespace Library.Code
         {
             try
             {
-                var assembly = this.GetType().Assembly;
-                var assemblyName=assembly.GetName();
-                string pathResourceJS = assemblyName.Name.Replace("ES.", "") + ".JS.";
-                string pathFileJS = pathResourceJS + fileJS;
-                var stream = assembly.GetManifestResourceStream(pathFileJS);
-                var reader = new System.IO.StreamReader(stream);
-                var jscript = reader.ReadToEnd();
-                reader.Close();
+                //var assembly = this.GetType().Assembly;
+                //var assemblyName=assembly.GetName();
+                //string pathResourceJS = assemblyName.Name.Replace("ES.", "") + ".JS.";
+                //string pathFileJS = pathResourceJS + fileJS;
+                //var stream = assembly.GetManifestResourceStream(pathFileJS);
+                //var reader = new System.IO.StreamReader(stream);
+                //var jscript = reader.ReadToEnd();
+                //reader.Close();
+                //return jscript;
+                var jscript = UtilityWeb.GetResource(this, fileJS, "JS", "ES");
                 return jscript;
             }
             catch (Exception ex)
@@ -279,6 +301,7 @@ namespace Library.Code
         }
 
 
-       
+
+
     }
 }

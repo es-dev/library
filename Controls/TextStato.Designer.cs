@@ -48,7 +48,7 @@ namespace Library.Controls
             this.editText.Multiline = true;
             this.editText.Name = "editText";
             this.editText.Size = new System.Drawing.Size(302, 30);
-            this.editText.TabIndex = 999;
+            this.editText.TabIndex = 0;
             // 
             // imgStato
             // 

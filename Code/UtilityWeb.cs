@@ -14,6 +14,62 @@ namespace Library.Code
 {
     public class UtilityWeb
     {
+        public static string GetResource(object context, string fileNameResource, string pathRelativeResource, string relativeNamespace = null)
+        {
+            try
+            {
+                var assembly = context.GetType().Assembly;
+                var assemblyName = assembly.GetName();
+                string pathAssemby = assemblyName.Name;
+                if(relativeNamespace!=null && relativeNamespace.Length>0)
+                    pathAssemby = pathAssemby.Replace(relativeNamespace+".","");
+                string pathResource = pathAssemby + "." + pathRelativeResource + ".";
+                string pathFile = pathResource + fileNameResource;
+                var stream = assembly.GetManifestResourceStream(pathFile);
+                var reader = new System.IO.StreamReader(stream);
+                string content = null;
+                while (!reader.EndOfStream)
+                {
+                    content += reader.ReadLine() + Environment.NewLine;
+                }
+                reader.Close();
+                return content;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        public static IList<string> GetResources(object context, string fileNameResource, string pathRelativeResource, string relativeNamespace = null)
+        {
+            try
+            {
+                var assembly = context.GetType().Assembly;
+                var assemblyName = assembly.GetName();
+                string pathAssemby = assemblyName.Name;
+                if (relativeNamespace != null && relativeNamespace.Length > 0)
+                    pathAssemby = pathAssemby.Replace(relativeNamespace + ".", "");
+                string pathResource = pathAssemby + "." + pathRelativeResource + ".";
+                string pathFile = pathResource + fileNameResource;
+                var stream = assembly.GetManifestResourceStream(pathFile);
+                var reader = new System.IO.StreamReader(stream);
+                var contents = new List<string>();
+                while (!reader.EndOfStream)
+                {
+                    var content = reader.ReadLine() + Environment.NewLine;
+                    contents.Add(content);
+                }
+                reader.Close();
+                return contents;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
 
         public static string GetRootPath(IContext context)
         {
