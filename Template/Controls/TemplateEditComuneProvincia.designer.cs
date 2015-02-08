@@ -3,7 +3,7 @@ using Gizmox.WebGUI.Common;
 
 namespace Library.Template.Controls
 {
-    partial class TemplateEditComune
+    partial class TemplateEditComuneProvincia
     {
         /// <summary>
         /// Required designer variable.

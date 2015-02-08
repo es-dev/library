@@ -17,9 +17,9 @@ using Library.Interfaces;
 
 namespace Library.Template.Controls
 {
-    public partial class TemplateEditComune : EditControl
+    public partial class TemplateEditComuneProvincia : EditControl
     {
-        public TemplateEditComune()
+        public TemplateEditComuneProvincia()
         {
             InitializeComponent();
             try
