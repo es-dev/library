@@ -38,6 +38,7 @@ namespace Library.Controls
             this.lblSeparator1 = new Gizmox.WebGUI.Forms.Label();
             this.lblSeparator2 = new Gizmox.WebGUI.Forms.Label();
             this.btnCalendar = new Gizmox.WebGUI.Forms.Button();
+            this.toolTip = new Gizmox.WebGUI.Forms.ToolTip();
             this.SuspendLayout();
             // 
             // editDay
@@ -82,7 +83,7 @@ namespace Library.Controls
             // 
             // lblSeparator1
             // 
-            this.lblSeparator1.BackColor = System.Drawing.Color.White;
+            this.lblSeparator1.BackColor = System.Drawing.Color.Transparent;
             this.lblSeparator1.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.lblSeparator1.Location = new System.Drawing.Point(34, 0);
             this.lblSeparator1.Name = "lblSeparator1";
@@ -93,7 +94,7 @@ namespace Library.Controls
             // 
             // lblSeparator2
             // 
-            this.lblSeparator2.BackColor = System.Drawing.Color.White;
+            this.lblSeparator2.BackColor = System.Drawing.Color.Transparent;
             this.lblSeparator2.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.lblSeparator2.Location = new System.Drawing.Point(88, 0);
             this.lblSeparator2.Name = "lblSeparator2";
@@ -113,6 +114,7 @@ namespace Library.Controls
             this.btnCalendar.Size = new System.Drawing.Size(24, 23);
             this.btnCalendar.TabIndex = 999;
             this.btnCalendar.TabStop = false;
+            this.toolTip.SetToolTip(this.btnCalendar, "Fai clic per selezionare una data dal calendario...");
             this.btnCalendar.Click += new System.EventHandler(this.btnCalendar_Click);
             // 
             // DateCalendar
@@ -139,6 +141,7 @@ namespace Library.Controls
         public Label lblSeparator1;
         public Label lblSeparator2;
         public Button btnCalendar;
+        private ToolTip toolTip;
 
 
 

@@ -220,10 +220,10 @@ namespace Library.Controls
             {
                 try
                 {
-                    if(denominazioneCodiceCatastale!=null && denominazioneCodiceCatastale.Length>0)
+                    if (denominazioneCodiceCatastale != null && denominazioneCodiceCatastale.Length > 0)
                     {
-                       denominazione=GetDenominazione(denominazioneCodiceCatastale);
-                       codiceCatastale = GetCodiceCatastale(denominazioneCodiceCatastale);
+                        denominazione = GetDenominazione(denominazioneCodiceCatastale);
+                        codiceCatastale = GetCodiceCatastale(denominazioneCodiceCatastale);
                     }
                 }
                 catch (Exception ex)
@@ -328,6 +328,21 @@ namespace Library.Controls
                         if (splits.Length >= 2)
                             provincia = splits[1];
                     }
+                }
+                catch (Exception ex)
+                {
+                    UtilityError.Write(ex);
+                }
+            }
+
+            public Comune(string denominazioneCodiceCatastale, string provincia)
+            {
+                try
+                {
+                    this.denominazioneCodiceCatastale = denominazioneCodiceCatastale;
+                    this.provincia = provincia;
+                    SetDenominazioneCodiceCatastale(denominazioneCodiceCatastale);
+
                 }
                 catch (Exception ex)
                 {

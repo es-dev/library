@@ -104,6 +104,7 @@ namespace Library.Controls
                 editComune.ReadOnly = readOnly;
                 btnCombo.Visible = !readOnly;
                 editProvincia.ReadOnly = readOnly;
+                toolTip.SetToolTip(editComune, readOnly ? null : "Scrivi le iniziali di un comune e batti il tasto INVIO per avviare la ricerca nell'archivio dati...");
             }
             catch (Exception ex)
             {

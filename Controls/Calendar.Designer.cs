@@ -36,6 +36,7 @@ namespace Library.Controls
             this.btnCancel = new Gizmox.WebGUI.Forms.Button();
             this.btnConfirm = new Gizmox.WebGUI.Forms.Button();
             this.btnGoToday = new Gizmox.WebGUI.Forms.Button();
+            this.toolTip = new Gizmox.WebGUI.Forms.ToolTip();
             this.SuspendLayout();
             // 
             // monthCalendar
@@ -63,6 +64,7 @@ namespace Library.Controls
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(24, 24);
             this.btnCancel.TabIndex = 999;
+            this.toolTip.SetToolTip(this.btnCancel, "Annulla");
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnConfirm
@@ -75,6 +77,7 @@ namespace Library.Controls
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(24, 24);
             this.btnConfirm.TabIndex = 999;
+            this.toolTip.SetToolTip(this.btnConfirm, "Conferma");
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // btnGoToday
@@ -111,6 +114,7 @@ namespace Library.Controls
         private Button btnCancel;
         private Button btnConfirm;
         private Button btnGoToday;
+        private ToolTip toolTip;
 
 
     }

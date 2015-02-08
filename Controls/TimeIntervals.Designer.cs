@@ -37,6 +37,7 @@ namespace Library.Controls
             this.lblSeparator = new Gizmox.WebGUI.Forms.Label();
             this.panelTime = new Gizmox.WebGUI.Forms.Panel();
             this.btnIntervals = new Gizmox.WebGUI.Forms.Button();
+            this.toolTip = new Gizmox.WebGUI.Forms.ToolTip();
             this.panelTime.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,6 +101,7 @@ namespace Library.Controls
             this.btnIntervals.Name = "btnIntervals";
             this.btnIntervals.Size = new System.Drawing.Size(24, 24);
             this.btnIntervals.TabIndex = 999;
+            this.toolTip.SetToolTip(this.btnIntervals, "Fai clic per selezionare un orario...");
             this.btnIntervals.Click += new System.EventHandler(this.btnIntervals_Click);
             // 
             // TimeIntervals
@@ -124,6 +126,7 @@ namespace Library.Controls
         public Gizmox.WebGUI.Forms.TextBox editHour;
         public Gizmox.WebGUI.Forms.TextBox editMinutes;
         public Button btnIntervals;
+        private ToolTip toolTip;
 
 
     }

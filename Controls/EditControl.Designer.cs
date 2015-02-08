@@ -47,8 +47,9 @@ namespace Library.Controls
             this.editLabel.ForeColor = System.Drawing.Color.Gray;
             this.editLabel.Location = new System.Drawing.Point(0, 0);
             this.editLabel.Name = "editLabel";
-            this.editLabel.Size = new System.Drawing.Size(100, 26);
+            this.editLabel.Size = new System.Drawing.Size(100, 30);
             this.editLabel.TabIndex = 0;
+            this.editLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // imgEdit
             // 
@@ -81,8 +82,8 @@ namespace Library.Controls
 
         #endregion
 
-        private Label editLabel;
         private PictureBox imgEdit;
+        public Label editLabel;
 
 
 

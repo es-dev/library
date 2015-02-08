@@ -41,6 +41,7 @@ namespace Library.Controls
             this.label1 = new Gizmox.WebGUI.Forms.Label();
             this.label2 = new Gizmox.WebGUI.Forms.Label();
             this.txtSearch = new Gizmox.WebGUI.Forms.SearchTextBox();
+            this.toolTip = new Gizmox.WebGUI.Forms.ToolTip();
             this.SuspendLayout();
             // 
             // btnConfirm
@@ -54,6 +55,7 @@ namespace Library.Controls
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(24, 24);
             this.btnConfirm.TabIndex = 999;
+            this.toolTip.SetToolTip(this.btnConfirm, "Conferma");
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // btnCancel
@@ -67,6 +69,7 @@ namespace Library.Controls
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(24, 24);
             this.btnCancel.TabIndex = 999;
+            this.toolTip.SetToolTip(this.btnCancel, "Annulla");
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // listView
@@ -89,6 +92,8 @@ namespace Library.Controls
             this.listView.Name = "listView";
             this.listView.Size = new System.Drawing.Size(652, 299);
             this.listView.TabIndex = 1;
+            this.toolTip.SetToolTip(this.listView, "Premi INVIO o fai doppio clic con il mouse per confermare il valore selezionato.." +
+        ".");
             this.listView.UseInternalPaging = true;
             this.listView.SelectedIndexChanged += new System.EventHandler(this.listView_SelectedIndexChanged);
             this.listView.KeyUp += new Gizmox.WebGUI.Forms.KeyEventHandler(this.listView_KeyUp);
@@ -114,8 +119,8 @@ namespace Library.Controls
             this.label1.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)(((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Left) 
             | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
             this.label1.BackColor = System.Drawing.Color.Gainsboro;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DarkRed;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(652, 23);
@@ -142,6 +147,7 @@ namespace Library.Controls
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(159, 22);
             this.txtSearch.TabIndex = 0;
+            this.toolTip.SetToolTip(this.txtSearch, "Inserisci una chiave di ricerca (Ad es. ROMA oppure H501)...");
             this.txtSearch.Search += new System.EventHandler(this.txtSearch_Search);
             this.txtSearch.Clear += new System.EventHandler(this.txtSearch_Clear);
             this.txtSearch.EnterKeyDown += new Gizmox.WebGUI.Forms.KeyEventHandler(this.txtSearch_EnterKeyDown);
@@ -175,6 +181,7 @@ namespace Library.Controls
         private ColumnHeader columnHeader3;
         private Label label2;
         private SearchTextBox txtSearch;
+        private ToolTip toolTip;
 
 
     }

@@ -41,11 +41,11 @@ namespace Library.Template.Controls
             | Gizmox.WebGUI.Forms.AnchorStyles.Left) 
             | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
             this.editControl.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
-            this.editControl.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.editControl.Behavior = TypeBehavior.Text;
+            this.editControl.BackColor = System.Drawing.Color.Transparent;
+            this.editControl.Behavior = Library.Code.Enum.TypeBehavior.Text;
             this.editControl.BorderWidth = new Gizmox.WebGUI.Forms.BorderWidth(0);
             this.editControl.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editControl.Location = new System.Drawing.Point(100, 1);
+            this.editControl.Location = new System.Drawing.Point(100, 0);
             this.editControl.Mask = "---";
             this.editControl.Name = "editControl";
             this.editControl.ReadOnly = false;
@@ -54,11 +54,11 @@ namespace Library.Template.Controls
             this.editControl.Text = null;
             this.editControl.Value = null;
             // 
-            // editPassword
+            // TemplateEditPassword
             // 
             this.Controls.Add(this.editControl);
-            this.Label = "Password";
-            this.Name = "editPassword";
+            this.Controls.SetChildIndex(this.editControl, 0);
+            this.Controls.SetChildIndex(this.editLabel, 0);
             this.ResumeLayout(false);
 
         }

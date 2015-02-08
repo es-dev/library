@@ -35,6 +35,7 @@ namespace Library.Controls
             this.btnCombo = new Gizmox.WebGUI.Forms.Button();
             this.editProvincia = new Gizmox.WebGUI.Forms.TextBox();
             this.lblProvincia = new Gizmox.WebGUI.Forms.Label();
+            this.toolTip = new Gizmox.WebGUI.Forms.ToolTip();
             this.SuspendLayout();
             // 
             // editComune
@@ -58,12 +59,13 @@ namespace Library.Controls
             this.btnCombo.CustomStyle = "F";
             this.btnCombo.FlatStyle = Gizmox.WebGUI.Forms.FlatStyle.Flat;
             this.btnCombo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCombo.Location = new System.Drawing.Point(410, 0);
+            this.btnCombo.Location = new System.Drawing.Point(410, 4);
             this.btnCombo.Name = "btnCombo";
-            this.btnCombo.Size = new System.Drawing.Size(30, 30);
+            this.btnCombo.Size = new System.Drawing.Size(24, 24);
             this.btnCombo.TabIndex = 999;
             this.btnCombo.TabStop = false;
             this.btnCombo.Text = "...";
+            this.toolTip.SetToolTip(this.btnCombo, "Fai clic per selezionare una voce dall\'archivio comuni e province...");
             this.btnCombo.Click += new System.EventHandler(this.btnCombo_Click);
             // 
             // editProvincia
@@ -82,15 +84,15 @@ namespace Library.Controls
             // 
             this.lblProvincia.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)(((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Bottom) 
             | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
-            this.lblProvincia.AutoSize = true;
             this.lblProvincia.BorderColor = new Gizmox.WebGUI.Forms.BorderColor(System.Drawing.Color.Transparent);
             this.lblProvincia.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProvincia.ForeColor = System.Drawing.Color.DimGray;
+            this.lblProvincia.ForeColor = System.Drawing.Color.Gray;
             this.lblProvincia.Location = new System.Drawing.Point(282, 0);
             this.lblProvincia.Name = "lblProvincia";
-            this.lblProvincia.Size = new System.Drawing.Size(35, 26);
+            this.lblProvincia.Size = new System.Drawing.Size(74, 30);
             this.lblProvincia.TabIndex = 999;
             this.lblProvincia.Text = "Provincia";
+            this.lblProvincia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // TextComuneProvincia
             // 
@@ -110,6 +112,7 @@ namespace Library.Controls
         private Button btnCombo;
         private Gizmox.WebGUI.Forms.TextBox editProvincia;
         private Label lblProvincia;
+        private ToolTip toolTip;
 
 
     }

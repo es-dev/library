@@ -72,7 +72,7 @@ namespace Library.Controls
             } 
         }
 
-        private int labelWidth = 100;
+        private int labelWidth = 175;
         public virtual int LabelWidth
         {
             get
@@ -400,7 +400,8 @@ namespace Library.Controls
         {
             try
             {
-                SetLayoutControls();
+                if(DesignMode)
+                    SetLayoutControls();
             }
             catch (Exception ex)
             {

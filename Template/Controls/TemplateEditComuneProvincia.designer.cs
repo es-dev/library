@@ -3,7 +3,7 @@ using Gizmox.WebGUI.Common;
 
 namespace Library.Template.Controls
 {
-    partial class TemplateEditComuneProvincia
+    partial class TemplateEditComune
     {
         /// <summary>
         /// Required designer variable.
@@ -36,9 +36,12 @@ namespace Library.Template.Controls
             // 
             // editControl
             // 
+            this.editControl.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Bottom) 
+            | Gizmox.WebGUI.Forms.AnchorStyles.Left) 
+            | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
             this.editControl.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
             this.editControl.BackColor = System.Drawing.Color.Transparent;
-            this.editControl.Location = new System.Drawing.Point(100, 1);
+            this.editControl.Location = new System.Drawing.Point(100, 0);
             this.editControl.Mask = "---";
             this.editControl.Name = "editControl";
             this.editControl.ReadOnly = false;
@@ -47,10 +50,11 @@ namespace Library.Template.Controls
             this.editControl.Text = null;
             this.editControl.Value = null;
             // 
-            // TemplateEditComuneProvincia
+            // TemplateEditComune
             // 
             this.Controls.Add(this.editControl);
-            this.Label = "Comune";
+            this.Controls.SetChildIndex(this.editControl, 0);
+            this.Controls.SetChildIndex(this.editLabel, 0);
             this.ResumeLayout(false);
 
         }

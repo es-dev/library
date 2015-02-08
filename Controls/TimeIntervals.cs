@@ -205,7 +205,6 @@ namespace Library.Controls
             try
             {
                 base.BackColor = backColor;
-                lblSeparator.BackColor = (backColor == Color.Transparent ? Color.White : backColor);
             }
             catch (Exception ex)
             {

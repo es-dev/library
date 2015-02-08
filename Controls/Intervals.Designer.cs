@@ -38,6 +38,7 @@ namespace Library.Controls
             this.columnHeader1 = ((Gizmox.WebGUI.Forms.ColumnHeader)(new Gizmox.WebGUI.Forms.ColumnHeader()));
             this.panel1 = new Gizmox.WebGUI.Forms.Panel();
             this.label1 = new Gizmox.WebGUI.Forms.Label();
+            this.toolTip = new Gizmox.WebGUI.Forms.ToolTip();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,6 +53,7 @@ namespace Library.Controls
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(24, 24);
             this.btnConfirm.TabIndex = 999;
+            this.toolTip.SetToolTip(this.btnConfirm, "Conferma");
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // btnCancel
@@ -65,6 +67,7 @@ namespace Library.Controls
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(24, 24);
             this.btnCancel.TabIndex = 999;
+            this.toolTip.SetToolTip(this.btnCancel, "Annulla");
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // listIntervals
@@ -87,6 +90,7 @@ namespace Library.Controls
             this.listIntervals.Name = "listIntervals";
             this.listIntervals.Size = new System.Drawing.Size(198, 249);
             this.listIntervals.TabIndex = 2;
+            this.toolTip.SetToolTip(this.listIntervals, "Per selezionare una voce devi fare clic sul pulsante check...");
             this.listIntervals.ItemCheck += new Gizmox.WebGUI.Forms.ItemCheckHandler(this.listIntervals_ItemCheck);
             // 
             // columnHeader1
@@ -105,12 +109,13 @@ namespace Library.Controls
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DarkRed;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(198, 23);
             this.label1.TabIndex = 0;
-            this.label1.Text = " Orario";
+            this.label1.Text = "Orario";
             // 
             // Intervals
             // 
@@ -137,6 +142,7 @@ namespace Library.Controls
         private ColumnHeader columnHeader1;
         private Panel panel1;
         private Label label1;
+        private ToolTip toolTip;
 
 
     }

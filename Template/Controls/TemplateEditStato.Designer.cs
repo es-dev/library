@@ -36,6 +36,10 @@ namespace Library.Template.Controls
             this.editControl = new Library.Controls.TextStato();
             this.SuspendLayout();
             // 
+            // editLabel
+            // 
+            this.editLabel.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            // 
             // editControl
             // 
             this.editControl.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Bottom) 
@@ -49,6 +53,7 @@ namespace Library.Template.Controls
             this.editControl.Name = "editControl";
             this.editControl.ReadOnly = false;
             this.editControl.Size = new System.Drawing.Size(350, 30);
+            this.editControl.Stato = Library.Code.Enum.TypeStato.None;
             this.editControl.TabIndex = 0;
             this.editControl.Text = null;
             this.editControl.Value = null;
@@ -57,6 +62,8 @@ namespace Library.Template.Controls
             // 
             this.Controls.Add(this.editControl);
             this.Text = "TemplateEditNumeric";
+            this.Controls.SetChildIndex(this.editControl, 0);
+            this.Controls.SetChildIndex(this.editLabel, 0);
             this.ResumeLayout(false);
 
         }

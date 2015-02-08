@@ -32,8 +32,6 @@ namespace Library.Template.Forms
 		{
             this.btnAccount = new Gizmox.WebGUI.Forms.Button();
             this.toolStripSeparator3 = new Gizmox.WebGUI.Forms.ToolStripSeparator();
-            this.progressBar = new Gizmox.WebGUI.Forms.ToolStripProgressBar();
-            this.lblProgressBar = new Gizmox.WebGUI.Forms.ToolStripLabel();
             this.SuspendLayout();
             // 
             // bntPortaleWebAziendale
@@ -51,9 +49,7 @@ namespace Library.Template.Forms
             // toolStrip
             // 
             this.toolStrip.Items.AddRange(new Gizmox.WebGUI.Forms.ToolStripItem[] {
-            this.toolStripSeparator3,
-            this.progressBar,
-            this.lblProgressBar});
+            this.toolStripSeparator3});
             // 
             // infoTitle
             // 
@@ -83,19 +79,10 @@ namespace Library.Template.Forms
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 6);
             // 
-            // progressBar
-            // 
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(100, 23);
-            // 
-            // lblProgressBar
-            // 
-            this.lblProgressBar.Name = "lblProgressBar";
-            this.lblProgressBar.Size = new System.Drawing.Size(0, 0);
-            // 
             // TemplateWorkspace
             // 
             this.Controls.Add(this.btnAccount);
+            this.Controls.SetChildIndex(this.container, 0);
             this.Controls.SetChildIndex(this.bntPortaleWebAziendale, 0);
             this.Controls.SetChildIndex(this.btnSupportoTecnico, 0);
             this.Controls.SetChildIndex(this.btnInformazioni, 0);
@@ -109,8 +96,6 @@ namespace Library.Template.Forms
 
 		#endregion
 
-        private Gizmox.WebGUI.Forms.ToolStripProgressBar progressBar;
-        private Gizmox.WebGUI.Forms.ToolStripLabel lblProgressBar;
         public Gizmox.WebGUI.Forms.Button btnAccount;
         private Gizmox.WebGUI.Forms.ToolStripSeparator toolStripSeparator3;
 	}

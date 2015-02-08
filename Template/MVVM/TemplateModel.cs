@@ -310,6 +310,7 @@ namespace Library.Template.MVVM
                 var editControls = GetEditControls(container.Controls);
                 foreach(var editControl in editControls)
                     editControl.Editing = editing;
+
                 SetDeleting(editing && deleting);
             }
             catch (Exception ex)
