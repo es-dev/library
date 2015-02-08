@@ -50,9 +50,10 @@ namespace Library.Template.Controls
             this.editControl.Text = null;
             this.editControl.Value = null;
             // 
-            // TemplateEditComune
+            // TemplateEditComuneProvincia
             // 
             this.Controls.Add(this.editControl);
+            this.Text = "";
             this.Controls.SetChildIndex(this.editControl, 0);
             this.Controls.SetChildIndex(this.editLabel, 0);
             this.ResumeLayout(false);

@@ -52,7 +52,9 @@ namespace Library.Template.Controls
             // TemplateEditCheckBox
             // 
             this.Controls.Add(this.editControl);
-            this.Text = "TemplateCheckBox";
+            this.Text = "";
+            this.Controls.SetChildIndex(this.editControl, 0);
+            this.Controls.SetChildIndex(this.editLabel, 0);
             this.ResumeLayout(false);
 
         }

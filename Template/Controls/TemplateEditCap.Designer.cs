@@ -57,7 +57,7 @@ namespace Library.Template.Controls
             // TemplateEditCap
             // 
             this.Controls.Add(this.editControl);
-            this.Text = "TemplateEditNumeric";
+            this.Text = "";
             this.Controls.SetChildIndex(this.editControl, 0);
             this.Controls.SetChildIndex(this.editLabel, 0);
             this.ResumeLayout(false);

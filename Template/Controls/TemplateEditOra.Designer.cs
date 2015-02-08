@@ -61,6 +61,7 @@ namespace Library.Template.Controls
             // 
             this.Controls.Add(this.editControl);
             this.Size = new System.Drawing.Size(481, 32);
+            this.Text = "";
             this.Controls.SetChildIndex(this.editControl, 0);
             this.Controls.SetChildIndex(this.editLabel, 0);
             this.ResumeLayout(false);

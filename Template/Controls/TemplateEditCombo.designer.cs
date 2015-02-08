@@ -53,6 +53,9 @@ namespace Library.Template.Controls
             // TemplateEditCombo
             // 
             this.Controls.Add(this.editControl);
+            this.Text = "";
+            this.Controls.SetChildIndex(this.editControl, 0);
+            this.Controls.SetChildIndex(this.editLabel, 0);
             this.ResumeLayout(false);
 
 		}

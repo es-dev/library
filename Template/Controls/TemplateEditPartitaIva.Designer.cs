@@ -54,10 +54,10 @@ namespace Library.Template.Controls
             this.editControl.Text = null;
             this.editControl.Value = null;
             // 
-            // TemplateEditPartitaIVA
+            // TemplateEditPartitaIva
             // 
             this.Controls.Add(this.editControl);
-            this.Text = "TemplateEditPartitaIva";
+            this.Text = "";
             this.Controls.SetChildIndex(this.editControl, 0);
             this.Controls.SetChildIndex(this.editLabel, 0);
             this.ResumeLayout(false);
