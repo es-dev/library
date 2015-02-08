@@ -4,7 +4,7 @@ using Library.Code.Enum;
 
 namespace Library.Template.Controls
 {
-    partial class TemplateEditPartitaIVA
+    partial class TemplateEditPartitaIva
     {
         /// <summary>
         /// Required designer variable.
