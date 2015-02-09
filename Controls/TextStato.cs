@@ -266,17 +266,10 @@ namespace Library.Controls
         {
             try
             {
-                editText.BackColor = Color.Transparent;
                 editText.ForeColor = Color.Black;
                 if (stato == TypeStato.None)
                 {
                     imgStato.Image = "";
-                }
-                else if (stato == TypeStato.Critical)
-                {
-                    imgStato.Image = "Images.messageAlert.png";
-                    editText.ForeColor = Color.White;
-                    editText.BackColor = Color.Red;
                 }
                 else if (stato == TypeStato.Normal)
                 {
@@ -286,6 +279,11 @@ namespace Library.Controls
                 else if (stato == TypeStato.Warning)
                 {
                     imgStato.Image = "Images.messageQuestion.png";
+                    editText.ForeColor = Color.OrangeRed;
+                }
+                else if (stato == TypeStato.Critical)
+                {
+                    imgStato.Image = "Images.messageAlert.png";
                     editText.ForeColor = Color.Red;
                 }
             }
