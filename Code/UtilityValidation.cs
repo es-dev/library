@@ -100,6 +100,22 @@ namespace Library.Code
             return null;
         }
 
+        public static string GetStringND(object value)
+        {
+            try
+            {
+                var text = GetString(value);
+                if (text == null || text.Length == 0)
+                    text = "N/D";
+                return text;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
 
         internal static int GetInteger(string text)
         {
@@ -220,5 +236,7 @@ namespace Library.Code
             }
             return 0;
         }
+
+       
     }
 }
