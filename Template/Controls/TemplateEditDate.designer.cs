@@ -1,11 +1,9 @@
 using Gizmox.WebGUI.Forms;
 using Gizmox.WebGUI.Common;
-using Library.Code;
-using Library.Code.Enum;
 
 namespace Library.Template.Controls
 {
-    partial class TemplateEditStato
+    partial class TemplateEditDate
     {
         /// <summary>
         /// Required designer variable.
@@ -33,12 +31,8 @@ namespace Library.Template.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            this.editControl = new Library.Controls.TextStato();
+            this.editControl = new Library.Controls.DateCalendar();
             this.SuspendLayout();
-            // 
-            // editLabel
-            // 
-            this.editLabel.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             // 
             // editControl
             // 
@@ -49,16 +43,16 @@ namespace Library.Template.Controls
             this.editControl.BackColor = System.Drawing.Color.Transparent;
             this.editControl.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editControl.Location = new System.Drawing.Point(100, 0);
-            this.editControl.Mask = "---";
+            this.editControl.Mask = "--";
             this.editControl.Name = "editControl";
             this.editControl.ReadOnly = false;
             this.editControl.Size = new System.Drawing.Size(350, 30);
-            this.editControl.Stato = Library.Code.Enum.TypeState.None;
             this.editControl.TabIndex = 0;
-            this.editControl.Text = null;
+            this.editControl.Text = "//";
             this.editControl.Value = null;
+            this.editControl.Confirm += new Library.Controls.DateCalendar.ConfirmHanlder(this.editControl_Confirm);
             // 
-            // TemplateEditStato
+            // TemplateEditData
             // 
             this.Controls.Add(this.editControl);
             this.Text = "";
@@ -70,10 +64,7 @@ namespace Library.Template.Controls
 
         #endregion
 
-        private Library.Controls.TextStato editControl;
-
-
-
+        private Library.Controls.DateCalendar editControl;
 
 
 

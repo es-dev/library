@@ -9,17 +9,21 @@ using System.Text;
 
 using Gizmox.WebGUI.Common;
 using Gizmox.WebGUI.Forms;
-using Library.Controls;
-using Library.Code;
-
 using Library.Interfaces;
+using Library.Code;
+using Gizmox.WebGUI.Common.Interfaces;
+using Library.Controls;
+using Library.Code.Enum;
+
+
 #endregion
 
 namespace Library.Template.Controls
 {
-    public partial class TemplateEditComuneProvincia : EditControl
+    public partial class TemplateEditState : EditControl
     {
-        public TemplateEditComuneProvincia()
+
+        public TemplateEditState()
         {
             InitializeComponent();
             try
@@ -32,26 +36,31 @@ namespace Library.Template.Controls
             } 
         }
 
-        private ComuniProvince.Comune _value = null;
-        public new ComuniProvince.Comune Value
+        private string _value = null; 
+        public new string Value
         {
             get
             {
                 _value = GetValue();
-                return _value;
+                return _value; 
             }
             set
             {
                 _value = value;
-                SetValue();
+                SetValue(_value);
             }
         }
-
-        private void SetValue()
+        
+        private void SetValue(string value)
         {
             try
             {
-                editControl.Value = _value;
+                if (value != null && value.Length > 0)
+                {
+                    var _state = new StateDescriptionImage(value);
+                    editControl.Value = _state.Description;
+                    editControl.State = _state.State;
+                }
             }
             catch (Exception ex)
             {
@@ -59,13 +68,15 @@ namespace Library.Template.Controls
             }
         }
 
-        private ComuniProvince.Comune GetValue()
+        private string GetValue()
         {
             try
             {
-                var _value = (ComuniProvince.Comune)editControl.Value;
-                return _value;
-
+                string description = (string)editControl.Value;
+                var state = editControl.State;
+                var _state = new StateDescriptionImage(state, description);
+                var value = _state.ToString();
+                return value;
             }
             catch (Exception ex)
             {
@@ -74,22 +85,6 @@ namespace Library.Template.Controls
             return null;
         }
 
-        public delegate void ConfirmHanlder(ComuniProvince.Comune value);
-        public event ConfirmHanlder Confirm;
 
-        private void editControl_Confirm(ComuniProvince.Comune value)
-        {
-            try
-            {
-                if (Confirm != null)
-                    Confirm(value);
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-        }
-
-       
     }
 }

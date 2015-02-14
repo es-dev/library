@@ -36,7 +36,7 @@ namespace Library.Controls
             try
             {
                 var jquery = new UtilityJQuery();
-                var jqscript = jquery.GetOra(editHour, editMinutes, mask);
+                var jqscript = jquery.GetTime(editHour, editMinutes, mask);
                 return jqscript;
             }
             catch (Exception ex)

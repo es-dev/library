@@ -3,7 +3,7 @@ using Gizmox.WebGUI.Common;
 
 namespace Library.Controls
 {
-    partial class TextComuneProvincia
+    partial class TextCountry
     {
         /// <summary>
         /// Required designer variable.
@@ -31,26 +31,26 @@ namespace Library.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            this.editComune = new Gizmox.WebGUI.Forms.TextBox();
+            this.editCity = new Gizmox.WebGUI.Forms.TextBox();
             this.btnCombo = new Gizmox.WebGUI.Forms.Button();
-            this.editProvincia = new Gizmox.WebGUI.Forms.TextBox();
+            this.editCounty = new Gizmox.WebGUI.Forms.TextBox();
             this.lblProvincia = new Gizmox.WebGUI.Forms.Label();
             this.toolTip = new Gizmox.WebGUI.Forms.ToolTip();
             this.SuspendLayout();
             // 
-            // editComune
+            // editCity
             // 
-            this.editComune.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Bottom) 
+            this.editCity.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Bottom) 
             | Gizmox.WebGUI.Forms.AnchorStyles.Left) 
             | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
-            this.editComune.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.None;
-            this.editComune.BorderWidth = new Gizmox.WebGUI.Forms.BorderWidth(0);
-            this.editComune.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editComune.Location = new System.Drawing.Point(0, 0);
-            this.editComune.Name = "editComune";
-            this.editComune.Size = new System.Drawing.Size(279, 30);
-            this.editComune.TabIndex = 0;
-            this.editComune.EnterKeyDown += new Gizmox.WebGUI.Forms.KeyEventHandler(this.editComune_EnterKeyDown);
+            this.editCity.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.None;
+            this.editCity.BorderWidth = new Gizmox.WebGUI.Forms.BorderWidth(0);
+            this.editCity.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editCity.Location = new System.Drawing.Point(0, 0);
+            this.editCity.Name = "editCity";
+            this.editCity.Size = new System.Drawing.Size(279, 30);
+            this.editCity.TabIndex = 0;
+            this.editCity.EnterKeyDown += new Gizmox.WebGUI.Forms.KeyEventHandler(this.editCity_EnterKeyDown);
             // 
             // btnCombo
             // 
@@ -68,17 +68,17 @@ namespace Library.Controls
             this.toolTip.SetToolTip(this.btnCombo, "Fai clic per selezionare una voce dall\'archivio comuni e province...");
             this.btnCombo.Click += new System.EventHandler(this.btnCombo_Click);
             // 
-            // editProvincia
+            // editCounty
             // 
-            this.editProvincia.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)(((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Bottom) 
+            this.editCounty.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)(((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Bottom) 
             | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
-            this.editProvincia.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.None;
-            this.editProvincia.BorderWidth = new Gizmox.WebGUI.Forms.BorderWidth(0);
-            this.editProvincia.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editProvincia.Location = new System.Drawing.Point(359, 0);
-            this.editProvincia.Name = "editProvincia";
-            this.editProvincia.Size = new System.Drawing.Size(47, 30);
-            this.editProvincia.TabIndex = 1;
+            this.editCounty.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.None;
+            this.editCounty.BorderWidth = new Gizmox.WebGUI.Forms.BorderWidth(0);
+            this.editCounty.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editCounty.Location = new System.Drawing.Point(359, 0);
+            this.editCounty.Name = "editCounty";
+            this.editCounty.Size = new System.Drawing.Size(47, 30);
+            this.editCounty.TabIndex = 1;
             // 
             // lblProvincia
             // 
@@ -94,13 +94,13 @@ namespace Library.Controls
             this.lblProvincia.Text = "Provincia";
             this.lblProvincia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // TextComuneProvincia
+            // TextCountry
             // 
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.lblProvincia);
-            this.Controls.Add(this.editProvincia);
+            this.Controls.Add(this.editCounty);
             this.Controls.Add(this.btnCombo);
-            this.Controls.Add(this.editComune);
+            this.Controls.Add(this.editCity);
             this.Size = new System.Drawing.Size(443, 30);
             this.ResumeLayout(false);
 
@@ -108,9 +108,9 @@ namespace Library.Controls
 
         #endregion
 
-        private Gizmox.WebGUI.Forms.TextBox editComune;
+        private Gizmox.WebGUI.Forms.TextBox editCity;
         private Button btnCombo;
-        private Gizmox.WebGUI.Forms.TextBox editProvincia;
+        private Gizmox.WebGUI.Forms.TextBox editCounty;
         private Label lblProvincia;
         private ToolTip toolTip;
 

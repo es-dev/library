@@ -3,7 +3,7 @@ using Gizmox.WebGUI.Common;
 
 namespace Library.Template.Controls
 {
-    partial class TemplateEditOra
+    partial class TemplateEditTime
     {
         /// <summary>
         /// Required designer variable.

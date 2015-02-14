@@ -3,7 +3,7 @@ using Gizmox.WebGUI.Common;
 
 namespace Library.Controls
 {
-    partial class TextStato
+    partial class TextState
     {
         /// <summary>
         /// Required designer variable.
@@ -32,8 +32,8 @@ namespace Library.Controls
         private void InitializeComponent()
         {
             this.editText = new Gizmox.WebGUI.Forms.TextBox();
-            this.imgStato = new Gizmox.WebGUI.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.imgStato)).BeginInit();
+            this.imgState = new Gizmox.WebGUI.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.imgState)).BeginInit();
             this.SuspendLayout();
             // 
             // editText
@@ -50,25 +50,25 @@ namespace Library.Controls
             this.editText.Size = new System.Drawing.Size(302, 30);
             this.editText.TabIndex = 0;
             // 
-            // imgStato
+            // imgState
             // 
-            this.imgStato.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
-            this.imgStato.BackColor = System.Drawing.Color.Transparent;
-            this.imgStato.Location = new System.Drawing.Point(305, 0);
-            this.imgStato.Name = "imgStato";
-            this.imgStato.Size = new System.Drawing.Size(30, 30);
-            this.imgStato.SizeMode = Gizmox.WebGUI.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgStato.TabIndex = 3;
-            this.imgStato.TabStop = false;
+            this.imgState.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
+            this.imgState.BackColor = System.Drawing.Color.Transparent;
+            this.imgState.Location = new System.Drawing.Point(305, 0);
+            this.imgState.Name = "imgState";
+            this.imgState.Size = new System.Drawing.Size(30, 30);
+            this.imgState.SizeMode = Gizmox.WebGUI.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgState.TabIndex = 3;
+            this.imgState.TabStop = false;
             // 
-            // TextStato
+            // TextState
             // 
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.imgStato);
+            this.Controls.Add(this.imgState);
             this.Controls.Add(this.editText);
             this.Size = new System.Drawing.Size(340, 30);
             this.Text = "TextCombo";
-            ((System.ComponentModel.ISupportInitialize)(this.imgStato)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgState)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -76,7 +76,7 @@ namespace Library.Controls
         #endregion
 
         private Gizmox.WebGUI.Forms.TextBox editText;
-        private PictureBox imgStato;
+        private PictureBox imgState;
 
 
     }

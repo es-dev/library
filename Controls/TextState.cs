@@ -18,7 +18,7 @@ using Library.Code.Enum;
 
 namespace Library.Controls
 {
-    public partial class TextStato : UserControl, IJQControl, IMaskControl
+    public partial class TextState : UserControl, IJQControl, IMaskControl
     {
         private string jqscript = null;
         public string JQScript
@@ -76,7 +76,7 @@ namespace Library.Controls
 
         }
 
-        public TextStato()
+        public TextState()
         {
             InitializeComponent();
         }
@@ -248,42 +248,42 @@ namespace Library.Controls
             }
         }
 
-        private TypeState stato = TypeState.None;
-        public TypeState Stato
+        private TypeState state = TypeState.None;
+        public TypeState State
         {
             get
             {
-                return stato;
+                return state;
             }
             set
             {
-                stato = value;
-                SetStato(stato);
+                state = value;
+                SetState(state);
             }
         }
 
-        private void SetStato(TypeState stato)
+        private void SetState(TypeState state)
         {
             try
             {
                 editText.ForeColor = Color.Black;
-                if (stato == TypeState.None)
+                if (state == TypeState.None)
                 {
-                    imgStato.Image = "";
+                    imgState.Image = "";
                 }
-                else if (stato == TypeState.Normal)
+                else if (state == TypeState.Normal)
                 {
-                    imgStato.Image = "Images.messageConfirm.png";
+                    imgState.Image = "Images.messageConfirm.png";
                     editText.ForeColor = Color.Blue;
                 }
-                else if (stato == TypeState.Warning)
+                else if (state == TypeState.Warning)
                 {
-                    imgStato.Image = "Images.messageQuestion.png";
+                    imgState.Image = "Images.messageQuestion.png";
                     editText.ForeColor = Color.OrangeRed;
                 }
-                else if (stato == TypeState.Critical)
+                else if (state == TypeState.Critical)
                 {
-                    imgStato.Image = "Images.messageAlert.png";
+                    imgState.Image = "Images.messageAlert.png";
                     editText.ForeColor = Color.Red;
                 }
             }

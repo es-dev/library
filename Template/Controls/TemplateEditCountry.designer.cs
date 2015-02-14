@@ -3,7 +3,7 @@ using Gizmox.WebGUI.Common;
 
 namespace Library.Template.Controls
 {
-    partial class TemplateEditData
+    partial class TemplateEditCountry
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@ namespace Library.Template.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            this.editControl = new Library.Controls.DateCalendar();
+            this.editControl = new Library.Controls.TextCountry();
             this.SuspendLayout();
             // 
             // editControl
@@ -41,18 +41,16 @@ namespace Library.Template.Controls
             | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
             this.editControl.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
             this.editControl.BackColor = System.Drawing.Color.Transparent;
-            this.editControl.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editControl.Location = new System.Drawing.Point(100, 0);
-            this.editControl.Mask = "--";
+            this.editControl.Mask = "---";
             this.editControl.Name = "editControl";
             this.editControl.ReadOnly = false;
             this.editControl.Size = new System.Drawing.Size(350, 30);
-            this.editControl.TabIndex = 0;
-            this.editControl.Text = "//";
+            this.editControl.TabIndex = 3;
+            this.editControl.Text = null;
             this.editControl.Value = null;
-            this.editControl.Confirm += new Library.Controls.DateCalendar.ConfirmHanlder(this.editControl_Confirm);
             // 
-            // TemplateEditData
+            // TemplateEditComuneProvincia
             // 
             this.Controls.Add(this.editControl);
             this.Text = "";
@@ -64,7 +62,8 @@ namespace Library.Template.Controls
 
         #endregion
 
-        private Library.Controls.DateCalendar editControl;
+        private Library.Controls.TextCountry editControl;
+
 
 
 

@@ -17,9 +17,9 @@ using Library.Interfaces;
 
 namespace Library.Template.Controls
 {
-    public partial class TemplateEditDataOra : EditControl
+    public partial class TemplateEditDateTime : EditControl
     {
-        public TemplateEditDataOra()
+        public TemplateEditDateTime()
         {
             InitializeComponent();
             try

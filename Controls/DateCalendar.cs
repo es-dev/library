@@ -35,7 +35,7 @@ namespace Library.Controls
             try
             {
                 var jquery = new UtilityJQuery();
-                var jqscript = jquery.GetData(editDay, editMonth, editYear, mask);
+                var jqscript = jquery.GetDate(editDay, editMonth, editYear, mask);
                 return jqscript;
             }
             catch (Exception ex)

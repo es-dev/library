@@ -18,7 +18,7 @@ using Library.Code.Enum;
 
 namespace Library.Controls
 {
-    public partial class TextComuneProvincia : UserControl, IJQControl, IMaskControl
+    public partial class TextCountry : UserControl, IJQControl, IMaskControl
     {
         private string jqscript = null;
         public string JQScript
@@ -35,7 +35,7 @@ namespace Library.Controls
             try
             {
                 var jquery = new UtilityJQuery();
-                var jqscript = jquery.GetComuneProvincia(editComune, editProvincia, mask);
+                var jqscript = jquery.GetCountries(editCity, editCounty, mask);
                 return jqscript;
             }
             catch (Exception ex)
@@ -76,7 +76,7 @@ namespace Library.Controls
 
         }
 
-        public TextComuneProvincia()
+        public TextCountry()
         {
             InitializeComponent();
         }
@@ -101,10 +101,10 @@ namespace Library.Controls
         {
             try
             {
-                editComune.ReadOnly = readOnly;
+                editCity.ReadOnly = readOnly;
                 btnCombo.Visible = !readOnly;
-                editProvincia.ReadOnly = readOnly;
-                toolTip.SetToolTip(editComune, readOnly ? null : "Scrivi le iniziali di un comune e batti il tasto INVIO per avviare la ricerca nell'archivio dati...");
+                editCounty.ReadOnly = readOnly;
+                toolTip.SetToolTip(editCity, readOnly ? null : "Scrivi le iniziali di un comune e premi il tasto INVIO per avviare la ricerca nell'archivio dati...");
             }
             catch (Exception ex)
             {
@@ -116,7 +116,7 @@ namespace Library.Controls
         {
             try
             {
-                var readOnly = editComune.ReadOnly;
+                var readOnly = editCity.ReadOnly;
                 return readOnly;
             }
             catch (Exception ex)
@@ -145,9 +145,9 @@ namespace Library.Controls
             try
             {
                 base.BackColor = backColor;
-                editComune.BackColor = backColor;
+                editCity.BackColor = backColor;
                 btnCombo.BackColor = backColor;
-                editProvincia.BackColor = backColor;
+                editCounty.BackColor = backColor;
             }
             catch (Exception ex)
             {
@@ -175,16 +175,16 @@ namespace Library.Controls
         {
             try
             {
-                var denominazioneCodiceCatastale = mask;
-                var provincia = mask;
+                var codeDescription = mask;
+                var county = mask;
                 if (text != null && text.Length > 0)
                 {
-                    var comune = new ComuniProvince.Comune(text);
-                    denominazioneCodiceCatastale = comune.DenominazioneCodiceCatastale;
-                    provincia = comune.Provincia;
+                    var city = new Countries.City(text);
+                    codeDescription = city.CodeDescription;
+                    county = city.County;
                 }
-                editComune.Text = (denominazioneCodiceCatastale == null || denominazioneCodiceCatastale.Length == 0 ? mask : denominazioneCodiceCatastale);
-                editProvincia.Text = (provincia == null || provincia.Length == 0 ? mask : provincia);
+                editCity.Text = (codeDescription == null || codeDescription.Length == 0 ? mask : codeDescription);
+                editCounty.Text = (county == null || county.Length == 0 ? mask : county);
             }
             catch (Exception ex)
             {
@@ -196,10 +196,10 @@ namespace Library.Controls
         {
             try
             {
-                var comune = (ComuniProvince.Comune)editComune.Tag;
-                if(comune!=null)
+                var city = (Countries.City)editCity.Tag;
+                if(city!=null)
                 {
-                    var text = comune.ToString();
+                    var text = city.ToString();
                     return text;
                 }
             }
@@ -229,7 +229,7 @@ namespace Library.Controls
         {
             try
             {
-                var value = (ComuniProvince.Comune)editComune.Tag;
+                var value = (Countries.City)editCity.Tag;
                 return value;
             }
             catch (Exception ex)
@@ -243,12 +243,12 @@ namespace Library.Controls
         {
             try
             {
-                var comune = (ComuniProvince.Comune)value;
+                var city = (Countries.City)value;
                 string text = null;
-                if (comune != null)
-                    text = comune.ToString();
+                if (city != null)
+                    text = city.ToString();
                 SetText(text);
-                editComune.Tag = comune;
+                editCity.Tag = city;
             }
             catch (Exception ex)
             {
@@ -275,10 +275,10 @@ namespace Library.Controls
             {
                 try
                 {
-                    var comuniProvince = new ComuniProvince(this);
-                    comuniProvince.Confirm += ComuniProvince_Confirm;
+                    var countries = new Countries(this);
+                    countries.Confirm += Countries_Confirm;
 
-                    UtilityWeb.AddJQControl(btnCombo, comuniProvince, JQTypePosition.Docked);
+                    UtilityWeb.AddJQControl(btnCombo, countries, JQTypePosition.Docked);
                 }
                 catch (Exception ex)
                 {
@@ -291,10 +291,10 @@ namespace Library.Controls
             }
         }
 
-        public delegate void ConfirmlHanlder(ComuniProvince.Comune value);
+        public delegate void ConfirmlHanlder(Countries.City value);
         public event ConfirmlHanlder Confirm;
 
-        void ComuniProvince_Confirm(ComuniProvince.Comune value)
+        void Countries_Confirm(Countries.City value)
         {
             try
             {
@@ -312,17 +312,17 @@ namespace Library.Controls
         }
 
 
-        private void editComune_EnterKeyDown(object objSender, KeyEventArgs objArgs)
+        private void editCity_EnterKeyDown(object objSender, KeyEventArgs objArgs)
         {
             try
             {
                 if (objArgs.KeyCode == Keys.Enter)
                 {
-                    var search = editComune.Text;
-                    var comuniProvince = new ComuniProvince(this, search);
-                    comuniProvince.Confirm += ComuniProvince_Confirm;
+                    var search = editCity.Text;
+                    var countries = new Countries(this, search);
+                    countries.Confirm += Countries_Confirm;
 
-                    UtilityWeb.AddJQControl(btnCombo, comuniProvince, JQTypePosition.Docked);
+                    UtilityWeb.AddJQControl(btnCombo, countries, JQTypePosition.Docked);
                 }
             }
             catch (Exception ex)

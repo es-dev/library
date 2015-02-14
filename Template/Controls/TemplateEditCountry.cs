@@ -17,9 +17,9 @@ using Library.Interfaces;
 
 namespace Library.Template.Controls
 {
-    public partial class TemplateEditData : EditControl
+    public partial class TemplateEditCountry : EditControl
     {
-        public TemplateEditData()
+        public TemplateEditCountry()
         {
             InitializeComponent();
             try
@@ -32,8 +32,8 @@ namespace Library.Template.Controls
             } 
         }
 
-        private DateTime? _value = null;
-        public new DateTime? Value
+        private Countries.City _value = null;
+        public new Countries.City Value
         {
             get
             {
@@ -59,11 +59,11 @@ namespace Library.Template.Controls
             }
         }
 
-        private DateTime? GetValue()
+        private Countries.City GetValue()
         {
             try
             {
-                var _value = (DateTime?)editControl.Value;
+                var _value = (Countries.City)editControl.Value;
                 return _value;
 
             }
@@ -74,17 +74,15 @@ namespace Library.Template.Controls
             return null;
         }
 
-        public delegate void ConfirmHanlder(DateTime? value);
+        public delegate void ConfirmHanlder(Countries.City value);
         public event ConfirmHanlder Confirm;
 
-        private void editControl_Confirm(DateTime? value)
+        private void editControl_Confirm(Countries.City value)
         {
             try
             {
                 if (Confirm != null)
-                {
                     Confirm(value);
-                }
             }
             catch (Exception ex)
             {

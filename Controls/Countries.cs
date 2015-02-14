@@ -16,11 +16,11 @@ using Library.Code;
 
 namespace Library.Controls
 {
-    public partial class ComuniProvince : UserControl
+    public partial class Countries : UserControl
     {
         private Control owner = null;
 
-        public ComuniProvince(Control owner, string search=null)
+        public Countries(Control owner, string search=null)
         {
             InitializeComponent();
             try
@@ -34,7 +34,7 @@ namespace Library.Controls
             }
         }
 
-        private void ComuniProvince_Load(object sender, EventArgs e)
+        private void Countries_Load(object sender, EventArgs e)
         {
             try
             {
@@ -48,12 +48,12 @@ namespace Library.Controls
             }
         }
 
-        IList<Comune> comuni = null;
+        IList<City> cities = null;
         private void LoadItems()
         {
             try
             {
-                comuni = ReadComuni();
+                cities = ReadCities();
                 RefreshItems();
             }
             catch (Exception ex)
@@ -62,18 +62,18 @@ namespace Library.Controls
             }
         }
 
-        private void BindView(IList<Comune> comuni)
+        private void BindView(IList<City> cities)
         {
             try
             {
                 listView.Items.Clear();
-                foreach (var comune in comuni)
+                foreach (var city in cities)
                 {
                     var item = new ListViewItem();
-                    item.SubItems.Add(comune.Denominazione);
-                    item.SubItems.Add(comune.CodiceCatastale);
-                    item.SubItems.Add(comune.Provincia);
-                    item.Tag = comune;
+                    item.SubItems.Add(city.Description);
+                    item.SubItems.Add(city.Code);
+                    item.SubItems.Add(city.County);
+                    item.Tag = city;
                     listView.Items.Add(item);
                 }
             }
@@ -88,17 +88,17 @@ namespace Library.Controls
             try
             {
                 var search = txtSearch.Text;
-                IList<Comune> comuni = null;
+                IList<City> cities = null;
                 if(search!=null && search.Length>0 && search.Contains("("))
                 {
-                    var denominazione = Comune.GetDenominazione(search);
-                    var codiceCatastale = Comune.GetCodiceCatastale(search);
-                    comuni = LoadComuni(denominazione, codiceCatastale);
+                    var description = City.GetDescription(search);
+                    var code = City.GetCode(search);
+                    cities = LoadCities(description, code);
                 }
                 else
-                    comuni = LoadComuni(search);
-                BindView(comuni);
-                if(comuni.Count>=1 && search!=null && search.Length>0)
+                    cities = LoadCities(search);
+                BindView(cities);
+                if(cities.Count>=1 && search!=null && search.Length>0)
                     SelectFirstItem();
 
             }
@@ -108,16 +108,16 @@ namespace Library.Controls
             }
         }
 
-        private IList<Comune> LoadComuni(string search)
+        private IList<City> LoadCities(string search)
         {
             try
             {
-                var _comuni = (from q in comuni select q);
+                var _cities = (from q in cities select q);
                 if(search!=null && search.Length>0)
-                    _comuni = (from q in comuni where q.CodiceCatastale.ToUpper().StartsWith(search.ToUpper()) || 
-                                   q.Denominazione.ToUpper().StartsWith(search.ToUpper()) || 
-                                   q.Provincia.ToUpper().StartsWith(search.ToUpper()) select q);
-                return _comuni.ToList();
+                    _cities = (from q in cities where q.Code.ToUpper().StartsWith(search.ToUpper()) || 
+                                   q.Description.ToUpper().StartsWith(search.ToUpper()) || 
+                                   q.County.ToUpper().StartsWith(search.ToUpper()) select q);
+                return _cities.ToList();
             }
             catch (Exception ex)
             {
@@ -126,20 +126,20 @@ namespace Library.Controls
             return null;
         }
 
-        private IList<Comune> LoadComuni(string denominazione, string codiceCatastale)
+        private IList<City> LoadCities(string description, string code)
         {
             try
             {
-                var _comuni = (from q in comuni select q);
-                if (denominazione != null && denominazione.Length > 0)
-                    _comuni = (from q in _comuni
-                               where q.Denominazione.ToUpper().StartsWith(denominazione.ToUpper())
+                var _cities = (from q in cities select q);
+                if (description != null && description.Length > 0)
+                    _cities = (from q in _cities
+                               where q.Description.ToUpper().StartsWith(description.ToUpper())
                                select q);
-                if (codiceCatastale != null && codiceCatastale.Length >=4)
-                    _comuni = (from q in _comuni
-                               where q.CodiceCatastale.ToUpper().StartsWith(codiceCatastale.ToUpper())
+                if (code != null && code.Length >=4)
+                    _cities = (from q in _cities
+                               where q.Code.ToUpper().StartsWith(code.ToUpper())
                                select q);
-                return _comuni.ToList();
+                return _cities.ToList();
             }
             catch (Exception ex)
             {
@@ -149,20 +149,20 @@ namespace Library.Controls
         }
 
 
-        public IList<Comune> ReadComuni()
+        public IList<City> ReadCities()
         {
             try
             {
-                var contents = UtilityWeb.GetResources(this, "Comuni.csv", "Resources", "ES");
-                var comuni = (from q in contents
-                              select new Comune()
+                var contents = UtilityWeb.GetResources(this, "Countries.csv", "Resources", "ES");
+                var cities = (from q in contents
+                              select new City()
                               {
-                                  CodiceCatastale = q.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries)[0],
-                                  Provincia = q.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries)[1],
-                                  Denominazione = q.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries)[2].Replace("\r\n", "")
+                                  Code = q.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries)[0],
+                                  County = q.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries)[1],
+                                  Description = q.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries)[2].Replace("\r\n", "")
                               }).ToList();
                
-                return comuni;
+                return cities;
             }
             catch (Exception ex)
             {
@@ -184,46 +184,46 @@ namespace Library.Controls
             }
         }
 
-        public class Comune
+        public class City
         {
             private string separator = " - ";
 
-            private string denominazione = null;
-            public string Denominazione
+            private string description = null;
+            public string Description
             {
                 get
                 {
-                    return denominazione;
+                    return description;
                 }
                 set
                 {
-                    denominazione = value;
+                    description = value;
                 }
             }
 
-            private string denominazioneCodiceCatastale = null;
-            public string DenominazioneCodiceCatastale
+            private string codeDescription = null;
+            public string CodeDescription
             {
                 get
                 {
-                    denominazioneCodiceCatastale = GetDenominazioneCodiceCatastale();
-                    return denominazioneCodiceCatastale;
+                    codeDescription = GetCodeDescription();
+                    return codeDescription;
                 }
                 set
                 {
-                    denominazioneCodiceCatastale = value;
-                    SetDenominazioneCodiceCatastale(denominazioneCodiceCatastale);
+                    codeDescription = value;
+                    SetCodeDescription(codeDescription);
                 }
             }
 
-            private void SetDenominazioneCodiceCatastale(string denominazioneCodiceCatastale)
+            private void SetCodeDescription(string codeDescription)
             {
                 try
                 {
-                    if (denominazioneCodiceCatastale != null && denominazioneCodiceCatastale.Length > 0)
+                    if (codeDescription != null && codeDescription.Length > 0)
                     {
-                        denominazione = GetDenominazione(denominazioneCodiceCatastale);
-                        codiceCatastale = GetCodiceCatastale(denominazioneCodiceCatastale);
+                        description = GetDescription(codeDescription);
+                        code = GetCode(codeDescription);
                     }
                 }
                 catch (Exception ex)
@@ -232,12 +232,12 @@ namespace Library.Controls
                 }
             }
 
-            private string GetDenominazioneCodiceCatastale()
+            private string GetCodeDescription()
             {
                 try
                 {
-                    var denominazioneCodiceCatastale = denominazione + " (" + codiceCatastale + ")";
-                    return denominazioneCodiceCatastale;
+                    var codeDescription = description + " (" + code + ")";
+                    return codeDescription;
                 }
                 catch (Exception ex)
                 {
@@ -246,15 +246,15 @@ namespace Library.Controls
                 return null;
             }
 
-            public static string GetDenominazione(string denominazioneCodiceCatastale)
+            public static string GetDescription(string codeDescription)
             {
                 try
                 {
-                    var splits = denominazioneCodiceCatastale.Split(new string[] { "(" }, StringSplitOptions.RemoveEmptyEntries);
+                    var splits = codeDescription.Split(new string[] { "(" }, StringSplitOptions.RemoveEmptyEntries);
                     if (splits.Length >= 1)
                     {
-                        var denominazione = splits[0].Trim();
-                        return denominazione;
+                        var description = splits[0].Trim();
+                        return description;
                     }
                 }
                 catch (Exception ex)
@@ -264,15 +264,15 @@ namespace Library.Controls
                 return null;
             }
 
-            public static string GetCodiceCatastale(string denominazioneCodiceCatastale)
+            public static string GetCode(string codeDescription)
             {
                 try
                 {
-                    var splits = denominazioneCodiceCatastale.Split(new string[] { "(" }, StringSplitOptions.RemoveEmptyEntries);
+                    var splits = codeDescription.Split(new string[] { "(" }, StringSplitOptions.RemoveEmptyEntries);
                     if (splits.Length >= 2)
                     {
-                        var codiceCatastale = splits[1].Replace(")", "").Trim();
-                        return codiceCatastale;
+                        var code = splits[1].Replace(")", "").Trim();
+                        return code;
                     }
                 }
                 catch (Exception ex)
@@ -282,38 +282,38 @@ namespace Library.Controls
                 return null;
             }
 
-            private string codiceCatastale = null;
-            public string CodiceCatastale
+            private string code = null;
+            public string Code
             {
                 get
                 {
-                    return codiceCatastale;
+                    return code;
                 }
                 set
                 {
-                    codiceCatastale = value;
+                    code = value;
                 }
             }
 
-            private string provincia = null;
-            public string Provincia
+            private string county = null;
+            public string County
             {
                 get
                 {
-                    return provincia;
+                    return county;
                 }
                 set
                 {
-                    provincia = value;
+                    county = value;
                 }
             }
 
-            public Comune()
+            public City()
             {
 
             }
 
-            public Comune(string text)
+            public City(string text)
             {
                 try
                 {
@@ -322,11 +322,11 @@ namespace Library.Controls
                         var splits = text.Split(new string[] { separator }, StringSplitOptions.RemoveEmptyEntries);
                         if (splits.Length >= 1)
                         {
-                            denominazioneCodiceCatastale = splits[0];
-                            SetDenominazioneCodiceCatastale(denominazioneCodiceCatastale);
+                            codeDescription = splits[0];
+                            SetCodeDescription(codeDescription);
                         }
                         if (splits.Length >= 2)
-                            provincia = splits[1];
+                            county = splits[1];
                     }
                 }
                 catch (Exception ex)
@@ -335,13 +335,13 @@ namespace Library.Controls
                 }
             }
 
-            public Comune(string denominazioneCodiceCatastale, string provincia)
+            public City(string codeDescription, string county)
             {
                 try
                 {
-                    this.denominazioneCodiceCatastale = denominazioneCodiceCatastale;
-                    this.provincia = provincia;
-                    SetDenominazioneCodiceCatastale(denominazioneCodiceCatastale);
+                    this.codeDescription = codeDescription;
+                    this.county = county;
+                    SetCodeDescription(codeDescription);
 
                 }
                 catch (Exception ex)
@@ -350,13 +350,13 @@ namespace Library.Controls
                 }
             }
 
-            public Comune(string denominazione, string codiceCatastale, string provincia)
+            public City(string description, string code, string county)
             {
                 try
                 {
-                    this.denominazione = denominazione;
-                    this.codiceCatastale = codiceCatastale;
-                    this.provincia = provincia;
+                    this.description = description;
+                    this.code = code;
+                    this.county = county;
                 }
                 catch (Exception ex)
                 {
@@ -368,8 +368,8 @@ namespace Library.Controls
             {
                 try
                 {
-                    var denominazioneCodiceCatastale = GetDenominazioneCodiceCatastale();
-                    var text = denominazioneCodiceCatastale + separator + provincia;
+                    var codeDescription = GetCodeDescription();
+                    var text = codeDescription + separator + county;
                     return text;
                 }
                 catch (Exception ex)
@@ -494,7 +494,7 @@ namespace Library.Controls
             }
         }
 
-        public delegate void ConfirmlHanlder(Comune value);
+        public delegate void ConfirmlHanlder(City value);
         public event ConfirmlHanlder Confirm;
         
         private void ConfirmClose()
@@ -504,7 +504,7 @@ namespace Library.Controls
                 var item = listView.SelectedItem;
                 if (item != null)
                 {
-                    var value = (Comune)item.Tag;
+                    var value = (City)item.Tag;
                     if (Confirm != null)
                         Confirm(value);
 

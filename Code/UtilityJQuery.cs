@@ -130,11 +130,11 @@ namespace Library.Code
             return null;
         }
 
-        public string GetOra(Control editHour, Control editMinutes, string mask)
+        public string GetTime(Control editHour, Control editMinutes, string mask)
         {
             try
             {
-                var script = GetJScript("Ora.js");
+                var script = GetJScript("Time.js");
                 var vwgHourId = GetVWGId(editHour);
                 var vwgMinuteId = GetVWGId(editMinutes);
                 script = script.Replace("$vwgHourId$", vwgHourId);
@@ -149,11 +149,11 @@ namespace Library.Code
             return null;
         }
 
-        public string GetData(Control editDay, Control editMonth, Control editYear, string mask)
+        public string GetDate(Control editDay, Control editMonth, Control editYear, string mask)
         {
             try
             {
-                var script = GetJScript("Data.js");
+                var script = GetJScript("Date.js");
                 var vwgDayId = GetVWGId(editDay);
                 var vwgMonthId = GetVWGId(editMonth);
                 var vwgYearId = GetVWGId(editYear);
@@ -171,15 +171,15 @@ namespace Library.Code
         }
 
 
-        public string GetComuneProvincia(Control editComune, Control editProvincia, string mask)
+        public string GetCountries(Control editCity, Control editCounty, string mask)
         {
             try
             {
-                var script = GetJScript("ComuneProvincia.js");
-                var vwgComuneId = GetVWGId(editComune);
-                var vwgProvinciaId = GetVWGId(editProvincia);
-                script = script.Replace("$vwgComuneId$", vwgComuneId);
-                script = script.Replace("$vwgProvinciaId$", vwgProvinciaId);
+                var script = GetJScript("Countries.js");
+                var vwgCityId = GetVWGId(editCity);
+                var vwgCountyId = GetVWGId(editCounty);
+                script = script.Replace("$vwgCityId$", vwgCityId);
+                script = script.Replace("$vwgCountyId$", vwgCountyId);
                 script = script.Replace("$mask$", mask);
                 return script;
             }
@@ -265,15 +265,6 @@ namespace Library.Code
         {
             try
             {
-                //var assembly = this.GetType().Assembly;
-                //var assemblyName=assembly.GetName();
-                //string pathResourceJS = assemblyName.Name.Replace("ES.", "") + ".JS.";
-                //string pathFileJS = pathResourceJS + fileJS;
-                //var stream = assembly.GetManifestResourceStream(pathFileJS);
-                //var reader = new System.IO.StreamReader(stream);
-                //var jscript = reader.ReadToEnd();
-                //reader.Close();
-                //return jscript;
                 var jscript = UtilityWeb.GetResource(this, fileJS, "JS", "ES");
                 return jscript;
             }

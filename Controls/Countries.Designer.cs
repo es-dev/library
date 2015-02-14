@@ -3,7 +3,7 @@ using Gizmox.WebGUI.Common;
 
 namespace Library.Controls
 {
-    partial class ComuniProvince
+    partial class Countries
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@ namespace Library.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ComuniProvince));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Countries));
             this.btnConfirm = new Gizmox.WebGUI.Forms.Button();
             this.btnCancel = new Gizmox.WebGUI.Forms.Button();
             this.listView = new Gizmox.WebGUI.Forms.ListView();
@@ -165,7 +165,7 @@ namespace Library.Controls
             this.Controls.Add(this.btnConfirm);
             this.Size = new System.Drawing.Size(652, 393);
             this.Text = "EditInterval";
-            this.Load += new System.EventHandler(this.ComuniProvince_Load);
+            this.Load += new System.EventHandler(this.Countries_Load);
             this.ResumeLayout(false);
 
         }

@@ -269,11 +269,11 @@ namespace Library.Code.Enum
         }
 
        
-        public StateDescriptionImage(TypeState stato, string description, string image = null) : base(description, image)
+        public StateDescriptionImage(TypeState state, string description, string image = null) : base(description, image)
         {
             try
             {
-                this.state = stato;
+                this.state = state;
             }
             catch (Exception ex)
             {

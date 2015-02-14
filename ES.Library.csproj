@@ -291,11 +291,11 @@
     <Compile Include="Controls\DateCalendar.Designer.cs">
       <DependentUpon>DateCalendar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ComuniProvince.cs">
+    <Compile Include="Controls\Countries.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\ComuniProvince.Designer.cs">
-      <DependentUpon>ComuniProvince.cs</DependentUpon>
+    <Compile Include="Controls\Countries.Designer.cs">
+      <DependentUpon>Countries.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\Intervals.cs">
       <SubType>UserControl</SubType>
@@ -351,11 +351,11 @@
     <Compile Include="Controls\EditControl.Designer.cs">
       <DependentUpon>EditControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\TextComuneProvincia.cs">
+    <Compile Include="Controls\TextCountry.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\TextComuneProvincia.Designer.cs">
-      <DependentUpon>TextComuneProvincia.cs</DependentUpon>
+    <Compile Include="Controls\TextCountry.Designer.cs">
+      <DependentUpon>TextCountry.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\TextDropDown.cs">
       <SubType>UserControl</SubType>
@@ -369,11 +369,11 @@
     <Compile Include="Controls\TextCombo.Designer.cs">
       <DependentUpon>TextCombo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\TextStato.cs">
+    <Compile Include="Controls\TextState.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\TextStato.Designer.cs">
-      <DependentUpon>TextStato.cs</DependentUpon>
+    <Compile Include="Controls\TextState.Designer.cs">
+      <DependentUpon>TextState.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\TimeIntervals.cs">
       <SubType>UserControl</SubType>
@@ -406,23 +406,23 @@
     <Compile Include="Template\Controls\TemplateEditCombo.designer.cs">
       <DependentUpon>TemplateEditCombo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Template\Controls\TemplateEditComuneProvincia.cs">
+    <Compile Include="Template\Controls\TemplateEditCountry.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Template\Controls\TemplateEditComuneProvincia.designer.cs">
-      <DependentUpon>TemplateEditComuneProvincia.cs</DependentUpon>
+    <Compile Include="Template\Controls\TemplateEditCountry.designer.cs">
+      <DependentUpon>TemplateEditCountry.cs</DependentUpon>
     </Compile>
-    <Compile Include="Template\Controls\TemplateEditData.cs">
+    <Compile Include="Template\Controls\TemplateEditDate.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Template\Controls\TemplateEditData.designer.cs">
-      <DependentUpon>TemplateEditData.cs</DependentUpon>
+    <Compile Include="Template\Controls\TemplateEditDate.designer.cs">
+      <DependentUpon>TemplateEditDate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Template\Controls\TemplateEditDataOra.cs">
+    <Compile Include="Template\Controls\TemplateEditDateTime.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Template\Controls\TemplateEditDataOra.designer.cs">
-      <DependentUpon>TemplateEditDataOra.cs</DependentUpon>
+    <Compile Include="Template\Controls\TemplateEditDateTime.designer.cs">
+      <DependentUpon>TemplateEditDateTime.cs</DependentUpon>
     </Compile>
     <Compile Include="Template\Controls\TemplateEditDropDown.cs">
       <SubType>UserControl</SubType>
@@ -448,11 +448,11 @@
     <Compile Include="Template\Controls\TemplateEditNumeric.Designer.cs">
       <DependentUpon>TemplateEditNumeric.cs</DependentUpon>
     </Compile>
-    <Compile Include="Template\Controls\TemplateEditOra.cs">
+    <Compile Include="Template\Controls\TemplateEditTime.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Template\Controls\TemplateEditOra.Designer.cs">
-      <DependentUpon>TemplateEditOra.cs</DependentUpon>
+    <Compile Include="Template\Controls\TemplateEditTime.Designer.cs">
+      <DependentUpon>TemplateEditTime.cs</DependentUpon>
     </Compile>
     <Compile Include="Template\Controls\TemplateEditPartitaIva.cs">
       <SubType>UserControl</SubType>
@@ -466,11 +466,11 @@
     <Compile Include="Template\Controls\TemplateEditPassword.Designer.cs">
       <DependentUpon>TemplateEditPassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="Template\Controls\TemplateEditStato.cs">
+    <Compile Include="Template\Controls\TemplateEditState.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Template\Controls\TemplateEditStato.Designer.cs">
-      <DependentUpon>TemplateEditStato.cs</DependentUpon>
+    <Compile Include="Template\Controls\TemplateEditState.Designer.cs">
+      <DependentUpon>TemplateEditState.cs</DependentUpon>
     </Compile>
     <Compile Include="Template\Controls\TemplateEditText.cs">
       <SubType>UserControl</SubType>
@@ -537,8 +537,8 @@
     <EmbeddedResource Include="Controls\DateCalendar.resx">
       <DependentUpon>DateCalendar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ComuniProvince.resx">
-      <DependentUpon>ComuniProvince.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\Countries.resx">
+      <DependentUpon>Countries.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Intervals.resx">
       <DependentUpon>Intervals.cs</DependentUpon>
@@ -565,8 +565,8 @@
     <EmbeddedResource Include="Controls\EditControl.resx">
       <DependentUpon>EditControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\TextComuneProvincia.resx">
-      <DependentUpon>TextComuneProvincia.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\TextCountry.resx">
+      <DependentUpon>TextCountry.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\TextDropDown.resx">
       <DependentUpon>TextDropDown.cs</DependentUpon>
@@ -574,8 +574,8 @@
     <EmbeddedResource Include="Controls\TextCombo.resx">
       <DependentUpon>TextCombo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\TextStato.resx">
-      <DependentUpon>TextStato.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\TextState.resx">
+      <DependentUpon>TextState.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\TimeIntervals.resx">
       <DependentUpon>TimeIntervals.cs</DependentUpon>
@@ -595,14 +595,14 @@
     <EmbeddedResource Include="Template\Controls\TemplateEditCombo.resx">
       <DependentUpon>TemplateEditCombo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Template\Controls\TemplateEditComuneProvincia.resx">
-      <DependentUpon>TemplateEditComuneProvincia.cs</DependentUpon>
+    <EmbeddedResource Include="Template\Controls\TemplateEditCountry.resx">
+      <DependentUpon>TemplateEditCountry.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Template\Controls\TemplateEditData.resx">
-      <DependentUpon>TemplateEditData.cs</DependentUpon>
+    <EmbeddedResource Include="Template\Controls\TemplateEditDate.resx">
+      <DependentUpon>TemplateEditDate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Template\Controls\TemplateEditDataOra.resx">
-      <DependentUpon>TemplateEditDataOra.cs</DependentUpon>
+    <EmbeddedResource Include="Template\Controls\TemplateEditDateTime.resx">
+      <DependentUpon>TemplateEditDateTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditDropDown.resx">
       <DependentUpon>TemplateEditDropDown.cs</DependentUpon>
@@ -616,8 +616,8 @@
     <EmbeddedResource Include="Template\Controls\TemplateEditNumeric.resx">
       <DependentUpon>TemplateEditNumeric.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Template\Controls\TemplateEditOra.resx">
-      <DependentUpon>TemplateEditOra.cs</DependentUpon>
+    <EmbeddedResource Include="Template\Controls\TemplateEditTime.resx">
+      <DependentUpon>TemplateEditTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditPartitaIva.resx">
       <DependentUpon>TemplateEditPartitaIva.cs</DependentUpon>
@@ -625,8 +625,8 @@
     <EmbeddedResource Include="Template\Controls\TemplateEditPassword.resx">
       <DependentUpon>TemplateEditPassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Template\Controls\TemplateEditStato.resx">
-      <DependentUpon>TemplateEditStato.cs</DependentUpon>
+    <EmbeddedResource Include="Template\Controls\TemplateEditState.resx">
+      <DependentUpon>TemplateEditState.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditText.resx">
       <DependentUpon>TemplateEditText.cs</DependentUpon>
@@ -662,13 +662,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="JS\Data.js" />
+    <EmbeddedResource Include="JS\Date.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="JS\Mask.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="JS\Ora.js" />
+    <EmbeddedResource Include="JS\Time.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="JS\PartitaIva.js" />
@@ -676,7 +676,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <EmbeddedResource Include="Resources\Comuni.csv" />
+    <EmbeddedResource Include="Resources\Countries.csv" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="JS\Numeric.js" />
@@ -688,7 +688,7 @@
     <EmbeddedResource Include="JS\Decimal.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="JS\ComuneProvincia.js" />
+    <EmbeddedResource Include="JS\Countries.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Condition="" Project="$(MSBuildExtensionsPath)\Gizmox\v12.0\Gizmox.VWGLibrary.targets" />
