@@ -9,11 +9,11 @@ namespace Library.Code
     public class UtilityAsync
     {
 
-        public static void Execute(Action action)
+        public static void Execute(Action action, int interval = 250)
         {
             try
             {
-                var asyncExecute = new AsyncExecute();
+                var asyncExecute = new AsyncExecute(interval);
                 asyncExecute.Start(action);
 
             }
@@ -26,7 +26,7 @@ namespace Library.Code
         private class AsyncExecute
         {
             Gizmox.WebGUI.Forms.Timer timer = null;
-            public AsyncExecute(int interval = 250)
+            public AsyncExecute(int interval)
             {
                 try
                 {
