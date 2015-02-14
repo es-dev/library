@@ -299,7 +299,7 @@ namespace Library.Template.MVVM
             return false;
         }
 
-        private void SetEditing(bool editing, bool deleting)
+        public virtual void SetEditing(bool editing, bool deleting)
         {
             try
             {
