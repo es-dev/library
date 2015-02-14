@@ -47,6 +47,40 @@ namespace Library.Code.Enum
         Cap
     }
 
+    public class UtilityEnum
+    {
+        public static IList<string> GetNames<TEnum>()
+        {
+            try
+            {
+                string[] names = System.Enum.GetNames(typeof(TEnum));
+                var _names = (from q in names where q != "None" select q).ToList();
+                return _names;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        public static TEnum GetValue<TEnum>(string name)
+        {
+            try
+            {
+                var value = (TEnum)System.Enum.Parse(typeof(TEnum), name);
+                return value;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return default(TEnum);
+        }
+
+    }
+
+
     public class StatoDescrizione
     {
         private string separator = "{;}";
@@ -88,11 +122,6 @@ namespace Library.Code.Enum
             {
                 UtilityError.Write(ex);
             }
-        }
-
-        public class UtilityEnum
-        {
-
         }
 
         public StatoDescrizione(string value)

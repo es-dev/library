@@ -33,6 +33,7 @@ namespace Library.Template.MVVM
         {
             this.editCount = new Gizmox.WebGUI.Forms.Label();
             this.imgCheck = new Gizmox.WebGUI.Forms.PictureBox();
+            this.toolTip = new Gizmox.WebGUI.Forms.ToolTip();
             this.container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgCheck)).BeginInit();
             this.SuspendLayout();
@@ -49,7 +50,7 @@ namespace Library.Template.MVVM
             this.editCount.BackColor = System.Drawing.Color.ForestGreen;
             this.editCount.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editCount.ForeColor = System.Drawing.Color.White;
-            this.editCount.Location = new System.Drawing.Point(349, 0);
+            this.editCount.Location = new System.Drawing.Point(351, 0);
             this.editCount.Name = "editCount";
             this.editCount.Size = new System.Drawing.Size(43, 20);
             this.editCount.TabIndex = 0;
@@ -83,6 +84,7 @@ namespace Library.Template.MVVM
 
         private Label editCount;
         private PictureBox imgCheck;
+        public ToolTip toolTip;
 
 
     }
