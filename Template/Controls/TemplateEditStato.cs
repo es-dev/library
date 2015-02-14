@@ -57,9 +57,9 @@ namespace Library.Template.Controls
             {
                 if (value != null && value.Length > 0)
                 {
-                    statoDescrizione = new StatoDescrizione(value);
-                    editControl.Value = statoDescrizione.Descrizione;
-                    editControl.Stato = statoDescrizione.Stato;
+                    statoDescrizione = new StateDescriptionImage(value);
+                    editControl.Value = statoDescrizione.Description;
+                    editControl.Stato = statoDescrizione.State;
 
                 }
             }
@@ -75,7 +75,7 @@ namespace Library.Template.Controls
             {
                 string descrizione = (string)editControl.Value;
                 var stato = editControl.Stato;
-                statoDescrizione = new StatoDescrizione(stato, descrizione);
+                statoDescrizione = new StateDescriptionImage(stato, descrizione);
                 var value = statoDescrizione.ToString();
                 return value;
             }
@@ -86,8 +86,8 @@ namespace Library.Template.Controls
             return null;
         }
 
-        private StatoDescrizione statoDescrizione = null;
-        public StatoDescrizione StatoDescrizione
+        private StateDescriptionImage statoDescrizione = null;
+        public StateDescriptionImage StatoDescrizione
         {
             get
             {

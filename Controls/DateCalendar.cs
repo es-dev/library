@@ -170,7 +170,7 @@ namespace Library.Controls
                     string day = editDay.Text.Replace(mask,null);
                     string month = editMonth.Text.Replace(mask, null);
                     string year = editYear.Text.Replace(mask+mask, null);
-                    var value = UtilityValidation.GetDate(day, month, year);
+                    var value = UtilityValidation.GetData(day, month, year);
                     return value;
                 }
             }

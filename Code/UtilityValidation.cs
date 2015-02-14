@@ -34,7 +34,7 @@ namespace Library.Code
             return false;
         }
 
-        public static DateTime? GetDate(string day, string month, string year)
+        public static DateTime? GetData(string day, string month, string year)
         {
             try
             {
@@ -237,6 +237,53 @@ namespace Library.Code
             return 0;
         }
 
-       
+        public static string GetDataND(DateTime? data)
+        {
+            try
+            {
+                string _data = "N/D";
+                if(data!=null)
+                    _data = data.Value.ToString("dd/MM/yyyy");
+
+                return _data;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        public static DateTime GetData(DateTime? data)
+        {
+            try
+            {
+                var _data = DateTime.MinValue;
+                if (data != null)
+                    _data = data.Value;
+
+                return _data;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return DateTime.MinValue;
+        }
+
+        public static string GetEuro(decimal? value)
+        {
+            try
+            {
+                var _value = GetDecimal(value);
+                var euro = _value.ToString("0.00") + "€";
+                return euro;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
     }
 }

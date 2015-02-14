@@ -248,8 +248,8 @@ namespace Library.Controls
             }
         }
 
-        private TypeStato stato = TypeStato.None;
-        public TypeStato Stato
+        private TypeState stato = TypeState.None;
+        public TypeState Stato
         {
             get
             {
@@ -262,26 +262,26 @@ namespace Library.Controls
             }
         }
 
-        private void SetStato(TypeStato stato)
+        private void SetStato(TypeState stato)
         {
             try
             {
                 editText.ForeColor = Color.Black;
-                if (stato == TypeStato.None)
+                if (stato == TypeState.None)
                 {
                     imgStato.Image = "";
                 }
-                else if (stato == TypeStato.Normal)
+                else if (stato == TypeState.Normal)
                 {
                     imgStato.Image = "Images.messageConfirm.png";
                     editText.ForeColor = Color.Blue;
                 }
-                else if (stato == TypeStato.Warning)
+                else if (stato == TypeState.Warning)
                 {
                     imgStato.Image = "Images.messageQuestion.png";
                     editText.ForeColor = Color.OrangeRed;
                 }
-                else if (stato == TypeStato.Critical)
+                else if (stato == TypeState.Critical)
                 {
                     imgStato.Image = "Images.messageAlert.png";
                     editText.ForeColor = Color.Red;

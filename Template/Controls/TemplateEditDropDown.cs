@@ -129,8 +129,11 @@ namespace Library.Template.Controls
         {
             try
             {
-                var _displayValues = (from q in displayValues select new DisplayValue { Value = q.Value, Display = q.Display }.ToString()).ToList();
-                editControl.Items = _displayValues;
+                if (displayValues != null)
+                {
+                    var _displayValues = (from q in displayValues select new DisplayValue { Value = q.Value, Display = q.Display }.ToString()).ToList();
+                    editControl.Items = _displayValues;
+                }
             }
             catch (Exception ex)
             {

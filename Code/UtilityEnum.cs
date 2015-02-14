@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Library.Code.Enum
 {
-    public enum TypeStato
+    public enum TypeState
     {
         None,
         Critical,
@@ -162,43 +162,54 @@ namespace Library.Code.Enum
         }
     }
 
-
-    public class StatoDescrizione
+    public class DescriptionImage
     {
         private string separator = "{;}";
-
-        private TypeStato stato = TypeStato.None;
-        public TypeStato Stato
+        public string Separator
         {
             get
             {
-                return stato;
-            }
-            set
-            {
-                stato = value;
+                return separator;
             }
         }
-
-        private string descrizione = null;
-        public string Descrizione
+       
+        private string description = null;
+        public string Description
         {
             get
             {
-                return descrizione;
+                return description;
             }
             set
             {
-                descrizione = value;
+                description = value;
             }
         }
 
-        public StatoDescrizione(TypeStato stato, string descrizione)
+        private string image = null;
+        public string Image
+        {
+            get
+            {
+                return image;
+            }
+            set
+            {
+                image = value;
+            }
+        }
+
+        public DescriptionImage()
+        {
+            
+        }
+
+        public DescriptionImage(string description, string image)
         {
             try
             {
-                this.stato = stato;
-                this.descrizione = descrizione;
+                this.description = description;
+                this.image = image;
             }
             catch (Exception ex)
             {
@@ -206,17 +217,18 @@ namespace Library.Code.Enum
             }
         }
 
-        public StatoDescrizione(string value)
+        public DescriptionImage(string value)
         {
             try
             {
-                var splits = value.Split(new string[] { separator }, StringSplitOptions.RemoveEmptyEntries);
-                if (splits.Length >= 2)
+                if (value != null)
                 {
-                    string _stato = splits[0].Trim();
-                    string descrizione = splits[1].Trim();
-                    this.stato = UtilityEnum.GetValue<TypeStato>(_stato);
-                    this.descrizione = descrizione;
+                    var splits = value.Split(new string[] { separator }, StringSplitOptions.RemoveEmptyEntries);
+                    if (splits.Length >= 1)
+                        this.description = splits[0].Trim();
+                    if (splits.Length >= 2)
+                        this.image = splits[1].Trim();
+
                 }
             }
             catch (Exception ex)
@@ -229,7 +241,79 @@ namespace Library.Code.Enum
         {
             try
             {
-                var value = stato.ToString() + separator + descrizione;
+                var value = description  + separator + image;
+                return value;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+    }
+
+
+    public class StateDescriptionImage : DescriptionImage
+    {
+        private TypeState state = TypeState.None;
+        public TypeState State
+        {
+            get
+            {
+                return state;
+            }
+            set
+            {
+                state = value;
+            }
+        }
+
+       
+        public StateDescriptionImage(TypeState stato, string description, string image = null) : base(description, image)
+        {
+            try
+            {
+                this.state = stato;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        public StateDescriptionImage(string value) 
+        {
+            try
+            {
+                if (value != null)
+                {
+                    var splits = value.Split(new string[] { this.Separator }, StringSplitOptions.RemoveEmptyEntries);
+                    if (splits.Length >= 1)
+                    {
+                        string _state = splits[0].Trim();
+                        this.state = UtilityEnum.GetValue<TypeState>(_state);
+                    }
+                    if (splits.Length >= 2)
+                        this.Description = splits[1].Trim();
+                    if (splits.Length >= 3)
+                        this.Image = splits[2].Trim();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        public new string ToString()
+        {
+            try
+            {
+                var value = state.ToString() + this.Separator + this.Description;
+                if (this.Image != null)
+                    value += this.Separator + this.Image;
+
                 return value;
             }
             catch (Exception ex)
