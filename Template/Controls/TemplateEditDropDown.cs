@@ -15,6 +15,7 @@ using Library.Code;
 using Gizmox.WebGUI.Common.Interfaces;
 using Library.Controls;
 using System.Collections;
+using Library.Code.Enum;
 
 
 #endregion
@@ -137,52 +138,6 @@ namespace Library.Template.Controls
             }
         }
 
-        public class DisplayValue 
-        {
-            private string _value = null;
-            public string Value
-            {
-                get
-                {
-                    return _value;
-                }
-                set
-                {
-                    _value = value;
-                }
-            }
-
-            private string display = null;
-            public string Display
-            {
-                get
-                {
-                    return display;
-                }
-                set
-                {
-                    display = value;
-                }
-            }
-
-            public DisplayValue()
-            {
-
-            }
-
-            public override string ToString()
-            {
-                try
-                {
-                    var displayValue = Value + " - " + display;
-                    return displayValue;
-                }
-                catch (Exception ex)
-                {
-                    UtilityError.Write(ex);
-                }
-                return null;
-            }
-        }
+       
     }
 }

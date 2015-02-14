@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,13 +48,30 @@ namespace Library.Code.Enum
         Cap
     }
 
-    public class UtilityEnum
+    public static class UtilityEnum
     {
+        public static string GetDescription<TEnum>(this string name)
+        {
+            try
+            {
+                var value = GetValue<TEnum>(name);
+                var field = value.GetType().GetField(value.ToString());
+                var attribute = (DescriptionAttribute)Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute));
+                var description = (attribute == null ? value.ToString() : attribute.Description);
+                return description;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
         public static IList<string> GetNames<TEnum>()
         {
             try
             {
-                string[] names = System.Enum.GetNames(typeof(TEnum));
+                var names = System.Enum.GetNames(typeof(TEnum));
                 var _names = (from q in names where q != "None" select q).ToList();
                 return _names;
             }
@@ -78,6 +96,70 @@ namespace Library.Code.Enum
             return default(TEnum);
         }
 
+                
+        public static IList<DisplayValue> GetDisplayValues<TEnum>()
+        {
+            try
+            {
+                var names = GetNames<TEnum>();
+                var displayValues = (from q in names select new DisplayValue { Value = q, Display = GetDescription<TEnum>(q) }).ToList();
+                return displayValues;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+    }
+
+
+    public class DisplayValue
+    {
+        private string _value = null;
+        public string Value
+        {
+            get
+            {
+                return _value;
+            }
+            set
+            {
+                _value = value;
+            }
+        }
+
+        private string display = null;
+        public string Display
+        {
+            get
+            {
+                return display;
+            }
+            set
+            {
+                display = value;
+            }
+        }
+
+        public DisplayValue()
+        {
+
+        }
+
+        public override string ToString()
+        {
+            try
+            {
+                var displayValue = display;
+                return displayValue;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
     }
 
 
@@ -133,7 +215,7 @@ namespace Library.Code.Enum
                 {
                     string _stato = splits[0].Trim();
                     string descrizione = splits[1].Trim();
-                    this.stato = (TypeStato)System.Enum.Parse(typeof(TypeStato), _stato);
+                    this.stato = UtilityEnum.GetValue<TypeStato>(_stato);
                     this.descrizione = descrizione;
                 }
             }
