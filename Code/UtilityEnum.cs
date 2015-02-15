@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+//using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,7 +51,7 @@ namespace Library.Code.Enum
 
     public static class UtilityEnum
     {
-        public static string GetDescription<TEnum>(this string name)
+        public static string GetDescription<TEnum>(string name)
         {
             try
             {
