@@ -9,6 +9,8 @@ namespace Library.Code
 {
     public class UtilityReport
     {
+        //todo: prevedere paginazione dei risultati + implementare reports in XLS
+
         public static bool Create(string pathTemplateWord, string pathReportPDF, IList<ReportData> reportsData)
         {
             try
@@ -39,6 +41,19 @@ namespace Library.Code
             public ReportData()
             {
 
+            }
+
+            public ReportData(string name, string value)
+            {
+                try
+                {
+                    this.Name = name;
+                    this.Value = value;
+                }
+                catch (Exception ex)
+                {
+                    UtilityError.Write(ex);
+                }
             }
         }
 
