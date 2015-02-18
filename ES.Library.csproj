@@ -33,6 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Aspose.Pdf.Kit, Version=5.3.0.0, Culture=neutral, PublicKeyToken=a0e77ab62002a21c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ExternalReferences\Aspose.Pdf.Kit.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Words, Version=9.6.0.0, Culture=neutral, PublicKeyToken=b26312fbe84e049d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ExternalReferences\Aspose.Words.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ES.Cantieri\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
@@ -177,6 +185,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Gizmox\Visual WebGUI\Sources 4.5.1\Gizmox.WebGUI.Assemblies\bin\4.5.1\Itenso.Sys.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.2.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ExternalReferences\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Lucene.Net, Version=2.9.2.2, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Gizmox\Visual WebGUI\Sources 4.5.1\Gizmox.WebGUI.Assemblies\bin\4.5.1\Lucene.Net.dll</HintPath>
@@ -209,6 +221,14 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Gizmox\Visual WebGUI\Sources 4.5.1\Gizmox.WebGUI.Assemblies\bin\4.5.1\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.License, Version=1.2.1.4, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ExternalReferences\Spire.License.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.XLS, Version=6.5.0.4, Culture=neutral, PublicKeyToken=53d8d2945244f39b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ExternalReferences\Spire.XLS.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Private>True</Private>
@@ -250,6 +270,7 @@
     <Compile Include="Code\UtilityJQuery.cs" />
     <Compile Include="Code\UtilityMessage.cs" />
     <Compile Include="Code\UtilityPOCO.cs" />
+    <Compile Include="Code\UtilityReport.cs" />
     <Compile Include="Code\UtilityValidation.cs" />
     <Compile Include="Code\UtilityWeb.cs" />
     <Compile Include="Controls\ButtonSeparatorH.cs">
@@ -686,6 +707,13 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="JS\Countries.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ExternalReferences\Aspose.Pdf.Kit.dll" />
+    <Content Include="ExternalReferences\Aspose.Words.dll" />
+    <Content Include="ExternalReferences\itextsharp.dll" />
+    <Content Include="ExternalReferences\Spire.License.dll" />
+    <Content Include="ExternalReferences\Spire.XLS.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Condition="" Project="$(MSBuildExtensionsPath)\Gizmox\v12.0\Gizmox.VWGLibrary.targets" />
