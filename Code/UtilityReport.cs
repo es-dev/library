@@ -5,25 +5,112 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
+using System.IO;
 
 namespace Library.Code
 {
     public class UtilityReport
     {
 
-        public static bool Create(string pathTemplateWord, string pathReportPDF, IList<Report> reports)
+        public static bool Create(string pathTemplate, string pathReport, IList<Report> reports)
+        {
+            try
+            {
+                var performed = false;
+                var ext = Path.GetExtension(pathTemplate).ToUpper();
+                if (ext == "DOC")
+                    performed = CreateWord(pathTemplate, pathReport, reports);
+                else if (ext == "XLS")
+                    performed = CreateExcel(pathTemplate, pathReport, reports);
+                
+                return performed;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
+        }
+
+        private static bool CreateExcel(string pathTemplate, string pathReport, IList<Report> reports)
+        {
+            try
+            {
+                var workbook = new Spire.Xls.Workbook();
+                workbook.Worksheets.Clear();
+                foreach (var report in reports)
+                {
+                    var workbookReport = CreateWorkbook(pathTemplate, report);
+                    var worksheets = workbookReport.Worksheets;
+                    foreach(var worksheet in worksheets)
+                        workbook.Worksheets.Add(worksheet);
+
+                }
+                workbook.SaveToFile(pathReport);
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
+        }
+
+        private static bool CreateWord(string pathTemplate, string pathReport, IList<Report> reports)
         {
             try
             {
                 var document = new Aspose.Words.Document();
                 document.RemoveAllChildren();
-                foreach(var report in reports)
+                foreach (var report in reports)
                 {
-                    var documentReport = CreateDocument(pathTemplateWord, report);
+                    var documentReport = CreateDocument(pathTemplate, report);
                     document.AppendDocument(documentReport, Aspose.Words.ImportFormatMode.KeepSourceFormatting);
                 }
-                var output = document.Save(pathReportPDF, Aspose.Words.SaveFormat.Pdf);
+                var saveFormat = GetSaveFormat(pathReport);
+                var output = document.Save(pathReport, saveFormat);
                 var performed = (output != null);
+                return performed;
+
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
+        }
+
+        private static Aspose.Words.SaveFormat GetSaveFormat(string pathReport)
+        {
+            try
+            {
+                var ext = Path.GetExtension(pathReport).ToUpper();
+                if (ext == "DOC")
+                    return Aspose.Words.SaveFormat.Doc;
+                else if (ext == "PDF")
+                    return Aspose.Words.SaveFormat.Pdf;
+                
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return Aspose.Words.SaveFormat.Pdf;
+        }
+
+
+        public static bool Create(string pathTemplate, string pathReport, Report report)
+        {
+            try
+            {
+                var performed = false;
+                var ext = Path.GetExtension(pathTemplate).ToUpper();
+                if (ext == "DOC")
+                    performed = CreateWord(pathTemplate, pathReport, report);
+                else if (ext == "XLS")
+                    performed = CreateExcel(pathTemplate, pathReport, report);
+
                 return performed;
             }
             catch (Exception ex)
@@ -33,15 +120,14 @@ namespace Library.Code
             return false;
         }
 
-
-        public static bool Create(string pathTemplateWord, string pathReportPDF, Report report)
+        private static bool CreateExcel(string pathTemplate, string pathReport, Report report)
         {
             try
             {
-                var document = CreateDocument(pathTemplateWord, report);
-                var output = document.Save(pathReportPDF, Aspose.Words.SaveFormat.Pdf);
-                var performed = (output != null);
-                return performed;
+                var workbook = CreateWorkbook(pathTemplate, report);
+                workbook.SaveToFile(pathReport);
+                return true;
+
             }
             catch (Exception ex)
             {
@@ -50,11 +136,49 @@ namespace Library.Code
             return false;
         }
 
-        private static Aspose.Words.Document CreateDocument(string pathTemplateWord, Report report)
+        private static Spire.Xls.Workbook CreateWorkbook(string pathTemplate, Report report)
         {
             try
             {
-                var document = new Aspose.Words.Document(pathTemplateWord);
+                var workbook = new Spire.Xls.Workbook();
+                workbook.LoadFromFile(pathTemplate);
+                var datas = report.Datas;
+                var tables = report.Tables;
+
+                //BindViewTables(workbook, tables);
+                //BindViewDatas(workbook, datas);
+
+                return workbook;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        private static bool CreateWord(string pathTemplate, string pathReport, Report report)
+        {
+            try
+            {
+                var document = CreateDocument(pathTemplate, report);
+                var output = document.Save(pathReport, Aspose.Words.SaveFormat.Pdf);
+                var performed = (output != null);
+                return performed;
+
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
+        }
+
+        private static Aspose.Words.Document CreateDocument(string pathTemplate, Report report)
+        {
+            try
+            {
+                var document = new Aspose.Words.Document(pathTemplate);
                 var datas = report.Datas;
                 var tables = report.Tables;
                 BuildSections(document, tables);
@@ -384,11 +508,11 @@ namespace Library.Code
                 }
             }
 
-            public bool Create(string pathTemplateWord, string pathReportPDF)
+            public bool Create(string pathTemplate, string pathReport)
             {
                 try
                 {
-                    var performed = UtilityReport.Create(pathTemplateWord, pathReportPDF, this);
+                    var performed = UtilityReport.Create(pathTemplate, pathReport, this);
                     return performed;
                 }
                 catch (Exception ex)
