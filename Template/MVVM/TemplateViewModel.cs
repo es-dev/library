@@ -36,16 +36,6 @@ namespace Library.Template.MVVM
             }
         }
 
-        //private int count = 0;
-        //public int Count
-        //{
-        //    get
-        //    {                
-        //        count = GetCount();
-        //        return count;
-        //    }
-        //}
-
         public TemplateViewModel(ISpace space)
         {
             try

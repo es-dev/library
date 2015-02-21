@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Library.Interfaces
 {
-    public delegate void CloseSpaceHandler();
-    public delegate void OpenSpaceHandler();
+    public delegate void OpenHandler();
+    public delegate void CloseHandler();
 
     public interface ISpace
     {
@@ -17,10 +17,10 @@ namespace Library.Interfaces
         ISpace OwnerSpace { get; set; }
         Gizmox.WebGUI.Forms.Control Control { get; }
         IViewModel ViewModel { get; set; }
-        event CloseSpaceHandler ClosedSpace;
-        event OpenSpaceHandler OpenedSpace;
-        void OpenSpace();
-        void CloseSpace();
+        event CloseHandler Closed;
+        event OpenHandler Opened;
+        void Open();
+        void Close();
 
     }
 }

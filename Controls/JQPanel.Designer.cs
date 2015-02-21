@@ -31,23 +31,22 @@ namespace Library.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            this.container = new Gizmox.WebGUI.Forms.Panel();
+            this.jqContainer = new Gizmox.WebGUI.Forms.Panel();
             this.SuspendLayout();
             // 
-            // container
+            // jqContainer
             // 
-            this.container.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.FixedSingle;
-            this.container.Dock = Gizmox.WebGUI.Forms.DockStyle.Fill;
-            this.container.Location = new System.Drawing.Point(0, 0);
-            this.container.Name = "container";
-            this.container.Size = new System.Drawing.Size(305, 82);
-            this.container.TabIndex = 0;
+            this.jqContainer.Dock = Gizmox.WebGUI.Forms.DockStyle.Fill;
+            this.jqContainer.Location = new System.Drawing.Point(0, 0);
+            this.jqContainer.Name = "jqContainer";
+            this.jqContainer.Size = new System.Drawing.Size(305, 82);
+            this.jqContainer.TabIndex = 0;
             // 
             // JQPanel
             // 
             this.BackColor = System.Drawing.Color.Transparent;
             this.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.container);
+            this.Controls.Add(this.jqContainer);
             this.Size = new System.Drawing.Size(305, 82);
             this.Text = "JQPanel1";
             this.ResumeLayout(false);
@@ -56,7 +55,10 @@ namespace Library.Controls
 
         #endregion
 
-        public Panel container;
+        private Panel jqContainer;
+
+
+
 
 
 

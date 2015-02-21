@@ -34,7 +34,7 @@ namespace Library.Controls
             try
             {
                 var jquery = new UtilityJQuery();
-                var jqscript = jquery.GetMouseOverColor(this, this.container, JQEnterBackColor, BackColor, JQDownBackColor, JQEnterBorderColor, BorderColor);
+                var jqscript = jquery.GetMouseOverColor(this.jqContainer, JQEnterBackColor, BackColor, JQDownBackColor, JQEnterBorderColor, BorderColor);
                 return jqscript;
             }
             catch (Exception ex)
@@ -115,6 +115,14 @@ namespace Library.Controls
             set
             {
                 jqEnterBorderColor = value;
+            }
+        }
+
+        public Panel JQContainer
+        {
+            get
+            {
+                return jqContainer;
             }
         }
     }

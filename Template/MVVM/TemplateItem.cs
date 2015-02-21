@@ -160,7 +160,7 @@ namespace Library.Template.MVVM
 
         public TemplateItem()
         {
-            InitializeComponent();           
+            InitializeComponent();
         }
 
         private void TemplateItem_Load(object sender, EventArgs e)
@@ -169,6 +169,7 @@ namespace Library.Template.MVVM
             {
                 RegisterItemClickEvent(this);
                 SetOriginalColors();
+                
             }
             catch (Exception ex)
             {
@@ -313,13 +314,13 @@ namespace Library.Template.MVVM
         }
 
 
-        public event CloseSpaceHandler ClosedSpace;
-        public void CloseSpace()
+        public event CloseHandler Closed;
+        public void Close()
         {
             try
             {
-                if (ClosedSpace != null)
-                    ClosedSpace();
+                if (Closed != null)
+                    Closed();
             }
             catch (Exception ex)
             {
@@ -327,18 +328,20 @@ namespace Library.Template.MVVM
             }
         }
 
-        public event OpenSpaceHandler OpenedSpace;
-        public void OpenSpace()
+        public event OpenHandler Opened;
+        public void Open()
         {
             try
             {
-                if (OpenedSpace != null)
-                    OpenedSpace();
+                if (Opened != null)
+                    Opened();
             }
             catch (Exception ex)
             {
                 UtilityError.Write(ex);
             }
         }
+
+
     }
 }

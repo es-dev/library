@@ -61,7 +61,7 @@ namespace Library.Code
             return null;
         }
 
-        internal string GetMouseOverColor(Control control, Control container, Color enterBackColor, Color leaveBackColor, Color downBackColor,
+        internal string GetMouseOverColor(Control control, Color enterBackColor, Color leaveBackColor, Color downBackColor,
                 Color enterBorderColor, Color leaveBorderColor, int durationEnter = 125, int durationLeave=500)
         {
             try
@@ -69,13 +69,11 @@ namespace Library.Code
                 var script = GetJScript("MouseOverColor.js");
                 string enterBackColorHtml = GetColor(enterBackColor);
                 string leaveBackColorHtml = GetColor(leaveBackColor);
-                string downBackColorHtml =GetColor(downBackColor);
-                string enterBorderColorHtml =GetColor(enterBorderColor);
+                string downBackColorHtml = GetColor(downBackColor);
+                string enterBorderColorHtml = GetColor(enterBorderColor);
                 string leaveBorderColorHtml = GetColor(leaveBorderColor);
                 var vwgId = GetVWGId(control);
-                var vwgContainerId = GetVWGId(container);
                 script = script.Replace("$vwgId$", vwgId);
-                script = script.Replace("$vwgContainerId$", vwgContainerId);
                 script = script.Replace("$enterBackColor$", enterBackColorHtml);
                 script = script.Replace("$leaveBackColor$", leaveBackColorHtml);
                 script = script.Replace("$downBackColor$", downBackColorHtml);

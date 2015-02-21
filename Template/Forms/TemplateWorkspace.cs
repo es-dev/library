@@ -42,7 +42,7 @@ namespace Library.Template.Forms
                     space.Control.Dock = DockStyle.Fill;
                     container.Controls.Add(space.Control);
                     space.Control.BringToFront();
-                    space.OpenSpace();
+                    space.Open();
                 }
             }
             catch (Exception ex)
@@ -86,7 +86,7 @@ namespace Library.Template.Forms
             {
                 if (space != null)
                 {
-                    space.CloseSpace();
+                    space.Close();
                     var ownerSpace = space.OwnerSpace;
                     if (ownerSpace != null)
                     {

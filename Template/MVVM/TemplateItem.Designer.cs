@@ -34,15 +34,15 @@ namespace Library.Template.MVVM
             this.editCount = new Gizmox.WebGUI.Forms.Label();
             this.imgCheck = new Gizmox.WebGUI.Forms.PictureBox();
             this.toolTip = new Gizmox.WebGUI.Forms.ToolTip();
-            this.container.SuspendLayout();
+            this.JQContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgCheck)).BeginInit();
             this.SuspendLayout();
             // 
             // container
             // 
-            this.container.Controls.Add(this.imgCheck);
-            this.container.Controls.Add(this.editCount);
-            this.container.Size = new System.Drawing.Size(401, 100);
+            this.JQContainer.Controls.Add(this.imgCheck);
+            this.JQContainer.Controls.Add(this.editCount);
+            this.JQContainer.Size = new System.Drawing.Size(401, 100);
             // 
             // editCount
             // 
@@ -50,7 +50,7 @@ namespace Library.Template.MVVM
             this.editCount.BackColor = System.Drawing.Color.ForestGreen;
             this.editCount.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editCount.ForeColor = System.Drawing.Color.White;
-            this.editCount.Location = new System.Drawing.Point(351, 0);
+            this.editCount.Location = new System.Drawing.Point(356, 2);
             this.editCount.Name = "editCount";
             this.editCount.Size = new System.Drawing.Size(43, 20);
             this.editCount.TabIndex = 0;
@@ -62,7 +62,7 @@ namespace Library.Template.MVVM
             // 
             this.imgCheck.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
             this.imgCheck.BackColor = System.Drawing.Color.Transparent;
-            this.imgCheck.Location = new System.Drawing.Point(360, -1);
+            this.imgCheck.Location = new System.Drawing.Point(364, 3);
             this.imgCheck.Name = "imgCheck";
             this.imgCheck.Size = new System.Drawing.Size(32, 32);
             this.imgCheck.SizeMode = Gizmox.WebGUI.Forms.PictureBoxSizeMode.StretchImage;
@@ -74,7 +74,7 @@ namespace Library.Template.MVVM
             this.Margin = new Gizmox.WebGUI.Forms.Padding(10);
             this.Size = new System.Drawing.Size(401, 100);
             this.Load += new System.EventHandler(this.TemplateItem_Load);
-            this.container.ResumeLayout(false);
+            this.JQContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgCheck)).EndInit();
             this.ResumeLayout(false);
 
