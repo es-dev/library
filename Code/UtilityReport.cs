@@ -10,9 +10,47 @@ namespace Library.Code
 {
     public class UtilityReport
     {
-        //todo: prevedere paginazione dei risultati + implementare reports in XLS
+
+        public static bool Create(string pathTemplateWord, string pathReportPDF, IList<Report> reports)
+        {
+            try
+            {
+                var document = new Aspose.Words.Document();
+                document.RemoveAllChildren();
+                foreach(var report in reports)
+                {
+                    var documentReport = CreateDocument(pathTemplateWord, report);
+                    document.AppendDocument(documentReport, Aspose.Words.ImportFormatMode.KeepSourceFormatting);
+                }
+                var output = document.Save(pathReportPDF, Aspose.Words.SaveFormat.Pdf);
+                var performed = (output != null);
+                return performed;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
+        }
+
 
         public static bool Create(string pathTemplateWord, string pathReportPDF, Report report)
+        {
+            try
+            {
+                var document = CreateDocument(pathTemplateWord, report);
+                var output = document.Save(pathReportPDF, Aspose.Words.SaveFormat.Pdf);
+                var performed = (output != null);
+                return performed;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
+        }
+
+        private static Aspose.Words.Document CreateDocument(string pathTemplateWord, Report report)
         {
             try
             {
@@ -23,16 +61,14 @@ namespace Library.Code
 
                 BindViewTables(document, tables);
                 BindViewDatas(document, datas);
-                
-                var output = document.Save(pathReportPDF, Aspose.Words.SaveFormat.Pdf);
-                var performed = (output != null);
-                return performed;
+
+                return document;
             }
             catch (Exception ex)
             {
                 UtilityError.Write(ex);
             }
-            return false;
+            return null;
         }
 
         private static void BuildSections(Aspose.Words.Document document, IList<Table> tables)
