@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Linq;
 using System.IO;
 
 namespace Library.Code
@@ -16,14 +15,40 @@ namespace Library.Code
         {
             try
             {
-                var performed = false;
-                var ext = Path.GetExtension(pathTemplate).ToUpper();
-                if (ext == "DOC")
-                    performed = CreateWord(pathTemplate, pathReport, reports);
-                else if (ext == "XLS")
-                    performed = CreateExcel(pathTemplate, pathReport, reports);
-                
-                return performed;
+                if (pathTemplate != null && pathReport != null && reports!=null)
+                {
+                    var performed = false;
+                    var ext = Path.GetExtension(pathTemplate).ToUpper();
+                    if (ext == ".DOC")
+                        performed = CreateWord(pathTemplate, pathReport, reports);
+                    else if (ext == ".XLS")
+                        performed = CreateExcel(pathTemplate, pathReport, reports);
+
+                    return performed;
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
+        }
+
+        public static bool Create(string pathTemplate, string pathReport, Report report)
+        {
+            try
+            {
+                if (pathTemplate != null && pathReport != null && report!=null)
+                {
+                    var performed = false;
+                    var ext = Path.GetExtension(pathTemplate).ToUpper();
+                    if (ext == ".DOC")
+                        performed = CreateWord(pathTemplate, pathReport, report);
+                    else if (ext == ".XLS")
+                        performed = CreateExcel(pathTemplate, pathReport, report);
+
+                    return performed;
+                }
             }
             catch (Exception ex)
             {
@@ -41,13 +66,15 @@ namespace Library.Code
                 foreach (var report in reports)
                 {
                     var workbookReport = CreateWorkbook(pathTemplate, report);
-                    var worksheets = workbookReport.Worksheets;
-                    foreach(var worksheet in worksheets)
-                        workbook.Worksheets.Add(worksheet);
-
+                    if (workbookReport != null)
+                    {
+                        var worksheets = workbookReport.Worksheets;
+                        foreach (var worksheet in worksheets)
+                            workbook.Worksheets.Add(worksheet);
+                    }
                 }
-                workbook.SaveToFile(pathReport);
-                return true;
+                var performed = SaveWoorkbook(workbook, pathReport);
+                return performed;
 
             }
             catch (Exception ex)
@@ -68,6 +95,21 @@ namespace Library.Code
                     var documentReport = CreateDocument(pathTemplate, report);
                     document.AppendDocument(documentReport, Aspose.Words.ImportFormatMode.KeepSourceFormatting);
                 }
+                var performed = SaveDocument(document, pathReport);
+                return performed;
+
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
+        }
+
+        private static bool SaveDocument(Aspose.Words.Document document, string pathReport)
+        {
+            try
+            {
                 var saveFormat = GetSaveFormat(pathReport);
                 var output = document.Save(pathReport, saveFormat);
                 var performed = (output != null);
@@ -85,12 +127,15 @@ namespace Library.Code
         {
             try
             {
-                var ext = Path.GetExtension(pathReport).ToUpper();
-                if (ext == "DOC")
-                    return Aspose.Words.SaveFormat.Doc;
-                else if (ext == "PDF")
-                    return Aspose.Words.SaveFormat.Pdf;
-                
+                if (pathReport != null)
+                {
+                    var ext = Path.GetExtension(pathReport).ToUpper();
+                    if (ext == "DOC")
+                        return Aspose.Words.SaveFormat.Doc;
+                    else if (ext == "PDF")
+                        return Aspose.Words.SaveFormat.Pdf;
+
+                }
             }
             catch (Exception ex)
             {
@@ -99,19 +144,14 @@ namespace Library.Code
             return Aspose.Words.SaveFormat.Pdf;
         }
 
-
-        public static bool Create(string pathTemplate, string pathReport, Report report)
+        private static bool CreateExcel(string pathTemplate, string pathReport, Report report)
         {
             try
             {
-                var performed = false;
-                var ext = Path.GetExtension(pathTemplate).ToUpper();
-                if (ext == "DOC")
-                    performed = CreateWord(pathTemplate, pathReport, report);
-                else if (ext == "XLS")
-                    performed = CreateExcel(pathTemplate, pathReport, report);
-
+                var workbook = CreateWorkbook(pathTemplate, report);
+                bool performed = SaveWoorkbook(workbook, pathReport);
                 return performed;
+
             }
             catch (Exception ex)
             {
@@ -120,14 +160,20 @@ namespace Library.Code
             return false;
         }
 
-        private static bool CreateExcel(string pathTemplate, string pathReport, Report report)
+        private static bool SaveWoorkbook(Spire.Xls.Workbook workbook, string pathReport)
         {
             try
             {
-                var workbook = CreateWorkbook(pathTemplate, report);
-                workbook.SaveToFile(pathReport);
-                return true;
+                if (workbook != null)
+                {
+                    workbook.UnProtect();
+                    var worksheets = workbook.Worksheets;
+                    foreach (var worksheet in worksheets)
+                        worksheet.Unprotect("");
 
+                    workbook.SaveToFile(pathReport);
+                    return true;
+                }
             }
             catch (Exception ex)
             {
@@ -145,8 +191,8 @@ namespace Library.Code
                 var datas = report.Datas;
                 var tables = report.Tables;
 
-                //BindViewTables(workbook, tables);
-                //BindViewDatas(workbook, datas);
+                BindViewTables(workbook, tables);
+                BindViewDatas(workbook, datas);
 
                 return workbook;
             }
@@ -157,13 +203,142 @@ namespace Library.Code
             return null;
         }
 
+        private static void BindViewTables(Spire.Xls.Workbook workbook, IList<Table> tables)
+        {
+            try
+            {
+                if (tables != null)
+                {
+                    foreach (var table in tables)
+                    {
+                        var header = table.Header;
+                        var _table = GetTable(workbook, header);
+                        BindViewTable(_table, table);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private static void BindViewTable(TableXls _table, Table table)
+        {
+            try
+            {
+                if (table != null && _table != null)
+                {
+                    var _range = _table.Range;
+                    var worksheet = _table.Worksheet;
+                    int _row = _range.Row + 1;
+                    var rows = table.Rows;
+                    foreach (var row in rows)
+                    {
+                        int _column = _range.Column;
+                        var cells = row.Cells;
+                        foreach (var cell in cells)
+                        {
+                            var value = cell.Value;
+                            worksheet.SetText(_row, _column, value);
+                            _column += 1;
+                        }
+                        _row += 1;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private static TableXls GetTable(Spire.Xls.Workbook workbook, IList<string> header)
+        {
+            try
+            {
+                if (header != null && workbook != null)
+                {
+                    var columnHeader = header.FirstOrDefault();
+                    var worksheets = workbook.Worksheets;
+                    foreach (var worksheet in worksheets)
+                    {
+                        var range = (from q in worksheet.Cells where q.Text == columnHeader select q).FirstOrDefault();
+                        if (range != null)
+                        {
+                            bool found = IsSameHeader(worksheet, range, header);
+                            if (found)
+                            {
+                                var table = new TableXls();
+                                table.Range = range;
+                                table.Worksheet = worksheet;
+                                return table;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        private static bool IsSameHeader(Spire.Xls.Core.IWorksheet worksheet, Spire.Xls.Core.IXLSRange range, IList<string> header)
+        {
+            try
+            {
+                if (worksheet != null && range != null && header != null)
+                {
+                    var column = range.Column;
+                    var row = range.Row;
+                    foreach (var value in header)
+                    {
+                        var _value = worksheet.GetText(row, column);
+                        if (_value != value)
+                            return false;
+                        column += 1;
+                    }
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
+        }
+
+        private static void BindViewDatas(Spire.Xls.Workbook workbook, IList<Data> datas)
+        {
+            try
+            {
+                if (datas != null)
+                {
+                    foreach (var data in datas)
+                    {
+                        var name = data.Name;
+                        var value = data.Value;
+                        var worksheets = workbook.Worksheets;
+                        foreach (var worksheet in worksheets)
+                            worksheet.Replace(name, value);
+                    
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
         private static bool CreateWord(string pathTemplate, string pathReport, Report report)
         {
             try
             {
                 var document = CreateDocument(pathTemplate, report);
-                var output = document.Save(pathReport, Aspose.Words.SaveFormat.Pdf);
-                var performed = (output != null);
+                var performed = SaveDocument(document, pathReport);
                 return performed;
 
             }
@@ -199,20 +374,23 @@ namespace Library.Code
         {
             try
             {
-                foreach(var table in tables)
+                if (tables != null)
                 {
-                    var _tables = GetTables(document, table);
-                    var _table = _tables.FirstOrDefault();
-                    int rowsCount = GetRowsCount(_table);
-                    int _count = rowsCount * _tables.Count;
-                    int count = table.Rows.Count;
-                    int pages = (count - 1) / _count + 1;
+                    foreach (var table in tables)
+                    {
+                        var _tables = GetTables(document, table);
+                        var _table = _tables.FirstOrDefault();
+                        int rowsCount = GetRowsCount(_table);
+                        int _count = rowsCount * _tables.Count;
+                        int count = table.Rows.Count;
+                        int pages = (count - 1) / _count + 1;
 
-                    var _section = GetSection(_table);
-                    var index = GetIndex(document, _section);
-                    for(int page=2; page<=pages; page++)
-                        document.Sections.Insert(index, _section.Clone(true));
-                
+                        var _section = GetSection(_table);
+                        var index = GetIndex(document, _section);
+                        for (int page = 2; page <= pages; page++)
+                            document.Sections.Insert(index, _section.Clone(true));
+
+                    }
                 }
             }
             catch (Exception ex)
@@ -226,8 +404,11 @@ namespace Library.Code
             try
             {
                 var rows = GetRows(table);
-                var count = rows.Count;
-                return count;
+                if (rows != null)
+                {
+                    var count = rows.Count;
+                    return count;
+                }
             }
             catch (Exception ex)
             {
@@ -240,15 +421,18 @@ namespace Library.Code
         {
             try
             {
-                var _rows = new List<Aspose.Words.Tables.Row>();
-                var rows = table.Rows;
-                foreach (Aspose.Words.Tables.Row row in rows)
+                if (table != null)
                 {
-                    var cell = row.FirstCell;
-                    if (cell.Range.Text.Contains("$"))
-                        _rows.Add(row);
+                    var rows = table.Rows;
+                    var _rows = new List<Aspose.Words.Tables.Row>();
+                    foreach (Aspose.Words.Tables.Row row in rows)
+                    {
+                        var cell = row.FirstCell;
+                        if (cell.Range.Text.Contains("$"))
+                            _rows.Add(row);
+                    }
+                    return _rows;
                 }
-                return _rows;
             }
             catch (Exception ex)
             {
@@ -261,9 +445,15 @@ namespace Library.Code
         {
             try
             {
-                var tables = GetTables(document);
-                var _tables = (from Aspose.Words.Tables.Table q in tables where GetHeader(q.Rows) == GetHeader(table.Rows) select q).ToList();
-                return _tables;
+                if (table != null)
+                {
+                    var tables = GetTables(document);
+                    if (tables != null)
+                    {
+                        var _tables = (from Aspose.Words.Tables.Table q in tables where GetHeader(q.Rows) == GetHeader(table.Rows) select q).ToList();
+                        return _tables;
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -276,13 +466,16 @@ namespace Library.Code
         {
             try
             {
-                string header = null;
-                var row = (from q in rows select q).FirstOrDefault();
-                var cells = row.Cells;
-                foreach (var cell in cells)
-                    header += cell.Name;
-                
-                return header;
+                if (rows != null)
+                {
+                    string header = null;
+                    var row = (from q in rows select q).FirstOrDefault();
+                    var cells = row.Cells;
+                    foreach (var cell in cells)
+                        header += cell.Name;
+
+                    return header;
+                }
             }
             catch (Exception ex)
             {
@@ -295,13 +488,16 @@ namespace Library.Code
         {
             try
             {
-                string header = null;
-                var row = GetFirstRow(rows);
-                var cells = row.Cells;
-                foreach(Aspose.Words.Tables.Cell cell in cells)
-                    header += cell.Range.Text.Replace("\a","");
-                
-                return header;
+                if (rows != null)
+                {
+                    string header = null;
+                    var row = GetFirstRow(rows);
+                    var cells = row.Cells;
+                    foreach (Aspose.Words.Tables.Cell cell in cells)
+                        header += cell.Range.Text.Replace("\a", "");
+
+                    return header;
+                }
             }
             catch (Exception ex)
             {
@@ -314,12 +510,15 @@ namespace Library.Code
         {
             try
             {
-                foreach(Aspose.Words.Tables.Row row in rows)
+                if (rows != null)
                 {
-                    var cells = row.Cells.ToArray();
-                    var cell = (from q in cells select q).FirstOrDefault();
-                    if (cell.Range.Text.StartsWith("$"))
-                        return row;
+                    foreach (Aspose.Words.Tables.Row row in rows)
+                    {
+                        var cells = row.Cells.ToArray();
+                        var cell = (from q in cells select q).FirstOrDefault();
+                        if (cell.Range.Text.StartsWith("$"))
+                            return row;
+                    }
                 }
             }
             catch (Exception ex)
@@ -333,13 +532,16 @@ namespace Library.Code
         {
             try
             {
-                var _sections = document.Sections;
-                int index = 0;
-                foreach(var _section in _sections)
+                if (document != null)
                 {
-                    if (_section == section)
-                        return index;
-                    index += 1;
+                    var _sections = document.Sections;
+                    int index = 0;
+                    foreach (var _section in _sections)
+                    {
+                        if (_section == section)
+                            return index;
+                        index += 1;
+                    }
                 }
             }
             catch (Exception ex)
@@ -353,9 +555,12 @@ namespace Library.Code
         {
             try
             {
-                var body = (Aspose.Words.Body)table.ParentNode;
-                var section = body.ParentSection;
-                return section;
+                if (table != null)
+                {
+                    var body = (Aspose.Words.Body)table.ParentNode;
+                    var section = body.ParentSection;
+                    return section;
+                }
             }
             catch (Exception ex)
             {
@@ -368,10 +573,13 @@ namespace Library.Code
         {
             try
             {
-                foreach (var table in tables)
+                if (tables != null)
                 {
-                    var _tables = GetTables(document, table);
-                    BindViewTable(_tables, table);
+                    foreach (var table in tables)
+                    {
+                        var _tables = GetTables(document, table);
+                        BindViewTable(_tables, table);
+                    }
                 }
             }
             catch (Exception ex)
@@ -384,22 +592,25 @@ namespace Library.Code
         {
             try
             {
-                int skip = 0;
-                var take = GetRowsCount(_tables.FirstOrDefault());
-                foreach(Aspose.Words.Tables.Table _table in _tables)
+                if (_tables != null && table != null)
                 {
-                    var index = 0;
-                    var rows = (from q in table.Rows select q).Skip(skip).Take(take).ToList();
-                    var _rows = GetRows(_table);
-                    foreach (var _row in _rows)
+                    int skip = 0;
+                    var take = GetRowsCount(_tables.FirstOrDefault());
+                    foreach (Aspose.Words.Tables.Table _table in _tables)
                     {
-                        Row row = null;
-                        if (index < rows.Count)
-                            row = rows[index];
-                        BindViewRow(_row, row);
-                        index += 1;
+                        var index = 0;
+                        var rows = (from q in table.Rows select q).Skip(skip).Take(take).ToList();
+                        var _rows = GetRows(_table);
+                        foreach (var _row in _rows)
+                        {
+                            Row row = null;
+                            if (index < rows.Count)
+                                row = rows[index];
+                            BindViewRow(_row, row);
+                            index += 1;
+                        }
+                        skip += take;
                     }
-                    skip += take;
                 }
             }
             catch (Exception ex)
@@ -437,20 +648,23 @@ namespace Library.Code
             }
         }
 
-
         private static IList<Aspose.Words.Tables.Table> GetTables(Aspose.Words.Document document)
         {
             try
             {
-                var tables = new List<Aspose.Words.Tables.Table>();
-                var sections = document.Sections;
-                foreach (Aspose.Words.Section section in sections)
+                if (document != null)
                 {
-                    var _tables = section.Body.Tables;
-                    foreach (Aspose.Words.Tables.Table _table in _tables)
-                        tables.Add(_table);
+                    var tables = new List<Aspose.Words.Tables.Table>();
+                    var sections = document.Sections;
+                    foreach (Aspose.Words.Section section in sections)
+                    {
+                        var _tables = section.Body.Tables;
+                        foreach (Aspose.Words.Tables.Table _table in _tables)
+                            tables.Add(_table);
+
+                    }
+                    return tables;
                 }
-                return tables;
             }
             catch (Exception ex)
             {
@@ -463,11 +677,14 @@ namespace Library.Code
         {
             try
             {
-                foreach (var data in datas)
+                if (datas != null)
                 {
-                    var name = data.Name;
-                    var value = data.Value;
-                    document.Range.Replace(name, value, false, false);
+                    foreach (var data in datas)
+                    {
+                        var name = data.Name;
+                        var value = data.Value;
+                        document.Range.Replace(name, value, false, false);
+                    }
                 }
             }
             catch (Exception ex)
@@ -521,7 +738,6 @@ namespace Library.Code
                 }
                 return false;
             }
-
 
         }
 
@@ -632,5 +848,15 @@ namespace Library.Code
             }
         }
 
+        public class TableXls
+        {
+            public Spire.Xls.Core.IWorksheet Worksheet = null;
+            public Spire.Xls.Core.IXLSRange Range = null;
+
+            public TableXls()
+            {
+
+            }
+        }
     }
 }
