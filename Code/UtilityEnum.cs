@@ -8,6 +8,14 @@ using System.Threading.Tasks;
 
 namespace Library.Code.Enum
 {
+    public enum TypeReport
+    {
+        None,
+        DOC,
+        XLS,
+        PDF
+    }
+    
     public enum TypeState
     {
         None,

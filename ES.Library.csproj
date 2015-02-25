@@ -387,6 +387,12 @@
     <Compile Include="Controls\TextCombo.Designer.cs">
       <DependentUpon>TextCombo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\LinkUrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\LinkUrl.Designer.cs">
+      <DependentUpon>LinkUrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TextState.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -465,6 +471,12 @@
     </Compile>
     <Compile Include="Template\Controls\TemplateEditNumeric.Designer.cs">
       <DependentUpon>TemplateEditNumeric.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Template\Controls\TemplateEditLink.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Template\Controls\TemplateEditLink.Designer.cs">
+      <DependentUpon>TemplateEditLink.cs</DependentUpon>
     </Compile>
     <Compile Include="Template\Controls\TemplateEditTime.cs">
       <SubType>UserControl</SubType>
@@ -592,6 +604,9 @@
     <EmbeddedResource Include="Controls\TextCombo.resx">
       <DependentUpon>TextCombo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\LinkUrl.resx">
+      <DependentUpon>LinkUrl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\TextState.resx">
       <DependentUpon>TextState.cs</DependentUpon>
     </EmbeddedResource>
@@ -633,6 +648,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditNumeric.resx">
       <DependentUpon>TemplateEditNumeric.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Template\Controls\TemplateEditLink.resx">
+      <DependentUpon>TemplateEditLink.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditTime.resx">
       <DependentUpon>TemplateEditTime.cs</DependentUpon>
