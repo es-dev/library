@@ -8,6 +8,14 @@ using System.Threading.Tasks;
 
 namespace Library.Code.Enum
 {
+    public enum TypeFormat
+    {
+        None,
+        StringND,
+        Euro,
+        DateDDMMYYYY
+    }
+
     public enum TypeReport
     {
         None,

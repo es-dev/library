@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Library.Code.Enum;
 
 namespace Library.Code
 {
@@ -733,12 +734,21 @@ namespace Library.Code
                 }
             }
 
-            public void AddData(string name, string value)
+            public void AddData(string name, object value, TypeFormat format = TypeFormat.StringND)
             {
                 try
                 {
                     var _name = "$" + name + "$";
-                    var data = new Data(_name, value);
+                    object valueFormatted = value;
+                    if (format == TypeFormat.StringND)
+                        valueFormatted = UtilityValidation.GetStringND(value);
+                    else if (format == TypeFormat.Euro)
+                        valueFormatted = UtilityValidation.GetEuro((decimal?)value);
+                    else if (format == TypeFormat.DateDDMMYYYY)
+                        valueFormatted = UtilityValidation.GetDataND((DateTime?)value);
+
+                    var _value = (string)valueFormatted;
+                    var data = new Data(_name, _value);
                     this.Datas.Add(data);
                 }
                 catch (Exception ex)
@@ -809,9 +819,11 @@ namespace Library.Code
                     this.Cells = new List<Cell>();
                     for (int index = 0; index < values.Length; index++)
                     {
-                        var name = "$" + this.Table.Columns[index] + "$";
+                        var name = this.Table.Columns[index];
                         var value = values[index];
-                        AddCell(name, value);
+                        var _name = "$" + name + "$";
+                        var _value = UtilityValidation.GetStringND(value);
+                        AddCell(_name, _value);
                     }
                 }
                 catch (Exception ex)
