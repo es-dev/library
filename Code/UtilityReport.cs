@@ -320,7 +320,7 @@ namespace Library.Code
                     foreach (var data in datas)
                     {
                         var name = data.Name;
-                        var value = data.Value;
+                        var value = UtilityValidation.GetStringCleaned(data.Value);
                         var worksheets = workbook.Worksheets;
                         foreach (var worksheet in worksheets)
                             worksheet.Replace(name, value);
@@ -652,7 +652,7 @@ namespace Library.Code
                     foreach (var cell in cells)
                     {
                         var name = cell.Name;
-                        var value = cell.Value;
+                        var value = UtilityValidation.GetStringCleaned(cell.Value);
                         _row.Range.Replace(name, value, false, false);
                     }
                 }
@@ -705,7 +705,7 @@ namespace Library.Code
                     foreach (var data in datas)
                     {
                         var name = data.Name;
-                        var value = data.Value;
+                        var value = UtilityValidation.GetStringCleaned(data.Value);
                         document.Range.Replace(name, value, false, false);
                     }
                 }
