@@ -232,7 +232,7 @@ namespace Library.Template.MVVM
             {
                 if (model != null)
                 {
-                    var id = (int?)UtilityPOCO.GetValue(model, "Id");
+                    var id = (int?)UtilityPOCO.GetPrimaryKeyValue(model);
                     if (id == 0)
                         return true;
                 }
@@ -432,7 +432,7 @@ namespace Library.Template.MVVM
                             {
                                 if (creating)
                                 {
-                                    var id = UtilityPOCO.GetValue(model, "Id");
+                                    var id = UtilityPOCO.GetPrimaryKeyValue(model);
                                     model = viewModel.Read(id);
                                     BindView(model);
                                     BindViewSubTitle(model);

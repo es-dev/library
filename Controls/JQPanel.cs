@@ -118,12 +118,6 @@ namespace Library.Controls
             }
         }
 
-        public Panel JQContainer
-        {
-            get
-            {
-                return jqContainer;
-            }
-        }
+        
     }
 }

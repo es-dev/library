@@ -7,11 +7,22 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Collections.Generic;
 using System.Collections;
+using System.ComponentModel;
+using System.Text.RegularExpressions;
 
 namespace Library.Code
 {
     public class UtilityPOCO
     {
+        private static string primaryKeyName = "Id";
+        public static string PrimaryKeyName
+        {
+            get
+            {
+                return primaryKeyName;
+            }
+        }
+
 
         public static IEnumerable<TDto> Assemble<TDto>(IQueryable entities, bool references = true, bool collections = true)
         {
@@ -221,8 +232,8 @@ namespace Library.Code
             {
                 if (HasDtoKey(dto))
                 {
-                    var key = GetValue(entity, "Id");
-                    SetValue(dto, "DtoKey", "Id=" + key);
+                    var dtoKey = GetDtoKey(entity);
+                    SetValue(dto, "DtoKey", dtoKey);
                 }
             }
             catch (Exception ex)
@@ -374,6 +385,34 @@ namespace Library.Code
             return null;
         }
 
-        
+        public static object GetPrimaryKeyValue(object entity)
+        {
+            try
+            {
+                var key = GetValue(entity, primaryKeyName);
+                return key;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        public static string GetDtoKey(object entity) 
+        {
+            try
+            {
+                var key = GetValue(entity, primaryKeyName);
+                var dtoKey = primaryKeyName + "=" + key;
+                return dtoKey;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
     }
 }

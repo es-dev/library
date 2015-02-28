@@ -49,7 +49,7 @@ namespace Library.Template.Controls
         {
             get
             {
-                id = (int?)UtilityPOCO.GetValue(model,"Id");
+                id = (int?)UtilityPOCO.GetPrimaryKeyValue(model);
                 return id;
             }
         }

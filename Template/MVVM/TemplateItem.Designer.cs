@@ -34,15 +34,15 @@ namespace Library.Template.MVVM
             this.editCount = new Gizmox.WebGUI.Forms.Label();
             this.imgCheck = new Gizmox.WebGUI.Forms.PictureBox();
             this.toolTip = new Gizmox.WebGUI.Forms.ToolTip();
-            this.JQContainer.SuspendLayout();
+            this.jqContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgCheck)).BeginInit();
             this.SuspendLayout();
             // 
             // container
             // 
-            this.JQContainer.Controls.Add(this.imgCheck);
-            this.JQContainer.Controls.Add(this.editCount);
-            this.JQContainer.Size = new System.Drawing.Size(401, 100);
+            this.jqContainer.Controls.Add(this.imgCheck);
+            this.jqContainer.Controls.Add(this.editCount);
+            this.jqContainer.Size = new System.Drawing.Size(401, 100);
             // 
             // editCount
             // 
@@ -74,7 +74,7 @@ namespace Library.Template.MVVM
             this.Margin = new Gizmox.WebGUI.Forms.Padding(10);
             this.Size = new System.Drawing.Size(401, 100);
             this.Load += new System.EventHandler(this.TemplateItem_Load);
-            this.JQContainer.ResumeLayout(false);
+            this.jqContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgCheck)).EndInit();
             this.ResumeLayout(false);
 

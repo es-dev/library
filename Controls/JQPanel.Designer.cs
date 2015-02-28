@@ -55,7 +55,8 @@ namespace Library.Controls
 
         #endregion
 
-        private Panel jqContainer;
+        public Panel jqContainer;
+
 
 
 
