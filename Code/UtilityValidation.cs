@@ -285,5 +285,22 @@ namespace Library.Code
             }
             return null;
         }
+
+        internal static string GetStringClean(string text)
+        {
+            try
+            {
+                if(text!=null)
+                {
+                    var value = text.Replace("\a", "").Replace("\r","").Replace("\n","").Replace("\t","").Replace("\f","").Replace("\b","").Trim();
+                    return value;
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
     }
 }

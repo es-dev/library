@@ -211,8 +211,8 @@ namespace Library.Code
                 {
                     foreach (var table in tables)
                     {
-                        var header = table.Header;
-                        var _table = GetTable(workbook, header);
+                        var columns = table.Columns;
+                        var _table = GetTable(workbook, columns);
                         BindViewTable(_table, table);
                     }
                 }
@@ -253,20 +253,20 @@ namespace Library.Code
             }
         }
 
-        private static TableXls GetTable(Spire.Xls.Workbook workbook, IList<string> header)
+        private static TableXls GetTable(Spire.Xls.Workbook workbook, IList<string> columns)
         {
             try
             {
-                if (header != null && workbook != null)
+                if (columns != null && workbook != null)
                 {
-                    var columnHeader = header.FirstOrDefault();
+                    var columnHeader = columns.FirstOrDefault();
                     var worksheets = workbook.Worksheets;
                     foreach (var worksheet in worksheets)
                     {
                         var range = (from q in worksheet.Cells where q.Text == columnHeader select q).FirstOrDefault();
                         if (range != null)
                         {
-                            bool found = IsSameHeader(worksheet, range, header);
+                            bool found = IsSameHeader(worksheet, range, columns);
                             if (found)
                             {
                                 var table = new TableXls();
@@ -285,20 +285,20 @@ namespace Library.Code
             return null;
         }
 
-        private static bool IsSameHeader(Spire.Xls.Core.IWorksheet worksheet, Spire.Xls.Core.IXLSRange range, IList<string> header)
+        private static bool IsSameHeader(Spire.Xls.Core.IWorksheet worksheet, Spire.Xls.Core.IXLSRange range, IList<string> columns)
         {
             try
             {
-                if (worksheet != null && range != null && header != null)
+                if (worksheet != null && range != null && columns != null)
                 {
-                    var column = range.Column;
+                    var col = range.Column;
                     var row = range.Row;
-                    foreach (var value in header)
+                    foreach (var column in columns)
                     {
-                        var _value = worksheet.GetText(row, column);
-                        if (_value != value)
+                        var _column = worksheet.GetText(row, col);
+                        if (_column != column)
                             return false;
-                        column += 1;
+                        col += 1;
                     }
                     return true;
                 }
@@ -383,7 +383,9 @@ namespace Library.Code
                         int rowsCount = GetRowsCount(_table);
                         int _count = rowsCount * _tables.Count;
                         int count = table.Rows.Count;
-                        int pages = (count - 1) / _count + 1;
+                        int pages = 0;
+                        if(_count>0)
+                            pages=(count - 1) / _count + 1;
 
                         var _section = GetSection(_table);
                         var index = GetIndex(document, _section);
@@ -450,7 +452,7 @@ namespace Library.Code
                     var tables = GetTables(document);
                     if (tables != null)
                     {
-                        var _tables = (from Aspose.Words.Tables.Table q in tables where GetHeader(q.Rows) == GetHeader(table.Rows) select q).ToList();
+                        var _tables = (from Aspose.Words.Tables.Table q in tables where IsSameHeader(q, table) select q).ToList();
                         return _tables;
                     }
                 }
@@ -462,18 +464,35 @@ namespace Library.Code
             return null;
         }
 
-        private static string GetHeader(IList<Row> rows)
+        private static bool IsSameHeader(Aspose.Words.Tables.Table _table, Table table)
         {
             try
             {
-                if (rows != null)
+                if (_table != null && table != null)
+                {
+                    var _header = GetHeader(_table.Rows);
+                    var header = GetHeader(table.Columns);
+                    var isSame = (_header!=null && header!=null && _header == header);
+                    return isSame;
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
+        }
+       
+        private static string GetHeader(IList<string> columns)
+        {
+            try
+            {
+                if (columns != null)
                 {
                     string header = null;
-                    var row = (from q in rows select q).FirstOrDefault();
-                    var cells = row.Cells;
-                    foreach (var cell in cells)
-                        header += cell.Name;
-
+                    foreach(var columnName in columns)
+                        header += "$" + columnName + "$";
+                    
                     return header;
                 }
             }
@@ -492,11 +511,14 @@ namespace Library.Code
                 {
                     string header = null;
                     var row = GetFirstRow(rows);
-                    var cells = row.Cells;
-                    foreach (Aspose.Words.Tables.Cell cell in cells)
-                        header += cell.Range.Text.Replace("\a", "");
+                    if (row != null)
+                    {
+                        var cells = row.Cells;
+                        foreach (Aspose.Words.Tables.Cell cell in cells)
+                            header += UtilityValidation.GetStringClean(cell.Range.Text);
 
-                    return header;
+                        return header;
+                    }
                 }
             }
             catch (Exception ex)
@@ -743,14 +765,14 @@ namespace Library.Code
 
         public class Table
         {
-            public IList<string> Header = null;
+            public IList<string> Columns = null;
             public IList<Row> Rows = null;
 
-            public Table(params string[] header)
+            public Table(params string[] columns)
             {
                 try
                 {
-                    this.Header = header.ToList();
+                    this.Columns = columns.ToList();
                     this.Rows = new List<Row>();
                 }
                 catch (Exception ex)
@@ -787,7 +809,7 @@ namespace Library.Code
                     this.Cells = new List<Cell>();
                     for (int index = 0; index < values.Length; index++)
                     {
-                        var name = "$" + this.Table.Header[index] + "$";
+                        var name = "$" + this.Table.Columns[index] + "$";
                         var value = values[index];
                         AddCell(name, value);
                     }
