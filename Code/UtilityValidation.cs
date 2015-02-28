@@ -100,6 +100,22 @@ namespace Library.Code
             return null;
         }
 
+        public static string GetStringEmpty(object value)
+        {
+            try
+            {
+                var text = GetString(value);
+                if (text == null || text.Length == 0)
+                    text = "";
+                return text;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
         public static string GetStringND(object value)
         {
             try
@@ -286,7 +302,7 @@ namespace Library.Code
             return null;
         }
 
-        internal static string GetStringClean(string text)
+        internal static string GetStringCleaned(string text)
         {
             try
             {

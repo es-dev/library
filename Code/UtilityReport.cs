@@ -516,7 +516,7 @@ namespace Library.Code
                     {
                         var cells = row.Cells;
                         foreach (Aspose.Words.Tables.Cell cell in cells)
-                            header += UtilityValidation.GetStringClean(cell.Range.Text);
+                            header += UtilityValidation.GetStringCleaned(cell.Range.Text);
 
                         return header;
                     }
@@ -734,7 +734,7 @@ namespace Library.Code
                 }
             }
 
-            public void AddData(string name, object value, TypeFormat format = TypeFormat.StringND)
+            public void AddData(string name, object value, TypeFormat format = TypeFormat.None)
             {
                 try
                 {
@@ -746,6 +746,8 @@ namespace Library.Code
                         valueFormatted = UtilityValidation.GetEuro((decimal?)value);
                     else if (format == TypeFormat.DateDDMMYYYY)
                         valueFormatted = UtilityValidation.GetDataND((DateTime?)value);
+                    else
+                        valueFormatted = UtilityValidation.GetStringEmpty(value);
 
                     var _value = (string)valueFormatted;
                     var data = new Data(_name, _value);
