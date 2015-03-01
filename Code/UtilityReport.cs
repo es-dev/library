@@ -819,10 +819,10 @@ namespace Library.Code
                 {
                     this.Table = table;
                     this.Cells = new List<Cell>();
-                    for (int index = 0; index < values.Length; index++)
+                    for (int column = 0; column < values.Length; column++)
                     {
-                        var name = this.Table.Columns[index];
-                        var value = values[index];
+                        var name = this.Table.Columns[column];
+                        var value = values[column];
                         var _name = "$" + name + "$";
                         var _value = UtilityValidation.GetStringND(value);
                         AddCell(_name, _value);
