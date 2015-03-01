@@ -414,5 +414,19 @@ namespace Library.Code
             return null;
         }
 
+        public static string GetDtoKey(int id)
+        {
+            try
+            {
+                var dtoKey = primaryKeyName + "=" + id;
+                return dtoKey;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
     }
 }
