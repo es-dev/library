@@ -428,5 +428,22 @@ namespace Library.Code
             return null;
         }
 
+
+        public static int GetId(string dtoKey)
+        {
+            try
+            {
+                if(dtoKey!=null && dtoKey.Contains(primaryKeyName))
+                {
+                    var id = int.Parse(dtoKey.Replace(primaryKeyName + "=", ""));
+                    return id;
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return 0;
+        }
     }
 }
