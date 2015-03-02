@@ -112,6 +112,9 @@ namespace Library.Controls
                 SetRequired(verified);
                 SetImage(editing, changed, verified, imgEdit);
                 SetBackColor(maskControl, editing);
+                
+                var value = GetValue(); //refresh componente grafico con formato di rappresentazione dati
+                SetValue(Value);
             }
             catch (Exception ex)
             {
