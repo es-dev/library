@@ -287,21 +287,6 @@ namespace Library.Code
             return DateTime.MinValue;
         }
 
-        public static string GetEuro(decimal? value)
-        {
-            try
-            {
-                var _value = GetDecimal(value);
-                var euro = _value.ToString("0.00") + "€";
-                return euro;
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-            return null;
-        }
-
         internal static string GetStringCleaned(string text)
         {
             try
@@ -310,6 +295,75 @@ namespace Library.Code
                 {
                     var value = text.Replace("\a", "").Replace("\r","").Replace("\n","").Replace("\t","").Replace("\f","").Replace("\b","").Trim();
                     return value;
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+
+        public static decimal GetEuro(string text)
+        {
+            try
+            {
+                if (text != null)
+                {
+                    decimal value = 0;
+                    text = text.Replace("€", "");
+                    var count = (from q in text.ToCharArray() where q == '.' || q == ',' select q).Count();
+                    if (count == 1)
+                        value = decimal.Parse(text.Replace(".", ","));
+                    else if (count >= 2)
+                    {
+                        var _text = GetEuroThousandSeparator(text);
+                        value = decimal.Parse(_text);
+                    }
+                    return value;
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return 0;
+        }
+
+        public static string GetEuro(decimal? value)
+        {
+            try
+            {
+                if (value != null)
+                {
+                    var text= ((decimal)value).ToString("#,0.00") + "€";
+                    return text;
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        private static string GetEuroThousandSeparator(string text)
+        {
+            try
+            {
+                if (text != null)
+                {
+                    var _text = text;
+                    var posDot = text.LastIndexOf(".");
+                    var posComma = text.LastIndexOf(",");
+                    var pos = Math.Max(posDot, posComma);
+                    if (pos >= 0)
+                    {
+                        _text = text.Substring(0, pos) + "," + text.Substring(pos + 1);
+                        _text = _text.Replace(".", "");
+                    }
+                    return _text;
                 }
             }
             catch (Exception ex)

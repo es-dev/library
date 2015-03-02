@@ -152,8 +152,6 @@ namespace Library.Controls
             } 
         }
 
-       
-
         private bool GetReadOnly()
         {
             try
@@ -266,7 +264,7 @@ namespace Library.Controls
                     if (behavior == TypeBehavior.Numeric)
                         value = int.Parse(text);
                     else if (behavior == TypeBehavior.Decimal)
-                        value = decimal.Parse(text.Replace(".",","));
+                        value = UtilityValidation.GetEuro(text);
                     else
                         value = text;
                     return value;
@@ -289,7 +287,7 @@ namespace Library.Controls
                     if (behavior == TypeBehavior.Numeric)
                         text = ((int)value).ToString("0");
                     else if (behavior == TypeBehavior.Decimal)
-                        text = ((decimal)value).ToString("0.00");
+                        text = UtilityValidation.GetEuro((decimal?)value);
                     else
                         text = (string)value;
                 }
