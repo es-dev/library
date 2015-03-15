@@ -321,6 +321,9 @@ namespace Library.Code
                         var _text = GetEuroThousandSeparator(text);
                         value = decimal.Parse(_text);
                     }
+                    else
+                        value = decimal.Parse(text);
+
                     return value;
                 }
             }
