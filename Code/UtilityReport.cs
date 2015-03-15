@@ -853,7 +853,7 @@ namespace Library.Code
                         var name = this.Table.Columns[column];
                         var value = values[column];
                         var _name = "$" + name + "$";
-                        var _value = UtilityValidation.GetStringND(value);
+                        var _value = UtilityValidation.GetStringEmpty(value);
                         AddCell(_name, _value);
                     }
                 }
