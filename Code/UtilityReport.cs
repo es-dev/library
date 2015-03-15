@@ -657,11 +657,12 @@ namespace Library.Code
                         var value = UtilityValidation.GetStringCleaned(cell.Value);
                         _row.Range.Replace(name, value, false, false);
 
+                        var _cell = _row.Cells[index];
+                        _cell.CellFormat.WrapText = false;
                         if (row.Merged)
                         {
-                            var _cell = _row.Cells[index];
                             _cell.CellFormat.HorizontalMerge = (index==0?Aspose.Words.Tables.CellMerge.First: Aspose.Words.Tables.CellMerge.Previous);
-                            _cell.CellFormat.Shading.BackgroundPatternColor = row.MergeColor;                          
+                            _cell.CellFormat.Shading.BackgroundPatternColor = row.MergeColor;
                         }
                         index += 1;
                     }
