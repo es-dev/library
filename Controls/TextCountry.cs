@@ -322,7 +322,7 @@ namespace Library.Controls
                     var countries = new Countries(this, search);
                     countries.Confirm += Countries_Confirm;
 
-                    UtilityWeb.AddJQControl(btnCombo, countries, JQTypePosition.Docked);
+                    UtilityWeb.AddJQControl(editCity, countries, JQTypePosition.Docked);
                 }
             }
             catch (Exception ex)

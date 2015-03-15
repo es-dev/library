@@ -305,9 +305,9 @@ namespace Library.Code
                         else if (position == JQTypePosition.Docked)
                         {
                             var location = GetLocation(owner);
-                            int left = location.X + control.Left;
+                            int left = location.X;
                             if (left + control.Width > parentForm.Width)
-                                left = location.X - control.Width;
+                                left = location.X + owner.Width - control.Width;
                             int top = location.Y + owner.Height;
                             if (top + control.Height > parentForm.Height)
                                 top = location.Y - control.Height;
