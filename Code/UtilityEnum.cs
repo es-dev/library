@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-//using System.ComponentModel;
+using System.Linq;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace Library.Code.Enum
 {
@@ -67,30 +68,14 @@ namespace Library.Code.Enum
 
     public static class UtilityEnum
     {
-        public static string GetDescription<TEnum>(string name)
+        public static string GetDescription<TEnum>(TEnum value)
         {
             try
             {
-                var value = GetValue<TEnum>(name);
                 var field = value.GetType().GetField(value.ToString());
                 var attribute = (DescriptionAttribute)Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute));
                 var description = (attribute == null ? value.ToString() : attribute.Description);
                 return description;
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-            return null;
-        }
-
-        public static IList<string> GetNames<TEnum>()
-        {
-            try
-            {
-                var names = System.Enum.GetNames(typeof(TEnum));
-                var _names = (from q in names where q != "None" select q).ToList();
-                return _names;
             }
             catch (Exception ex)
             {
@@ -112,14 +97,60 @@ namespace Library.Code.Enum
             }
             return default(TEnum);
         }
+        
+        //public static string GetDescription<TEnum>(string name)
+        //{
+        //    try
+        //    {
+        //        var value = GetValue<TEnum>(name);
+        //        var field = value.GetType().GetField(value.ToString());
+        //        var attribute = (DescriptionAttribute)Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute));
+        //        var description = (attribute == null ? value.ToString() : attribute.Description);
+        //        return description;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        UtilityError.Write(ex);
+        //    }
+        //    return null;
+        //}
 
-                
-        public static IList<DisplayValue> GetDisplayValues<TEnum>()
+        public static IList<string> GetNames<TEnum>()
+        {
+            try
+            {
+                var names = System.Enum.GetNames(typeof(TEnum));
+                var _names = (from q in names where q != "None" select q).ToList();
+                return _names;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        public static IList<TEnum> GetValues<TEnum>()
         {
             try
             {
                 var names = GetNames<TEnum>();
-                var displayValues = (from q in names select new DisplayValue { Value = q, Display = GetDescription<TEnum>(q) }).ToList();
+                var values = (from q in names select GetValue<TEnum>(q)).ToList();
+                return values;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        } 
+        
+        public static IList<DisplayValue> GetDisplayValues<TEnum>()
+        {
+            try
+            {
+                var values = GetValues<TEnum>();
+                var displayValues = (from q in values select new DisplayValue { Value = q.ToString(), Display = GetDescription<TEnum>(q) }).ToList();
                 return displayValues;
             }
             catch (Exception ex)

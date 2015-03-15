@@ -389,7 +389,7 @@ namespace Library.Code
                         if(_count>0)
                             pages=(count - 1) / _count + 1;
 
-                        var _section = GetSection(_table);
+                        var _section = GetSection(_table); //todo: prevedere gestione layout dinamico con inserimento row in 1° tabella
                         var index = GetIndex(document, _section);
                         for (int page = 2; page <= pages; page++)
                             document.Sections.Insert(index, _section.Clone(true));
