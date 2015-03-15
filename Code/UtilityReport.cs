@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Library.Code.Enum;
+using System.Drawing;
 
 namespace Library.Code
 {
@@ -649,12 +650,22 @@ namespace Library.Code
                 if (row != null)
                 {
                     var cells = row.Cells;
+                    int index = 0;
                     foreach (var cell in cells)
                     {
                         var name = cell.Name;
                         var value = UtilityValidation.GetStringCleaned(cell.Value);
                         _row.Range.Replace(name, value, false, false);
+
+                        if (row.Merged)
+                        {
+                            var _cell = _row.Cells[index];
+                            _cell.CellFormat.HorizontalMerge = (index==0?Aspose.Words.Tables.CellMerge.First: Aspose.Words.Tables.CellMerge.Previous);
+                            _cell.CellFormat.Shading.BackgroundPatternColor = row.MergeColor;                          
+                        }
+                        index += 1;
                     }
+                   
                 }
                 else
                 {
@@ -793,11 +804,24 @@ namespace Library.Code
                 }
             }
 
-            public void AddRow(params string[] values)
+            public void AddRow(params string[] values )
             {
                 try
                 {
-                    var row = new Row(this, values);
+                    var row = new Row(this, false, Color.Transparent, values);
+                    this.Rows.Add(row);
+                }
+                catch (Exception ex)
+                {
+                    UtilityError.Write(ex);
+                }
+            }
+
+            public void AddRowMerge(Color mergeColor, params string[] values)
+            {
+                try
+                {
+                    var row = new Row(this, true, mergeColor, values);
                     this.Rows.Add(row);
                 }
                 catch (Exception ex)
@@ -812,11 +836,15 @@ namespace Library.Code
         {
             public UtilityReport.Table Table = null;
             public IList<Cell> Cells = null;
+            public bool Merged = false;
+            public Color MergeColor = Color.Transparent;
 
-            public Row(Table table, params string[] values)
+            public Row(Table table, bool merged, Color mergeColor,  params string[] values)
             {
                 try
                 {
+                    this.MergeColor = mergeColor;
+                    this.Merged = merged;
                     this.Table = table;
                     this.Cells = new List<Cell>();
                     for (int column = 0; column < values.Length; column++)
