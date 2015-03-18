@@ -41,7 +41,7 @@ namespace Library.Template.Controls
         {
             get
             {
-                return (int?)editControl.Value; ;
+                return (int?)editControl.Value; 
             }
             set
             {
