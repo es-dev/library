@@ -34,6 +34,7 @@ namespace Library.Template.MVVM
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TemplateView));
             this.infoTitle = new Gizmox.WebGUI.Forms.Label();
             this.panelCommands = new Gizmox.WebGUI.Forms.Panel();
+            this.btnHome = new Library.Controls.ButtonSeparatorV();
             this.btnClose = new Library.Controls.ButtonSeparatorV();
             this.btnRefresh = new Library.Controls.ButtonSeparatorV();
             this.btnAdd = new Library.Controls.ButtonSeparatorV();
@@ -53,9 +54,9 @@ namespace Library.Template.MVVM
             | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
             this.infoTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.infoTitle.ForeColor = System.Drawing.Color.DarkRed;
-            this.infoTitle.Location = new System.Drawing.Point(101, 0);
+            this.infoTitle.Location = new System.Drawing.Point(110, 0);
             this.infoTitle.Name = "infoTitle";
-            this.infoTitle.Size = new System.Drawing.Size(473, 68);
+            this.infoTitle.Size = new System.Drawing.Size(460, 68);
             this.infoTitle.TabIndex = 4;
             this.infoTitle.Text = "TITLE";
             // 
@@ -66,13 +67,29 @@ namespace Library.Template.MVVM
             this.panelCommands.BackColor = System.Drawing.Color.Transparent;
             this.panelCommands.BackgroundImage = new Gizmox.WebGUI.Common.Resources.ImageResourceHandle(resources.GetString("panelCommands.BackgroundImage"));
             this.panelCommands.BackgroundImageLayout = Gizmox.WebGUI.Forms.ImageLayout.Stretch;
+            this.panelCommands.Controls.Add(this.btnHome);
             this.panelCommands.Controls.Add(this.btnClose);
             this.panelCommands.Controls.Add(this.btnRefresh);
             this.panelCommands.Controls.Add(this.btnAdd);
-            this.panelCommands.Location = new System.Drawing.Point(0, 68);
+            this.panelCommands.Location = new System.Drawing.Point(0, 1);
             this.panelCommands.Name = "panelCommands";
-            this.panelCommands.Size = new System.Drawing.Size(101, 591);
+            this.panelCommands.Size = new System.Drawing.Size(101, 658);
             this.panelCommands.TabIndex = 1;
+            // 
+            // btnHome
+            // 
+            this.btnHome.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
+            this.btnHome.BackColor = System.Drawing.Color.Transparent;
+            this.btnHome.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
+            this.btnHome.ImageButton = "Images.home24.png";
+            this.btnHome.ImageSeparator = "Images.separator_ht_small.png";
+            this.btnHome.Location = new System.Drawing.Point(0, 0);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(101, 72);
+            this.btnHome.TabIndex = 1;
+            this.btnHome.TextButton = "Home";
+            this.btnHome.Visible = false;
+            this.btnHome.Click += new Library.Controls.ButtonSeparatorV.ButtonSeparatorClick(this.btnHome_Click);
             // 
             // btnClose
             // 
@@ -81,7 +98,7 @@ namespace Library.Template.MVVM
             this.btnClose.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
             this.btnClose.ImageButton = "Images.left24.png";
             this.btnClose.ImageSeparator = "Images.separator_ht_small.png";
-            this.btnClose.Location = new System.Drawing.Point(0, 0);
+            this.btnClose.Location = new System.Drawing.Point(0, 72);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(101, 72);
             this.btnClose.TabIndex = 1;
@@ -96,7 +113,7 @@ namespace Library.Template.MVVM
             this.btnRefresh.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
             this.btnRefresh.ImageButton = "Images.refresh24.png";
             this.btnRefresh.ImageSeparator = "Images.separator_ht_small.png";
-            this.btnRefresh.Location = new System.Drawing.Point(0, 519);
+            this.btnRefresh.Location = new System.Drawing.Point(0, 586);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(101, 72);
             this.btnRefresh.TabIndex = 1;
@@ -110,7 +127,7 @@ namespace Library.Template.MVVM
             this.btnAdd.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
             this.btnAdd.ImageButton = "Images.add24.png";
             this.btnAdd.ImageSeparator = "Images.separator_ht_small.png";
-            this.btnAdd.Location = new System.Drawing.Point(0, 72);
+            this.btnAdd.Location = new System.Drawing.Point(0, 144);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(101, 72);
             this.btnAdd.TabIndex = 1;
@@ -234,6 +251,7 @@ namespace Library.Template.MVVM
         public Library.Controls.ButtonSeparatorV btnRefresh;
         public Library.Controls.ButtonSeparatorV btnClose;
         private Label editCount;
+        public Library.Controls.ButtonSeparatorV btnHome;
 
 
     }

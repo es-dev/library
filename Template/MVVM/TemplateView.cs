@@ -149,7 +149,6 @@ namespace Library.Template.MVVM
             {
                 count = value;
                 SetCount(count);
-                
             }
         }
 
@@ -396,6 +395,7 @@ namespace Library.Template.MVVM
         {
             try
             {
+                SetVisibility();
                 if (Opened != null)
                     Opened();
             }
@@ -403,6 +403,42 @@ namespace Library.Template.MVVM
             {
                 UtilityError.Write(ex);
             }
+        }
+
+        private void SetVisibility()
+        {
+            try
+            {
+                bool visible = false;
+                var owner = this.ownerSpace;
+                if(owner!=null)
+                {
+                    var parentOwner = owner.OwnerSpace;
+                    visible = (parentOwner != null);
+                }
+                btnHome.Visible = visible;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private ISpace GetRootSpace(ISpace space)
+        {
+            try
+            {
+                var owner = space.OwnerSpace;
+                if (owner != null)
+                    return GetRootSpace(owner);
+                else
+                    return space;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
         }
 
         private void txtSearch_Search(object sender, EventArgs e)
@@ -436,6 +472,24 @@ namespace Library.Template.MVVM
             try
             {
                 RefreshItems();
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var rootSpace = GetRootSpace(this);
+                if (rootSpace != null)
+                {
+                    this.ownerSpace = rootSpace;
+                    if(workspace!=null)
+                        workspace.CloseSpace(this);
+                }
             }
             catch (Exception ex)
             {

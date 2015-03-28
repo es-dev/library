@@ -108,9 +108,9 @@ namespace Library.Template.MVVM
             | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
             this.infoTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.infoTitle.ForeColor = System.Drawing.Color.DarkRed;
-            this.infoTitle.Location = new System.Drawing.Point(101, 0);
+            this.infoTitle.Location = new System.Drawing.Point(110, 0);
             this.infoTitle.Name = "infoTitle";
-            this.infoTitle.Size = new System.Drawing.Size(923, 47);
+            this.infoTitle.Size = new System.Drawing.Size(913, 47);
             this.infoTitle.TabIndex = 4;
             this.infoTitle.Text = "TITLE";
             // 
@@ -125,9 +125,9 @@ namespace Library.Template.MVVM
             this.panelCommands.Controls.Add(this.btnUpdateCancel);
             this.panelCommands.Controls.Add(this.btnSave);
             this.panelCommands.Controls.Add(this.btnClose);
-            this.panelCommands.Location = new System.Drawing.Point(0, 68);
+            this.panelCommands.Location = new System.Drawing.Point(0, 0);
             this.panelCommands.Name = "panelCommands";
-            this.panelCommands.Size = new System.Drawing.Size(101, 591);
+            this.panelCommands.Size = new System.Drawing.Size(101, 659);
             this.panelCommands.TabIndex = 1;
             // 
             // btnDelete
@@ -138,7 +138,7 @@ namespace Library.Template.MVVM
             this.btnDelete.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
             this.btnDelete.ImageButton = "Images.delete24.png";
             this.btnDelete.ImageSeparator = "Images.separator_ht_small.png";
-            this.btnDelete.Location = new System.Drawing.Point(0, 519);
+            this.btnDelete.Location = new System.Drawing.Point(0, 587);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(101, 72);
             this.btnDelete.TabIndex = 1;
@@ -152,7 +152,7 @@ namespace Library.Template.MVVM
             this.btnUpdateCancel.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
             this.btnUpdateCancel.ImageButton = "Images.edit24.png";
             this.btnUpdateCancel.ImageSeparator = "Images.separator_ht_small.png";
-            this.btnUpdateCancel.Location = new System.Drawing.Point(0, 145);
+            this.btnUpdateCancel.Location = new System.Drawing.Point(0, 216);
             this.btnUpdateCancel.Name = "btnUpdateCancel";
             this.btnUpdateCancel.Size = new System.Drawing.Size(101, 72);
             this.btnUpdateCancel.TabIndex = 1;
@@ -166,7 +166,7 @@ namespace Library.Template.MVVM
             this.btnSave.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
             this.btnSave.ImageButton = "Images.save24.png";
             this.btnSave.ImageSeparator = "Images.separator_ht_small.png";
-            this.btnSave.Location = new System.Drawing.Point(0, 73);
+            this.btnSave.Location = new System.Drawing.Point(0, 144);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(101, 72);
             this.btnSave.TabIndex = 1;
@@ -180,7 +180,7 @@ namespace Library.Template.MVVM
             this.btnClose.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
             this.btnClose.ImageButton = "Images.left24.png";
             this.btnClose.ImageSeparator = "Images.separator_ht_small.png";
-            this.btnClose.Location = new System.Drawing.Point(0, 0);
+            this.btnClose.Location = new System.Drawing.Point(0, 72);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(101, 72);
             this.btnClose.TabIndex = 1;
