@@ -246,7 +246,6 @@ namespace Library.Controls
             return false;
         }
 
-
         public EditControl()
         {
             InitializeComponent();
@@ -412,7 +411,6 @@ namespace Library.Controls
             } 
         }
 
-
         private object _value = null;
         public object Value
         {
@@ -453,6 +451,20 @@ namespace Library.Controls
                 UtilityError.Write(ex);
             }
             return null;
+        }
+
+        public void Verify()
+        {
+            try
+            {
+                changed = GetChanged();
+                verified = GetVerified();
+                SetImage(editing, changed, verified, imgEdit);
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
         }
     }
 }

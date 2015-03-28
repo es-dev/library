@@ -184,7 +184,6 @@ namespace Library.Template.MVVM
             }
         }
 
-
         private bool changed = false;
         public bool Changed
         {
@@ -269,11 +268,16 @@ namespace Library.Template.MVVM
         {
             try
             {
+                bool verified = true;
                 var editControls = GetEditControls(container.Controls);
                 foreach (var editControl in editControls)
-                    if (!editControl.Verified)
-                        return false;
-                return true;
+                {
+                    editControl.Verify();
+                    bool _verified = editControl.Verified;
+                    if (!_verified)
+                        verified = false;
+                }
+                return verified;
             }
             catch (Exception ex)
             {
@@ -282,15 +286,33 @@ namespace Library.Template.MVVM
             return false;
         }
 
+        public virtual ValidationState IsValidated() { return new ValidationState(); }
+
+        public class ValidationState
+        {
+            public bool State = true;
+            public string Message = null;
+
+            public ValidationState()
+            {
+
+            }
+        }
+
         private bool IsChanged()
         {
             try
             {
+                bool changed = false;
                 var editControls = GetEditControls(container.Controls);
                 foreach (var editControl in editControls)
-                    if (editControl.Changed)
-                        return true;
-                return false;
+                {
+                    editControl.Verify();
+                    bool _changed = editControl.Changed;
+                    if (_changed)
+                        changed = true;
+                }
+                return changed;
             }
             catch (Exception ex)
             {
@@ -421,8 +443,9 @@ namespace Library.Template.MVVM
             {
                 if (viewModel != null)
                 {
+                    var validated = IsValidated();
                     verified = IsVerified();
-                    if (verified)
+                    if (verified && validated != null && validated.State)
                     {
                         BindModel(model);
                         if (model != null)
@@ -456,7 +479,12 @@ namespace Library.Template.MVVM
                         }
                     }
                     else
-                        UtilityMessage.Show(this, "ATTENZIONE!", "Non è stato possibile validare le informazioni. Verificare i dati inseriti e riprovare ad eseguire l'operazione.", TypeMessage.Alert);
+                    {
+                        string message = "Non è stato possibile validare le informazioni. Verificare i dati inseriti e riprovare ad eseguire l'operazione.";
+                        if (validated != null)
+                            message += " " + validated.Message;
+                        UtilityMessage.Show(this, "ATTENZIONE!", message, TypeMessage.Alert);
+                    }
                 }
             }
             catch (Exception ex)
@@ -464,6 +492,7 @@ namespace Library.Template.MVVM
                 UtilityError.Write(ex);
             } 
         }
+
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -527,6 +556,7 @@ namespace Library.Template.MVVM
                 UtilityError.Write(ex);
             }
         }
+    
     }
 
    
