@@ -121,9 +121,23 @@ namespace Library.Template.MVVM
             set
             {
                 title = value;
-                infoTitle.Text = title;
+                SetTitle(title);
             }
         }
+
+        private void SetTitle(string title)
+        {
+            try
+            {
+                infoTitle.Text = (title != null ? title.ToUpper() : null);
+
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
 
         private int take = 10;
         public int Take
