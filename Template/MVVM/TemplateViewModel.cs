@@ -48,6 +48,7 @@ namespace Library.Template.MVVM
                 UtilityError.Write(ex);
             } 
         }
+
         private void Init() 
         {
             try
@@ -70,7 +71,7 @@ namespace Library.Template.MVVM
 
         public virtual object Read(object id) { return null; }
 
-        public void Load(IList<TDto> objDtos)
+        public void Load(IList<TDto> objDtos) 
         {
             try
             {
@@ -96,7 +97,7 @@ namespace Library.Template.MVVM
             } 
         }
 
-        public void Load(IEnumerable<TDto> objDtos)
+        public void Load(IEnumerable<TDto> objDtos) 
         {
             try
             {
@@ -108,5 +109,8 @@ namespace Library.Template.MVVM
             } 
         }
 
+        
+
+        
     }
 }

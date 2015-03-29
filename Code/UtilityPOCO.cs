@@ -23,8 +23,7 @@ namespace Library.Code
             }
         }
 
-
-        public static IEnumerable<TDto> Assemble<TDto>(IQueryable entities, bool references = true, bool collections = true)
+        public static IEnumerable<TDto> Assemble<TDto>(IQueryable entities, bool recursive=true, bool references = true, bool collections = true)
         {
             try
             {
@@ -33,7 +32,7 @@ namespace Library.Code
                     var dtos = new List<TDto>();
                     foreach (var entity in entities)
                     {
-                        var dto = Assemble<TDto>(entity, references, collections);
+                        var dto = Assemble<TDto>(entity, recursive, references, collections);
                         if (dto != null)
                             dtos.Add(dto);
                     }
@@ -47,12 +46,11 @@ namespace Library.Code
             return null;
         }
 
-
-        public static TDto Assemble<TDto>(object entity, bool references = true, bool collections = true)
+        public static TDto Assemble<TDto>(object entity, bool recursive = true, bool references = true, bool collections = true)
         {
             try
             {
-                var dto = (TDto)Assemble(entity, typeof(TDto), references, collections);
+                var dto = (TDto)Assemble(entity, typeof(TDto), recursive, references, collections);
                 return dto;
             }
             catch (Exception ex)
@@ -62,7 +60,7 @@ namespace Library.Code
             return default(TDto);
         }
 
-        private static object Assemble(object entity, Type typeDto, bool references, bool collections, object entityOwner = null)
+        private static object Assemble(object entity, Type typeDto, bool recursive, bool references, bool collections, object entityOwner = null)
         {
             try
             {
@@ -70,10 +68,13 @@ namespace Library.Code
                 {
                     var dto = Activator.CreateInstance(typeDto);
                     Clone(entity, dto);
-                    if (references)
-                        AssembleReferences(entity, entityOwner, dto, references, collections);
-                    if (collections)
-                        AssembleCollections(entity, dto, references, collections);
+                    if (recursive || (!recursive && entityOwner == null)) //recursive=false --> caricamento solo 1° livello references/collections (default recursive=true)
+                    {
+                        if (references)
+                            AssembleReferences(entity, entityOwner, dto, recursive, references, collections);
+                        if (collections)
+                            AssembleCollections(entity, dto, recursive, references, collections);
+                    }
                     return dto;
                 }
             }
@@ -84,7 +85,7 @@ namespace Library.Code
             return null;
         }
 
-        private static void AssembleReferences(object entity, object entityOwner, object dto, bool references, bool collections)
+        private static void AssembleReferences(object entity, object entityOwner, object dto, bool recursive, bool references, bool collections)
         {
             try
             {
@@ -107,7 +108,7 @@ namespace Library.Code
                                 collectionsReference = false;
                             }
 
-                            var dtoReference = Assemble(entityReference, typeDtoReference, referencesReference, collectionsReference, entity);
+                            var dtoReference = Assemble(entityReference, typeDtoReference, recursive, referencesReference, collectionsReference, entity);
                             SetValue(dto, propertyName, dtoReference);
                         }
                     }
@@ -119,7 +120,7 @@ namespace Library.Code
             }
         }
 
-        private static void AssembleCollections(object entity, object dto, bool references, bool collections)
+        private static void AssembleCollections(object entity, object dto, bool recursive, bool references, bool collections)
         {
             try
             {
@@ -135,7 +136,7 @@ namespace Library.Code
                         var entityCollection = (IEnumerable)GetValue(entity, propertyName);
                         foreach (var entityItem in entityCollection)
                         {
-                            var dtoItem = Assemble(entityItem, typeDtoItem, references, collections, entity);
+                            var dtoItem = Assemble(entityItem, typeDtoItem, recursive, references, collections, entity);
                             if (dtoItem != null)
                                 dtoCollection.Add(dtoItem);
                         }
@@ -166,7 +167,6 @@ namespace Library.Code
             }
             return null;
         }
-
 
         private static Type GetType(object dto, string propertyName)
         {
@@ -353,7 +353,6 @@ namespace Library.Code
             }
             return null;
         }
-
                 
         public static TEntity GetObject<TEntity>(TEntity obj)
         {
@@ -427,7 +426,6 @@ namespace Library.Code
             }
             return null;
         }
-
 
         public static int GetId(string dtoKey)
         {
