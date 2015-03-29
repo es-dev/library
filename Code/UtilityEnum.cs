@@ -87,8 +87,11 @@ namespace Library.Code.Enum
         {
             try
             {
-                var value = (TEnum)System.Enum.Parse(typeof(TEnum), name);
-                return value;
+                if (name != null)
+                {
+                    var value = (TEnum)System.Enum.Parse(typeof(TEnum), name);
+                    return value;
+                }
             }
             catch (Exception ex)
             {
