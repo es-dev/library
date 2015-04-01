@@ -38,6 +38,7 @@ namespace Library.Template.MVVM
             this.infoSubtitleImage = new Gizmox.WebGUI.Forms.PictureBox();
             this.infoTitle = new Gizmox.WebGUI.Forms.Label();
             this.panelCommands = new Gizmox.WebGUI.Forms.Panel();
+            this.btnHome = new Library.Controls.ButtonSeparatorV();
             this.btnDelete = new Library.Controls.ButtonSeparatorV();
             this.btnUpdateCancel = new Library.Controls.ButtonSeparatorV();
             this.btnSave = new Library.Controls.ButtonSeparatorV();
@@ -121,6 +122,7 @@ namespace Library.Template.MVVM
             this.panelCommands.BackColor = System.Drawing.Color.Transparent;
             this.panelCommands.BackgroundImage = new Gizmox.WebGUI.Common.Resources.ImageResourceHandle(resources.GetString("panelCommands.BackgroundImage"));
             this.panelCommands.BackgroundImageLayout = Gizmox.WebGUI.Forms.ImageLayout.Stretch;
+            this.panelCommands.Controls.Add(this.btnHome);
             this.panelCommands.Controls.Add(this.btnDelete);
             this.panelCommands.Controls.Add(this.btnUpdateCancel);
             this.panelCommands.Controls.Add(this.btnSave);
@@ -129,6 +131,21 @@ namespace Library.Template.MVVM
             this.panelCommands.Name = "panelCommands";
             this.panelCommands.Size = new System.Drawing.Size(101, 659);
             this.panelCommands.TabIndex = 1;
+            // 
+            // btnHome
+            // 
+            this.btnHome.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
+            this.btnHome.BackColor = System.Drawing.Color.Transparent;
+            this.btnHome.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
+            this.btnHome.ImageButton = "Images.home24.png";
+            this.btnHome.ImageSeparator = "Images.separator_ht_small.png";
+            this.btnHome.Location = new System.Drawing.Point(0, 0);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(101, 72);
+            this.btnHome.TabIndex = 1;
+            this.btnHome.TextButton = "Home";
+            this.btnHome.Visible = false;
+            this.btnHome.Click += new Library.Controls.ButtonSeparatorV.ButtonSeparatorClick(this.btnHome_Click);
             // 
             // btnDelete
             // 
@@ -184,7 +201,7 @@ namespace Library.Template.MVVM
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(101, 72);
             this.btnClose.TabIndex = 1;
-            this.btnClose.TextButton = "Chiudi";
+            this.btnClose.TextButton = "Indietro";
             this.btnClose.Click += new Library.Controls.ButtonSeparatorV.ButtonSeparatorClick(this.btnClose_Click);
             // 
             // TemplateModel
@@ -214,6 +231,7 @@ namespace Library.Template.MVVM
         public Library.Controls.ButtonSeparatorV btnDelete;
         public Library.Controls.ButtonSeparatorV btnUpdateCancel;
         public Library.Controls.ButtonSeparatorV btnSave;
+        public Library.Controls.ButtonSeparatorV btnHome;
 
 
 

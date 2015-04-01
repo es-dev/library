@@ -347,6 +347,7 @@ namespace Library.Template.MVVM
                     editControl.Editing = editing;
 
                 SetDeleting(editing && deleting);
+                SetVisibility();
             }
             catch (Exception ex)
             {
@@ -506,7 +507,6 @@ namespace Library.Template.MVVM
             } 
         }
 
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             try
@@ -561,8 +561,40 @@ namespace Library.Template.MVVM
         {
             try
             {
+                SetVisibility();
                 if (Opened != null)
                     Opened();
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void SetVisibility()
+        {
+            try
+            {
+                var parentOwner = UtilitySpace.GetParentOwner(this);
+                btnHome.Visible = (!editing && parentOwner != null);
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var rootSpace = UtilitySpace.GetRootSpace(this);
+                if (rootSpace != null)
+                {
+                    this.ownerSpace = rootSpace;
+                    if (workspace != null)
+                        workspace.CloseSpace(this);
+                }
             }
             catch (Exception ex)
             {

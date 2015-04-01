@@ -423,36 +423,13 @@ namespace Library.Template.MVVM
         {
             try
             {
-                bool visible = false;
-                var owner = this.ownerSpace;
-                if(owner!=null)
-                {
-                    var parentOwner = owner.OwnerSpace;
-                    visible = (parentOwner != null);
-                }
-                btnHome.Visible = visible;
+                var parentOwner = UtilitySpace.GetParentOwner(this);
+                btnHome.Visible = (parentOwner != null);
             }
             catch (Exception ex)
             {
                 UtilityError.Write(ex);
             }
-        }
-
-        private ISpace GetRootSpace(ISpace space)
-        {
-            try
-            {
-                var owner = space.OwnerSpace;
-                if (owner != null)
-                    return GetRootSpace(owner);
-                else
-                    return space;
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-            return null;
         }
 
         private void txtSearch_Search(object sender, EventArgs e)
@@ -497,7 +474,7 @@ namespace Library.Template.MVVM
         {
             try
             {
-                var rootSpace = GetRootSpace(this);
+                var rootSpace = UtilitySpace.GetRootSpace(this);
                 if (rootSpace != null)
                 {
                     this.ownerSpace = rootSpace;

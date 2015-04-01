@@ -71,9 +71,9 @@ namespace Library.Template.MVVM
             this.panelCommands.Controls.Add(this.btnClose);
             this.panelCommands.Controls.Add(this.btnRefresh);
             this.panelCommands.Controls.Add(this.btnAdd);
-            this.panelCommands.Location = new System.Drawing.Point(0, 1);
+            this.panelCommands.Location = new System.Drawing.Point(0, 0);
             this.panelCommands.Name = "panelCommands";
-            this.panelCommands.Size = new System.Drawing.Size(101, 658);
+            this.panelCommands.Size = new System.Drawing.Size(101, 659);
             this.panelCommands.TabIndex = 1;
             // 
             // btnHome
@@ -113,7 +113,7 @@ namespace Library.Template.MVVM
             this.btnRefresh.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
             this.btnRefresh.ImageButton = "Images.refresh24.png";
             this.btnRefresh.ImageSeparator = "Images.separator_ht_small.png";
-            this.btnRefresh.Location = new System.Drawing.Point(0, 586);
+            this.btnRefresh.Location = new System.Drawing.Point(0, 587);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(101, 72);
             this.btnRefresh.TabIndex = 1;

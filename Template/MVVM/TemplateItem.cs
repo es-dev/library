@@ -154,7 +154,6 @@ namespace Library.Template.MVVM
 
         public virtual string TitleSpace { get; set; }
 
-
         public delegate void ItemClickHandler(IItem item);
         public event ItemClickHandler ItemClick;
 
@@ -312,7 +311,6 @@ namespace Library.Template.MVVM
                 UtilityError.Write(ex);
             }
         }
-
 
         public event CloseHandler Closed;
         public void Close()

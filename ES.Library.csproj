@@ -271,6 +271,7 @@
     <Compile Include="Code\UtilityMessage.cs" />
     <Compile Include="Code\UtilityPOCO.cs" />
     <Compile Include="Code\UtilityReport.cs" />
+    <Compile Include="Code\UtilitySpace.cs" />
     <Compile Include="Code\UtilityValidation.cs" />
     <Compile Include="Code\UtilityWeb.cs" />
     <Compile Include="Controls\ButtonSeparatorH.cs">
