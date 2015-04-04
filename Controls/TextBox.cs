@@ -69,7 +69,7 @@ namespace Library.Controls
                 var jquery = new UtilityJQuery();
                 if (behavior == TypeBehavior.Numeric)
                     jqscript = jquery.GetNumeric(editText, mask);
-                else if (behavior == TypeBehavior.Decimal)
+                else if (behavior == TypeBehavior.Decimal || behavior == TypeBehavior.Percent)
                     jqscript = jquery.GetDecimal(editText, mask);
                 else if (behavior == TypeBehavior.PartitaIva)
                     jqscript = jquery.GetPartitaIva(editText, mask);
@@ -265,6 +265,8 @@ namespace Library.Controls
                         value = int.Parse(text);
                     else if (behavior == TypeBehavior.Decimal)
                         value = UtilityValidation.GetEuro(text);
+                    else if (behavior == TypeBehavior.Percent)
+                        value = UtilityValidation.GetPercent(text);
                     else
                         value = text;
                     return value;
@@ -288,6 +290,8 @@ namespace Library.Controls
                         text = ((int)value).ToString("0");
                     else if (behavior == TypeBehavior.Decimal)
                         text = UtilityValidation.GetEuro((decimal?)value);
+                    else if (behavior == TypeBehavior.Percent)
+                        text = UtilityValidation.GetPercent((decimal?)value);
                     else
                         text = (string)value;
                 }

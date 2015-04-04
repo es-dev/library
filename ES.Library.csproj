@@ -257,6 +257,7 @@
     <Reference Include="System.Xml">
       <Private>True</Private>
     </Reference>
+    <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2015.1.225.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL" />
     <Reference Include="ZedGraph, Version=5.1.5.28844, Culture=neutral, PublicKeyToken=02a83cbd123fcd60, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Gizmox\Visual WebGUI\Sources 4.5.1\Gizmox.WebGUI.Assemblies\bin\4.5.1\ZedGraph.dll</HintPath>
@@ -449,6 +450,12 @@
     <Compile Include="Template\Controls\TemplateEditDateTime.designer.cs">
       <DependentUpon>TemplateEditDateTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Template\Controls\TemplateEditPercent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Template\Controls\TemplateEditPercent.Designer.cs">
+      <DependentUpon>TemplateEditPercent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Template\Controls\TemplateEditDropDown.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -637,6 +644,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditDateTime.resx">
       <DependentUpon>TemplateEditDateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Template\Controls\TemplateEditPercent.resx">
+      <DependentUpon>TemplateEditPercent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditDropDown.resx">
       <DependentUpon>TemplateEditDropDown.cs</DependentUpon>

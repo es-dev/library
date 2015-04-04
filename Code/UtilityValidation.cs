@@ -304,15 +304,70 @@ namespace Library.Code
             return null;
         }
 
+        public static decimal GetPercent(string text)
+        {
+            try
+            {
+                var value = GetDecimal(text, "%");
+                return value;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return 0;
+        }
+
+        public static string GetPercent(decimal? value)
+        {
+            try
+            {
+                var text = GetDecimal(value, "%");
+                return text;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
 
         public static decimal GetEuro(string text)
+        {
+            try
+            {
+                var value = GetDecimal(text, "€");
+                return value;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return 0;
+        }
+
+        public static string GetEuro(decimal? value)
+        {
+            try
+            {
+                var text = GetDecimal(value, "€");
+                return text;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        private static decimal GetDecimal(string text, string format)
         {
             try
             {
                 if (text != null)
                 {
                     decimal value = 0;
-                    text = text.Replace("€", "");
+                    text = text.Replace(format, "");
                     var count = (from q in text.ToCharArray() where q == '.' || q == ',' select q).Count();
                     if (count == 1)
                         value = decimal.Parse(text.Replace(".", ","));
@@ -334,13 +389,13 @@ namespace Library.Code
             return 0;
         }
 
-        public static string GetEuro(decimal? value)
+        private static string GetDecimal(decimal? value, string format)
         {
             try
             {
                 if (value != null)
                 {
-                    var text= ((decimal)value).ToString("#,0.00") + "€";
+                    var text= ((decimal)value).ToString("#,0.00") + format;
                     return text;
                 }
             }

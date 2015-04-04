@@ -23,7 +23,7 @@ namespace Library.Code
             }
         }
 
-        public static IEnumerable<TDto> Assemble<TDto>(IQueryable entities, bool recursive=true, bool references = true, bool collections = true)
+        public static IEnumerable<TDto> Assemble<TDto>(IQueryable entities, bool recursive=false, bool references = true, bool collections = true)
         {
             try
             {
@@ -46,7 +46,7 @@ namespace Library.Code
             return null;
         }
 
-        public static TDto Assemble<TDto>(object entity, bool recursive = true, bool references = true, bool collections = true)
+        public static TDto Assemble<TDto>(object entity, bool recursive = false, bool references = true, bool collections = true)
         {
             try
             {
@@ -68,7 +68,7 @@ namespace Library.Code
                 {
                     var dto = Activator.CreateInstance(typeDto);
                     Clone(entity, dto);
-                    if (recursive || (!recursive && entityOwner == null)) //recursive=false --> caricamento solo 1° livello references/collections (default recursive=true)
+                    if (recursive || (!recursive && entityOwner == null)) //recursive=false --> caricamento solo 1° livello references/collections (default recursive=false)
                     {
                         if (references)
                             AssembleReferences(entity, entityOwner, dto, recursive, references, collections);

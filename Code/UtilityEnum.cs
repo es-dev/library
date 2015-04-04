@@ -59,6 +59,7 @@ namespace Library.Code.Enum
         Password,
         Numeric,
         Decimal,
+        Percent,
         CodiceFiscale,
         PartitaIva,
         Email,
