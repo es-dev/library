@@ -329,6 +329,12 @@
     <Compile Include="Controls\JQPanel.Designer.cs">
       <DependentUpon>JQPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TextProgress.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TextProgress.Designer.cs">
+      <DependentUpon>TextProgress.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -449,6 +455,12 @@
     </Compile>
     <Compile Include="Template\Controls\TemplateEditDateTime.designer.cs">
       <DependentUpon>TemplateEditDateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Template\Controls\TemplateEditProgress.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Template\Controls\TemplateEditProgress.Designer.cs">
+      <DependentUpon>TemplateEditProgress.cs</DependentUpon>
     </Compile>
     <Compile Include="Template\Controls\TemplateEditPercent.cs">
       <SubType>UserControl</SubType>
@@ -584,6 +596,10 @@
     <EmbeddedResource Include="Controls\JQPanel.resx">
       <DependentUpon>JQPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TextProgress.resx">
+      <DependentUpon>TextProgress.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\TextBox.resx">
       <DependentUpon>TextBox.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -644,6 +660,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditDateTime.resx">
       <DependentUpon>TemplateEditDateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Template\Controls\TemplateEditProgress.resx">
+      <DependentUpon>TemplateEditProgress.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditPercent.resx">
       <DependentUpon>TemplateEditPercent.cs</DependentUpon>
