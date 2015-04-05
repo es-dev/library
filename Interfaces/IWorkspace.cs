@@ -9,8 +9,6 @@ namespace Library.Interfaces
     public interface IWorkspace
     {
         void AddSpace(ISpace space);
-        //ISpace GetSpace();
-        //void RemoveSpace(ISpace space);
         void CloseSpace(ISpace space);
     }
 }

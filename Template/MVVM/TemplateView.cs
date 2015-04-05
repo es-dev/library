@@ -138,7 +138,6 @@ namespace Library.Template.MVVM
             }
         }
 
-
         private int take = 10;
         public int Take
         {
