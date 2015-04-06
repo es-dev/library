@@ -18,6 +18,35 @@ namespace Library.Controls
 {
     public partial class CheckButton : UserControl, IMaskControl
     {
+        private int trueWidth = 104;
+        public int TrueWidth
+        {
+            get
+            {
+                return trueWidth;
+            }
+            set
+            {
+                trueWidth = value;
+                SetTrueWidth(trueWidth);
+            }
+        }
+
+        private void SetTrueWidth(int trueWidth)
+        {
+            try
+            {
+                lblTrue.Width = trueWidth;
+                btnFalse.Left = btnTrue.Width + lblTrue.Width;
+                lblFalse.Left = btnFalse.Left + btnFalse.Width;
+                lblFalse.Width = this.Width - lblFalse.Left;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
         private bool readOnly = false;
         public bool ReadOnly
         {
@@ -37,8 +66,14 @@ namespace Library.Controls
         {
             try
             {
-                editTrue.Enabled = !readOnly;
-                editFalse.Enabled = !readOnly;
+                btnTrue.Enabled = !readOnly;
+                btnFalse.Enabled = !readOnly;
+                //lblFalse.Enabled = !readOnly;
+                //lblTrue.Enabled = !readOnly;
+                btnTrue.Cursor = (readOnly ? Cursors.Default : Cursors.Hand);
+                btnFalse.Cursor = (readOnly ? Cursors.Default : Cursors.Hand);
+                lblTrue.Cursor = (readOnly ? Cursors.Default : Cursors.Hand);
+                lblFalse.Cursor = (readOnly ? Cursors.Default : Cursors.Hand);
             }
             catch (Exception ex)
             {
@@ -50,7 +85,7 @@ namespace Library.Controls
         {
             try
             {
-                var readOnly = !editTrue.Enabled && !editFalse.Enabled;
+                var readOnly = !btnTrue.Enabled && !btnFalse.Enabled;
                 return readOnly;
             }
             catch (Exception ex)
@@ -79,8 +114,8 @@ namespace Library.Controls
             try
             {
                 base.BackColor = backColor;
-                editTrue.BackColor = backColor;
-                editFalse.BackColor = backColor;
+                btnTrue.BackColor = backColor;
+                btnFalse.BackColor = backColor;
             }
             catch (Exception ex)
             {
@@ -141,13 +176,13 @@ namespace Library.Controls
         {
             get
             {
-                textTrue = editTrue.Text;
+                textTrue = lblTrue.Text;
                 return textTrue;
             }
             set
             {
                 textTrue = value;
-                editTrue.Text = textTrue;
+                lblTrue.Text = textTrue;
             }
         }
 
@@ -156,13 +191,13 @@ namespace Library.Controls
         {
             get
             {
-                textFalse = editFalse.Text;
+                textFalse = lblFalse.Text;
                 return textFalse;
             }
             set
             {
                 textFalse = value;
-                editFalse.Text = textFalse;
+                lblFalse.Text = textFalse;
             }
         }
 
@@ -186,10 +221,10 @@ namespace Library.Controls
             try
             {
                 bool? _value = null;
-                if (editTrue != null && editFalse != null)
+                if (btnTrue != null && btnFalse != null)
                 {
-                    bool? trueValue = (bool?)editTrue.Tag;
-                    bool? falseValue = (bool?)editFalse.Tag;
+                    bool? trueValue = (bool?)btnTrue.Tag;
+                    bool? falseValue = (bool?)btnFalse.Tag;
                     if (trueValue != null && falseValue != null)
                     {
                         if (trueValue == true && falseValue == false)
@@ -229,32 +264,16 @@ namespace Library.Controls
         {
             InitializeComponent();
         }
-
-        private void CheckButton_SizeChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                int width = this.Width;
-                editTrue.Left = 0;
-                editTrue.Width = width / 2;
-                editFalse.Left = editTrue.Left + editTrue.Width;
-                editFalse.Width = editTrue.Width;
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            } 
-        }
-        
+       
         private void SetTrueFalse(bool trueValue, bool falseValue)
         {
             try
             {
-                editTrue.Image = (trueValue ? "Images.on.png" : "Images.off.png");
-                editTrue.Tag = trueValue;
+                btnTrue.Image = (trueValue ? "Images.on.png" : "Images.off.png");
+                btnTrue.Tag = trueValue;
 
-                editFalse.Image = (falseValue ? "Images.on.png" : "Images.off.png");
-                editFalse.Tag = falseValue;
+                btnFalse.Image = (falseValue ? "Images.on.png" : "Images.off.png");
+                btnFalse.Tag = falseValue;
             }
             catch (Exception ex)
             {
@@ -262,15 +281,18 @@ namespace Library.Controls
             }
         }
 
-        private void editTrue_Click(object sender, EventArgs e)
+        private void btnTrue_Click(object sender, EventArgs e)
         {
             try
             {
-                bool? value = (bool?)editTrue.Tag;
-                if (value == true)
-                    SetValue(null);
-                else
-                    SetValue(true);
+                if (!readOnly)
+                {
+                    bool? value = (bool?)btnTrue.Tag;
+                    if (value == true)
+                        SetValue(null);
+                    else
+                        SetValue(true);
+                }
             }
             catch (Exception ex)
             {
@@ -278,15 +300,18 @@ namespace Library.Controls
             } 
         }
 
-        private void editFalse_Click(object sender, EventArgs e)
+        private void btnFalse_Click(object sender, EventArgs e)
         {
             try
             {
-                bool? value = (bool?)editFalse.Tag;
-                if (value == true)
-                    SetValue(null);
-                else
-                    SetValue(false);
+                if (!readOnly)
+                {
+                    bool? value = (bool?)btnFalse.Tag;
+                    if (value == true)
+                        SetValue(null);
+                    else
+                        SetValue(false);
+                }
             }
             catch (Exception ex)
             {

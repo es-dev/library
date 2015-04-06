@@ -51,6 +51,21 @@ namespace Library.Template.Controls
             }
         }
 
+        private int trueWidth = 104;
+        public int TrueWidth
+        {
+            get
+            {
+                trueWidth = editControl.TrueWidth;
+                return trueWidth;
+            }
+            set
+            {
+                trueWidth = value;
+                editControl.TrueWidth= trueWidth;
+            }
+        }
+
         public TemplateEditCheckBox()
         {
             InitializeComponent();

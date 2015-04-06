@@ -31,59 +31,88 @@ namespace Library.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            this.editTrue = new Gizmox.WebGUI.Forms.Button();
-            this.editFalse = new Gizmox.WebGUI.Forms.Button();
+            this.btnTrue = new Gizmox.WebGUI.Forms.Button();
+            this.btnFalse = new Gizmox.WebGUI.Forms.Button();
+            this.lblTrue = new Gizmox.WebGUI.Forms.Label();
+            this.lblFalse = new Gizmox.WebGUI.Forms.Label();
             this.SuspendLayout();
             // 
-            // editTrue
+            // btnTrue
             // 
-            this.editTrue.Cursor = Gizmox.WebGUI.Forms.Cursors.Hand;
-            this.editTrue.CustomStyle = "F";
-            this.editTrue.FlatStyle = Gizmox.WebGUI.Forms.FlatStyle.Flat;
-            this.editTrue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editTrue.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.editTrue.Location = new System.Drawing.Point(0, 0);
-            this.editTrue.Name = "editTrue";
-            this.editTrue.Size = new System.Drawing.Size(134, 28);
-            this.editTrue.TabIndex = 999;
-            this.editTrue.TabStop = false;
-            this.editTrue.Text = "True";
-            this.editTrue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.editTrue.TextImageRelation = Gizmox.WebGUI.Forms.TextImageRelation.ImageBeforeText;
-            this.editTrue.Click += new System.EventHandler(this.editTrue_Click);
+            this.btnTrue.Cursor = Gizmox.WebGUI.Forms.Cursors.Hand;
+            this.btnTrue.CustomStyle = "F";
+            this.btnTrue.FlatStyle = Gizmox.WebGUI.Forms.FlatStyle.Flat;
+            this.btnTrue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTrue.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTrue.Location = new System.Drawing.Point(0, 0);
+            this.btnTrue.Name = "btnTrue";
+            this.btnTrue.Size = new System.Drawing.Size(30, 28);
+            this.btnTrue.TabIndex = 999;
+            this.btnTrue.TabStop = false;
+            this.btnTrue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTrue.TextImageRelation = Gizmox.WebGUI.Forms.TextImageRelation.ImageBeforeText;
+            this.btnTrue.Click += new System.EventHandler(this.btnTrue_Click);
             // 
-            // editFalse
+            // btnFalse
             // 
-            this.editFalse.Cursor = Gizmox.WebGUI.Forms.Cursors.Hand;
-            this.editFalse.CustomStyle = "F";
-            this.editFalse.FlatStyle = Gizmox.WebGUI.Forms.FlatStyle.Flat;
-            this.editFalse.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editFalse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.editFalse.Location = new System.Drawing.Point(134, 0);
-            this.editFalse.Name = "editFalse";
-            this.editFalse.Size = new System.Drawing.Size(134, 28);
-            this.editFalse.TabIndex = 999;
-            this.editFalse.TabStop = false;
-            this.editFalse.Text = "False";
-            this.editFalse.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.editFalse.TextImageRelation = Gizmox.WebGUI.Forms.TextImageRelation.ImageBeforeText;
-            this.editFalse.Click += new System.EventHandler(this.editFalse_Click);
+            this.btnFalse.Cursor = Gizmox.WebGUI.Forms.Cursors.Hand;
+            this.btnFalse.CustomStyle = "F";
+            this.btnFalse.FlatStyle = Gizmox.WebGUI.Forms.FlatStyle.Flat;
+            this.btnFalse.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFalse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFalse.Location = new System.Drawing.Point(134, 0);
+            this.btnFalse.Name = "btnFalse";
+            this.btnFalse.Size = new System.Drawing.Size(30, 28);
+            this.btnFalse.TabIndex = 999;
+            this.btnFalse.TabStop = false;
+            this.btnFalse.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFalse.TextImageRelation = Gizmox.WebGUI.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFalse.Click += new System.EventHandler(this.btnFalse_Click);
+            // 
+            // lblTrue
+            // 
+            this.lblTrue.Cursor = Gizmox.WebGUI.Forms.Cursors.Hand;
+            this.lblTrue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTrue.Location = new System.Drawing.Point(30, 0);
+            this.lblTrue.Name = "lblTrue";
+            this.lblTrue.Size = new System.Drawing.Size(104, 28);
+            this.lblTrue.TabIndex = 1000;
+            this.lblTrue.Text = "TRUE";
+            this.lblTrue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblTrue.Click += new System.EventHandler(this.btnTrue_Click);
+            // 
+            // lblFalse
+            // 
+            this.lblFalse.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)(((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Left) 
+            | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
+            this.lblFalse.Cursor = Gizmox.WebGUI.Forms.Cursors.Hand;
+            this.lblFalse.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFalse.Location = new System.Drawing.Point(164, 0);
+            this.lblFalse.Name = "lblFalse";
+            this.lblFalse.Size = new System.Drawing.Size(104, 28);
+            this.lblFalse.TabIndex = 1000;
+            this.lblFalse.Text = "FALSE";
+            this.lblFalse.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblFalse.Click += new System.EventHandler(this.btnFalse_Click);
             // 
             // CheckButton
             // 
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.editFalse);
-            this.Controls.Add(this.editTrue);
+            this.Controls.Add(this.lblFalse);
+            this.Controls.Add(this.lblTrue);
+            this.Controls.Add(this.btnFalse);
+            this.Controls.Add(this.btnTrue);
             this.Size = new System.Drawing.Size(272, 30);
-            this.SizeChanged += new System.EventHandler(this.CheckButton_SizeChanged);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Button editTrue;
-        private Button editFalse;
+        private Button btnTrue;
+        private Button btnFalse;
+        private Label lblTrue;
+        private Label lblFalse;
 
 
     }
