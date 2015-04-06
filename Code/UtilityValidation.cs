@@ -430,5 +430,20 @@ namespace Library.Code
             }
             return null;
         }
+
+        public static bool GetBoolean(bool? value)
+        {
+            try
+            {
+                if (value != null)
+                    return (bool)value;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
+        }
+
     }
 }
