@@ -299,18 +299,7 @@ namespace Library.Template.MVVM
             return false;
         }
 
-        public virtual ValidationState IsValidated() { return new ValidationState(); }
-
-        public class ValidationState
-        {
-            public bool State = true;
-            public string Message = null;
-
-            public ValidationState()
-            {
-
-            }
-        }
+        public virtual UtilityValidation.ValidationState IsValidated() { return new UtilityValidation.ValidationState(); }
 
         private bool IsChanged()
         {

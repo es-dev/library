@@ -9,6 +9,17 @@ namespace Library.Code
 {
     public class UtilityValidation
     {
+        public class ValidationState
+        {
+            public bool State = true;
+            public string Message = null;
+
+            public ValidationState()
+            {
+
+            }
+        }
+
         public static bool IsDate(string day, string month, string year)
         {
             try
