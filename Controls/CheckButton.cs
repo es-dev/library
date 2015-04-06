@@ -37,8 +37,8 @@ namespace Library.Controls
             try
             {
                 lblTrue.Width = trueWidth;
-                btnFalse.Left = btnTrue.Width + lblTrue.Width;
-                lblFalse.Left = btnFalse.Left + btnFalse.Width;
+                imgFalse.Left = imgTrue.Width + lblTrue.Width;
+                lblFalse.Left = imgFalse.Left + imgFalse.Width;
                 lblFalse.Width = this.Width - lblFalse.Left;
             }
             catch (Exception ex)
@@ -66,12 +66,12 @@ namespace Library.Controls
         {
             try
             {
-                btnTrue.Enabled = !readOnly;
-                btnFalse.Enabled = !readOnly;
+                //imgTrue.Enabled = !readOnly;
+                //imgFalse.Enabled = !readOnly;
                 //lblFalse.Enabled = !readOnly;
                 //lblTrue.Enabled = !readOnly;
-                btnTrue.Cursor = (readOnly ? Cursors.Default : Cursors.Hand);
-                btnFalse.Cursor = (readOnly ? Cursors.Default : Cursors.Hand);
+                imgTrue.Cursor = (readOnly ? Cursors.Default : Cursors.Hand);
+                imgFalse.Cursor = (readOnly ? Cursors.Default : Cursors.Hand);
                 lblTrue.Cursor = (readOnly ? Cursors.Default : Cursors.Hand);
                 lblFalse.Cursor = (readOnly ? Cursors.Default : Cursors.Hand);
             }
@@ -85,7 +85,7 @@ namespace Library.Controls
         {
             try
             {
-                var readOnly = !btnTrue.Enabled && !btnFalse.Enabled;
+                var readOnly = !imgTrue.Enabled && !imgFalse.Enabled;
                 return readOnly;
             }
             catch (Exception ex)
@@ -114,8 +114,8 @@ namespace Library.Controls
             try
             {
                 base.BackColor = backColor;
-                btnTrue.BackColor = backColor;
-                btnFalse.BackColor = backColor;
+                imgTrue.BackColor = backColor;
+                imgFalse.BackColor = backColor;
             }
             catch (Exception ex)
             {
@@ -221,10 +221,10 @@ namespace Library.Controls
             try
             {
                 bool? _value = null;
-                if (btnTrue != null && btnFalse != null)
+                if (imgTrue != null && imgFalse != null)
                 {
-                    bool? trueValue = (bool?)btnTrue.Tag;
-                    bool? falseValue = (bool?)btnFalse.Tag;
+                    bool? trueValue = (bool?)imgTrue.Tag;
+                    bool? falseValue = (bool?)imgFalse.Tag;
                     if (trueValue != null && falseValue != null)
                     {
                         if (trueValue == true && falseValue == false)
@@ -269,11 +269,11 @@ namespace Library.Controls
         {
             try
             {
-                btnTrue.Image = (trueValue ? "Images.on.png" : "Images.off.png");
-                btnTrue.Tag = trueValue;
+                imgTrue.Image = (trueValue ? "Images.on.png" : "Images.off.png");
+                imgTrue.Tag = trueValue;
 
-                btnFalse.Image = (falseValue ? "Images.on.png" : "Images.off.png");
-                btnFalse.Tag = falseValue;
+                imgFalse.Image = (falseValue ? "Images.on.png" : "Images.off.png");
+                imgFalse.Tag = falseValue;
             }
             catch (Exception ex)
             {
@@ -281,13 +281,13 @@ namespace Library.Controls
             }
         }
 
-        private void btnTrue_Click(object sender, EventArgs e)
+        private void imgTrue_Click(object sender, EventArgs e)
         {
             try
             {
                 if (!readOnly)
                 {
-                    bool? value = (bool?)btnTrue.Tag;
+                    bool? value = (bool?)imgTrue.Tag;
                     if (value == true)
                         SetValue(null);
                     else
@@ -300,13 +300,13 @@ namespace Library.Controls
             } 
         }
 
-        private void btnFalse_Click(object sender, EventArgs e)
+        private void imgFalse_Click(object sender, EventArgs e)
         {
             try
             {
                 if (!readOnly)
                 {
-                    bool? value = (bool?)btnFalse.Tag;
+                    bool? value = (bool?)imgFalse.Tag;
                     if (value == true)
                         SetValue(null);
                     else
