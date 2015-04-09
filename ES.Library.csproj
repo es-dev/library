@@ -548,6 +548,10 @@
     <Compile Include="Interfaces\IView.cs" />
     <Compile Include="Interfaces\IViewModel.cs" />
     <Compile Include="Interfaces\IWorkspace.cs" />
+    <Compile Include="Template\MVVM\TemplateSchedulerItem.cs" />
+    <Compile Include="Template\MVVM\TemplateSchedulerItem.Designer.cs">
+      <DependentUpon>TemplateSchedulerItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Template\MVVM\TemplateItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -559,6 +563,12 @@
     </Compile>
     <Compile Include="Template\MVVM\TemplateModel.Designer.cs">
       <DependentUpon>TemplateModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Template\MVVM\TemplateSchedulerView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Template\MVVM\TemplateSchedulerView.Designer.cs">
+      <DependentUpon>TemplateSchedulerView.cs</DependentUpon>
     </Compile>
     <Compile Include="Template\MVVM\TemplateView.cs">
       <SubType>UserControl</SubType>
@@ -705,12 +715,20 @@
       <DependentUpon>TemplateWorkspace.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="JS\Opacity.js" />
+    <EmbeddedResource Include="Template\MVVM\TemplateSchedulerItem.resx">
+      <DependentUpon>TemplateSchedulerItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Template\MVVM\TemplateItem.resx">
       <DependentUpon>TemplateItem.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Template\MVVM\TemplateModel.resx">
       <DependentUpon>TemplateModel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Template\MVVM\TemplateSchedulerView.resx">
+      <DependentUpon>TemplateSchedulerView.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Template\MVVM\TemplateView.resx">
