@@ -245,6 +245,9 @@ namespace Library.Template.MVVM
                 dtDate.Value = date;                
                 scheduleBox.View = ScheduleBoxView.Week;
                 scheduleBox.FirstDate = date;
+                scheduleBox.WorkStartHour = 8;
+                scheduleBox.WorkEndHour = 18;
+
             }
             catch (Exception ex)
             {
@@ -312,6 +315,7 @@ namespace Library.Template.MVVM
             try
             {
                 adding = false;
+                SetAdding(adding);
                 btnClose.Visible = (ownerSpace != null);
                 if (txtSearch.CanFocus)
                     txtSearch.Focus();
@@ -514,6 +518,7 @@ namespace Library.Template.MVVM
             {
                 var date = dtDate.Value;
                 scheduleBox.FirstDate = date;
+                RefreshItems();
             }
             catch (Exception ex)
             {
@@ -526,7 +531,7 @@ namespace Library.Template.MVVM
             try
             {
                 scheduleBox.View = ScheduleBoxView.Day;
-                LoadItems();
+                RefreshItems();
             }
             catch (Exception ex)
             {
@@ -539,7 +544,7 @@ namespace Library.Template.MVVM
             try
             {
                 scheduleBox.View = ScheduleBoxView.FullWeek;
-                LoadItems();
+                RefreshItems();
             }
             catch (Exception ex)
             {
@@ -551,8 +556,8 @@ namespace Library.Template.MVVM
         {
             try
             {
-                scheduleBox.View = ScheduleBoxView.FullMonth;
-                LoadItems();
+                scheduleBox.View = ScheduleBoxView.Month;
+                RefreshItems();
             }
             catch (Exception ex)
             {

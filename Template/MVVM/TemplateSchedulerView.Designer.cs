@@ -48,7 +48,6 @@ namespace Library.Template.MVVM
             this.editCount = new Gizmox.WebGUI.Forms.Label();
             this.scheduleBox = new Gizmox.WebGUI.Forms.ScheduleBox();
             this.dtDate = new Gizmox.WebGUI.Forms.DateTimePicker();
-            this.label1 = new Gizmox.WebGUI.Forms.Label();
             this.panelCommands.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgSeparator)).BeginInit();
             this.SuspendLayout();
@@ -270,33 +269,20 @@ namespace Library.Template.MVVM
             // dtDate
             // 
             this.dtDate.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
+            this.dtDate.BackColor = System.Drawing.Color.Transparent;
+            this.dtDate.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.None;
             this.dtDate.CustomFormat = "";
             this.dtDate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
-            this.dtDate.Format = Gizmox.WebGUI.Forms.DateTimePickerFormat.Short;
-            this.dtDate.Location = new System.Drawing.Point(434, 39);
+            this.dtDate.ForeColor = System.Drawing.Color.DarkRed;
+            this.dtDate.Location = new System.Drawing.Point(328, 40);
             this.dtDate.Name = "dtDate";
-            this.dtDate.Size = new System.Drawing.Size(127, 25);
+            this.dtDate.Size = new System.Drawing.Size(233, 25);
             this.dtDate.TabIndex = 14;
             this.dtDate.ValueChanged += new System.EventHandler(this.dtDate_ValueChanged);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
-            this.label1.Location = new System.Drawing.Point(291, 45);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Seleziona una data";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // TemplateSchedulerView
             // 
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.dtDate);
             this.Controls.Add(this.scheduleBox);
             this.Controls.Add(this.editCount);
@@ -332,7 +318,6 @@ namespace Library.Template.MVVM
         public Library.Controls.ButtonSeparatorV btnWeek;
         public Library.Controls.ButtonSeparatorV btnDay;
         private DateTimePicker dtDate;
-        private Label label1;
 
 
     }
