@@ -99,20 +99,5 @@ namespace Library.Template.MVVM
             } 
         }
 
-        //public void Load(IEnumerable<TDto> objDtos) 
-        //{
-        //    try
-        //    {
-        //        Load(objDtos.ToList());
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        UtilityError.Write(ex);
-        //    } 
-        //}
-
-       
-
-        
     }
 }
