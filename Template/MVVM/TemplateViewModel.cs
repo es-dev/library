@@ -71,7 +71,9 @@ namespace Library.Template.MVVM
 
         public virtual object Read(object id) { return null; }
 
-        public void Load(IList<TDto> objDtos) 
+        public virtual void Fill(object start, object end, string search) {}
+
+        public void Load(IEnumerable<TDto> objDtos) 
         {
             try
             {
@@ -97,17 +99,20 @@ namespace Library.Template.MVVM
             } 
         }
 
-        public void Load(IEnumerable<TDto> objDtos) 
-        {
-            try
-            {
-                Load(objDtos.ToList());
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            } 
-        }
+        //public void Load(IEnumerable<TDto> objDtos) 
+        //{
+        //    try
+        //    {
+        //        Load(objDtos.ToList());
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        UtilityError.Write(ex);
+        //    } 
+        //}
 
+       
+
+        
     }
 }

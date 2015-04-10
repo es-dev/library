@@ -64,10 +64,12 @@ namespace Library.Template.MVVM
         {
             try
             {
-                var events = GetEvents(items);
-                scheduleBox.Events.Clear();
-                foreach(ScheduleBoxEvent _event in events)
-                    scheduleBox.Events.Add(_event);
+                if (items != null)
+                {
+                    scheduleBox.Events.Clear();
+                    foreach (ScheduleBoxEvent item in items)
+                        scheduleBox.Events.Add(item);
+                }
             }
             catch (Exception ex)
             {
@@ -193,6 +195,19 @@ namespace Library.Template.MVVM
             }
         }
 
+        private void SetAdding(bool adding)
+        {
+            try
+            {
+                btnAdd.Enabled = adding;
+                btnAdd.Visible = adding;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
         public TemplateSchedulerView()
         {
             InitializeComponent();
@@ -208,12 +223,11 @@ namespace Library.Template.MVVM
 
         public virtual string TitleSpace { get; set; }
 
-        private int skip = 0;
-
         private void TemplateSchedulerView_Load(object sender, EventArgs e)
         {
             try
             {
+                SetDefaultValue();
                 LoadItems();
                 SetLayout();                
             }
@@ -223,12 +237,14 @@ namespace Library.Template.MVVM
             }
         }
 
-        private void SetAdding(bool adding)
+        private void SetDefaultValue()
         {
             try
             {
-                btnAdd.Enabled = adding;
-                btnAdd.Visible = adding;
+                var date = DateTime.Today;
+                dtDate.Value = date;                
+                scheduleBox.View = ScheduleBoxView.Week;
+                scheduleBox.FirstDate = date;
             }
             catch (Exception ex)
             {
@@ -241,7 +257,9 @@ namespace Library.Template.MVVM
             try
             {
                 string search = txtSearch.Text;
-                viewModel.Load(skip, take, search);
+                var start = scheduleBox.FirstDate;
+                var end = GetEnd(start);
+                viewModel.Fill(start, end, search);
                 this.Count = viewModel.GetCount(search);
                 this.Items = viewModel.Items;
             }
@@ -251,25 +269,41 @@ namespace Library.Template.MVVM
             }
         }
 
-        public IList<ScheduleBoxEvent> GetEvents(IList<IItem> items)
+        private object GetEnd(DateTime start)
         {
             try
             {
-                if (items != null)
-                {
-                    var events = new List<ScheduleBoxEvent>();
-                    foreach (ScheduleBoxEvent item in items)
-                        events.Add(item);
-
-                    return events;
-                }
+                int days = GetScheduleDays();
+                var end = start.AddDays(days);
+                return end;
             }
             catch (Exception ex)
             {
                 UtilityError.Write(ex);
             }
-            return null;
-        }     
+            return DateTime.MinValue;
+        }
+
+        private int GetScheduleDays()
+        {
+            try
+            {
+                int days = 0;
+                var view = scheduleBox.View;
+                if (view == ScheduleBoxView.Day)
+                    days = 1;
+                else if (view == ScheduleBoxView.FullMonth || view == ScheduleBoxView.Month)
+                    days = 30;
+                else if (view == ScheduleBoxView.FullWeek || view == ScheduleBoxView.Week)
+                    days = 7;
+                return days;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return 0;
+        }
 
         public virtual void Init() { }
 
@@ -277,6 +311,7 @@ namespace Library.Template.MVVM
         {
             try
             {
+                adding = false;
                 btnClose.Visible = (ownerSpace != null);
                 if (txtSearch.CanFocus)
                     txtSearch.Focus();
@@ -291,7 +326,6 @@ namespace Library.Template.MVVM
         {
             try
             {
-                skip = 0;
                 viewModel.Items.Clear();
                 LoadItems();
             }
@@ -362,20 +396,6 @@ namespace Library.Template.MVVM
             {
                 UtilityError.Write(ex);
             }
-        }
-
-        private void container_CanLoad()
-        {
-            try
-            {
-                skip += take;
-                viewModel.Load(skip, take);
-                this.Items = viewModel.Items;
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            } 
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -487,5 +507,59 @@ namespace Library.Template.MVVM
                 UtilityError.Write(ex);
             }
         }
+
+        private void dtDate_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var date = dtDate.Value;
+                scheduleBox.FirstDate = date;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void btnDay_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                scheduleBox.View = ScheduleBoxView.Day;
+                LoadItems();
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void btnWeek_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                scheduleBox.View = ScheduleBoxView.FullWeek;
+                LoadItems();
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void btnMonth_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                scheduleBox.View = ScheduleBoxView.FullMonth;
+                LoadItems();
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+      
     }
 }

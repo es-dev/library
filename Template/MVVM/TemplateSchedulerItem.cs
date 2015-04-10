@@ -59,58 +59,6 @@ namespace Library.Template.MVVM
             }
         }
 
-        private int count = 0;
-        public int Count
-        {
-            get
-            {
-                return count;
-            }
-            set
-            {
-                count = value;
-                //SetCount(count);
-            }
-        }
-
-        //private void SetCount(int count)
-        //{
-        //    try
-        //    {
-        //        editCount.Text =count.ToString();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        UtilityError.Write(ex);
-        //    }
-        //}
-
-        private bool countVisible = false;
-        public bool CountVisible
-        {
-            get
-            {
-                return countVisible;
-            }
-            set
-            {
-                countVisible = value;
-                //SetCountVisible(countVisible);
-            }
-        }
-
-        //private void SetCountVisible(bool visible)
-        //{
-        //    try
-        //    {
-        //        editCount.Visible = visible;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        UtilityError.Write(ex);
-        //    }
-        //}
-
         private Gizmox.WebGUI.Forms.Control control = null;
         public Gizmox.WebGUI.Forms.Control Control
         {
@@ -136,7 +84,7 @@ namespace Library.Template.MVVM
             }
         }
 
-        private bool selected= false;
+        private bool selected = false;
         public bool Selected
         {
             get
@@ -160,64 +108,20 @@ namespace Library.Template.MVVM
         public TemplateSchedulerItem()
         {
             InitializeComponent();
-        }
-
-        private void TemplateSchedulerItem_Load(object sender, EventArgs e)
-        {
             try
             {
-                //RegisterItemClickEvent(this);
-                //SetOriginalColors();
-                
+
             }
             catch (Exception ex)
             {
                 UtilityError.Write(ex);
-            } 
+            }
         }
 
-        //Color originalBackColor = Color.Empty;
-        //BorderColor originalBorderColor = BorderColor.Empty;
-        //BorderStyle originalBorderStyle = BorderStyle.None;
-        //int originalBorderWidth = 0;
-
-        //private void SetOriginalColors()
-        //{
-        //    try
-        //    {
-        //        originalBackColor = this.BackColor;
-        //        originalBorderColor = this.BorderColor;
-        //        originalBorderStyle = this.BorderStyle;
-        //        originalBorderWidth = this.BorderWidth;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        UtilityError.Write(ex);
-        //    }
-        //}
-
+       
         public virtual void BindView(object model) { }
 
         public virtual void BindModel(object model) { }
-
-        //private void RegisterItemClickEvent(Control control)
-        //{
-        //    try
-        //    {
-        //        control.Cursor = Cursors.Hand;
-        //        control.Click += new EventHandler(OnItemClick);
-        //        if (control.HasChildren)
-        //        {
-        //            foreach (Control child in control.Controls)
-        //                RegisterItemClickEvent(child);
-        //        }
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        UtilityError.Write(ex);
-        //    } 
-        //}
 
         private void AddSpace(IModel space)
         {
@@ -265,7 +169,7 @@ namespace Library.Template.MVVM
             }
         }
 
-        private void OnItemClick(object sender, EventArgs e)
+        private void OnItemClick(object sender, EventArgs e) //?????????? richiamare da view
         {
             try
             {
@@ -300,11 +204,7 @@ namespace Library.Template.MVVM
         {
             try
             {
-                //this.BackColor = (selected ? Color.LightGreen : originalBackColor);
-                //this.BorderColor = (selected ? new BorderColor(Color.Red) : originalBorderColor);
-                //this.BorderStyle = (selected ? BorderStyle.FixedSingle : originalBorderStyle);
-                //this.BorderWidth = (selected ? 2 : originalBorderWidth);
-                //imgCheck.Image = (selected ? "Images.check32.png" : "");
+                this.BackgroundColor = Color.RoyalBlue;
             }
             catch (Exception ex)
             {

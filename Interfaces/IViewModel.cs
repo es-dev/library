@@ -15,5 +15,6 @@ namespace Library.Interfaces
         bool Save(object model, bool creating);
         bool Delete(object model);
         object Read(object id);
+        void Fill(object start, object end, string search);
     }
 }
