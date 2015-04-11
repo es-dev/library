@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Linq;
 
 using Gizmox.WebGUI.Common;
 using Gizmox.WebGUI.Forms;
@@ -563,6 +564,34 @@ namespace Library.Template.MVVM
             {
                 UtilityError.Write(ex);
             }
+        }
+
+        private void scheduleBox_EventClick(object sender, ScheduleBox.ScheduleBoxEventArgs e)
+        {
+            try
+            {
+                var item = GetItem(e.Event);
+                if (item != null)
+                    item.OnItemClick(sender, e);
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private TemplateSchedulerItem GetItem(ScheduleBoxEvent _event)
+        {
+            try
+            {
+                var item = (from q in items where q == _event select q).FirstOrDefault();
+                return (TemplateSchedulerItem)item;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
         }
 
       

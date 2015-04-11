@@ -265,6 +265,7 @@ namespace Library.Template.MVVM
             this.scheduleBox.View = Gizmox.WebGUI.Forms.ScheduleBoxView.Week;
             this.scheduleBox.WorkEndHour = 17;
             this.scheduleBox.WorkStartHour = 9;
+            this.scheduleBox.EventClick += new Gizmox.WebGUI.Forms.ScheduleBox.ScheduleBoxEventHandler(this.scheduleBox_EventClick);
             // 
             // dtDate
             // 

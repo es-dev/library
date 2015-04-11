@@ -169,7 +169,7 @@ namespace Library.Template.MVVM
             }
         }
 
-        private void OnItemClick(object sender, EventArgs e) //?????????? richiamare da view
+        public void OnItemClick(object sender, EventArgs e) 
         {
             try
             {
