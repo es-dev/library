@@ -58,6 +58,7 @@ namespace Library.Template.MVVM
             {
                 items=value;
                 SetItems(items);
+                SetBoldDates(items);
             }
         }
 
@@ -243,7 +244,10 @@ namespace Library.Template.MVVM
             try
             {
                 var date = DateTime.Today;
-                dtDate.Value = date;                
+                dtDate.CalendarFirstDayOfWeek = Day.Monday;
+                dtDate.Value = date;
+                monthCalendar.FirstDayOfWeek = Day.Monday;
+                scheduleBox.HourFormat = ScheduleBoxHourFormat.Clock24H;
                 scheduleBox.View = ScheduleBoxView.Week;
                 scheduleBox.FirstDate = date;
                 scheduleBox.WorkStartHour = 8;
@@ -264,8 +268,13 @@ namespace Library.Template.MVVM
             try
             {
                 string search = txtSearch.Text;
-                var start = scheduleBox.FirstDate;
-                var end = GetEnd(start);
+                var firstDate = scheduleBox.FirstDate;
+                var start = new DateTime(firstDate.Year,firstDate.Month,1); //start all'inizio del mese
+                var lastDate = GetLastDate(firstDate);
+                var year = lastDate.Year;
+                var month = lastDate.Month;
+                var end = new DateTime(year, month, DateTime.DaysInMonth(year,month)); //end alla fine del mese
+
                 if (highDate<lowDate)
                 {
                     viewModel.Fill(start, end, search);
@@ -294,13 +303,13 @@ namespace Library.Template.MVVM
             }
         }
 
-        private DateTime GetEnd(DateTime start)
+        private DateTime GetLastDate(DateTime firstDate)
         {
             try
             {
                 int days = GetScheduleDays();
-                var end = start.AddDays(days);
-                return end;
+                var lastDate = firstDate.AddDays(days);
+                return lastDate;
             }
             catch (Exception ex)
             {
@@ -616,6 +625,66 @@ namespace Library.Template.MVVM
             }
             return null;
         }
+
+        private void btnShowCalendar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                panelCalendar.Visible = !panelCalendar.Visible;
+                if (panelCalendar.Visible)
+                {
+                    panelCalendar.BringToFront();
+                    panelCalendar.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void SetBoldDates(IList<IItem> items)
+        {
+            try
+            {
+                if(items!=null)
+                {
+                    var boldDates = (from TemplateSchedulerItem q in items select q.Start).ToArray();
+                    monthCalendar.BoldedDates = boldDates;
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+
+        private void monthCalendar_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                dtDate.Value = monthCalendar.Value;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void panelCalendar_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                panelCalendar.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+       
 
       
     }

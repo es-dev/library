@@ -48,8 +48,14 @@ namespace Library.Template.MVVM
             this.editCount = new Gizmox.WebGUI.Forms.Label();
             this.scheduleBox = new Gizmox.WebGUI.Forms.ScheduleBox();
             this.dtDate = new Gizmox.WebGUI.Forms.DateTimePicker();
+            this.btnShowCalendar = new Gizmox.WebGUI.Forms.Button();
+            this.monthCalendar = new Gizmox.WebGUI.Forms.MonthCalendar();
+            this.panelCalendar = new Gizmox.WebGUI.Forms.Panel();
+            this.button2 = new Gizmox.WebGUI.Forms.Button();
+            this.button1 = new Gizmox.WebGUI.Forms.Button();
             this.panelCommands.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgSeparator)).BeginInit();
+            this.panelCalendar.SuspendLayout();
             this.SuspendLayout();
             // 
             // infoTitle
@@ -254,7 +260,8 @@ namespace Library.Template.MVVM
             this.scheduleBox.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Bottom) 
             | Gizmox.WebGUI.Forms.AnchorStyles.Left) 
             | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
-            this.scheduleBox.DisplayMonthHeader = false;
+            this.scheduleBox.BackColor = System.Drawing.Color.Transparent;
+            this.scheduleBox.DisplayMonthHeader = true;
             this.scheduleBox.FirstDate = new System.DateTime(2015, 4, 9, 21, 56, 39, 719);
             this.scheduleBox.FirstDayOfWeek = Gizmox.WebGUI.Forms.Day.Monday;
             this.scheduleBox.HourFormat = Gizmox.WebGUI.Forms.ScheduleBoxHourFormat.Clock12H;
@@ -272,18 +279,83 @@ namespace Library.Template.MVVM
             this.dtDate.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
             this.dtDate.BackColor = System.Drawing.Color.Transparent;
             this.dtDate.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.None;
+            this.dtDate.CalendarFirstDayOfWeek = Gizmox.WebGUI.Forms.Day.Monday;
             this.dtDate.CustomFormat = "";
             this.dtDate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtDate.ForeColor = System.Drawing.Color.DarkRed;
-            this.dtDate.Location = new System.Drawing.Point(328, 40);
+            this.dtDate.Location = new System.Drawing.Point(311, 40);
             this.dtDate.Name = "dtDate";
             this.dtDate.Size = new System.Drawing.Size(233, 25);
             this.dtDate.TabIndex = 14;
             this.dtDate.ValueChanged += new System.EventHandler(this.dtDate_ValueChanged);
             // 
+            // btnShowCalendar
+            // 
+            this.btnShowCalendar.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
+            this.btnShowCalendar.BackColor = System.Drawing.Color.White;
+            this.btnShowCalendar.CustomStyle = "F";
+            this.btnShowCalendar.FlatStyle = Gizmox.WebGUI.Forms.FlatStyle.Flat;
+            this.btnShowCalendar.Location = new System.Drawing.Point(517, 39);
+            this.btnShowCalendar.Name = "btnShowCalendar";
+            this.btnShowCalendar.Size = new System.Drawing.Size(27, 26);
+            this.btnShowCalendar.TabIndex = 15;
+            this.btnShowCalendar.Click += new System.EventHandler(this.btnShowCalendar_Click);
+            // 
+            // monthCalendar
+            // 
+            this.monthCalendar.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.None;
+            this.monthCalendar.FirstDayOfWeek = Gizmox.WebGUI.Forms.Day.Monday;
+            this.monthCalendar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monthCalendar.Location = new System.Drawing.Point(0, 0);
+            this.monthCalendar.Name = "monthCalendar";
+            this.monthCalendar.SelectionEnd = new System.DateTime(2015, 4, 11, 0, 0, 0, 0);
+            this.monthCalendar.SelectionRange = new Gizmox.WebGUI.Forms.SelectionRange(new System.DateTime(2015, 4, 11, 0, 0, 0, 0), new System.DateTime(2015, 4, 11, 0, 0, 0, 0));
+            this.monthCalendar.SelectionStart = new System.DateTime(2015, 4, 11, 0, 0, 0, 0);
+            this.monthCalendar.Size = new System.Drawing.Size(227, 162);
+            this.monthCalendar.TabIndex = 16;
+            this.monthCalendar.TodayDate = new System.DateTime(2015, 4, 11, 0, 0, 0, 0);
+            this.monthCalendar.Value = new System.DateTime(2015, 4, 11, 0, 0, 0, 0);
+            this.monthCalendar.ValueChanged += new System.EventHandler(this.monthCalendar_ValueChanged);
+            // 
+            // panelCalendar
+            // 
+            this.panelCalendar.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
+            this.panelCalendar.BackColor = System.Drawing.Color.White;
+            this.panelCalendar.BorderColor = new Gizmox.WebGUI.Forms.BorderColor(System.Drawing.Color.Gainsboro);
+            this.panelCalendar.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.FixedSingle;
+            this.panelCalendar.Controls.Add(this.button2);
+            this.panelCalendar.Controls.Add(this.monthCalendar);
+            this.panelCalendar.Controls.Add(this.button1);
+            this.panelCalendar.Location = new System.Drawing.Point(316, 66);
+            this.panelCalendar.Name = "panelCalendar";
+            this.panelCalendar.Size = new System.Drawing.Size(228, 199);
+            this.panelCalendar.TabIndex = 17;
+            this.panelCalendar.Visible = false;
+            this.panelCalendar.Leave += new System.EventHandler(this.panelCalendar_Leave);
+            // 
+            // button2
+            // 
+            this.button2.CustomStyle = "F";
+            this.button2.FlatStyle = Gizmox.WebGUI.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(167, 166);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(27, 26);
+            this.button2.TabIndex = 15;
+            // 
+            // button1
+            // 
+            this.button1.CustomStyle = "F";
+            this.button1.FlatStyle = Gizmox.WebGUI.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(195, 166);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(27, 26);
+            this.button1.TabIndex = 15;
+            // 
             // TemplateSchedulerView
             // 
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.panelCalendar);
+            this.Controls.Add(this.btnShowCalendar);
             this.Controls.Add(this.dtDate);
             this.Controls.Add(this.scheduleBox);
             this.Controls.Add(this.editCount);
@@ -297,6 +369,7 @@ namespace Library.Template.MVVM
             this.Load += new System.EventHandler(this.TemplateSchedulerView_Load);
             this.panelCommands.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgSeparator)).EndInit();
+            this.panelCalendar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -319,6 +392,11 @@ namespace Library.Template.MVVM
         public Library.Controls.ButtonSeparatorV btnWeek;
         public Library.Controls.ButtonSeparatorV btnDay;
         private DateTimePicker dtDate;
+        private Button btnShowCalendar;
+        private MonthCalendar monthCalendar;
+        private Panel panelCalendar;
+        private Button button2;
+        private Button button1;
 
 
     }
