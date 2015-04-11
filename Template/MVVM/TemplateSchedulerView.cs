@@ -68,7 +68,7 @@ namespace Library.Template.MVVM
                 if (items != null)
                 {
                     scheduleBox.Events.Clear();
-                    foreach (ScheduleBoxEvent item in items)
+                    foreach (ScheduleBoxEvent item in items) //todo: prevedere posizionamento automatico per orario assente
                         scheduleBox.Events.Add(item);
                 }
             }
@@ -256,6 +256,9 @@ namespace Library.Template.MVVM
             }
         }
 
+        private DateTime lowDate = DateTime.MaxValue;
+        private DateTime highDate = DateTime.MinValue;
+
         public void LoadItems()
         {
             try
@@ -263,7 +266,25 @@ namespace Library.Template.MVVM
                 string search = txtSearch.Text;
                 var start = scheduleBox.FirstDate;
                 var end = GetEnd(start);
-                viewModel.Fill(start, end, search);
+                if (highDate<lowDate)
+                {
+                    viewModel.Fill(start, end, search);
+                    lowDate = start.AddDays(-1);
+                    highDate = end.AddDays(1);
+                }
+                else
+                {
+                    if (start < lowDate)
+                    {
+                        viewModel.Fill(start, lowDate, search);
+                        lowDate = start.AddDays(-1);
+                    }
+                    if(end>highDate)
+                    {
+                        viewModel.Fill(highDate, end, search);
+                        highDate = end.AddDays(1);
+                    }
+                }
                 this.Count = viewModel.GetCount(search);
                 this.Items = viewModel.Items;
             }
@@ -273,7 +294,7 @@ namespace Library.Template.MVVM
             }
         }
 
-        private object GetEnd(DateTime start)
+        private DateTime GetEnd(DateTime start)
         {
             try
             {
@@ -331,6 +352,8 @@ namespace Library.Template.MVVM
         {
             try
             {
+                lowDate = DateTime.MaxValue;
+                highDate = DateTime.MinValue;
                 viewModel.Items.Clear();
                 LoadItems();
             }
@@ -519,7 +542,7 @@ namespace Library.Template.MVVM
             {
                 var date = dtDate.Value;
                 scheduleBox.FirstDate = date;
-                RefreshItems();
+                LoadItems();
             }
             catch (Exception ex)
             {
@@ -532,7 +555,7 @@ namespace Library.Template.MVVM
             try
             {
                 scheduleBox.View = ScheduleBoxView.Day;
-                RefreshItems();
+                LoadItems();
             }
             catch (Exception ex)
             {
@@ -545,7 +568,7 @@ namespace Library.Template.MVVM
             try
             {
                 scheduleBox.View = ScheduleBoxView.FullWeek;
-                RefreshItems();
+                LoadItems();
             }
             catch (Exception ex)
             {
@@ -558,7 +581,7 @@ namespace Library.Template.MVVM
             try
             {
                 scheduleBox.View = ScheduleBoxView.Month;
-                RefreshItems();
+                LoadItems();
             }
             catch (Exception ex)
             {
