@@ -97,7 +97,7 @@ namespace Library.Template.MVVM
             {
                 model = value;
                 BindView(model);
-                BindViewSubTitle(model);
+                BindViewTitle(model);
                 SetLayout();
             }
         }
@@ -260,7 +260,7 @@ namespace Library.Template.MVVM
 
         public virtual void BindModel(object model) { }
 
-        public virtual void BindViewSubTitle(object model) { }
+        public virtual void BindViewTitle(object model) { }
 
         public virtual void SetLayout() { }
 
@@ -434,7 +434,7 @@ namespace Library.Template.MVVM
                 if (!editing)
                 {
                     BindView(model);
-                    BindViewSubTitle(model);
+                    BindViewTitle(model);
                 }
             }
             catch (Exception ex)
@@ -464,7 +464,7 @@ namespace Library.Template.MVVM
                                     var id = UtilityPOCO.GetPrimaryKeyValue(model);
                                     model = viewModel.Read(id);
                                     BindView(model);
-                                    BindViewSubTitle(model);
+                                    BindViewTitle(model);
                                 }
                                 editing = false;
                                 creating = false;

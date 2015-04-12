@@ -254,10 +254,17 @@ namespace Library.Controls
         {
             try
             {
+                string text = null;
                 string day = editDay.Text.Replace(mask, null);
                 string month = editMonth.Text.Replace(mask, null);
                 string year = editYear.Text.Replace(mask+mask, null);
-                var text = day + "/" + month + "/" + year;
+                if (day != null && day.Length > 0)
+                    text = day;
+                if (month != null && month.Length > 0)
+                    text += "/" + month;
+                if (year != null && year.Length > 0)
+                    text += "/" + year;
+
                 return text;
             }
             catch (Exception ex)
