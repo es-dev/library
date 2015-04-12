@@ -227,7 +227,7 @@ namespace Library.Template.MVVM
         }
 
         public event OpenHandler Opened;
-        public void Open()
+        public void Open(bool backclosing = false)
         {
             try
             {

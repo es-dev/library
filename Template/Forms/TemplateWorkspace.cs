@@ -23,7 +23,7 @@ namespace Library.Template.Forms
 			InitializeComponent();            
 		}
 
-        public void AddSpace(ISpace space)
+        public void AddSpace(ISpace space, bool backclosing = false)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace Library.Template.Forms
                     space.Control.Dock = DockStyle.Fill;
                     container.Controls.Add(space.Control);
                     space.Control.BringToFront();
-                    space.Open();
+                    space.Open(backclosing);
                 }
             }
             catch (Exception ex)
@@ -91,7 +91,7 @@ namespace Library.Template.Forms
                     if (ownerSpace != null)
                     {
                         RemoveSpace(space);
-                        AddSpace(ownerSpace);
+                        AddSpace(ownerSpace, true);
                     }
                 }
             }

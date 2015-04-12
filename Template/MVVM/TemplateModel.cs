@@ -460,12 +460,8 @@ namespace Library.Template.MVVM
                             if (performed)
                             {
                                 if (creating)
-                                {
-                                    var id = UtilityPOCO.GetPrimaryKeyValue(model);
-                                    model = viewModel.Read(id);
-                                    BindView(model);
-                                    BindViewTitle(model);
-                                }
+                                    RefreshModel(model);
+
                                 editing = false;
                                 creating = false;
                                 SetEditing(editing, deleting);
@@ -497,6 +493,22 @@ namespace Library.Template.MVVM
             {
                 UtilityError.Write(ex);
             } 
+        }
+
+        private void RefreshModel(object model)
+        {
+            try
+            {
+                var id = UtilityPOCO.GetPrimaryKeyValue(model);
+                model = viewModel.Read(id);
+                BindView(model);
+                BindViewTitle(model);
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+           
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -549,10 +561,13 @@ namespace Library.Template.MVVM
         }
 
         public event OpenHandler Opened;
-        public void Open()
+        public void Open(bool backclosing=false)
         {
             try
             {
+                if(backclosing)
+                    RefreshModel(model);
+                
                 SetVisibility();
                 if (Opened != null)
                     Opened();

@@ -19,7 +19,7 @@ namespace Library.Interfaces
         IViewModel ViewModel { get; set; }
         event CloseHandler Closed;
         event OpenHandler Opened;
-        void Open();
+        void Open(bool backclosing=false);
         void Close();
 
     }
