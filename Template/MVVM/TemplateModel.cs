@@ -432,7 +432,10 @@ namespace Library.Template.MVVM
                 editing = !editing;
                 SetEditing(editing, deleting);
                 if (!editing)
+                {
                     BindView(model);
+                    BindViewSubTitle(model);
+                }
             }
             catch (Exception ex)
             {

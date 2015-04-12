@@ -221,7 +221,6 @@ namespace Library.Template.MVVM
 
         #endregion
 
-        private Label infoTitle;
         public Panel container;
         public Label infoSubtitle;
         public PictureBox infoSubtitleImage;
@@ -232,6 +231,7 @@ namespace Library.Template.MVVM
         public Library.Controls.ButtonSeparatorV btnUpdateCancel;
         public Library.Controls.ButtonSeparatorV btnSave;
         public Library.Controls.ButtonSeparatorV btnHome;
+        public Label infoTitle;
 
 
 
