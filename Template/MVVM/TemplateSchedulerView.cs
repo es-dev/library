@@ -69,8 +69,45 @@ namespace Library.Template.MVVM
                 if (items != null)
                 {
                     scheduleBox.Events.Clear();
-                    foreach (ScheduleBoxEvent item in items) //todo: prevedere posizionamento automatico per orario assente
+                    CheckEventTime(items);
+                    foreach (ScheduleBoxEvent item in items) 
                         scheduleBox.Events.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void CheckEventTime(IList<IItem> items) //effettua un'assegnazione automatica del TimeOfDay per le date prive di ore, minuti, secondi
+        {
+            try
+            {
+                if (items != null)
+                {
+                    var date = (from TemplateSchedulerItem q in items where q.Start.TimeOfDay == TimeSpan.Zero select q.Start).Distinct().ToList();
+                    foreach(var data in date)
+                    {
+                        var start = new DateTime(data.Year, data.Month, data.Day, 0, 0, 0);
+                        var end = new DateTime(data.Year, data.Month, data.Day, 23, 59, 59);
+                        var itemsOfDay = (from TemplateSchedulerItem q in items where start<=q.Start && q.Start<=end select q).ToList();
+                        var hour = scheduleBox.WorkStartHour;
+                        var minute = 0;
+                        for (int i = 0; i < itemsOfDay.Count; i += 1)
+                        {
+                            var itemOfDay = itemsOfDay[i];
+                            var dataOfDay = itemOfDay.Start;
+                            itemOfDay.Start = dataOfDay.AddHours(hour).AddMinutes(minute);
+                            itemOfDay.End = itemOfDay.Start.AddHours(1);
+                            hour += 2;
+                            if (hour > scheduleBox.WorkEndHour)
+                            {
+                                hour = scheduleBox.WorkStartHour;
+                                minute += 30;
+                            }
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -247,8 +284,9 @@ namespace Library.Template.MVVM
                 dtDate.CalendarFirstDayOfWeek = Day.Monday;
                 dtDate.Value = date;
                 monthCalendar.FirstDayOfWeek = Day.Monday;
+                monthCalendar.Value = date;
                 scheduleBox.HourFormat = ScheduleBoxHourFormat.Clock24H;
-                scheduleBox.View = ScheduleBoxView.Week;
+                scheduleBox.View = ScheduleBoxView.FullWeek;
                 scheduleBox.FirstDate = date;
                 scheduleBox.WorkStartHour = 8;
                 scheduleBox.WorkEndHour = 18;
@@ -307,7 +345,7 @@ namespace Library.Template.MVVM
         {
             try
             {
-                int days = GetScheduleDays();
+                int days = GetScheduleDays(firstDate);
                 var lastDate = firstDate.AddDays(days);
                 return lastDate;
             }
@@ -318,7 +356,7 @@ namespace Library.Template.MVVM
             return DateTime.MinValue;
         }
 
-        private int GetScheduleDays()
+        private int GetScheduleDays(DateTime firstDate)
         {
             try
             {
@@ -326,10 +364,14 @@ namespace Library.Template.MVVM
                 var view = scheduleBox.View;
                 if (view == ScheduleBoxView.Day)
                     days = 1;
-                else if (view == ScheduleBoxView.FullMonth || view == ScheduleBoxView.Month)
-                    days = 30;
                 else if (view == ScheduleBoxView.FullWeek || view == ScheduleBoxView.Week)
                     days = 7;
+                else if (view == ScheduleBoxView.FullMonth || view == ScheduleBoxView.Month)
+                {
+                    var year = firstDate.Year;
+                    var month = firstDate.Month;
+                    days = DateTime.DaysInMonth(year, month);
+                }
                 return days;
             }
             catch (Exception ex)
@@ -633,6 +675,7 @@ namespace Library.Template.MVVM
                 panelCalendar.Visible = !panelCalendar.Visible;
                 if (panelCalendar.Visible)
                 {
+                    monthCalendar.Value = dtDate.Value;
                     panelCalendar.BringToFront();
                     panelCalendar.Focus();
                 }
@@ -659,12 +702,11 @@ namespace Library.Template.MVVM
             }
         }
 
-
-        private void monthCalendar_ValueChanged(object sender, EventArgs e)
+        private void panelCalendar_Leave(object sender, EventArgs e)
         {
             try
             {
-                dtDate.Value = monthCalendar.Value;
+                panelCalendar.Visible = false;
             }
             catch (Exception ex)
             {
@@ -672,11 +714,54 @@ namespace Library.Template.MVVM
             }
         }
 
-        private void panelCalendar_Leave(object sender, EventArgs e)
+        private void btnCloseCalendar_Click(object sender, EventArgs e)
         {
             try
             {
+                dtDate.Value = monthCalendar.Value;
                 panelCalendar.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void btnTodayCalendar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                monthCalendar.Value = DateTime.Today;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var firstDate = scheduleBox.FirstDate;
+                var days = GetScheduleDays(firstDate);
+                var date = firstDate.AddDays(-days);
+                dtDate.Value = date;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var firstDate = scheduleBox.FirstDate;
+                var days = GetScheduleDays(firstDate);
+                var date = firstDate.AddDays(days);
+                dtDate.Value = date;
             }
             catch (Exception ex)
             {
