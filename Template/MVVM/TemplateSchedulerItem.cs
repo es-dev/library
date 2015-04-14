@@ -123,15 +123,15 @@ namespace Library.Template.MVVM
 
         public virtual void BindModel(object model) { }
 
-        private void AddSpace(IModel space)
+        private void AddSpace(IModel space, object obj=null, IViewModel _viewModel=null)
         {
             try
             {
-                space.Model = model;
+                space.Model = (obj!=null? obj: model);
                 space.OwnerItem = this;
                 space.OwnerSpace = ownerSpace;
                 space.Workspace = workspace;
-                space.ViewModel = viewModel;
+                space.ViewModel = (_viewModel!=null? _viewModel: viewModel);
                 if(ownerSpace!=null)
                     space.TitleSpace = ownerSpace.TitleSpace;
                 workspace.AddSpace(space);
@@ -154,14 +154,14 @@ namespace Library.Template.MVVM
             }
         }
 
-        public void AddSpace(ISpace space)
+        public void AddSpace(ISpace space, object obj = null, IViewModel _viewModel = null)
         {
             try
             {
                 if (space is IView)
                     AddSpace((IView)space);
                 else if (space is IModel)
-                    AddSpace((IModel)space);
+                    AddSpace((IModel)space, obj, _viewModel);
             }
             catch (Exception ex)
             {

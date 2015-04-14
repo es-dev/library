@@ -95,13 +95,35 @@ namespace Library.Code
             return false;
         }
 
+        public static bool IsDate(object value)
+        {
+            try
+            {
+                if (value != null)
+                {
+                    bool isDate = (value is DateTime);
+                    return isDate;
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
+        }
+
         public static string GetString(object value)
         {
             try
             {
                 string text = null;
                 if (value != null)
-                    text = (string)value;
+                {
+                    if (IsNumber(value))
+                        text = value.ToString();
+                    else
+                        text = (string)value;
+                }
                 return text;
             }
             catch (Exception ex)
@@ -109,6 +131,23 @@ namespace Library.Code
                 UtilityError.Write(ex);
             }
             return null;
+        }
+
+        private static bool IsNumber(object value)
+        {
+            try
+            {
+                if (value != null)
+                {
+                    var isNumber = (value is int || value is decimal);
+                    return isNumber;
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
         }
 
         public static string GetStringEmpty(object value)
