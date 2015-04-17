@@ -234,10 +234,8 @@ namespace Library.Controls
                 string text = null;
                 string hours = editHour.Text.Replace(mask,null);
                 string minutes = editMinutes.Text.Replace(mask, null);
-                if(hours!=null && hours.Length>0)
-                    text = hours;
-                if(minutes!=null && minutes.Length>0)
-                    text += ":" + minutes;
+                if (hours != null && hours.Length > 0 && minutes != null && minutes.Length > 0)
+                    text = hours+":" + minutes;
 
                 return text;
             }

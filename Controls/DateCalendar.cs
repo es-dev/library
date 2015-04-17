@@ -192,7 +192,7 @@ namespace Library.Controls
                         var date = (DateTime)value;
                         editDay.Text = date.Day.ToString("00");
                         editMonth.Text = date.Month.ToString("00");
-                        editYear.Text = date.Year.ToString("00");
+                        editYear.Text = date.Year.ToString("0000");
                     }
                     else
                     {
@@ -258,12 +258,8 @@ namespace Library.Controls
                 string day = editDay.Text.Replace(mask, null);
                 string month = editMonth.Text.Replace(mask, null);
                 string year = editYear.Text.Replace(mask+mask, null);
-                if (day != null && day.Length > 0)
-                    text = day;
-                if (month != null && month.Length > 0)
-                    text += "/" + month;
-                if (year != null && year.Length > 0)
-                    text += "/" + year;
+                if (day != null && day.Length > 0 && month != null && month.Length > 0 && year != null && year.Length > 0)
+                    text = day+"/" + month+"/" + year;
 
                 return text;
             }

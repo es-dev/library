@@ -447,8 +447,21 @@ namespace Library.Template.MVVM
         {
             try
             {
+                Save(true);
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            } 
+        }
+
+        public bool Save(bool stopping=false)
+        {
+            try
+            {
                 if (viewModel != null)
                 {
+                    bool saved = true;
                     var validated = IsValidated();
                     verified = IsVerified();
                     if (verified && validated != null && validated.State)
@@ -461,9 +474,12 @@ namespace Library.Template.MVVM
                             {
                                 RefreshModel();
 
-                                editing = false;
                                 creating = false;
-                                SetEditing(editing, deleting);
+                                if (stopping)
+                                {
+                                    editing = false;
+                                    SetEditing(editing, deleting);
+                                }
                                 if (ownerItem != null)  //aggiornamento dell'item parent
                                 {
                                     ownerItem.Model = model;
@@ -476,22 +492,29 @@ namespace Library.Template.MVVM
                                 }
                             }
                             else
+                            {
+                                saved = false;
                                 UtilityMessage.Show(this, "ATTENZIONE!", "Non è stato possibile salvare le informazioni. Riprovare l'operazione in un secondo momento.", TypeMessage.Alert);
+                            }
                         }
                     }
                     else
                     {
+                        saved = false;
                         string message = "Non è stato possibile validare le informazioni. Verificare i dati inseriti e riprovare ad eseguire l'operazione.";
                         if (validated != null)
                             message += " " + validated.Message;
                         UtilityMessage.Show(this, "ATTENZIONE!", message, TypeMessage.Alert);
                     }
+                    return saved;
                 }
             }
             catch (Exception ex)
             {
                 UtilityError.Write(ex);
-            } 
+            }
+            return false;
+           
         }
 
         private void RefreshModel()
