@@ -459,8 +459,7 @@ namespace Library.Template.MVVM
                             bool performed = viewModel.Save(model, creating);
                             if (performed)
                             {
-                                if (creating)
-                                    RefreshModel(model);
+                                RefreshModel();
 
                                 editing = false;
                                 creating = false;
@@ -495,14 +494,17 @@ namespace Library.Template.MVVM
             } 
         }
 
-        private void RefreshModel(object model)
+        private void RefreshModel()
         {
             try
             {
-                var id = UtilityPOCO.GetPrimaryKeyValue(model);
-                model = viewModel.Read(id);
-                BindView(model);
-                BindViewTitle(model);
+                if (model != null)
+                {
+                    var id = UtilityPOCO.GetPrimaryKeyValue(model);
+                    model = viewModel.Read(id);
+                    BindView(model);
+                    BindViewTitle(model);
+                }
             }
             catch (Exception ex)
             {
@@ -566,7 +568,7 @@ namespace Library.Template.MVVM
             try
             {
                 if(backclosing)
-                    RefreshModel(model);
+                    RefreshModel();
                 
                 SetVisibility();
                 if (Opened != null)

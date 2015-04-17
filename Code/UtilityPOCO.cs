@@ -23,6 +23,15 @@ namespace Library.Code
             }
         }
 
+        private static string dtoKeyName = "DtoKey";
+        public static string DtoKeyName
+        {
+            get
+            {
+                return dtoKeyName;
+            }
+        }
+
         public static IEnumerable<TDto> Assemble<TDto>(IQueryable entities, bool recursive=false, bool references = true, bool collections = true)
         {
             try
@@ -261,7 +270,7 @@ namespace Library.Code
             return false;
         }
 
-        private static void SetValue(object dto, string propertyName, object value)
+        public static void SetValue(object dto, string propertyName, object value)
         {
             try
             {

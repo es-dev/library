@@ -99,5 +99,24 @@ namespace Library.Template.MVVM
             } 
         }
 
+        public void Update(object model, object newModel)
+        {
+            try
+            {
+                var primaryKeyName=UtilityPOCO.PrimaryKeyName;
+                var primaryKeyValue = UtilityPOCO.GetValue(newModel, primaryKeyName);
+                UtilityPOCO.SetValue(model, primaryKeyName, primaryKeyValue);
+
+                var dtoKeyName = UtilityPOCO.DtoKeyName;
+                var dtoKeyValue = UtilityPOCO.GetValue(newModel, dtoKeyName);
+                UtilityPOCO.SetValue(model, dtoKeyName, dtoKeyValue);
+
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
     }
 }
