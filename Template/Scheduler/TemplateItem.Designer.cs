@@ -1,9 +1,9 @@
 using Gizmox.WebGUI.Forms;
 using Gizmox.WebGUI.Common;
 
-namespace Library.Template.MVVM
+namespace Library.Template.Scheduler
 {
-    partial class TemplateSchedulerItem
+    partial class TemplateItem
     {
         
 

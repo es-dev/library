@@ -1,9 +1,9 @@
 using Gizmox.WebGUI.Forms;
 using Gizmox.WebGUI.Common;
 
-namespace Library.Template.MVVM
+namespace Library.Template.Scheduler
 {
-    partial class TemplateSchedulerView
+    partial class TemplateView
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@ namespace Library.Template.MVVM
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TemplateSchedulerView));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TemplateView));
             this.infoTitle = new Gizmox.WebGUI.Forms.Label();
             this.panelCommands = new Gizmox.WebGUI.Forms.Panel();
             this.btnMonth = new Library.Controls.ButtonSeparatorV();

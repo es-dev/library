@@ -17,9 +17,9 @@ using Library.Interfaces;
 using Library.Code;
 #endregion
 
-namespace Library.Template.MVVM
+namespace Library.Template.Scheduler
 {
-    public partial class TemplateSchedulerView : UserControl, IView
+    public partial class TemplateView : UserControl, IView
     {
         private IWorkspace workspace = null;
         public IWorkspace Workspace
@@ -86,12 +86,12 @@ namespace Library.Template.MVVM
             {
                 if (items != null)
                 {
-                    var date = (from TemplateSchedulerItem q in items where q.Start.TimeOfDay == TimeSpan.Zero select q.Start).Distinct().ToList();
+                    var date = (from TemplateItem q in items where q.Start.TimeOfDay == TimeSpan.Zero select q.Start).Distinct().ToList();
                     foreach(var data in date)
                     {
                         var start = new DateTime(data.Year, data.Month, data.Day, 0, 0, 0);
                         var end = new DateTime(data.Year, data.Month, data.Day, 23, 59, 59);
-                        var itemsOfDay = (from TemplateSchedulerItem q in items where start<=q.Start && q.Start<=end select q).ToList();
+                        var itemsOfDay = (from TemplateItem q in items where start<=q.Start && q.Start<=end select q).ToList();
                         var hour = scheduleBox.WorkStartHour;
                         var minute = 0;
                         for (int i = 0; i < itemsOfDay.Count; i += 1)
@@ -247,7 +247,7 @@ namespace Library.Template.MVVM
             }
         }
 
-        public TemplateSchedulerView()
+        public TemplateView()
         {
             InitializeComponent();
             try
@@ -654,12 +654,12 @@ namespace Library.Template.MVVM
             }
         }
 
-        private TemplateSchedulerItem GetItem(ScheduleBoxEvent _event)
+        private TemplateItem GetItem(ScheduleBoxEvent _event)
         {
             try
             {
                 var item = (from q in items where q == _event select q).FirstOrDefault();
-                return (TemplateSchedulerItem)item;
+                return (TemplateItem)item;
             }
             catch (Exception ex)
             {
@@ -692,7 +692,7 @@ namespace Library.Template.MVVM
             {
                 if(items!=null)
                 {
-                    var boldDates = (from TemplateSchedulerItem q in items select q.Start).ToArray();
+                    var boldDates = (from TemplateItem q in items select q.Start).ToArray();
                     monthCalendar.BoldedDates = boldDates;
                 }
             }

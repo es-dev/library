@@ -16,9 +16,9 @@ using Library.Controls;
 
 #endregion
 
-namespace Library.Template.MVVM
+namespace Library.Template.Scheduler
 {
-    public partial class TemplateSchedulerItem : ScheduleBoxEvent, IItem
+    public partial class TemplateItem : ScheduleBoxEvent, IItem
     {
         private IWorkspace workspace = null;
         public IWorkspace Workspace
@@ -105,7 +105,7 @@ namespace Library.Template.MVVM
         public delegate void ItemClickHandler(IItem item);
         public event ItemClickHandler ItemClick;
 
-        public TemplateSchedulerItem()
+        public TemplateItem()
         {
             InitializeComponent();
             try
@@ -117,7 +117,6 @@ namespace Library.Template.MVVM
                 UtilityError.Write(ex);
             }
         }
-
        
         public virtual void BindView(object model) { }
 
