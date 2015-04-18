@@ -528,6 +528,7 @@
     <Compile Include="Template\Controls\TemplateEditText.Designer.cs">
       <DependentUpon>TemplateEditText.cs</DependentUpon>
     </Compile>
+    <Compile Include="Template\Dashboard\DashboardDto.cs" />
     <Compile Include="Template\Forms\TemplateBase.cs">
       <SubType>Form</SubType>
     </Compile>
