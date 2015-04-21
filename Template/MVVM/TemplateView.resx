@@ -123,4 +123,13 @@
   <data name="imgSeparator.Image" xml:space="preserve">
     <value>separator_ht.png</value>
   </data>
+  <data name="btnCancelAdvancedSearch.Image" xml:space="preserve">
+    <value>confirm24.png</value>
+  </data>
+  <data name="btnCloseAdvancedSearch.Image" xml:space="preserve">
+    <value>back24.png</value>
+  </data>
+  <data name="btnConfirmAdvancedSearch.Image" xml:space="preserve">
+    <value>confirm24.png</value>
+  </data>
 </root>

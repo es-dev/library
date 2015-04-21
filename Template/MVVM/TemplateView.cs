@@ -190,7 +190,20 @@ namespace Library.Template.MVVM
                 adding = value;
                 SetAdding(adding);
             }
-        }        
+        }
+
+        private void SetAdding(bool adding)
+        {
+            try
+            {
+                btnAdd.Enabled = adding;
+                btnAdd.Visible = adding;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
 
         public TemplateView()
         {
@@ -222,26 +235,13 @@ namespace Library.Template.MVVM
             }
         }
 
-        private void SetAdding(bool adding)
-        {
-            try
-            {
-                btnAdd.Enabled = adding;
-                btnAdd.Visible = adding;
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-        }
-
         public void LoadItems()
         {
             try
             {
                 string search = txtSearch.Text;
                 viewModel.Load(skip, take, search);
-                this.Count = viewModel.GetCount(search);
+                this.Count = viewModel.Count(search);
                 this.Items = viewModel.Items;
             }
             catch (Exception ex)
@@ -483,6 +483,55 @@ namespace Library.Template.MVVM
                     if(workspace!=null)
                         workspace.CloseSpace(this);
                 }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void btnAdvancedSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                panelAdvancedSearch.Visible = true;
+                panelAdvancedSearch.BringToFront();
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void btnCloselAdvancedSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                panelAdvancedSearch.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void btnConfirmAdvancedSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                RefreshItems();
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void btnCancelAdvancedSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                panelAdvancedSearch.Visible = false;
             }
             catch (Exception ex)
             {

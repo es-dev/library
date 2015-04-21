@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Library.Interfaces;
+using System.Linq.Expressions;
 
 namespace Library.Template.MVVM
 {
@@ -61,9 +62,9 @@ namespace Library.Template.MVVM
             }
         }
 
-        public virtual void Load(int skip, int take, string search=null) {}
+        public virtual void Load(int skip, int take, string search = null) { }
 
-        public virtual int GetCount(string search=null) { return 0; }
+        public virtual int Count(string search=null) { return 0; }
 
         public virtual bool Save(object model, bool creating) { return false; }
 

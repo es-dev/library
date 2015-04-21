@@ -10,7 +10,7 @@ namespace Library.Interfaces
     {
         ISpace Space { get; set; }
         IList<IItem> Items { get; set; }
-        int GetCount(string search=null);
+        int Count(string search=null);
         void Load(int skip, int take, string search=null);
         bool Save(object model, bool creating);
         bool Delete(object model);

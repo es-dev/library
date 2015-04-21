@@ -22,5 +22,6 @@ namespace Library.Interfaces
         void LoadItems();
         void RefreshItems();
         void RemoveItem(IItem item);
+        bool Adding { get; set; }
     }
 }

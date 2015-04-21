@@ -332,7 +332,7 @@ namespace Library.Template.Scheduler
                         highDate = end.AddDays(1);
                     }
                 }
-                this.Count = viewModel.GetCount(search);
+                this.Count = viewModel.Count(search);
                 this.Items = viewModel.Items;
             }
             catch (Exception ex)

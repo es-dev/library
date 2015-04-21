@@ -32,7 +32,7 @@ namespace Library.Template.Dashboard
                     {
                         item.CountVisible = model.CountVisible;
                         if(item.CountVisible)
-                            item.Count = viewModel.GetCount();
+                            item.Count = viewModel.Count();
                     }
                 }
             }
