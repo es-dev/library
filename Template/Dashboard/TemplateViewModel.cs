@@ -5,14 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Library.Template.Dashboard;
+using System.Collections;
 
 namespace Library.Template.Dashboard
 {
-    public class TemplateViewModel<TDto, IItem>: Library.Template.MVVM.TemplateViewModel<TDto, IItem>
+    public class TemplateViewModel<TView, TItem> : Library.Template.MVVM.TemplateViewTypeModel<TView, TItem, DashboardDto>
     {
 
-        public TemplateViewModel(ISpace space)
-            : base(space) 
+        public TemplateViewModel()
+            : base() 
         {
 
         }
@@ -21,8 +22,8 @@ namespace Library.Template.Dashboard
         {
             try
             {
-                var objDtos = LoadDashboards(skip, take);
-                Load(objDtos);
+                var objs = LoadDashboards(skip, take);
+                Load(objs);
             }
             catch (Exception ex)
             {
@@ -45,13 +46,13 @@ namespace Library.Template.Dashboard
             return 0;
         }
         
-        private IList<TDto> LoadDashboards(int skip, int take)
+        private IList<DashboardDto> LoadDashboards(int skip, int take)
         {
             try
             {
                 var query = QueryDashboards();
-                var objDtos = query.Skip(skip).Take(take).ToList();
-                return objDtos;
+                var objs = query.Skip(skip).Take(take).ToList();
+                return objs;
             }
             catch (Exception ex)
             {
@@ -60,6 +61,6 @@ namespace Library.Template.Dashboard
             return null;
         }
 
-        public virtual IQueryable<TDto> QueryDashboards() { return null; }
+        public virtual IQueryable<DashboardDto> QueryDashboards() { return null; }
     }
 }

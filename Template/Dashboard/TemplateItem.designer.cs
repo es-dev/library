@@ -108,7 +108,6 @@ namespace Library.Template.Dashboard
             this.jqContainer.Controls.Add(this.panelLeft);
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Size = new System.Drawing.Size(407, 105);
-            this.ItemClick += new Library.Template.MVVM.TemplateItem.ItemClickHandler(this.TemplateItem_ItemClick);
             this.panelLeft.ResumeLayout(false);
             this.jqContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.infoImage)).EndInit();

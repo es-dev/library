@@ -173,7 +173,6 @@ namespace Library.Template.Scheduler
             try
             {
                 infoTitle.Text = (title != null ? title.ToUpper() : null);
-
             }
             catch (Exception ex)
             {
@@ -266,7 +265,7 @@ namespace Library.Template.Scheduler
         {
             try
             {
-                SetDefaultValue();
+                SetDefault();
                 LoadItems();
                 SetLayout();                
             }
@@ -276,7 +275,7 @@ namespace Library.Template.Scheduler
             }
         }
 
-        private void SetDefaultValue()
+        private void SetDefault()
         {
             try
             {

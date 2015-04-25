@@ -27,7 +27,7 @@ namespace Library.Controls
             set
             {
                 pagingControls = value;
-                LoadControls();
+                LoadControls(pagingControls);
             }
         }
              
@@ -51,7 +51,7 @@ namespace Library.Controls
 
         private int page = 1;
 
-        private void LoadControls()
+        private void LoadControls(IList<Gizmox.WebGUI.Forms.Control> pagingControls)
         {
             try
             {
@@ -183,7 +183,7 @@ namespace Library.Controls
                 {
                     if (page > pages)
                         page = pages;
-                    LoadControls();
+                    LoadControls(pagingControls);
                 }
             }
             catch (Exception ex)
@@ -206,7 +206,7 @@ namespace Library.Controls
                     page += 1;
                     if (page >= pages)
                         page = pages;
-                    LoadControls();
+                    LoadControls(pagingControls);
                 }
             }
             catch (Exception ex)
@@ -222,7 +222,7 @@ namespace Library.Controls
                 page -= 1;
                 if (page < 1)
                     page = 1;
-                LoadControls();
+                LoadControls(pagingControls);
             }
             catch (Exception ex)
             {

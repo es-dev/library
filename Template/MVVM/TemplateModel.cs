@@ -213,7 +213,6 @@ namespace Library.Template.MVVM
             try
             {
                 Init();
-
             }
             catch (Exception ex)
             {

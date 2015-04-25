@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace Library.Template.Scheduler 
 {
-    public class TemplateViewModel<TDto, TItem> : Library.Template.MVVM.TemplateViewModel<TDto, TItem>
+    public class TemplateViewModel<TView, TItem> : Library.Template.MVVM.TemplateViewTypeModel<TView, TItem, SchedulerDto>
     {
-        public TemplateViewModel(ISpace space) : base(space)
+        public TemplateViewModel() : base()
         {
+
         }
     }
 }

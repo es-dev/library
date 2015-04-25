@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,10 @@ namespace Library.Interfaces
 {
     public interface IViewModel
     {
-        ISpace Space { get; set; }
+        object GetDto();
+        IView GetView();
+        IItem GetItem(object model);
+        IModel GetModel(object model);
         IList<IItem> Items { get; set; }
         int Count(string search=null);
         void Load(int skip, int take, string search=null);

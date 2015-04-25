@@ -562,6 +562,7 @@
     <Compile Include="Interfaces\IView.cs" />
     <Compile Include="Interfaces\IViewModel.cs" />
     <Compile Include="Interfaces\IWorkspace.cs" />
+    <Compile Include="Template\MVVM\TemplateViewTypeModel.cs" />
     <Compile Include="Template\Scheduler\SchedulerDto.cs" />
     <Compile Include="Template\Scheduler\TemplateItem.cs" />
     <Compile Include="Template\Scheduler\TemplateItem.Designer.cs">

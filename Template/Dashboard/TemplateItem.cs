@@ -23,11 +23,11 @@ namespace Library.Template.Dashboard
             {
                 if (model != null)
                 {
-                    var objDto = (DashboardDto)model;
-                    infoTitle.Text = objDto.Title;
-                    infoCodice.Text = objDto.SubTitle;
-                    infoDescription.Text = objDto.Description;
-                    var image= objDto.Image;
+                    var obj = (DashboardDto)model;
+                    infoTitle.Text = obj.Title;
+                    infoCodice.Text = obj.SubTitle;
+                    infoDescription.Text = obj.Description;
+                    var image= obj.Image;
                     infoImage.Image = (image==null? "" : image);
                 }
             }
@@ -43,12 +43,12 @@ namespace Library.Template.Dashboard
             {
                 if (model != null)
                 {
-                    var objDto = (DashboardDto)model;
-                    objDto.Title = infoTitle.Text;
-                    objDto.SubTitle = infoCodice.Text;
-                    objDto.Description = infoDescription.Text;
+                    var obj = (DashboardDto)model;
+                    obj.Title = infoTitle.Text;
+                    obj.SubTitle = infoCodice.Text;
+                    obj.Description = infoDescription.Text;
                     var image = infoImage.Image;
-                    objDto.Image = (image == null ? "" : image.File);
+                    obj.Image = (image == null ? "" : image.File);
                 }
             }
             catch (Exception ex)
@@ -57,20 +57,20 @@ namespace Library.Template.Dashboard
             }
         }
 
-        private void TemplateItem_ItemClick(IItem item)
+        public override void ItemClick(IItem item)
         {
             try
             {
                 if (item != null)
                 {
-                    var objDto = (DashboardDto)item.Model;
-                    if (objDto != null)
+                    var obj = (DashboardDto)item.Model;
+                    if (obj != null)
                     {
-                        var type = objDto.TypeSpace;
+                        var type = obj.TypeSpace;
                         if (type != null)
                         {
                             var space = (ISpace)Activator.CreateInstance(type);
-                            space.Title = objDto.Title;
+                            space.Title = obj.Title;
                             AddSpace(space);
                         }
                     }

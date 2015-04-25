@@ -154,9 +154,6 @@ namespace Library.Template.MVVM
 
         public virtual string TitleSpace { get; set; }
 
-        public delegate void ItemClickHandler(IItem item);
-        public event ItemClickHandler ItemClick;
-
         public TemplateItem()
         {
             InitializeComponent();
@@ -272,28 +269,34 @@ namespace Library.Template.MVVM
                 var view=(IView)ownerSpace;
                 if (view != null)
                 {
-                    var control = view.Control;
-                    if (control != null)
+                    var popup = UtilityWeb.GetPopup(view.Control);
+                    if (popup != null)
                     {
-                        var popup = UtilityWeb.GetPopup(control);
-                        if(popup!=null)
-                        { 
-                            this.selected = !selected;
-                            view.SelectedItem = this;
-                            SetSelected(selected);
-                        }
-                        else
-                        {
-                            if (ItemClick != null)
-                                ItemClick(this);
-                        }
+                        this.selected = !selected;
+                        view.SelectedItem = this;
+                        SetSelected(selected);
                     }
+                    else
+                        ItemClick(this);
                 }
             }
             catch (Exception ex)
             {
                 UtilityError.Write(ex);
             } 
+        }
+
+        public virtual void ItemClick(IItem item)
+        {
+            try
+            {
+                var space = ViewModel.GetModel(model);
+                AddSpace(space);
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
         }
 
         private void SetSelected(bool selected)

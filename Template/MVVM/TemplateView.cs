@@ -64,14 +64,37 @@ namespace Library.Template.MVVM
         {
             try
             {
-                var controls = GetPagingControls(items);
-                container.PagingControls = controls;
+                var pagingControls = GetPagingControls(items);
+                container.PagingControls = pagingControls;
             }
             catch (Exception ex)
             {
                 UtilityError.Write(ex);
             }
         }
+
+        public IList<Control> GetPagingControls(IList<IItem> items)
+        {
+            try
+            {
+                if (items != null)
+                {
+                    var pagingControls = new List<Control>();
+                    foreach (var item in items)
+                    {
+                        item.OwnerSpace = this;
+                        item.Workspace = this.Workspace;
+                        pagingControls.Add(item.Control);
+                    }
+                    return pagingControls;
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }     
 
         private IItem selectedItem = null;
         public IItem SelectedItem
@@ -249,26 +272,6 @@ namespace Library.Template.MVVM
                 UtilityError.Write(ex);
             }
         }
-        
-        public IList<Control> GetPagingControls(IList<IItem> items)
-        {
-            try
-            {
-                if (items != null)
-                {
-                    var pagingControls = new List<Control>();
-                    foreach (var item in items)
-                        pagingControls.Add(item.Control);
-
-                    return pagingControls;
-                }
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-            return null;
-        }     
 
         public virtual void Init() { }
 
@@ -532,6 +535,32 @@ namespace Library.Template.MVVM
             try
             {
                 panelAdvancedSearch.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AddNewModel();
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        public virtual void AddNewModel()
+        {
+            try
+            {
+                var model = viewModel.GetDto();
+                var space = viewModel.GetModel(model);
+                AddSpace(space);
             }
             catch (Exception ex)
             {

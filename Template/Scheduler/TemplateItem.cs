@@ -102,9 +102,6 @@ namespace Library.Template.Scheduler
 
         public virtual string TitleSpace { get; set; }
 
-        public delegate void ItemClickHandler(IItem item);
-        public event ItemClickHandler ItemClick;
-
         public TemplateItem()
         {
             InitializeComponent();
@@ -179,17 +176,14 @@ namespace Library.Template.Scheduler
                     if (control != null)
                     {
                         var popup = UtilityWeb.GetPopup(control);
-                        if(popup!=null)
-                        { 
+                        if (popup != null)
+                        {
                             this.selected = !selected;
                             view.SelectedItem = this;
                             SetSelected(selected);
                         }
                         else
-                        {
-                            if (ItemClick != null)
-                                ItemClick(this);
-                        }
+                            ItemClick(this);
                     }
                 }
             }
@@ -198,6 +192,9 @@ namespace Library.Template.Scheduler
                 UtilityError.Write(ex);
             } 
         }
+
+        public virtual void ItemClick(IItem item) { }
+
 
         private void SetSelected(bool selected)
         {

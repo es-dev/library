@@ -137,6 +137,7 @@ namespace Library.Template.MVVM
             this.btnAdd.Size = new System.Drawing.Size(101, 72);
             this.btnAdd.TabIndex = 1;
             this.btnAdd.TextButton = "Nuovo";
+            this.btnAdd.Click += new Library.Controls.ButtonSeparatorV.ButtonSeparatorClick(this.btnAdd_Click);
             // 
             // txtSearch
             // 

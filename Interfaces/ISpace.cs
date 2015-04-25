@@ -11,12 +11,12 @@ namespace Library.Interfaces
 
     public interface ISpace
     {
+        IViewModel ViewModel { get; set; }
         string Title { get; set; }
         string TitleSpace { get; set; }
         IWorkspace Workspace { get; set; }
         ISpace OwnerSpace { get; set; }
         Gizmox.WebGUI.Forms.Control Control { get; }
-        IViewModel ViewModel { get; set; }
         event CloseHandler Closed;
         event OpenHandler Opened;
         void Open(bool backclosing=false);

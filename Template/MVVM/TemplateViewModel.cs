@@ -6,24 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Library.Interfaces;
 using System.Linq.Expressions;
+using System.Collections;
 
 namespace Library.Template.MVVM
 {
-    public class TemplateViewModel<TDto, TItem> : IViewModel
+    public class TemplateViewModel<TView, TItem, TModel, TDto> : IViewModel
     {
-        private ISpace space = null;
-        public ISpace Space
-        {
-            get
-            {
-                return space;
-            }
-            set
-            {
-                space = value;
-            }
-        }
-
         private IList<IItem> items = null;
         public IList<IItem> Items
         {
@@ -37,11 +25,10 @@ namespace Library.Template.MVVM
             }
         }
 
-        public TemplateViewModel(ISpace space)
+        public TemplateViewModel()
         {
             try
             {
-                this.space = space;
                 Init();
             }
             catch (Exception ex)
@@ -74,22 +61,18 @@ namespace Library.Template.MVVM
 
         public virtual void Fill(object start, object end, string search) {}
 
-        public void Load(IEnumerable<TDto> objDtos) 
+        public void Load(IEnumerable objs) 
         {
             try
             {
-                if (objDtos != null)
+                if (objs != null)
                 {
-                    foreach (var objDto in objDtos)
+                    foreach (var obj in objs)
                     {
                         var item = (IItem)Activator.CreateInstance<TItem>();
-                        item.Model = objDto;
-                        item.OwnerSpace = space;
-                        if (space != null)
-                        {
-                            item.Workspace = space.Workspace;
-                            item.ViewModel = space.ViewModel;
-                        }
+                        item.ViewModel = this;
+                        item.Model = obj;
+                        
                         items.Add(item);
                     }
                 }
@@ -104,9 +87,9 @@ namespace Library.Template.MVVM
         {
             try
             {
-                var primaryKeyName=UtilityPOCO.PrimaryKeyName;
-                var primaryKeyValue = UtilityPOCO.GetValue(newModel, primaryKeyName);
-                UtilityPOCO.SetValue(model, primaryKeyName, primaryKeyValue);
+                var pKeyName=UtilityPOCO.PrimaryKeyName;
+                var pKeyValue = UtilityPOCO.GetValue(newModel, pKeyName);
+                UtilityPOCO.SetValue(model, pKeyName, pKeyValue);
 
                 var dtoKeyName = UtilityPOCO.DtoKeyName;
                 var dtoKeyValue = UtilityPOCO.GetValue(newModel, dtoKeyName);
@@ -119,5 +102,68 @@ namespace Library.Template.MVVM
             }
         }
 
+        public IView GetView()
+        {
+            try
+            {
+                var space = (IView)Activator.CreateInstance<TView>();
+                space.ViewModel = this;
+                return space;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        public IItem GetItem(object model)
+        {
+            try
+            {
+                var space = (IItem)Activator.CreateInstance<TItem>();
+                space.ViewModel = this;
+                space.Model = model;
+                return space;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        public IModel GetModel(object model)
+        {
+            try
+            {
+                if (typeof(TModel) != typeof(Type))
+                {
+                    var space = (IModel)Activator.CreateInstance<TModel>();
+                    space.ViewModel = this;
+                    space.Model = model;
+                    return space;
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        public object GetDto()
+        {
+            try
+            {
+                var obj = Activator.CreateInstance<TDto>();
+                return obj;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
     }
 }
