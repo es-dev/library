@@ -263,8 +263,9 @@ namespace Library.Template.MVVM
             try
             {
                 string search = txtSearch.Text;
-                viewModel.Load(skip, take, search);
-                this.Count = viewModel.Count(search);
+                var advancedSearch = QueryAdvancedSearch();
+                viewModel.Load(skip, take, search, advancedSearch);
+                this.Count = viewModel.Count(search, advancedSearch);
                 this.Items = viewModel.Items;
             }
             catch (Exception ex)
@@ -272,6 +273,8 @@ namespace Library.Template.MVVM
                 UtilityError.Write(ex);
             }
         }
+
+        public virtual object QueryAdvancedSearch() { return null; }
 
         public virtual void Init() { }
 
@@ -413,10 +416,13 @@ namespace Library.Template.MVVM
             {
                 if(backclosing)
                     RefreshItems();
-                
+                else
+                {
+                    if (Opened != null)
+                        Opened();
+                }
+
                 SetVisibility();
-                if (Opened != null)
-                    Opened();
             }
             catch (Exception ex)
             {

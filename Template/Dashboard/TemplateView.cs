@@ -27,12 +27,19 @@ namespace Library.Template.Dashboard
                     var model = (DashboardDto)item.Model;
                     var type = model.TypeSpace;
                     var space = (ISpace)Activator.CreateInstance(type);
-                    var viewModel = space.ViewModel;
-                    if (viewModel != null)
+                    if (space is IView)
                     {
-                        item.CountVisible = model.CountVisible;
-                        if(item.CountVisible)
-                            item.Count = viewModel.Count();
+                        var view = (IView)space;
+                        var viewModel = space.ViewModel;
+                        if (viewModel != null)
+                        {
+                            item.CountVisible = model.CountVisible;
+                            if (item.CountVisible)
+                            {
+                                var advancedSearch = view.QueryAdvancedSearch();
+                                item.Count = viewModel.Count(null, advancedSearch);
+                            }
+                        }
                     }
                 }
             }

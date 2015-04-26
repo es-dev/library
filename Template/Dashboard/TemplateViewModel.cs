@@ -18,7 +18,7 @@ namespace Library.Template.Dashboard
 
         }
 
-        public override void Load(int skip, int take, string search=null)
+        public override void Load(int skip, int take, string search=null, object advancedSearch=null)
         {
             try
             {
@@ -31,7 +31,7 @@ namespace Library.Template.Dashboard
             }
         }
 
-        public override int Count(string search=null)
+        public override int Count(string search=null, object advancedSearch=null)
         {
             try
             {

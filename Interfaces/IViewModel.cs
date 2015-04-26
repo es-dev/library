@@ -14,8 +14,8 @@ namespace Library.Interfaces
         IItem GetItem(object model);
         IModel GetModel(object model);
         IList<IItem> Items { get; set; }
-        int Count(string search=null);
-        void Load(int skip, int take, string search=null);
+        int Count(string search=null, object advancedSearch=null);
+        void Load(int skip, int take, string search=null, object advancedSearch=null);
         bool Save(object model, bool creating);
         bool Delete(object model);
         object Read(object id);

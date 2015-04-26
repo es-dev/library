@@ -768,8 +768,7 @@ namespace Library.Template.Scheduler
             }
         }
 
-       
-
-      
+        public virtual object QueryAdvancedSearch() { return null; }
+        
     }
 }

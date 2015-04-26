@@ -49,9 +49,9 @@ namespace Library.Template.MVVM
             }
         }
 
-        public virtual void Load(int skip, int take, string search = null) { }
+        public virtual void Load(int skip, int take, string search = null, object advancedSearch=null) { }
 
-        public virtual int Count(string search=null) { return 0; }
+        public virtual int Count(string search=null, object advancedSearch=null) { return 0; }
 
         public virtual bool Save(object model, bool creating) { return false; }
 
