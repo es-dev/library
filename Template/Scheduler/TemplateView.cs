@@ -304,7 +304,9 @@ namespace Library.Template.Scheduler
         {
             try
             {
+                var advancedSearch = QueryAdvancedSearch();
                 string search = txtSearch.Text;
+
                 var firstDate = scheduleBox.FirstDate;
                 var start = new DateTime(firstDate.Year,firstDate.Month,1); //start all'inizio del mese
                 var lastDate = GetLastDate(firstDate);
@@ -314,7 +316,7 @@ namespace Library.Template.Scheduler
 
                 if (highDate<lowDate)
                 {
-                    viewModel.Fill(start, end, search);
+                    viewModel.Fill(start, end, search, advancedSearch);
                     lowDate = start.AddDays(-1);
                     highDate = end.AddDays(1);
                 }
@@ -322,16 +324,16 @@ namespace Library.Template.Scheduler
                 {
                     if (start < lowDate)
                     {
-                        viewModel.Fill(start, lowDate, search);
+                        viewModel.Fill(start, lowDate, search, advancedSearch);
                         lowDate = start.AddDays(-1);
                     }
                     if(end>highDate)
                     {
-                        viewModel.Fill(highDate, end, search);
+                        viewModel.Fill(highDate, end, search, advancedSearch);
                         highDate = end.AddDays(1);
                     }
                 }
-                this.Count = viewModel.Count(search);
+                this.Count = viewModel.Count(search, advancedSearch);
                 this.Items = viewModel.Items;
             }
             catch (Exception ex)
@@ -769,6 +771,9 @@ namespace Library.Template.Scheduler
         }
 
         public virtual object QueryAdvancedSearch() { return null; }
-        
+
+
+
+        public virtual object QueryOrderBy() { return null; }
     }
 }

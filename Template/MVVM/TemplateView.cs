@@ -264,7 +264,8 @@ namespace Library.Template.MVVM
             {
                 string search = txtSearch.Text;
                 var advancedSearch = QueryAdvancedSearch();
-                viewModel.Load(skip, take, search, advancedSearch);
+                var orderBy = QueryOrderBy();
+                viewModel.Load(skip, take, search, advancedSearch, orderBy);
                 this.Count = viewModel.Count(search, advancedSearch);
                 this.Items = viewModel.Items;
             }
@@ -275,6 +276,8 @@ namespace Library.Template.MVVM
         }
 
         public virtual object QueryAdvancedSearch() { return null; }
+
+        public virtual object QueryOrderBy() { return null; }
 
         public virtual void Init() { }
 

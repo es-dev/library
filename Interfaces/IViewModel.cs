@@ -15,10 +15,10 @@ namespace Library.Interfaces
         IModel GetModel(object model);
         IList<IItem> Items { get; set; }
         int Count(string search=null, object advancedSearch=null);
-        void Load(int skip, int take, string search=null, object advancedSearch=null);
+        void Load(int skip, int take, string search=null, object advancedSearch=null, object orderBy=null);
         bool Save(object model, bool creating);
         bool Delete(object model);
         object Read(object id);
-        void Fill(object start, object end, string search);
+        void Fill(object start, object end, string search=null, object advancedSearch = null, object orderBy=null);
     }
 }

@@ -24,5 +24,6 @@ namespace Library.Interfaces
         void RemoveItem(IItem item);
         bool Adding { get; set; }
         object QueryAdvancedSearch();
+        object QueryOrderBy();
     }
 }
