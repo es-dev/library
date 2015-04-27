@@ -277,9 +277,37 @@ namespace Library.Template.MVVM
             }
         }
 
-        public virtual object QueryAdvancedSearch() { return null; }
+        public object QueryAdvancedSearch()
+        {
+            try
+            {
+                var advancedSearch = (Func<object, bool>)(q => QueryAdvancedSearch(q));
+                return advancedSearch;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
 
-        public virtual object QueryOrderBy() { return null; }
+        public object QueryOrderBy()
+        {
+            try
+            {
+                var orderBy = (Func<object, object>)(q => QueryOrderBy(q));
+                return orderBy;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        public virtual bool QueryAdvancedSearch(object model) { return true; }
+
+        public virtual object QueryOrderBy(object model) { return null; }
 
         public virtual void Init() { }
 

@@ -770,10 +770,13 @@ namespace Library.Template.Scheduler
             }
         }
 
-        public virtual object QueryAdvancedSearch() { return null; }
+        public virtual bool QueryAdvancedSearch(object model) { return true; }
 
+        public virtual object QueryOrderBy(object model) { return null; }
 
+        public object QueryAdvancedSearch() { return null; }
 
-        public virtual object QueryOrderBy() { return null; }
+        public object QueryOrderBy() { return null; }
+       
     }
 }

@@ -25,5 +25,6 @@ namespace Library.Interfaces
         bool Adding { get; set; }
         object QueryAdvancedSearch();
         object QueryOrderBy();
+
     }
 }
