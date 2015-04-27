@@ -9,6 +9,7 @@ using System.Text;
 
 using Gizmox.WebGUI.Common;
 using Gizmox.WebGUI.Forms;
+using Library.Code;
 
 #endregion
 
@@ -74,12 +75,34 @@ namespace Library.Controls
             {
                 enabled = value;
                 btnControl.Enabled = enabled;
+                btnControl.ForeColor = (enabled ? originalForeColor : Color.LightGray);
             }
         }
 
         public ButtonSeparatorH()
         {
             InitializeComponent();
+            try
+            {
+                originalForeColor = btnControl.ForeColor;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private Color originalForeColor = Color.FromArgb(0, 45, 100);
+        public Color OriginalForeColor
+        {
+            get
+            {
+                return originalForeColor;
+            }
+            set
+            {
+                originalForeColor = value;
+            }
         }
 
         public delegate void ButtonSeparatorClick(object sender, EventArgs e);
@@ -94,7 +117,7 @@ namespace Library.Controls
             }
             catch (Exception ex)
             {
-                Library.Code.UtilityError.Write(ex);
+                UtilityError.Write(ex);
             }
         }
 

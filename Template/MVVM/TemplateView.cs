@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Linq;
 
 using Gizmox.WebGUI.Common;
 using Gizmox.WebGUI.Forms;
@@ -14,6 +15,7 @@ using Library.Template.Forms;
 using Library.Template.MVVM;
 using Library.Interfaces;
 using Library.Code;
+
 #endregion
 
 namespace Library.Template.MVVM
@@ -288,6 +290,12 @@ namespace Library.Template.MVVM
                 btnClose.Visible = (ownerSpace != null);
                 if (txtSearch.CanFocus)
                     txtSearch.Focus();
+
+                bool enableAdvancedSearch = ((from Control q in panelAdvancedSearch.Controls where (string)q.Tag!="advancedSearch" select q).Count()>=1);
+                bool enableOrderBy = ((from Control q in panelOrderBy.Controls where (string)q.Tag!="orderBy" select q).Count()>=1);
+
+                btnOrderBy.Enabled = enableOrderBy;
+                btnAdvancedSearch.Enabled = enableAdvancedSearch;
             }
             catch (Exception ex)
             {
@@ -532,6 +540,7 @@ namespace Library.Template.MVVM
             try
             {
                 RefreshItems();
+                panelAdvancedSearch.Visible = false;
             }
             catch (Exception ex)
             {
@@ -543,6 +552,7 @@ namespace Library.Template.MVVM
         {
             try
             {
+                ClearAdvancedSearch();
                 panelAdvancedSearch.Visible = false;
             }
             catch (Exception ex)
@@ -550,6 +560,8 @@ namespace Library.Template.MVVM
                 UtilityError.Write(ex);
             }
         }
+
+        public virtual void ClearAdvancedSearch() { }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -576,5 +588,58 @@ namespace Library.Template.MVVM
                 UtilityError.Write(ex);
             }
         }
+
+        private void btnCloseOrderBy_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                panelOrderBy.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void btnConfirmOrderBy_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                RefreshItems();
+                panelOrderBy.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void btnCancelOrderBy_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ClearOrderBy();
+                panelOrderBy.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        public virtual void ClearOrderBy() { }
+
+        private void btnOrderBy_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                panelOrderBy.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
     }
 }
