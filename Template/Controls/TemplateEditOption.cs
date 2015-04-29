@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Linq;
 
 using Gizmox.WebGUI.Common;
 using Gizmox.WebGUI.Forms;
@@ -13,16 +14,16 @@ using Library.Interfaces;
 using Library.Code;
 using Gizmox.WebGUI.Common.Interfaces;
 using Library.Controls;
+using System.Collections;
 
 
 #endregion
 
 namespace Library.Template.Controls
 {
-    public partial class TemplateEditLink : EditControl
+    public partial class TemplateEditOption : EditControl
     {
-
-        public TemplateEditLink()
+        public TemplateEditOption()
         {
             InitializeComponent();
             try
@@ -35,8 +36,23 @@ namespace Library.Template.Controls
             } 
         }
 
-        private string _value = null; 
-        public new string Value
+        private string group = "Option1";
+        public string Group
+        {
+            get
+            {
+                group = editControl.Group;
+                return group;
+            }
+            set
+            {
+                group = value;
+                editControl.Group = group;
+            }
+        }
+
+        private bool _value = false;
+        public new bool Value
         {
             get
             {
@@ -49,8 +65,8 @@ namespace Library.Template.Controls
                 SetValue(_value);
             }
         }
-        
-        private void SetValue(string value)
+
+        private void SetValue(bool value)
         {
             try
             {
@@ -62,51 +78,34 @@ namespace Library.Template.Controls
             }
         }
 
-        private string GetValue()
+        private bool GetValue()
         {
             try
             {
-                string value = (string)editControl.Value;
+                var value = (bool)editControl.Value;
                 return value;
             }
             catch (Exception ex)
             {
                 UtilityError.Write(ex);
             }
-            return null;
+            return false;
         }
 
-        private string url = null;
-        public string Url
+        private string text = null;
+        public string Text
         {
             get
             {
-                return url;
+                var text = editControl.Text;
+                return text;
             }
             set
             {
-                url = value;
-                SetUrl(url);
+                text = value;
+                editControl.Text = text;
             }
         }
-
-        private void SetUrl(string url)
-        {
-            try
-            {
-                editControl.Url = url;
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-        }
-
-        private void SetTypeReport(string url)
-        {
-            throw new NotImplementedException();
-        }
-
 
     }
 }

@@ -15,7 +15,6 @@ using Library.Template.Forms;
 using Library.Template.MVVM;
 using Library.Code;
 using Library.Controls;
-using Library.Code.Enum;
 
 #endregion
 

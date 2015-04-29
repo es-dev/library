@@ -1,7 +1,6 @@
 using Gizmox.WebGUI.Forms;
 using Gizmox.WebGUI.Common;
 using Library.Code;
-using Library.Code.Enum;
 
 namespace Library.Template.Controls
 {
@@ -53,7 +52,7 @@ namespace Library.Template.Controls
             this.editControl.Name = "editControl";
             this.editControl.ReadOnly = false;
             this.editControl.Size = new System.Drawing.Size(350, 30);
-            this.editControl.State = Library.Code.Enum.TypeState.None;
+            this.editControl.State = TypeState.None;
             this.editControl.TabIndex = 0;
             this.editControl.Text = null;
             this.editControl.Value = null;

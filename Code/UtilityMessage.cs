@@ -1,5 +1,5 @@
 ﻿using Gizmox.WebGUI.Forms;
-using Library.Code.Enum;
+using Library.Code;
 using Library.Controls;
 using System;
 using System.Collections.Generic;

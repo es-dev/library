@@ -12,7 +12,6 @@ using Gizmox.WebGUI.Forms;
 using Library.Code;
 using Library.Interfaces;
 using Gizmox.WebGUI.Common.Interfaces;
-using Library.Code.Enum;
 
 #endregion
 
@@ -248,8 +247,8 @@ namespace Library.Controls
             }
         }
 
-        private Library.Code.Enum.TypeReport typeReport = Library.Code.Enum.TypeReport.None;
-        public Library.Code.Enum.TypeReport TypeReport
+        private Library.Code.TypeReport typeReport = Library.Code.TypeReport.None;
+        public Library.Code.TypeReport TypeReport
         {
             get
             {
@@ -294,29 +293,29 @@ namespace Library.Controls
             }
         }
 
-        private Code.Enum.TypeReport GetTypeReport(string url)
+        private TypeReport GetTypeReport(string url)
         {
             try
             {
                 if (url.ToUpper().EndsWith(".DOC"))
-                    return Code.Enum.TypeReport.DOC;
+                    return TypeReport.DOC;
                 else if (url.ToUpper().EndsWith(".XLS"))
-                    return Code.Enum.TypeReport.XLS;
+                    return TypeReport.XLS;
                 else if (url.ToUpper().EndsWith(".PDF"))
-                    return Code.Enum.TypeReport.PDF;
+                    return TypeReport.PDF;
             }
             catch (Exception ex)
             {
                 UtilityError.Write(ex);
             }
-            return Code.Enum.TypeReport.None;
+            return TypeReport.None;
         }
 
-        private void SetTypeReport(Library.Code.Enum.TypeReport typeReport)
+        private void SetTypeReport(TypeReport typeReport)
         {
             try
             {
-                if (typeReport == Library.Code.Enum.TypeReport.None)
+                if (typeReport == TypeReport.None)
                 {
                     imgReport.Image = "";
                 }

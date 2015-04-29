@@ -1,6 +1,6 @@
 ﻿using Gizmox.WebGUI.Common.Interfaces;
 using Gizmox.WebGUI.Forms;
-using Library.Code.Enum;
+using Library.Code;
 using Library.Controls;
 using Library.Interfaces;
 using System;

@@ -1,6 +1,5 @@
 using Gizmox.WebGUI.Forms;
 using Gizmox.WebGUI.Common;
-using Library.Code.Enum;
 
 namespace Library.Template.Controls
 {

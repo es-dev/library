@@ -8,7 +8,6 @@ using System.Text;
 using Library.Controls;
 using Gizmox.WebGUI.Forms;
 using Library.Code;
-using Library.Code.Enum;
 
 namespace Library.Controls
 {

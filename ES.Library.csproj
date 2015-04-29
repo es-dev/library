@@ -293,6 +293,12 @@
     <Compile Include="Controls\Calendar.Designer.cs">
       <DependentUpon>Calendar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\OptionButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\OptionButton.Designer.cs">
+      <DependentUpon>OptionButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CheckButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -456,6 +462,12 @@
     <Compile Include="Template\Controls\TemplateEditDateTime.designer.cs">
       <DependentUpon>TemplateEditDateTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Template\Controls\TemplateEditOption.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Template\Controls\TemplateEditOption.Designer.cs">
+      <DependentUpon>TemplateEditOption.cs</DependentUpon>
+    </Compile>
     <Compile Include="Template\Controls\TemplateEditProgress.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -605,6 +617,9 @@
     <EmbeddedResource Include="Controls\Calendar.resx">
       <DependentUpon>Calendar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\OptionButton.resx">
+      <DependentUpon>OptionButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\CheckButton.resx">
       <DependentUpon>CheckButton.cs</DependentUpon>
     </EmbeddedResource>
@@ -687,6 +702,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditDateTime.resx">
       <DependentUpon>TemplateEditDateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Template\Controls\TemplateEditOption.resx">
+      <DependentUpon>TemplateEditOption.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditProgress.resx">
       <DependentUpon>TemplateEditProgress.cs</DependentUpon>

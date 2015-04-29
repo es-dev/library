@@ -1,10 +1,9 @@
 using Gizmox.WebGUI.Forms;
 using Gizmox.WebGUI.Common;
-using Library.Code;
 
 namespace Library.Template.Controls
 {
-    partial class TemplateEditNumeric
+    partial class TemplateEditOption
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +31,7 @@ namespace Library.Template.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            this.editControl = new Library.Controls.TextBox();
+            this.editControl = new Library.Controls.OptionButton();
             this.SuspendLayout();
             // 
             // editControl
@@ -40,10 +39,7 @@ namespace Library.Template.Controls
             this.editControl.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Bottom) 
             | Gizmox.WebGUI.Forms.AnchorStyles.Left) 
             | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
-            this.editControl.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
             this.editControl.BackColor = System.Drawing.Color.Transparent;
-            this.editControl.Behavior = TypeBehavior.Text;
-            this.editControl.BorderWidth = new Gizmox.WebGUI.Forms.BorderWidth(0);
             this.editControl.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editControl.Location = new System.Drawing.Point(100, 0);
             this.editControl.Mask = "---";
@@ -54,7 +50,7 @@ namespace Library.Template.Controls
             this.editControl.Text = null;
             this.editControl.Value = null;
             // 
-            // TemplateEditNumeric
+            // TemplateEditDropDown
             // 
             this.Controls.Add(this.editControl);
             this.Text = "";
@@ -66,10 +62,7 @@ namespace Library.Template.Controls
 
         #endregion
 
-        private Library.Controls.TextBox editControl;
-
-        
-
+        private Library.Controls.OptionButton editControl;
 
 
     }

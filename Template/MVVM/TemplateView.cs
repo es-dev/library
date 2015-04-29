@@ -319,8 +319,10 @@ namespace Library.Template.MVVM
                 if (txtSearch.CanFocus)
                     txtSearch.Focus();
 
-                bool enableAdvancedSearch = ((from Control q in panelAdvancedSearch.Controls where (string)q.Tag!="advancedSearch" select q).Count()>=1);
-                bool enableOrderBy = ((from Control q in panelOrderBy.Controls where (string)q.Tag!="orderBy" select q).Count()>=1);
+                var advancedSearchConotrols = GetAdvancedSearchControls();
+                var orderByConotrols = GetAdvancedSearchControls();
+                bool enableAdvancedSearch = (advancedSearchConotrols.Count >= 1);
+                bool enableOrderBy = (orderByConotrols.Count >= 1);
 
                 btnOrderBy.Enabled = enableOrderBy;
                 btnAdvancedSearch.Enabled = enableAdvancedSearch;
@@ -329,6 +331,34 @@ namespace Library.Template.MVVM
             {
                 UtilityError.Write(ex);
             } 
+        }
+
+        private IList<Control> GetAdvancedSearchControls()
+        {
+            try
+            {
+                var controls = (from Control q in panelAdvancedSearch.Controls where (string)q.Tag != "advancedSearch" select q).ToList();
+                return controls;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        private IList<Control> GetorderByControls()
+        {
+            try
+            {
+                var controls = (from Control q in panelAdvancedSearch.Controls where (string)q.Tag != "orderBy" select q).ToList();
+                return controls;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
         }
        
         public virtual void RefreshItems()
@@ -542,8 +572,10 @@ namespace Library.Template.MVVM
         {
             try
             {
-                panelAdvancedSearch.Visible = true;
-                panelAdvancedSearch.BringToFront();
+                panelOrderBy.Visible = false;
+                panelAdvancedSearch.Visible = !panelAdvancedSearch.Visible;
+                if (panelAdvancedSearch.Visible)
+                    panelAdvancedSearch.BringToFront();
             }
             catch (Exception ex)
             {
@@ -581,6 +613,7 @@ namespace Library.Template.MVVM
             try
             {
                 ClearAdvancedSearch();
+                RefreshItems();
                 panelAdvancedSearch.Visible = false;
             }
             catch (Exception ex)
@@ -589,7 +622,38 @@ namespace Library.Template.MVVM
             }
         }
 
-        public virtual void ClearAdvancedSearch() { }
+        public virtual void ClearAdvancedSearch() 
+        {
+            try
+            {
+                var controls = GetAdvancedSearchControls();
+                ClearEditControls(controls); 
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private static void ClearEditControls(IList<Gizmox.WebGUI.Forms.Control> controls)
+        {
+            try
+            {
+                foreach (var control in controls)
+                {
+                    if (control is IEditControl)
+                    {
+                        var editControl = (IEditControl)control;
+                        editControl.Value = null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            
+        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -647,6 +711,7 @@ namespace Library.Template.MVVM
             try
             {
                 ClearOrderBy();
+                RefreshItems();
                 panelOrderBy.Visible = false;
             }
             catch (Exception ex)
@@ -655,13 +720,27 @@ namespace Library.Template.MVVM
             }
         }
 
-        public virtual void ClearOrderBy() { }
+        public virtual void ClearOrderBy() 
+        {
+            try
+            {
+                var controls = GetorderByControls();
+                ClearEditControls(controls);
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
 
         private void btnOrderBy_Click(object sender, EventArgs e)
         {
             try
             {
-                panelOrderBy.Visible = true;
+                panelAdvancedSearch.Visible = false;
+                panelOrderBy.Visible = !panelOrderBy.Visible;
+                if (panelOrderBy.Visible)
+                    panelOrderBy.BringToFront();
             }
             catch (Exception ex)
             {

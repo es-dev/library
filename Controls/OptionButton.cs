@@ -6,49 +6,30 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Linq;
 
 using Gizmox.WebGUI.Common;
 using Gizmox.WebGUI.Forms;
 using Library.Code;
 using Library.Interfaces;
+using Library.Template.Controls;
 
 #endregion
 
 namespace Library.Controls
 {
-    public partial class CheckButton : UserControl, IMaskControl
+    public partial class OptionButton : UserControl, IMaskControl
     {
-        public CheckButton()
-        {
-            InitializeComponent();
-        }
-        
-        private int trueWidth = 104;
-        public int TrueWidth
+        private string group = "Option1";
+        public string Group
         {
             get
             {
-                return trueWidth;
+                return group;
             }
             set
             {
-                trueWidth = value;
-                SetTrueWidth(trueWidth);
-            }
-        }
-
-        private void SetTrueWidth(int trueWidth)
-        {
-            try
-            {
-                lblTrue.Width = trueWidth;
-                imgFalse.Left = imgTrue.Width + lblTrue.Width;
-                lblFalse.Left = imgFalse.Left + imgFalse.Width;
-                lblFalse.Width = this.Width - lblFalse.Left;
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
+                group = value;
             }
         }
 
@@ -71,10 +52,8 @@ namespace Library.Controls
         {
             try
             {
-                imgTrue.Cursor = (readOnly ? Cursors.Default : Cursors.Hand);
-                imgFalse.Cursor = (readOnly ? Cursors.Default : Cursors.Hand);
-                lblTrue.Cursor = (readOnly ? Cursors.Default : Cursors.Hand);
-                lblFalse.Cursor = (readOnly ? Cursors.Default : Cursors.Hand);
+                imgOption.Cursor = (readOnly ? Cursors.Default : Cursors.Hand);
+                lblOption.Cursor = (readOnly ? Cursors.Default : Cursors.Hand);
             }
             catch (Exception ex)
             {
@@ -86,7 +65,7 @@ namespace Library.Controls
         {
             try
             {
-                var readOnly = !imgTrue.Enabled && !imgFalse.Enabled;
+                var readOnly = !imgOption.Enabled;
                 return readOnly;
             }
             catch (Exception ex)
@@ -115,8 +94,7 @@ namespace Library.Controls
             try
             {
                 base.BackColor = backColor;
-                imgTrue.BackColor = backColor;
-                imgFalse.BackColor = backColor;
+                imgOption.BackColor = backColor;
             }
             catch (Exception ex)
             {
@@ -143,9 +121,7 @@ namespace Library.Controls
         {
             try
             {
-                bool trueValue = (text == "true");
-                bool falseValue = (text == "false");
-                SetTrueFalse(trueValue, falseValue);
+                lblOption.Text = text;
             }
             catch (Exception ex)
             {
@@ -157,13 +133,8 @@ namespace Library.Controls
         {
             try
             {
-                var _checked = GetValue();
-                if(_checked!=null)
-                {
-                    var value = (bool)_checked;
-                    var text = (value ? "true" : "false");
-                    return text;
-                }
+                var text = lblOption.Text;
+                return text;
             }
             catch (Exception ex)
             {
@@ -172,36 +143,7 @@ namespace Library.Controls
             return null;
         }
 
-        private string textTrue = "SI";
-        public string TextTrue
-        {
-            get
-            {
-                textTrue = lblTrue.Text;
-                return textTrue;
-            }
-            set
-            {
-                textTrue = value;
-                lblTrue.Text = textTrue;
-            }
-        }
-
-        private string textFalse = "NO";
-        public string TextFalse
-        {
-            get
-            {
-                textFalse = lblFalse.Text;
-                return textFalse;
-            }
-            set
-            {
-                textFalse = value;
-                lblFalse.Text = textFalse;
-            }
-        }
-
+        
         private object _value = null;
         public object Value
         {
@@ -222,18 +164,9 @@ namespace Library.Controls
             try
             {
                 bool? _value = null;
-                if (imgTrue != null && imgFalse != null)
-                {
-                    var trueValue = (bool?)imgTrue.Tag;
-                    var falseValue = (bool?)imgFalse.Tag;
-                    if (trueValue != null && falseValue != null)
-                    {
-                        if (trueValue == true && falseValue == false)
-                            _value = true;
-                        else if (trueValue == false && falseValue == true)
-                            _value = false;
-                    }
-                }
+                if (imgOption != null)
+                    _value = (bool?)imgOption.Tag;
+                
                 return _value;
             }
             catch (Exception ex)
@@ -250,28 +183,47 @@ namespace Library.Controls
                 if (_value != null)
                 {
                     var value = (bool)_value;
-                    SetTrueFalse(value, !value);
+                    SetTrueFalse(value);
                 }
                 else
-                    SetTrueFalse(false, false);
+                    SetTrueFalse(false);
             }
             catch (Exception ex)
             {
                 Library.Code.UtilityError.Write(ex);
             }
         }
-        
-   
+
+        public OptionButton()
+        {
+            InitializeComponent();
+        }
        
-        private void SetTrueFalse(bool trueValue, bool falseValue)
+        private void SetTrueFalse(bool value)
         {
             try
             {
-                imgTrue.Image = (trueValue ? "Images.on.png" : "Images.off.png");
-                imgTrue.Tag = trueValue;
+                imgOption.Image = (value ? "Images.on.png" : "Images.off.png");
+                imgOption.Tag = value;
 
-                imgFalse.Image = (falseValue ? "Images.on.png" : "Images.off.png");
-                imgFalse.Tag = falseValue;
+                if (value)
+                {
+                    var container = this.Parent.Parent;
+                    if (container != null)
+                    {
+                        var optionControls = (from Control q in container.Controls where q is TemplateEditOption && q != this.Parent select q).ToList();
+                        if (optionControls != null)
+                        {
+                            var _group = group;
+                            var optionGroups = (from TemplateEditOption q in optionControls where q.Group == _group select q).ToList();
+                            if (optionGroups != null)
+                            {
+                                foreach (var optionGroup in optionGroups)
+                                    optionGroup.Value = false;
+                            }
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -279,13 +231,13 @@ namespace Library.Controls
             }
         }
 
-        private void imgTrue_Click(object sender, EventArgs e)
+        private void imgOption_Click(object sender, EventArgs e)
         {
             try
             {
                 if (!readOnly)
                 {
-                    bool? value = (bool?)imgTrue.Tag;
+                    var value = (bool?)imgOption.Tag;
                     if (value == true)
                         SetValue(null);
                     else
@@ -296,26 +248,6 @@ namespace Library.Controls
             {
                 UtilityError.Write(ex);
             } 
-        }
-
-        private void imgFalse_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (!readOnly)
-                {
-                    var value = (bool?)imgFalse.Tag;
-                    if (value == true)
-                        SetValue(null);
-                    else
-                        SetValue(false);
-                }
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            } 
-
         }
 
         private string mask = "";

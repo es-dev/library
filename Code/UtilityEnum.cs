@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 
-namespace Library.Code.Enum
+namespace Library.Code
 {
     public enum TypeFormat
     {
@@ -101,22 +101,7 @@ namespace Library.Code.Enum
             return default(TEnum);
         }
         
-        //public static string GetDescription<TEnum>(string name)
-        //{
-        //    try
-        //    {
-        //        var value = GetValue<TEnum>(name);
-        //        var field = value.GetType().GetField(value.ToString());
-        //        var attribute = (DescriptionAttribute)Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute));
-        //        var description = (attribute == null ? value.ToString() : attribute.Description);
-        //        return description;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        UtilityError.Write(ex);
-        //    }
-        //    return null;
-        //}
+      
 
         public static IList<string> GetNames<TEnum>()
         {
