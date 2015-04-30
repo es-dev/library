@@ -41,9 +41,10 @@ namespace Library.Controls
         {
             try
             {
+                int spread = 6;
                 lblTrue.Width = trueWidth;
-                imgFalse.Left = imgTrue.Width + lblTrue.Width;
-                lblFalse.Left = imgFalse.Left + imgFalse.Width;
+                imgFalse.Left = lblTrue.Left + lblTrue.Width;
+                lblFalse.Left = imgFalse.Left + imgFalse.Width + spread;
                 lblFalse.Width = this.Width - lblFalse.Left;
             }
             catch (Exception ex)

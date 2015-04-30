@@ -43,9 +43,9 @@ namespace Library.Controls
             | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
             this.lblOption.Cursor = Gizmox.WebGUI.Forms.Cursors.Hand;
             this.lblOption.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOption.Location = new System.Drawing.Point(30, 0);
+            this.lblOption.Location = new System.Drawing.Point(27, 0);
             this.lblOption.Name = "lblOption";
-            this.lblOption.Size = new System.Drawing.Size(242, 28);
+            this.lblOption.Size = new System.Drawing.Size(245, 28);
             this.lblOption.TabIndex = 1000;
             this.lblOption.Text = "Option";
             this.lblOption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -54,10 +54,10 @@ namespace Library.Controls
             // imgOption
             // 
             this.imgOption.BackColor = System.Drawing.Color.Transparent;
-            this.imgOption.Location = new System.Drawing.Point(0, 0);
+            this.imgOption.Location = new System.Drawing.Point(1, 5);
             this.imgOption.Name = "imgOption";
-            this.imgOption.Size = new System.Drawing.Size(30, 30);
-            this.imgOption.SizeMode = Gizmox.WebGUI.Forms.PictureBoxSizeMode.CenterImage;
+            this.imgOption.Size = new System.Drawing.Size(20, 20);
+            this.imgOption.SizeMode = Gizmox.WebGUI.Forms.PictureBoxSizeMode.StretchImage;
             this.imgOption.TabIndex = 1001;
             this.imgOption.TabStop = false;
             this.imgOption.Click += new System.EventHandler(this.imgOption_Click);

@@ -203,7 +203,7 @@ namespace Library.Controls
         {
             try
             {
-                imgOption.Image = (value ? "Images.on.png" : "Images.off.png");
+                imgOption.Image = (value ? "Images.option_on.png" : "Images.option_off.png");
                 imgOption.Tag = value;
 
                 if (value)

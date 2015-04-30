@@ -43,9 +43,10 @@ namespace Library.Controls
             // 
             this.lblTrue.Cursor = Gizmox.WebGUI.Forms.Cursors.Hand;
             this.lblTrue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTrue.Location = new System.Drawing.Point(30, 0);
+            this.lblTrue.Location = new System.Drawing.Point(26, 0);
+            this.lblTrue.Margin = new Gizmox.WebGUI.Forms.Padding(5, 0, 0, 0);
             this.lblTrue.Name = "lblTrue";
-            this.lblTrue.Size = new System.Drawing.Size(105, 28);
+            this.lblTrue.Size = new System.Drawing.Size(112, 28);
             this.lblTrue.TabIndex = 1000;
             this.lblTrue.Text = "TRUE";
             this.lblTrue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -57,9 +58,10 @@ namespace Library.Controls
             | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
             this.lblFalse.Cursor = Gizmox.WebGUI.Forms.Cursors.Hand;
             this.lblFalse.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFalse.Location = new System.Drawing.Point(165, 0);
+            this.lblFalse.Location = new System.Drawing.Point(164, 0);
+            this.lblFalse.Margin = new Gizmox.WebGUI.Forms.Padding(5, 0, 0, 0);
             this.lblFalse.Name = "lblFalse";
-            this.lblFalse.Size = new System.Drawing.Size(103, 28);
+            this.lblFalse.Size = new System.Drawing.Size(108, 28);
             this.lblFalse.TabIndex = 1000;
             this.lblFalse.Text = "FALSE";
             this.lblFalse.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -68,10 +70,10 @@ namespace Library.Controls
             // imgTrue
             // 
             this.imgTrue.BackColor = System.Drawing.Color.Transparent;
-            this.imgTrue.Location = new System.Drawing.Point(0, 0);
+            this.imgTrue.Location = new System.Drawing.Point(1, 5);
             this.imgTrue.Name = "imgTrue";
-            this.imgTrue.Size = new System.Drawing.Size(30, 30);
-            this.imgTrue.SizeMode = Gizmox.WebGUI.Forms.PictureBoxSizeMode.CenterImage;
+            this.imgTrue.Size = new System.Drawing.Size(20, 20);
+            this.imgTrue.SizeMode = Gizmox.WebGUI.Forms.PictureBoxSizeMode.StretchImage;
             this.imgTrue.TabIndex = 1001;
             this.imgTrue.TabStop = false;
             this.imgTrue.Click += new System.EventHandler(this.imgTrue_Click);
@@ -79,10 +81,10 @@ namespace Library.Controls
             // imgFalse
             // 
             this.imgFalse.BackColor = System.Drawing.Color.Transparent;
-            this.imgFalse.Location = new System.Drawing.Point(135, 0);
+            this.imgFalse.Location = new System.Drawing.Point(138, 5);
             this.imgFalse.Name = "imgFalse";
-            this.imgFalse.Size = new System.Drawing.Size(30, 30);
-            this.imgFalse.SizeMode = Gizmox.WebGUI.Forms.PictureBoxSizeMode.CenterImage;
+            this.imgFalse.Size = new System.Drawing.Size(20, 20);
+            this.imgFalse.SizeMode = Gizmox.WebGUI.Forms.PictureBoxSizeMode.StretchImage;
             this.imgFalse.TabIndex = 1001;
             this.imgFalse.TabStop = false;
             this.imgFalse.Click += new System.EventHandler(this.imgFalse_Click);
