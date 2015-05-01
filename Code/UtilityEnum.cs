@@ -66,6 +66,24 @@ namespace Library.Code
         Cap
     }
 
+    public enum TypeOrder
+    {
+        Ascending,
+        Descending
+    }
+
+    public class OrderBy
+    {
+        public TypeOrder Direction = TypeOrder.Ascending;
+        public object Value = null;
+
+        public OrderBy()
+        {
+
+        }
+    }
+
+
     public static class UtilityEnum
     {
         public static string GetDescription<TEnum>(TEnum value)

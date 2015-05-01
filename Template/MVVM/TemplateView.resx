@@ -141,4 +141,10 @@
   <data name="btnConfirmOrderBy.Image" xml:space="preserve">
     <value>confirm24.png</value>
   </data>
+  <data name="optDescending.Image" xml:space="preserve">
+    <value>descending.png</value>
+  </data>
+  <data name="optAscending.Image" xml:space="preserve">
+    <value>ascending.png</value>
+  </data>
 </root>

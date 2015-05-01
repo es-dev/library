@@ -9,6 +9,7 @@ using Library.Template.Forms;
 using Library.Template.MVVM;
 
 using Gizmox.WebGUI.Forms;
+using Library.Code;
 #endregion
 
 namespace Library.Interfaces
@@ -24,7 +25,7 @@ namespace Library.Interfaces
         void RemoveItem(IItem item);
         bool Adding { get; set; }
         object QueryAdvancedSearch();
-        object QueryOrderBy();
+        OrderBy QueryOrderBy();
 
     }
 }

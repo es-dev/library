@@ -49,7 +49,7 @@ namespace Library.Template.MVVM
             }
         }
 
-        public virtual void Load(int skip, int take, string search = null, object advancedSearch=null, object orderBy=null) { }
+        public virtual void Load(int skip, int take, string search = null, object advancedSearch=null, OrderBy orderBy=null) { }
 
         public virtual int Count(string search=null, object advancedSearch=null) { return 0; }
 
@@ -59,7 +59,7 @@ namespace Library.Template.MVVM
 
         public virtual object Read(object id) { return null; }
 
-        public virtual void Fill(object start, object end, string search = null, object advancedSearch = null, object orderBy = null) { }
+        public virtual void Fill(object start, object end, string search = null, object advancedSearch = null, OrderBy orderBy = null) { }
 
         public void Load(IEnumerable objs) 
         {

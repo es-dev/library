@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Library.Code;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,10 @@ namespace Library.Interfaces
         IModel GetModel(object model);
         IList<IItem> Items { get; set; }
         int Count(string search=null, object advancedSearch=null);
-        void Load(int skip, int take, string search=null, object advancedSearch=null, object orderBy=null);
+        void Load(int skip, int take, string search = null, object advancedSearch = null, OrderBy orderBy = null);
         bool Save(object model, bool creating);
         bool Delete(object model);
         object Read(object id);
-        void Fill(object start, object end, string search=null, object advancedSearch = null, object orderBy=null);
+        void Fill(object start, object end, string search = null, object advancedSearch = null, OrderBy orderBy = null);
     }
 }

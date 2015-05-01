@@ -776,7 +776,7 @@ namespace Library.Template.Scheduler
 
         public object QueryAdvancedSearch() { return null; }
 
-        public object QueryOrderBy() { return null; }
+        public OrderBy QueryOrderBy() { return null; }
        
     }
 }

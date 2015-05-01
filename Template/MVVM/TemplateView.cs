@@ -291,11 +291,14 @@ namespace Library.Template.MVVM
             return null;
         }
 
-        public object QueryOrderBy()
+       
+        public OrderBy QueryOrderBy()
         {
             try
             {
-                var orderBy = (Func<object, object>)(q => QueryOrderBy(q));
+                var orderBy = new OrderBy();
+                orderBy.Direction = (optAscending.Checked ? TypeOrder.Ascending : TypeOrder.Descending); 
+                orderBy.Value = (Func<object, object>)(q => QueryOrderBy(q));
                 return orderBy;
             }
             catch (Exception ex)
@@ -347,11 +350,11 @@ namespace Library.Template.MVVM
             return null;
         }
 
-        private IList<Control> GetorderByControls()
+        private IList<Control> GetOrderByControls()
         {
             try
             {
-                var controls = (from Control q in panelAdvancedSearch.Controls where (string)q.Tag != "orderBy" select q).ToList();
+                var controls = (from Control q in panelOrderBy.Controls where (string)q.Tag != "orderBy" select q).ToList();
                 return controls;
             }
             catch (Exception ex)
@@ -711,6 +714,7 @@ namespace Library.Template.MVVM
             try
             {
                 ClearOrderBy();
+                optAscending.Checked = true;
                 RefreshItems();
                 panelOrderBy.Visible = false;
             }
@@ -724,7 +728,7 @@ namespace Library.Template.MVVM
         {
             try
             {
-                var controls = GetorderByControls();
+                var controls = GetOrderByControls();
                 ClearEditControls(controls);
             }
             catch (Exception ex)
