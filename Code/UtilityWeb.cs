@@ -314,6 +314,14 @@ namespace Library.Code
                             control.Top = top;
                             control.Left = left;
                         }
+                        var parent = control.Parent;
+                        if (parent!=null)
+                        {
+                            parent.Controls.Remove(control);
+                            control.Visible = true;
+                            jqContainer.Tag = "exist";
+                        }
+                        
                         parentForm.Controls.Add(jqContainer);
                         parentForm.Controls.Add(control);
                         jqContainer.BringToFront();
@@ -328,8 +336,6 @@ namespace Library.Code
             }
         }
 
-      
-
         public static void RemoveJQControl(Control control)
         {
             try
@@ -341,7 +347,10 @@ namespace Library.Code
                     if (jqContainer != null)
                     {
                         parentForm.Controls.Remove(jqContainer);
-                        parentForm.Controls.Remove(control);
+                        if (jqContainer.Tag!="exist")
+                            parentForm.Controls.Remove(control);
+                        else
+                            control.Visible = false;
                     }
                 }
             }
@@ -350,7 +359,6 @@ namespace Library.Code
                 UtilityError.Write(ex);
             }
         }
-
        
     }
 }

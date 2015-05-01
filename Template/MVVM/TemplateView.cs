@@ -575,10 +575,12 @@ namespace Library.Template.MVVM
         {
             try
             {
-                panelOrderBy.Visible = false;
-                panelAdvancedSearch.Visible = !panelAdvancedSearch.Visible;
-                if (panelAdvancedSearch.Visible)
-                    panelAdvancedSearch.BringToFront();
+                //panelOrderBy.Visible = false;
+                //panelAdvancedSearch.Visible = !panelAdvancedSearch.Visible;
+                //if (panelAdvancedSearch.Visible)
+                //    panelAdvancedSearch.BringToFront();
+                UtilityWeb.AddJQControl(btnAdvancedSearch, panelAdvancedSearch, JQTypePosition.Docked);
+
             }
             catch (Exception ex)
             {
@@ -590,7 +592,7 @@ namespace Library.Template.MVVM
         {
             try
             {
-                panelAdvancedSearch.Visible = false;
+                UtilityWeb.RemoveJQControl(panelAdvancedSearch);
             }
             catch (Exception ex)
             {
@@ -603,7 +605,7 @@ namespace Library.Template.MVVM
             try
             {
                 RefreshItems();
-                panelAdvancedSearch.Visible = false;
+                UtilityWeb.RemoveJQControl(panelAdvancedSearch);
             }
             catch (Exception ex)
             {
@@ -617,7 +619,7 @@ namespace Library.Template.MVVM
             {
                 ClearAdvancedSearch();
                 RefreshItems();
-                panelAdvancedSearch.Visible = false;
+                UtilityWeb.RemoveJQControl(panelAdvancedSearch);
             }
             catch (Exception ex)
             {
@@ -688,7 +690,7 @@ namespace Library.Template.MVVM
         {
             try
             {
-                panelOrderBy.Visible = false;
+                UtilityWeb.RemoveJQControl(panelOrderBy);
             }
             catch (Exception ex)
             {
@@ -701,7 +703,7 @@ namespace Library.Template.MVVM
             try
             {
                 RefreshItems();
-                panelOrderBy.Visible = false;
+                UtilityWeb.RemoveJQControl(panelOrderBy);
             }
             catch (Exception ex)
             {
@@ -716,7 +718,7 @@ namespace Library.Template.MVVM
                 ClearOrderBy();
                 optAscending.Checked = true;
                 RefreshItems();
-                panelOrderBy.Visible = false;
+                UtilityWeb.RemoveJQControl(panelOrderBy);
             }
             catch (Exception ex)
             {
@@ -741,10 +743,11 @@ namespace Library.Template.MVVM
         {
             try
             {
-                panelAdvancedSearch.Visible = false;
-                panelOrderBy.Visible = !panelOrderBy.Visible;
-                if (panelOrderBy.Visible)
-                    panelOrderBy.BringToFront();
+                //panelAdvancedSearch.Visible = false;
+                //panelOrderBy.Visible = !panelOrderBy.Visible;
+                //if (panelOrderBy.Visible)
+                //    panelOrderBy.BringToFront();
+               UtilityWeb.AddJQControl(btnOrderBy, panelOrderBy, JQTypePosition.Docked);
             }
             catch (Exception ex)
             {
