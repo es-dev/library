@@ -72,7 +72,7 @@ namespace Library.Template.MVVM
             // TemplateItem
             // 
             this.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.FixedSingle;
-            this.JQEnterBorderColor = System.Drawing.Color.SteelBlue;
+            this.JQLeaveBorderColor = System.Drawing.Color.LightGray;
             this.Margin = new Gizmox.WebGUI.Forms.Padding(10);
             this.Size = new System.Drawing.Size(401, 100);
             this.Load += new System.EventHandler(this.TemplateItem_Load);

@@ -24,7 +24,7 @@ namespace Library.Controls
             try
             {
                 var jquery = new UtilityJQuery();
-                var jqscript = jquery.GetMouseOverColor(this.jqContainer, JQEnterBackColor, BackColor, JQDownBackColor, JQEnterBorderColor, BorderColor);
+                var jqscript = jquery.GetMouseOverColor(this.jqContainer, JQEnterBackColor, JQLeaveBackColor, JQDownBackColor, JQEnterBorderColor, JQLeaveBorderColor);
                 return jqscript;
             }
             catch (Exception ex)
@@ -96,7 +96,20 @@ namespace Library.Controls
             }
         }
 
-        private Color jqEnterBorderColor = Color.DimGray;
+        private Color jqLeaveBackColor = Color.WhiteSmoke;
+        public Color JQLeaveBackColor 
+        {
+            get
+            {
+                return jqLeaveBackColor;
+            }
+            set
+            {
+                jqLeaveBackColor = value;
+            }
+        }
+
+        private Color jqEnterBorderColor = Color.SteelBlue;
         public Color JQEnterBorderColor
         {
             get
@@ -106,6 +119,19 @@ namespace Library.Controls
             set
             {
                 jqEnterBorderColor = value;
+            }
+        }
+
+        private Color jqLeaveBorderColor = Color.LightGray;
+        public Color JQLeaveBorderColor
+        {
+            get
+            {
+                return jqLeaveBorderColor;
+            }
+            set
+            {
+                jqLeaveBorderColor = value;
             }
         }
 
