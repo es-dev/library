@@ -57,8 +57,9 @@ namespace Library.Template.Controls
                 if (value != null && value.Length > 0)
                 {
                     var _state = new StateDescriptionImage(value);
-                    editControl.Value = _state.Description;
+                    editControl.Value = _state.Value;
                     editControl.State = _state.State;
+                    editControl.Description = _state.Description;    
                 }
             }
             catch (Exception ex)
@@ -71,10 +72,11 @@ namespace Library.Template.Controls
         {
             try
             {
-                string description = (string)editControl.Value;
+                string _value = (string)editControl.Value; 
+                string description = editControl.Description;
                 var state = editControl.State;
-                var _state = new StateDescriptionImage(state, description);
-                var value = _state.ToString();
+                var stateDescription = new StateDescriptionImage(_value, state, description);
+                var value = stateDescription.ToString();
                 return value;
             }
             catch (Exception ex)

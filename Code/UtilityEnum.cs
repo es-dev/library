@@ -218,14 +218,7 @@ namespace Library.Code
 
     public class DescriptionImage
     {
-        private string separator = "{;}";
-        public string Separator
-        {
-            get
-            {
-                return separator;
-            }
-        }
+        public string separator = "{;}";
        
         private string description = null;
         public string Description
@@ -309,6 +302,19 @@ namespace Library.Code
 
     public class StateDescriptionImage : DescriptionImage
     {
+        private string _value = null;
+        public string Value
+        {
+            get
+            {
+                return _value;
+            }
+            set
+            {
+                _value = value;
+            }
+        }
+
         private TypeState state = TypeState.None;
         public TypeState State
         {
@@ -323,10 +329,11 @@ namespace Library.Code
         }
 
        
-        public StateDescriptionImage(TypeState state, string description, string image = null) : base(description, image)
+        public StateDescriptionImage(string value, TypeState state, string description, string image = null) : base(description, image)
         {
             try
             {
+                this._value = value;
                 this.state = state;
             }
             catch (Exception ex)
@@ -341,16 +348,18 @@ namespace Library.Code
             {
                 if (value != null)
                 {
-                    var splits = value.Split(new string[] { this.Separator }, StringSplitOptions.RemoveEmptyEntries);
+                    var splits = value.Split(new string[] { this.separator }, StringSplitOptions.RemoveEmptyEntries);
                     if (splits.Length >= 1)
+                        this._value = splits[0].Trim();
+                    if (splits.Length >= 2)
                     {
-                        string _state = splits[0].Trim();
+                        string _state = splits[1].Trim();
                         this.state = UtilityEnum.GetValue<TypeState>(_state);
                     }
-                    if (splits.Length >= 2)
-                        this.Description = splits[1].Trim();
                     if (splits.Length >= 3)
-                        this.Image = splits[2].Trim();
+                        this.Description = splits[2].Trim();
+                    if (splits.Length >= 4)
+                        this.Image = splits[3].Trim();
 
                 }
             }
@@ -364,11 +373,14 @@ namespace Library.Code
         {
             try
             {
-                var value = state.ToString() + this.Separator + this.Description;
-                if (this.Image != null)
-                    value += this.Separator + this.Image;
+                if (state != TypeState.None)
+                {
+                    var value = _value + this.separator + state.ToString() + this.separator + this.Description;
+                    if (this.Image != null)
+                        value += this.separator + this.Image;
 
-                return value;
+                    return value;
+                }
             }
             catch (Exception ex)
             {

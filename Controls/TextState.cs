@@ -187,40 +187,55 @@ namespace Library.Controls
         {
             get
             {
-                _value = GetValue();
+                //_value = GetValue();
                 return _value;
             }
             set
             {
                 _value = value;
-                SetValue(_value);
+                //SetValue(_value);
             }
         }
 
-        private object GetValue()
-        {
-            try
-            {
-                var value = GetText();
-                return value;
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-            return null;
-        }
+        //private object GetValue()
+        //{
+        //    try
+        //    {
+        //        var value = GetText();
+        //        return value;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        UtilityError.Write(ex);
+        //    }
+        //    return null;
+        //}
 
-        private void SetValue(object value)
+        //private void SetValue(object value)
+        //{
+        //    try
+        //    {
+        //        var text = (string)value;
+        //        SetText(text);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        UtilityError.Write(ex);
+        //    }
+        //}
+
+        private string description = null;
+        public string Description
         {
-            try
+            get
             {
-                var text = (string)value;
-                SetText(text);
+                description = GetText();
+                return description;
             }
-            catch (Exception ex)
+            set
             {
-                UtilityError.Write(ex);
+                description = value;
+                SetText(description);
             }
         }
 
