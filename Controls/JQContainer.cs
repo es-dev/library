@@ -14,16 +14,6 @@ namespace Library.Controls
 {
 	public partial class JQContainer : Panel, IJQControl
 	{
-        private string jqscript = null;
-        public string JQScript
-        {
-            get
-            {
-                jqscript = GetJQScript();
-                return jqscript;
-            }
-        }
-
         private string GetJQScript()
         {
             try

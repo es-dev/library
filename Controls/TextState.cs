@@ -19,16 +19,6 @@ namespace Library.Controls
 {
     public partial class TextState : UserControl, IJQControl, IMaskControl
     {
-        private string jqscript = null;
-        public string JQScript
-        {
-            get
-            {
-                jqscript = GetJQScript();
-                return jqscript;
-            }
-        }
-
         private string GetJQScript()
         {
             try

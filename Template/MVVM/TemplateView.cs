@@ -246,6 +246,9 @@ namespace Library.Template.MVVM
         public virtual string TitleSpace { get; set; }
 
         private int skip = 0;
+        private string search = null;
+        private object advancedSearch = null;
+        private OrderBy orderBy = null;
 
         private void TemplateView_Load(object sender, EventArgs e)
         {
@@ -264,9 +267,9 @@ namespace Library.Template.MVVM
         {
             try
             {
-                string search = txtSearch.Text;
-                var advancedSearch = QueryAdvancedSearch();
-                var orderBy = QueryOrderBy();
+                this.search = txtSearch.Text;
+                this.advancedSearch = QueryAdvancedSearch();
+                this.orderBy = QueryOrderBy();
                 viewModel.Load(skip, take, search, advancedSearch, orderBy);
                 this.Count = viewModel.Count(search, advancedSearch);
                 this.Items = viewModel.Items;
@@ -446,7 +449,7 @@ namespace Library.Template.MVVM
             try
             {
                 skip += take;
-                viewModel.Load(skip, take);
+                viewModel.Load(skip, take, search, advancedSearch, orderBy);
                 this.Items = viewModel.Items;
             }
             catch (Exception ex)

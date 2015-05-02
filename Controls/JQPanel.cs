@@ -19,16 +19,6 @@ namespace Library.Controls
 {
     public partial class JQPanel : UserControl, IJQControl
     {
-        private string jqscript = null;
-        public string JQScript
-        {
-            get
-            {
-                jqscript = GetJQScript();
-                return jqscript;
-            }
-        }
-
         private string GetJQScript()
         {
             try
@@ -68,8 +58,9 @@ namespace Library.Controls
             {
                 if (!DesignMode && Enabled)
                 {
-                    if (JQScript != null && JQScript.Length > 0)
-                        InvokeScript(JQScript);
+                    var jqscript = GetJQScript();
+                    if (jqscript != null && jqscript.Length > 0)
+                        InvokeScript(jqscript);
                 }
             }
             catch (Exception ex)

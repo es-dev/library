@@ -36,6 +36,7 @@ namespace Library.Controls
             // 
             // jqContainer
             // 
+            this.jqContainer.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.FixedSingle;
             this.jqContainer.Dock = Gizmox.WebGUI.Forms.DockStyle.Fill;
             this.jqContainer.Location = new System.Drawing.Point(0, 0);
             this.jqContainer.Name = "jqContainer";
@@ -45,7 +46,6 @@ namespace Library.Controls
             // JQPanel
             // 
             this.BackColor = System.Drawing.Color.Transparent;
-            this.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.jqContainer);
             this.Size = new System.Drawing.Size(305, 82);
             this.Text = "JQPanel1";

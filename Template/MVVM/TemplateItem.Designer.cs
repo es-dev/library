@@ -38,7 +38,7 @@ namespace Library.Template.MVVM
             ((System.ComponentModel.ISupportInitialize)(this.imgCheck)).BeginInit();
             this.SuspendLayout();
             // 
-            // container
+            // jqContainer
             // 
             this.jqContainer.Controls.Add(this.imgCheck);
             this.jqContainer.Controls.Add(this.editCount);
@@ -50,7 +50,7 @@ namespace Library.Template.MVVM
             this.editCount.BackColor = System.Drawing.Color.ForestGreen;
             this.editCount.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editCount.ForeColor = System.Drawing.Color.White;
-            this.editCount.Location = new System.Drawing.Point(356, 2);
+            this.editCount.Location = new System.Drawing.Point(352, 2);
             this.editCount.Name = "editCount";
             this.editCount.Size = new System.Drawing.Size(43, 20);
             this.editCount.TabIndex = 0;
@@ -62,7 +62,7 @@ namespace Library.Template.MVVM
             // 
             this.imgCheck.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
             this.imgCheck.BackColor = System.Drawing.Color.Transparent;
-            this.imgCheck.Location = new System.Drawing.Point(364, 3);
+            this.imgCheck.Location = new System.Drawing.Point(360, 3);
             this.imgCheck.Name = "imgCheck";
             this.imgCheck.Size = new System.Drawing.Size(32, 32);
             this.imgCheck.SizeMode = Gizmox.WebGUI.Forms.PictureBoxSizeMode.StretchImage;
@@ -71,6 +71,8 @@ namespace Library.Template.MVVM
             // 
             // TemplateItem
             // 
+            this.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.FixedSingle;
+            this.JQEnterBorderColor = System.Drawing.Color.SteelBlue;
             this.Margin = new Gizmox.WebGUI.Forms.Padding(10);
             this.Size = new System.Drawing.Size(401, 100);
             this.Load += new System.EventHandler(this.TemplateItem_Load);
