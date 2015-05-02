@@ -653,6 +653,11 @@ namespace Library.Template.MVVM
                     {
                         var editControl = (IEditControl)control;
                         editControl.Value = null;
+                        if(control is IComboControl)
+                        {
+                            var comboControl = (IComboControl)editControl;
+                            comboControl.Model = null;
+                        }
                     }
                 }
             }

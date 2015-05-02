@@ -419,6 +419,7 @@
     <Compile Include="Controls\TimeIntervals.Designer.cs">
       <DependentUpon>TimeIntervals.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IComboControl.cs" />
     <Compile Include="Interfaces\IMaskControl.cs" />
     <Compile Include="Template\Controls\TemplateEditCap.cs">
       <SubType>UserControl</SubType>

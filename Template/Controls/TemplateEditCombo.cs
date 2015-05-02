@@ -13,9 +13,8 @@ using System.Linq;
 
 namespace Library.Template.Controls
 {
-    public partial class TemplateEditCombo : EditControl
+    public partial class TemplateEditCombo : EditControl, IComboControl 
 	{
-
         public TemplateEditCombo()
         {
             InitializeComponent();
@@ -43,6 +42,7 @@ namespace Library.Template.Controls
                 model = value;
             }
         }
+
         private int? id = null;
         public int? Id
         {
@@ -53,7 +53,7 @@ namespace Library.Template.Controls
             }
         }
 
-        IView view = null;
+        private IView view = null;
         public void Show(IView view)
         {
             try
@@ -124,7 +124,6 @@ namespace Library.Template.Controls
                 UtilityError.Write(ex);
             }
         }
-
 
         public delegate void ComboClickHandler();
         public event ComboClickHandler ComboClick;
