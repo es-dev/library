@@ -578,10 +578,6 @@ namespace Library.Template.MVVM
         {
             try
             {
-                //panelOrderBy.Visible = false;
-                //panelAdvancedSearch.Visible = !panelAdvancedSearch.Visible;
-                //if (panelAdvancedSearch.Visible)
-                //    panelAdvancedSearch.BringToFront();
                 UtilityWeb.AddJQControl(btnAdvancedSearch, panelAdvancedSearch, JQTypePosition.Docked);
 
             }
@@ -607,8 +603,24 @@ namespace Library.Template.MVVM
         {
             try
             {
+                SetAdvancedSearch();
                 RefreshItems();
                 UtilityWeb.RemoveJQControl(panelAdvancedSearch);
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void SetAdvancedSearch()
+        {
+            try
+            {
+                var controls = GetAdvancedSearchControls();
+                var performed = ((from IEditControl q in controls where q.Value != null select q).Count() >= 1);
+                btnAdvancedSearch.TextButton = (performed ? "Filtri impostati..." : "Ricerca avanzata...");
+                btnAdvancedSearch.ForeColorButton = (performed ? Color.Red : btnAdvancedSearch.OriginalForeColor);
             }
             catch (Exception ex)
             {
@@ -622,6 +634,7 @@ namespace Library.Template.MVVM
             {
                 ClearAdvancedSearch();
                 RefreshItems();
+                SetAdvancedSearch();
                 UtilityWeb.RemoveJQControl(panelAdvancedSearch);
             }
             catch (Exception ex)
@@ -710,8 +723,24 @@ namespace Library.Template.MVVM
         {
             try
             {
+                SetOrderBy();
                 RefreshItems();
                 UtilityWeb.RemoveJQControl(panelOrderBy);
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void SetOrderBy()
+        {
+            try
+            {
+                var controls = GetOrderByControls();
+                var performed = ((from IEditControl q in controls where q.Value != null && (bool)q.Value select q).Count() >= 1);
+                btnOrderBy.TextButton= (performed? "Ordinamento...":"Ordina per...");
+                btnOrderBy.ForeColorButton = (performed ? Color.Red : btnOrderBy.OriginalForeColor);
             }
             catch (Exception ex)
             {
@@ -726,6 +755,7 @@ namespace Library.Template.MVVM
                 ClearOrderBy();
                 optAscending.Checked = true;
                 RefreshItems();
+                SetOrderBy();
                 UtilityWeb.RemoveJQControl(panelOrderBy);
             }
             catch (Exception ex)
@@ -751,10 +781,6 @@ namespace Library.Template.MVVM
         {
             try
             {
-                //panelAdvancedSearch.Visible = false;
-                //panelOrderBy.Visible = !panelOrderBy.Visible;
-                //if (panelOrderBy.Visible)
-                //    panelOrderBy.BringToFront();
                UtilityWeb.AddJQControl(btnOrderBy, panelOrderBy, JQTypePosition.Docked);
             }
             catch (Exception ex)

@@ -50,7 +50,6 @@ namespace Library.Controls
         }
 
         private string textButton = null;
-        
         public string TextButton
         {
             get 
@@ -102,6 +101,21 @@ namespace Library.Controls
             set
             {
                 originalForeColor = value;
+            }
+        }
+
+        private Color foreColorButton = Color.FromArgb(0, 45, 100);
+        public Color ForeColorButton
+        {
+            get
+            {
+                foreColorButton = btnControl.ForeColor;
+                return foreColorButton;
+            }
+            set
+            {
+                foreColorButton = value;
+                btnControl.ForeColor = foreColorButton;
             }
         }
 
