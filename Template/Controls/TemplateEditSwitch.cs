@@ -51,8 +51,8 @@ namespace Library.Template.Controls
             }
         }
 
-        private bool _value = false;
-        public new bool Value
+        private bool? _value = null;
+        public new bool? Value
         {
             get
             {
@@ -66,7 +66,7 @@ namespace Library.Template.Controls
             }
         }
 
-        private void SetValue(bool value)
+        private void SetValue(bool? value)
         {
             try
             {
@@ -78,11 +78,11 @@ namespace Library.Template.Controls
             }
         }
 
-        private bool GetValue()
+        private bool? GetValue()
         {
             try
             {
-                var value = (bool)editControl.Value;
+                var value = (bool?)editControl.Value;
                 return value;
             }
             catch (Exception ex)

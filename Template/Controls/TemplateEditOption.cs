@@ -82,8 +82,9 @@ namespace Library.Template.Controls
         {
             try
             {
-                var value = (bool)editControl.Value;
-                return value;
+                var value = (bool?)editControl.Value;
+                if(value!=null)
+                    return (bool)value;
             }
             catch (Exception ex)
             {
