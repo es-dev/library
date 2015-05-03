@@ -293,12 +293,6 @@
     <Compile Include="Controls\Calendar.Designer.cs">
       <DependentUpon>Calendar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SwitchButton.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\SwitchButton.Designer.cs">
-      <DependentUpon>SwitchButton.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\OptionButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -340,6 +334,12 @@
     </Compile>
     <Compile Include="Controls\JQPanel.Designer.cs">
       <DependentUpon>JQPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SwitchButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SwitchButton.Designer.cs">
+      <DependentUpon>SwitchButton.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\TextProgress.cs">
       <SubType>UserControl</SubType>
@@ -631,9 +631,6 @@
     <EmbeddedResource Include="Controls\Calendar.resx">
       <DependentUpon>Calendar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SwitchButton.resx">
-      <DependentUpon>SwitchButton.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Controls\OptionButton.resx">
       <DependentUpon>OptionButton.cs</DependentUpon>
     </EmbeddedResource>
@@ -654,6 +651,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\JQPanel.resx">
       <DependentUpon>JQPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SwitchButton.resx">
+      <DependentUpon>SwitchButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\TextProgress.resx">
       <DependentUpon>TextProgress.cs</DependentUpon>
