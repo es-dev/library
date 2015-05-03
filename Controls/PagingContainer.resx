@@ -118,9 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="btnPrevious.BackgroundImage" xml:space="preserve">
-    <value>left24gray.png</value>
+    <value>left_arrow.png</value>
   </data>
   <data name="btnNext.BackgroundImage" xml:space="preserve">
-    <value>right24gray.png</value>
+    <value>right_arrow.png</value>
   </data>
 </root>
