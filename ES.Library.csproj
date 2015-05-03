@@ -293,6 +293,12 @@
     <Compile Include="Controls\Calendar.Designer.cs">
       <DependentUpon>Calendar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SwitchButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SwitchButton.Designer.cs">
+      <DependentUpon>SwitchButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\OptionButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -420,6 +426,7 @@
       <DependentUpon>TimeIntervals.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IComboControl.cs" />
+    <Compile Include="Interfaces\IGroupControl.cs" />
     <Compile Include="Interfaces\IMaskControl.cs" />
     <Compile Include="Template\Controls\TemplateEditCap.cs">
       <SubType>UserControl</SubType>
@@ -462,6 +469,12 @@
     </Compile>
     <Compile Include="Template\Controls\TemplateEditDateTime.designer.cs">
       <DependentUpon>TemplateEditDateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Template\Controls\TemplateEditSwitch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Template\Controls\TemplateEditSwitch.Designer.cs">
+      <DependentUpon>TemplateEditSwitch.cs</DependentUpon>
     </Compile>
     <Compile Include="Template\Controls\TemplateEditOption.cs">
       <SubType>UserControl</SubType>
@@ -618,6 +631,9 @@
     <EmbeddedResource Include="Controls\Calendar.resx">
       <DependentUpon>Calendar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SwitchButton.resx">
+      <DependentUpon>SwitchButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\OptionButton.resx">
       <DependentUpon>OptionButton.cs</DependentUpon>
     </EmbeddedResource>
@@ -703,6 +719,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditDateTime.resx">
       <DependentUpon>TemplateEditDateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Template\Controls\TemplateEditSwitch.resx">
+      <DependentUpon>TemplateEditSwitch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditOption.resx">
       <DependentUpon>TemplateEditOption.cs</DependentUpon>

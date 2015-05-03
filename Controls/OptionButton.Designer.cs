@@ -57,7 +57,7 @@ namespace Library.Controls
             this.imgOption.Location = new System.Drawing.Point(1, 5);
             this.imgOption.Name = "imgOption";
             this.imgOption.Size = new System.Drawing.Size(20, 20);
-            this.imgOption.SizeMode = Gizmox.WebGUI.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgOption.SizeMode = Gizmox.WebGUI.Forms.PictureBoxSizeMode.CenterImage;
             this.imgOption.TabIndex = 1001;
             this.imgOption.TabStop = false;
             this.imgOption.Click += new System.EventHandler(this.imgOption_Click);

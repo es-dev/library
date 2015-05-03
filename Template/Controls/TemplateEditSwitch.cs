@@ -21,9 +21,9 @@ using System.Collections;
 
 namespace Library.Template.Controls
 {
-    public partial class TemplateEditOption : EditControl, IGroupControl
+    public partial class TemplateEditSwitch : EditControl, IGroupControl
     {
-        public TemplateEditOption()
+        public TemplateEditSwitch()
         {
             InitializeComponent();
             try

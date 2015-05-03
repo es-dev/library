@@ -18,9 +18,9 @@ using Library.Template.Controls;
 
 namespace Library.Controls
 {
-    public partial class OptionButton : UserControl, IMaskControl, IGroupControl
+    public partial class SwitchButton : UserControl, IMaskControl, IGroupControl
     {
-        private string group = "OptionGroup1";
+        private string group = "SwitchGroup1";
         public string Group
         {
             get
@@ -52,8 +52,8 @@ namespace Library.Controls
         {
             try
             {
-                imgOption.Cursor = (readOnly ? Cursors.Default : Cursors.Hand);
-                lblOption.Cursor = (readOnly ? Cursors.Default : Cursors.Hand);
+                imgSwitch.Cursor = (readOnly ? Cursors.Default : Cursors.Hand);
+                lblSwitch.Cursor = (readOnly ? Cursors.Default : Cursors.Hand);
             }
             catch (Exception ex)
             {
@@ -65,7 +65,7 @@ namespace Library.Controls
         {
             try
             {
-                var readOnly = !imgOption.Enabled;
+                var readOnly = !imgSwitch.Enabled;
                 return readOnly;
             }
             catch (Exception ex)
@@ -94,7 +94,7 @@ namespace Library.Controls
             try
             {
                 base.BackColor = backColor;
-                imgOption.BackColor = backColor;
+                imgSwitch.BackColor = backColor;
             }
             catch (Exception ex)
             {
@@ -121,7 +121,7 @@ namespace Library.Controls
         {
             try
             {
-                lblOption.Text = text;
+                lblSwitch.Text = text;
             }
             catch (Exception ex)
             {
@@ -133,7 +133,7 @@ namespace Library.Controls
         {
             try
             {
-                var text = lblOption.Text;
+                var text = lblSwitch.Text;
                 return text;
             }
             catch (Exception ex)
@@ -164,8 +164,8 @@ namespace Library.Controls
             try
             {
                 bool? _value = null;
-                if (imgOption != null)
-                    _value = (bool?)imgOption.Tag;
+                if (imgSwitch != null)
+                    _value = (bool?)imgSwitch.Tag;
                 
                 return _value;
             }
@@ -184,7 +184,7 @@ namespace Library.Controls
                 {
                     var value = (bool)_value;
                     SetTrueFalse(value);
-                    if (value)
+                    if(value)
                         UtilityWeb.SetEditGroupControls(this, !value);
                 }
                 else
@@ -196,31 +196,31 @@ namespace Library.Controls
             }
         }
 
-        public OptionButton()
+        public SwitchButton()
         {
             InitializeComponent();
         }
-       
+
         private void SetTrueFalse(bool value)
         {
             try
             {
-                imgOption.Image = (value ? "Images.option_on.png" : "Images.option_off.png");
-                imgOption.Tag = value;
+                imgSwitch.Image = (value ? "Images.switch_on.png" : "Images.switch_off.png");
+                imgSwitch.Tag = value;
             }
             catch (Exception ex)
             {
                 UtilityError.Write(ex);
             }
         }
-
-        private void imgOption_Click(object sender, EventArgs e)
+        
+        private void imgSwitch_Click(object sender, EventArgs e)
         {
             try
             {
                 if (!readOnly)
                 {
-                    var value = (bool?)imgOption.Tag;
+                    var value = (bool?)imgSwitch.Tag;
                     if (value == true)
                         SetValue(null);
                     else

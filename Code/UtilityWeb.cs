@@ -347,7 +347,8 @@ namespace Library.Code
                     if (jqContainer != null)
                     {
                         parentForm.Controls.Remove(jqContainer);
-                        if (jqContainer.Tag!="exist")
+                        var tag = (string)jqContainer.Tag;
+                        if (tag!="exist")
                             parentForm.Controls.Remove(control);
                         else
                             control.Visible = false;
@@ -359,6 +360,47 @@ namespace Library.Code
                 UtilityError.Write(ex);
             }
         }
-       
+
+        public static IList<IGroupControl> GetEditGroupControls(Control control)
+        {
+            try
+            {
+                var groupControl = control;
+                if(groupControl is IGroupControl)
+                    groupControl=control.Parent;
+
+                var container = groupControl.Parent;
+                var controls = (from Control q in container.Controls where q is IGroupControl && q != groupControl select (IGroupControl)q).ToList();
+                if (controls != null)
+                {
+                    var _group = ((IGroupControl)control).Group;
+                    controls = (from IGroupControl q in controls where q.Group == _group select q).ToList();
+                    return controls;
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        public static void SetEditGroupControls(Control control, bool value)
+        {
+            try
+            {
+                var editControls = GetEditGroupControls(control);
+                if (editControls != null)
+                {
+                    foreach (IEditControl editControl in editControls)
+                        editControl.Value = value;
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
     }
 }

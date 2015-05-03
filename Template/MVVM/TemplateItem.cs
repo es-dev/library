@@ -220,7 +220,6 @@ namespace Library.Template.MVVM
         {
             try
             {
-                space.Model = model;
                 space.OwnerItem = this;
                 space.OwnerSpace = ownerSpace;
                 space.Workspace = workspace;
