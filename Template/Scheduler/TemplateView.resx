@@ -126,13 +126,25 @@
   <data name="btnShowCalendar.BackgroundImage" xml:space="preserve">
     <value>calendar.png</value>
   </data>
+  <data name="btnCancelCalendar.BackgroundImage" xml:space="preserve">
+    <value>back24.png</value>
+  </data>
   <data name="btnCloseCalendar.BackgroundImage" xml:space="preserve">
     <value>confirm24.png</value>
   </data>
   <data name="btnPrevious.BackgroundImage" xml:space="preserve">
-    <value>left24gray.png</value>
+    <value>left_arrow.png</value>
   </data>
   <data name="btnNext.BackgroundImage" xml:space="preserve">
-    <value>right24gray.png</value>
+    <value>right_arrow.png</value>
+  </data>
+  <data name="btnCancelAdvancedSearch.Image" xml:space="preserve">
+    <value>close24.png</value>
+  </data>
+  <data name="btnCloseAdvancedSearch.BackgroundImage" xml:space="preserve">
+    <value>back24.png</value>
+  </data>
+  <data name="btnConfirmAdvancedSearch.Image" xml:space="preserve">
+    <value>confirm24.png</value>
   </data>
 </root>

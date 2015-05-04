@@ -393,6 +393,12 @@ namespace Library.Template.Scheduler
                 btnClose.Visible = (ownerSpace != null);
                 if (txtSearch.CanFocus)
                     txtSearch.Focus();
+
+                var advancedSearchConotrols = GetAdvancedSearchControls();
+                bool enableAdvancedSearch = (advancedSearchConotrols.Count >= 1);
+
+                btnOrderBy.Enabled = false; //ordinamento disabilitato per l'agenda
+                btnAdvancedSearch.Enabled = enableAdvancedSearch;
             }
             catch (Exception ex)
             {
@@ -673,13 +679,8 @@ namespace Library.Template.Scheduler
         {
             try
             {
-                panelCalendar.Visible = !panelCalendar.Visible;
-                if (panelCalendar.Visible)
-                {
-                    monthCalendar.Value = dtDate.Value;
-                    panelCalendar.BringToFront();
-                    panelCalendar.Focus();
-                }
+                monthCalendar.Value = dtDate.Value;
+                UtilityWeb.AddJQControl(btnShowCalendar, panelCalendar, JQTypePosition.Docked);
             }
             catch (Exception ex)
             {
@@ -720,7 +721,7 @@ namespace Library.Template.Scheduler
             try
             {
                 dtDate.Value = monthCalendar.Value;
-                panelCalendar.Visible = false;
+                UtilityWeb.RemoveJQControl(panelCalendar);
             }
             catch (Exception ex)
             {
@@ -733,6 +734,9 @@ namespace Library.Template.Scheduler
             try
             {
                 monthCalendar.Value = DateTime.Today;
+                dtDate.Value = monthCalendar.Value;
+                UtilityWeb.RemoveJQControl(panelCalendar);
+
             }
             catch (Exception ex)
             {
@@ -777,6 +781,115 @@ namespace Library.Template.Scheduler
         public object QueryAdvancedSearch() { return null; }
 
         public OrderBy QueryOrderBy() { return null; }
+
+        private void btnCancelCalendar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                UtilityWeb.RemoveJQControl(panelCalendar);
+
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void btnCancelAdvancedSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ClearAdvancedSearch();
+                RefreshItems();
+                SetAdvancedSearch();
+                UtilityWeb.RemoveJQControl(panelAdvancedSearch);
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        public virtual void ClearAdvancedSearch()
+        {
+            try
+            {
+                var controls = GetAdvancedSearchControls();
+                UtilityWeb.ClearEditControls(controls);
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void btnCloselAdvancedSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                UtilityWeb.RemoveJQControl(panelAdvancedSearch);
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void btnConfirmAdvancedSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SetAdvancedSearch();
+                RefreshItems();
+                UtilityWeb.RemoveJQControl(panelAdvancedSearch);
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void SetAdvancedSearch()
+        {
+            try
+            {
+                var controls = GetAdvancedSearchControls();
+                var performed = ((from IEditControl q in controls where q.Value != null select q).Count() >= 1);
+                btnAdvancedSearch.TextButton = (performed ? "Filtri impostati..." : "Ricerca avanzata...");
+                btnAdvancedSearch.ForeColorButton = (performed ? Color.Red : btnAdvancedSearch.OriginalForeColor);
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private IList<Control> GetAdvancedSearchControls()
+        {
+            try
+            {
+                var controls = (from Control q in panelAdvancedSearch.Controls where (string)q.Tag != "advancedSearch" select q).ToList();
+                return controls;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        private void btnAdvancedSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                UtilityWeb.AddJQControl(btnAdvancedSearch, panelAdvancedSearch, JQTypePosition.Docked);
+
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
        
     }
 }

@@ -240,7 +240,6 @@ namespace Library.Code
             }
         }
        
-
         public static Point GetLocation(Control control)
         {
             try
@@ -394,6 +393,30 @@ namespace Library.Code
                 {
                     foreach (IEditControl editControl in editControls)
                         editControl.Value = value;
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        public static void ClearEditControls(IList<Gizmox.WebGUI.Forms.Control> controls)
+        {
+            try
+            {
+                foreach (var control in controls)
+                {
+                    if (control is IEditControl)
+                    {
+                        var editControl = (IEditControl)control;
+                        editControl.Value = null;
+                        if (control is IComboControl)
+                        {
+                            var comboControl = (IComboControl)editControl;
+                            comboControl.Model = null;
+                        }
+                    }
                 }
             }
             catch (Exception ex)

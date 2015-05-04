@@ -294,7 +294,6 @@ namespace Library.Template.MVVM
             return null;
         }
 
-       
         public OrderBy QueryOrderBy()
         {
             try
@@ -326,7 +325,7 @@ namespace Library.Template.MVVM
                     txtSearch.Focus();
 
                 var advancedSearchConotrols = GetAdvancedSearchControls();
-                var orderByConotrols = GetAdvancedSearchControls();
+                var orderByConotrols = GetOrderByControls();
                 bool enableAdvancedSearch = (advancedSearchConotrols.Count >= 1);
                 bool enableOrderBy = (orderByConotrols.Count >= 1);
 
@@ -648,37 +647,12 @@ namespace Library.Template.MVVM
             try
             {
                 var controls = GetAdvancedSearchControls();
-                ClearEditControls(controls); 
+                UtilityWeb.ClearEditControls(controls); 
             }
             catch (Exception ex)
             {
                 UtilityError.Write(ex);
             }
-        }
-
-        private static void ClearEditControls(IList<Gizmox.WebGUI.Forms.Control> controls)
-        {
-            try
-            {
-                foreach (var control in controls)
-                {
-                    if (control is IEditControl)
-                    {
-                        var editControl = (IEditControl)control;
-                        editControl.Value = null;
-                        if(control is IComboControl)
-                        {
-                            var comboControl = (IComboControl)editControl;
-                            comboControl.Model = null;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-            
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -769,7 +743,7 @@ namespace Library.Template.MVVM
             try
             {
                 var controls = GetOrderByControls();
-                ClearEditControls(controls);
+                UtilityWeb.ClearEditControls(controls);
             }
             catch (Exception ex)
             {

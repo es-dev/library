@@ -188,6 +188,7 @@ namespace Library.Template.MVVM
             this.btnOrderBy.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
             this.btnOrderBy.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
             this.btnOrderBy.BackColor = System.Drawing.Color.Transparent;
+            this.btnOrderBy.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
             this.btnOrderBy.ImageButton = "";
             this.btnOrderBy.ImageSeparator = "Images.separator_vr.png";
             this.btnOrderBy.Location = new System.Drawing.Point(574, 39);
@@ -203,6 +204,7 @@ namespace Library.Template.MVVM
             this.btnAdvancedSearch.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
             this.btnAdvancedSearch.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
             this.btnAdvancedSearch.BackColor = System.Drawing.Color.Transparent;
+            this.btnAdvancedSearch.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
             this.btnAdvancedSearch.ImageButton = "";
             this.btnAdvancedSearch.ImageSeparator = "Images.separator_vr.png";
             this.btnAdvancedSearch.Location = new System.Drawing.Point(718, 39);
@@ -421,8 +423,8 @@ namespace Library.Template.MVVM
             // TemplateView
             // 
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.panelOrderBy);
             this.Controls.Add(this.panelAdvancedSearch);
+            this.Controls.Add(this.panelOrderBy);
             this.Controls.Add(this.editCount);
             this.Controls.Add(this.imgSeparator);
             this.Controls.Add(this.btnAdvancedSearch);

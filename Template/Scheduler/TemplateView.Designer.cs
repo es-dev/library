@@ -51,13 +51,20 @@ namespace Library.Template.Scheduler
             this.btnShowCalendar = new Gizmox.WebGUI.Forms.Button();
             this.monthCalendar = new Gizmox.WebGUI.Forms.MonthCalendar();
             this.panelCalendar = new Gizmox.WebGUI.Forms.Panel();
+            this.btnCancelCalendar = new Gizmox.WebGUI.Forms.Button();
             this.btnTodayCalendar = new Gizmox.WebGUI.Forms.Button();
             this.btnCloseCalendar = new Gizmox.WebGUI.Forms.Button();
             this.btnPrevious = new Gizmox.WebGUI.Forms.Button();
             this.btnNext = new Gizmox.WebGUI.Forms.Button();
+            this.lblTitleAdvancedSearch = new Gizmox.WebGUI.Forms.Label();
+            this.btnCancelAdvancedSearch = new Gizmox.WebGUI.Forms.Button();
+            this.btnCloseAdvancedSearch = new Gizmox.WebGUI.Forms.Button();
+            this.btnConfirmAdvancedSearch = new Gizmox.WebGUI.Forms.Button();
+            this.panelAdvancedSearch = new Gizmox.WebGUI.Forms.Panel();
             this.panelCommands.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgSeparator)).BeginInit();
             this.panelCalendar.SuspendLayout();
+            this.panelAdvancedSearch.SuspendLayout();
             this.SuspendLayout();
             // 
             // infoTitle
@@ -210,10 +217,12 @@ namespace Library.Template.Scheduler
             this.btnOrderBy.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
             this.btnOrderBy.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
             this.btnOrderBy.BackColor = System.Drawing.Color.Transparent;
+            this.btnOrderBy.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
             this.btnOrderBy.ImageButton = "";
             this.btnOrderBy.ImageSeparator = "Images.separator_vr.png";
             this.btnOrderBy.Location = new System.Drawing.Point(574, 39);
             this.btnOrderBy.Name = "btnOrderBy";
+            this.btnOrderBy.OriginalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
             this.btnOrderBy.Size = new System.Drawing.Size(144, 27);
             this.btnOrderBy.TabIndex = 9;
             this.btnOrderBy.TextButton = "Ordina per...";
@@ -223,13 +232,16 @@ namespace Library.Template.Scheduler
             this.btnAdvancedSearch.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
             this.btnAdvancedSearch.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
             this.btnAdvancedSearch.BackColor = System.Drawing.Color.Transparent;
+            this.btnAdvancedSearch.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
             this.btnAdvancedSearch.ImageButton = "";
             this.btnAdvancedSearch.ImageSeparator = "Images.separator_vr.png";
             this.btnAdvancedSearch.Location = new System.Drawing.Point(718, 39);
             this.btnAdvancedSearch.Name = "btnAdvancedSearch";
+            this.btnAdvancedSearch.OriginalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
             this.btnAdvancedSearch.Size = new System.Drawing.Size(151, 27);
             this.btnAdvancedSearch.TabIndex = 10;
             this.btnAdvancedSearch.TextButton = "Ricerca avanzata...";
+            this.btnAdvancedSearch.Click += new Library.Controls.ButtonSeparatorH.ButtonSeparatorClick(this.btnAdvancedSearch_Click);
             // 
             // imgSeparator
             // 
@@ -296,7 +308,7 @@ namespace Library.Template.Scheduler
             this.btnShowCalendar.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
             this.btnShowCalendar.BackColor = System.Drawing.Color.White;
             this.btnShowCalendar.BackgroundImage = new Gizmox.WebGUI.Common.Resources.ImageResourceHandle(resources.GetString("btnShowCalendar.BackgroundImage"));
-            this.btnShowCalendar.BackgroundImageLayout = Gizmox.WebGUI.Forms.ImageLayout.Stretch;
+            this.btnShowCalendar.BackgroundImageLayout = Gizmox.WebGUI.Forms.ImageLayout.Center;
             this.btnShowCalendar.CustomStyle = "F";
             this.btnShowCalendar.FlatStyle = Gizmox.WebGUI.Forms.FlatStyle.Flat;
             this.btnShowCalendar.Location = new System.Drawing.Point(517, 39);
@@ -326,6 +338,7 @@ namespace Library.Template.Scheduler
             this.panelCalendar.BackColor = System.Drawing.Color.White;
             this.panelCalendar.BorderColor = new Gizmox.WebGUI.Forms.BorderColor(System.Drawing.Color.Gainsboro);
             this.panelCalendar.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.FixedSingle;
+            this.panelCalendar.Controls.Add(this.btnCancelCalendar);
             this.panelCalendar.Controls.Add(this.btnTodayCalendar);
             this.panelCalendar.Controls.Add(this.monthCalendar);
             this.panelCalendar.Controls.Add(this.btnCloseCalendar);
@@ -335,6 +348,18 @@ namespace Library.Template.Scheduler
             this.panelCalendar.TabIndex = 17;
             this.panelCalendar.Visible = false;
             this.panelCalendar.Leave += new System.EventHandler(this.panelCalendar_Leave);
+            // 
+            // btnCancelCalendar
+            // 
+            this.btnCancelCalendar.BackgroundImage = new Gizmox.WebGUI.Common.Resources.ImageResourceHandle(resources.GetString("btnCancelCalendar.BackgroundImage"));
+            this.btnCancelCalendar.BackgroundImageLayout = Gizmox.WebGUI.Forms.ImageLayout.Stretch;
+            this.btnCancelCalendar.CustomStyle = "F";
+            this.btnCancelCalendar.FlatStyle = Gizmox.WebGUI.Forms.FlatStyle.Flat;
+            this.btnCancelCalendar.Location = new System.Drawing.Point(166, 166);
+            this.btnCancelCalendar.Name = "btnCancelCalendar";
+            this.btnCancelCalendar.Size = new System.Drawing.Size(26, 26);
+            this.btnCancelCalendar.TabIndex = 15;
+            this.btnCancelCalendar.Click += new System.EventHandler(this.btnCancelCalendar_Click);
             // 
             // btnTodayCalendar
             // 
@@ -387,9 +412,85 @@ namespace Library.Template.Scheduler
             this.btnNext.TabIndex = 999;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
-            // TemplateSchedulerView
+            // lblTitleAdvancedSearch
+            // 
+            this.lblTitleAdvancedSearch.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)(((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Left) 
+            | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
+            this.lblTitleAdvancedSearch.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitleAdvancedSearch.Location = new System.Drawing.Point(6, 4);
+            this.lblTitleAdvancedSearch.Name = "lblTitleAdvancedSearch";
+            this.lblTitleAdvancedSearch.Size = new System.Drawing.Size(395, 44);
+            this.lblTitleAdvancedSearch.TabIndex = 1;
+            this.lblTitleAdvancedSearch.Tag = "advancedSearch";
+            this.lblTitleAdvancedSearch.Text = "Seleziona uno o più filtri di ricerca...";
+            // 
+            // btnCancelAdvancedSearch
+            // 
+            this.btnCancelAdvancedSearch.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Bottom | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
+            this.btnCancelAdvancedSearch.CustomStyle = "F";
+            this.btnCancelAdvancedSearch.FlatStyle = Gizmox.WebGUI.Forms.FlatStyle.Flat;
+            this.btnCancelAdvancedSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelAdvancedSearch.Image = new Gizmox.WebGUI.Common.Resources.ImageResourceHandle(resources.GetString("btnCancelAdvancedSearch.Image"));
+            this.btnCancelAdvancedSearch.Location = new System.Drawing.Point(132, 208);
+            this.btnCancelAdvancedSearch.Name = "btnCancelAdvancedSearch";
+            this.btnCancelAdvancedSearch.Size = new System.Drawing.Size(158, 30);
+            this.btnCancelAdvancedSearch.TabIndex = 0;
+            this.btnCancelAdvancedSearch.Tag = "advancedSearch";
+            this.btnCancelAdvancedSearch.Text = "Azzera filtri";
+            this.btnCancelAdvancedSearch.TextImageRelation = Gizmox.WebGUI.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCancelAdvancedSearch.Click += new System.EventHandler(this.btnCancelAdvancedSearch_Click);
+            // 
+            // btnCloseAdvancedSearch
+            // 
+            this.btnCloseAdvancedSearch.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
+            this.btnCloseAdvancedSearch.BackgroundImage = new Gizmox.WebGUI.Common.Resources.ImageResourceHandle(resources.GetString("btnCloseAdvancedSearch.BackgroundImage"));
+            this.btnCloseAdvancedSearch.BackgroundImageLayout = Gizmox.WebGUI.Forms.ImageLayout.Stretch;
+            this.btnCloseAdvancedSearch.CustomStyle = "F";
+            this.btnCloseAdvancedSearch.FlatStyle = Gizmox.WebGUI.Forms.FlatStyle.Flat;
+            this.btnCloseAdvancedSearch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCloseAdvancedSearch.Location = new System.Drawing.Point(403, 2);
+            this.btnCloseAdvancedSearch.Name = "btnCloseAdvancedSearch";
+            this.btnCloseAdvancedSearch.Size = new System.Drawing.Size(24, 24);
+            this.btnCloseAdvancedSearch.TabIndex = 0;
+            this.btnCloseAdvancedSearch.Tag = "advancedSearch";
+            this.btnCloseAdvancedSearch.Click += new System.EventHandler(this.btnCloselAdvancedSearch_Click);
+            // 
+            // btnConfirmAdvancedSearch
+            // 
+            this.btnConfirmAdvancedSearch.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Bottom | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
+            this.btnConfirmAdvancedSearch.CustomStyle = "F";
+            this.btnConfirmAdvancedSearch.FlatStyle = Gizmox.WebGUI.Forms.FlatStyle.Flat;
+            this.btnConfirmAdvancedSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirmAdvancedSearch.Image = new Gizmox.WebGUI.Common.Resources.ImageResourceHandle(resources.GetString("btnConfirmAdvancedSearch.Image"));
+            this.btnConfirmAdvancedSearch.Location = new System.Drawing.Point(298, 208);
+            this.btnConfirmAdvancedSearch.Name = "btnConfirmAdvancedSearch";
+            this.btnConfirmAdvancedSearch.Size = new System.Drawing.Size(122, 30);
+            this.btnConfirmAdvancedSearch.TabIndex = 0;
+            this.btnConfirmAdvancedSearch.Tag = "advancedSearch";
+            this.btnConfirmAdvancedSearch.Text = "Conferma";
+            this.btnConfirmAdvancedSearch.TextImageRelation = Gizmox.WebGUI.Forms.TextImageRelation.ImageBeforeText;
+            this.btnConfirmAdvancedSearch.Click += new System.EventHandler(this.btnConfirmAdvancedSearch_Click);
+            // 
+            // panelAdvancedSearch
+            // 
+            this.panelAdvancedSearch.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
+            this.panelAdvancedSearch.BackColor = System.Drawing.Color.White;
+            this.panelAdvancedSearch.BorderColor = new Gizmox.WebGUI.Forms.BorderColor(System.Drawing.Color.LightGray);
+            this.panelAdvancedSearch.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.FixedSingle;
+            this.panelAdvancedSearch.Controls.Add(this.lblTitleAdvancedSearch);
+            this.panelAdvancedSearch.Controls.Add(this.btnCancelAdvancedSearch);
+            this.panelAdvancedSearch.Controls.Add(this.btnCloseAdvancedSearch);
+            this.panelAdvancedSearch.Controls.Add(this.btnConfirmAdvancedSearch);
+            this.panelAdvancedSearch.Location = new System.Drawing.Point(424, 67);
+            this.panelAdvancedSearch.Name = "panelAdvancedSearch";
+            this.panelAdvancedSearch.Size = new System.Drawing.Size(433, 249);
+            this.panelAdvancedSearch.TabIndex = 13;
+            this.panelAdvancedSearch.Visible = false;
+            // 
+            // TemplateView
             // 
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.panelAdvancedSearch);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnPrevious);
             this.Controls.Add(this.panelCalendar);
@@ -408,6 +509,7 @@ namespace Library.Template.Scheduler
             this.panelCommands.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgSeparator)).EndInit();
             this.panelCalendar.ResumeLayout(false);
+            this.panelAdvancedSearch.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -437,6 +539,12 @@ namespace Library.Template.Scheduler
         public Library.Controls.ButtonSeparatorV btnWeek;
         public Button btnPrevious;
         public Button btnNext;
+        private Button btnCancelCalendar;
+        public Label lblTitleAdvancedSearch;
+        public Button btnCancelAdvancedSearch;
+        public Button btnCloseAdvancedSearch;
+        public Button btnConfirmAdvancedSearch;
+        public Panel panelAdvancedSearch;
 
 
     }
