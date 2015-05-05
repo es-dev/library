@@ -325,9 +325,9 @@ namespace Library.Template.MVVM
                     txtSearch.Focus();
 
                 var advancedSearchConotrols = GetAdvancedSearchControls();
-                var orderByConotrols = GetOrderByControls();
+                var orderByControls = GetOrderByControls();
                 bool enableAdvancedSearch = (advancedSearchConotrols.Count >= 1);
-                bool enableOrderBy = (orderByConotrols.Count >= 1);
+                bool enableOrderBy = (orderByControls.Count >= 1);
 
                 btnOrderBy.Enabled = enableOrderBy;
                 btnAdvancedSearch.Enabled = enableAdvancedSearch;

@@ -70,8 +70,12 @@ namespace Library.Template.Scheduler
                 {
                     scheduleBox.Events.Clear();
                     CheckEventTime(items);
-                    foreach (ScheduleBoxEvent item in items) 
-                        scheduleBox.Events.Add(item);
+                    foreach (var item in items)
+                    {
+                        item.OwnerSpace = this;
+                        item.Workspace = this.Workspace;
+                        scheduleBox.Events.Add((ScheduleBoxEvent)item);
+                    }
                 }
             }
             catch (Exception ex)
