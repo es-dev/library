@@ -287,12 +287,15 @@ namespace Library.Controls
         {
             try
             {
-                if (url.ToUpper().EndsWith(".DOC"))
-                    return TypeReport.DOC;
-                else if (url.ToUpper().EndsWith(".XLS"))
-                    return TypeReport.XLS;
-                else if (url.ToUpper().EndsWith(".PDF"))
-                    return TypeReport.PDF;
+                if (url != null)
+                {
+                    if (url.ToUpper().EndsWith(".DOC"))
+                        return TypeReport.DOC;
+                    else if (url.ToUpper().EndsWith(".XLS"))
+                        return TypeReport.XLS;
+                    else if (url.ToUpper().EndsWith(".PDF"))
+                        return TypeReport.PDF;
+                }
             }
             catch (Exception ex)
             {

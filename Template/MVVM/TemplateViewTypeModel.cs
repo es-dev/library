@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Library.Code;
+using Library.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,22 @@ namespace Library.Template.MVVM
             : base()
         {
 
+        }
+
+        public IModel GetModel<TModel>(object model)
+        {
+            try
+            {
+                var space = (IModel)Activator.CreateInstance<TModel>();
+                space.ViewModel = this;
+                space.Model = model;
+                return space;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
         }
     }
 }
