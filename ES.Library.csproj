@@ -42,12 +42,12 @@
       <HintPath>ExternalReferences\Aspose.Words.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ES.Cantieri\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\ES.IEFiscale\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ES.Cantieri\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\ES.IEFiscale\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Gizmox.WebGUI.3rdParty.Assemblies, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -233,6 +233,7 @@
     <Reference Include="System">
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core">
       <Private>True</Private>
     </Reference>
@@ -271,10 +272,14 @@
     <Compile Include="Code\UtilityJQuery.cs" />
     <Compile Include="Code\UtilityMessage.cs" />
     <Compile Include="Code\UtilityPOCO.cs" />
+    <Compile Include="Code\UtilityProcess.cs" />
     <Compile Include="Code\UtilityReport.cs" />
     <Compile Include="Code\UtilitySpace.cs" />
     <Compile Include="Code\UtilityValidation.cs" />
     <Compile Include="Code\UtilityWeb.cs" />
+    <Compile Include="Code\UtilityWorkFlow.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controls\ButtonSeparatorH.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -428,6 +433,9 @@
     <Compile Include="Interfaces\IComboControl.cs" />
     <Compile Include="Interfaces\IGroupControl.cs" />
     <Compile Include="Interfaces\IMaskControl.cs" />
+    <Compile Include="Interfaces\IWorkFlow.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Template\Controls\TemplateEditCap.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -621,6 +629,17 @@
     <Compile Include="Template\MVVM\TemplateViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Template\Scheduler\TemplateViewModel.cs" />
+    <Compile Include="WorkForceService\Configuration.Designer.cs">
+      <DependentUpon>Configuration.xsd</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="WorkForceService\Manager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkForceService\Manager.designer.cs">
+      <DependentUpon>Manager.cs</DependentUpon>
+    </Compile>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
@@ -796,6 +815,9 @@
       <DependentUpon>TemplateView.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="WorkForceService\Manager.resx">
+      <DependentUpon>Manager.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Controls\ButtonSeparatorV.resx">
@@ -820,8 +842,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
     <EmbeddedResource Include="Resources\Countries.csv" />
+    <None Include="packages.config" />
+    <None Include="WorkForceService\Configuration.xsc">
+      <DependentUpon>Configuration.xsd</DependentUpon>
+    </None>
+    <None Include="WorkForceService\Configuration.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Configuration.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="WorkForceService\Configuration.xss">
+      <DependentUpon>Configuration.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="JS\Numeric.js" />

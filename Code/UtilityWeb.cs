@@ -105,6 +105,20 @@ namespace Library.Code
             return null;
         }
 
+        public static string GetRootPath()
+        {
+            try
+            {
+                var pathRoot = System.AppDomain.CurrentDomain.BaseDirectory;
+                return pathRoot;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
         public static string GetRootUrl(IContext context)
         {
             try
