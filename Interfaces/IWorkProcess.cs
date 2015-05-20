@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace Library.Interfaces
 {
-    public interface IWorkFlow
+    public interface IWorkProcess
     {
-        TimeSpan Interval { get; set; }
-        bool State { get; set; }
-        DateTime LastWork { get; }
-        IList<WorkProcess> WorkProcesses { get; }
+        TypeProcess State { get; }
+        IWorkAction WorkAction { get; set; }
+        bool Timeout { get; }
+        DateTime TimeStart { get; }
+        DateTime TimeStop { get; }
         void Start();
         void Stop();
 

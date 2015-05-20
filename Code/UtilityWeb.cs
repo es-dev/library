@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Library.Code
 {
@@ -88,7 +89,7 @@ namespace Library.Code
             return null;
         }
 
-        private static string GetRootPath(System.Web.HttpContext context)
+        public static string GetRootPath(System.Web.HttpContext context)
         {
             try
             {
@@ -119,6 +120,20 @@ namespace Library.Code
             return null;
         }
 
+        public static string GetRootUrl()
+        {
+            try
+            {
+                var rootUrl = VirtualPathUtility.ToAbsolute("~/");
+                return rootUrl;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
         public static string GetRootUrl(IContext context)
         {
             try
@@ -136,7 +151,7 @@ namespace Library.Code
             return null;
         }
 
-        private static string GetRootUrl(System.Web.HttpContext context)
+        public static string GetRootUrl(System.Web.HttpContext context)
         {
             try
             {
@@ -151,6 +166,8 @@ namespace Library.Code
                             var rootUrl = url.Substring(0, pos - 1);
                             return rootUrl;
                         }
+                        else
+                            return url;
                     }
                 }
             }

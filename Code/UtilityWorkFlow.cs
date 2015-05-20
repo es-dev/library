@@ -1,4 +1,5 @@
 ﻿using Gizmox.WebGUI.Common.Interfaces;
+using Library.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,23 +11,62 @@ namespace Library.Code
 {
     public class UtilityWorkFlow
     {
-        public static void Start(TimeSpan interval)
+        public static string Name = "WorkFlow";
+        private static bool started=false;
+        private static HttpContext context = null;
+
+        public static void Start(HttpContext context, TimeSpan interval)
         {
             try
             {
-                var processes = UtilityProcess.GetWorkProcesses();
-                var workFlow = new WorkFlow(interval, processes); //todo: memorizzare workFlow in Application per manager
-                UtilityAsync.Execute(workFlow.Start);
+                UtilityWorkFlow.context = context;
+                if (!started)
+                {
+                    started = true;
+                    var processes = UtilityWorkProcess.GetWorkProcesses(context);
+                    var workFlow = new WorkFlow(interval, processes);
+                    if(context!=null)
+                        context.Application[Name] = workFlow;
+                    UtilityAsync.Execute(workFlow.Start);
+                }
             }
             catch (Exception ex)
             {
                 UtilityError.Write(ex);
             }
+        }
 
+        public static void Stop()
+        {
+            try
+            {
+                started = false;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        internal static WorkFlow Read()
+        {
+            try
+            {
+                if (context != null)
+                {
+                    var workFlow = (WorkFlow)context.Application[Name];
+                    return workFlow;
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
         }
     }
 
-    public class WorkFlow
+    public class WorkFlow : IWorkFlow
     {
         private TimeSpan interval = new TimeSpan(0,5,0);
         public TimeSpan Interval
@@ -50,26 +90,34 @@ namespace Library.Code
             }
             set
             {
-                state = true;
+                state = value;
             }
         }
 
-        private IList<WorkProcess> processes = null;
-        public IList<WorkProcess> Processes
+        private DateTime lastWork = DateTime.MinValue;
+        public DateTime LastWork
         {
             get
             {
-                return processes;
+                return lastWork;
             }
         }
 
-        public WorkFlow(TimeSpan interval, IList<WorkProcess> processes, bool state = true)
+        private IList<WorkProcess> workProcesses = null;
+        public IList<WorkProcess> WorkProcesses
+        {
+            get
+            {
+                return workProcesses;
+            }
+        }
+
+        public WorkFlow(TimeSpan interval, IList<WorkProcess> workProcesses)
         {
             try
             {
                 this.interval = interval;
-                this.state = state;
-                this.processes = processes;
+                this.workProcesses = workProcesses;
             }
             catch (Exception ex)
             {
@@ -84,15 +132,19 @@ namespace Library.Code
                 state = true;
                 while (state)
                 {
-                    foreach (var process in processes)
+                    if (workProcesses != null && workProcesses.Count >= 1)
                     {
-                        if (process.Timeout && (process.State == TypeProcess.Stopped))
-                            process.Start();
+                        foreach (var workProcess in workProcesses)
+                        {
+                            if (workProcess.Timeout && (workProcess.State == TypeProcess.Stopped))
+                                workProcess.Start();
+                        }
                     }
                     if (!state)
                         break;
 
                     System.Threading.Thread.Sleep(interval);
+                    lastWork = DateTime.Now;
                 }
             }
             catch (Exception ex)

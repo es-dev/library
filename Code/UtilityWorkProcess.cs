@@ -10,13 +10,13 @@ using System.Web;
 
 namespace Library.Code
 {
-    public class UtilityProcess
+    public class UtilityWorkProcess
     {
-        public static IList<WorkProcess> GetWorkProcesses()
+        public static IList<WorkProcess> GetWorkProcesses(HttpContext context)
         {
             try
             {
-                var processes = new List<WorkProcess>();
+                var workProcesses = new List<WorkProcess>();
                 var pathRoot = UtilityWeb.GetRootPath();
                 var pathBin = pathRoot + @"bin";
                 var files = System.IO.Directory.GetFiles(pathBin, "ES.*BusinessLogic*.dll");
@@ -28,20 +28,21 @@ namespace Library.Code
                         var types = assembly.GetTypes();
                         if (types != null)
                         {
-                            var type = (from q in types where q.GetInterface("Library.Interfaces.IWorkFlow") != null select q).FirstOrDefault();
-                            if (type != null)
+                            var typeWorkActions = (from q in types where q.GetInterface("Library.Interfaces.IWorkAction") != null select q).ToList();
+                            foreach (var typeWorkAction in typeWorkActions)
                             {
-                                var workFlow = (IWorkFlow)Activator.CreateInstance(type);
-                                var action = new Action(workFlow.Tick);
-                                var name = workFlow.Name;
-                                var interval = workFlow.Interval;
-                                var process = new WorkProcess(name, interval, action);
-                                processes.Add(process);
+                                if (typeWorkAction != null)
+                                {
+                                    var workAction = (IWorkAction)Activator.CreateInstance(typeWorkAction);
+                                    workAction.Context = context;
+                                    var workProcess = new WorkProcess(workAction);
+                                    workProcesses.Add(workProcess);
+                                }
                             }
                         }
                     }
                 }
-                return processes;
+                return workProcesses;
             }
             catch (Exception ex)
             {
@@ -52,7 +53,7 @@ namespace Library.Code
 
     }
 
-    public class WorkProcess
+    public class WorkProcess : IWorkProcess
     {
         private TypeProcess state = TypeProcess.None;
         public TypeProcess State
@@ -67,38 +68,16 @@ namespace Library.Code
             }
         }
 
-        private string name = null;
-        public string Name
+        private IWorkAction workAction = null;
+        public IWorkAction WorkAction
         {
             get
             {
-                return name;
-            }
-        }
-
-        private Action action = null;
-        public Action Action
-        {
-            get
-            {
-                return action;
+                return workAction;
             }
             set
             {
-                action = value;
-            }
-        }
-
-        private TimeSpan interval = new TimeSpan(0, 5, 0);
-        public TimeSpan Interval
-        {
-            get
-            {
-                return interval;
-            }
-            set
-            {
-                interval = value;
+                workAction = value;
             }
         }
 
@@ -118,6 +97,7 @@ namespace Library.Code
             {
                 var now = DateTime.Now;
                 var elapsed = now.Subtract(timeStart);
+                var interval = workAction.Interval;
                 bool timeout = (elapsed.TotalSeconds >= interval.TotalSeconds);
                 return timeout;
             }
@@ -146,13 +126,11 @@ namespace Library.Code
             }
         }
 
-        public WorkProcess(string name, TimeSpan interval, Action action)
+        public WorkProcess(IWorkAction workAction)
         {
             try
             {
-                this.name = name;
-                this.interval = interval;
-                this.action = action;
+                this.workAction = workAction;
                 this.state = TypeProcess.Stopped;
             }
             catch (Exception ex)
@@ -167,6 +145,7 @@ namespace Library.Code
             {
                 timeStart = DateTime.Now;
                 state = TypeProcess.Started;
+                var action = new Action(workAction.Tick);
                 UtilityAsync.Execute(action, Stop);
             }
             catch (Exception ex)
