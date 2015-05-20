@@ -11,6 +11,7 @@ using Gizmox.WebGUI.Common;
 using Gizmox.WebGUI.Forms;
 using Library.Template.MVVM;
 using Library.Code;
+using Library.Interfaces;
 
 #endregion
 
@@ -58,7 +59,7 @@ namespace Library.WorkForceService
             {
                 if(model!=null)
                 {
-                    var obj = (WorkFlow)model;
+                    var obj = (IWorkFlow)model;
                     editState.Value = obj.State;
                     editLastWork.Value = obj.LastWork.ToString("dd/MM/yyyy HH:mm:ss");
                     editNextWork.Value = obj.LastWork.Add(obj.Interval).ToString("dd/MM/yyyy HH:mm:ss");

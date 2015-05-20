@@ -4,18 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Library.Interfaces
 {
-    public interface IWorkProcess
+    public interface IWorkProcess : IWorkAction
     {
         TypeProcess State { get; }
-        IWorkAction WorkAction { get; set; }
         bool Timeout { get; }
         DateTime TimeStart { get; }
         DateTime TimeStop { get; }
-        void Start();
         void Stop();
-
+        IWorkAction WorkAction { get; }
     }
 }

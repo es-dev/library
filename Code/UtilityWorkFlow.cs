@@ -48,13 +48,13 @@ namespace Library.Code
             }
         }
 
-        internal static WorkFlow Read()
+        internal static IWorkFlow Read()
         {
             try
             {
                 if (context != null)
                 {
-                    var workFlow = (WorkFlow)context.Application[Name];
+                    var workFlow = (IWorkFlow)context.Application[Name];
                     return workFlow;
                 }
             }

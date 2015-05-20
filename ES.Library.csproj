@@ -434,9 +434,7 @@
     <Compile Include="Interfaces\IComboControl.cs" />
     <Compile Include="Interfaces\IGroupControl.cs" />
     <Compile Include="Interfaces\IMaskControl.cs" />
-    <Compile Include="Interfaces\IWorkAction.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Interfaces\IWorkAction.cs" />
     <Compile Include="Interfaces\IWorkFlow.cs" />
     <Compile Include="Interfaces\IWorkProcess.cs">
       <SubType>Code</SubType>

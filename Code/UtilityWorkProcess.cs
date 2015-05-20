@@ -29,15 +29,20 @@ namespace Library.Code
                         if (types != null)
                         {
                             var typeWorkActions = (from q in types where q.GetInterface("Library.Interfaces.IWorkAction") != null select q).ToList();
-                            foreach (var typeWorkAction in typeWorkActions)
+                            if (typeWorkActions != null)
                             {
-                                if (typeWorkAction != null)
+                                
+                                foreach (var typeWorkAction in typeWorkActions)
                                 {
-                                    var workAction = (IWorkAction)Activator.CreateInstance(typeWorkAction);
-                                    workAction.Context = context;
-                                    var workProcess = new WorkProcess(workAction);
-                                    workProcesses.Add(workProcess);
+                                    if (typeWorkAction != null)
+                                    {
+                                        var workAction = (IWorkAction)Activator.CreateInstance(typeWorkAction);
+                                        workAction.Context = context;
+                                        var workProcess = new WorkProcess(workAction);
+                                        workProcesses.Add(workProcess);
+                                    }
                                 }
+                                
                             }
                         }
                     }
@@ -55,6 +60,19 @@ namespace Library.Code
 
     public class WorkProcess : IWorkProcess
     {
+        private string name = null;
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value;
+            }
+        }
+
         private TypeProcess state = TypeProcess.None;
         public TypeProcess State
         {
@@ -65,19 +83,6 @@ namespace Library.Code
             set
             {
                 state = value;
-            }
-        }
-
-        private IWorkAction workAction = null;
-        public IWorkAction WorkAction
-        {
-            get
-            {
-                return workAction;
-            }
-            set
-            {
-                workAction = value;
             }
         }
 
@@ -97,7 +102,6 @@ namespace Library.Code
             {
                 var now = DateTime.Now;
                 var elapsed = now.Subtract(timeStart);
-                var interval = workAction.Interval;
                 bool timeout = (elapsed.TotalSeconds >= interval.TotalSeconds);
                 return timeout;
             }
@@ -106,6 +110,28 @@ namespace Library.Code
                 UtilityError.Write(ex);
             }
             return false;
+        }
+
+        private TimeSpan interval = new TimeSpan(0, 1, 0);
+        public TimeSpan Interval
+        {
+            get
+            {
+                return interval;
+            }
+        }
+
+        private HttpContext context = null;
+        public HttpContext Context
+        {
+            get
+            {
+                return context;
+            }
+            set
+            {
+                context = value;
+            }
         }
 
         private DateTime timeStart = DateTime.MinValue;
@@ -123,6 +149,15 @@ namespace Library.Code
             get
             {
                 return timeStop;
+            }
+        }
+
+        private IWorkAction workAction = null;
+        public IWorkAction WorkAction
+        {
+            get
+            {
+                return workAction;
             }
         }
 
@@ -145,8 +180,7 @@ namespace Library.Code
             {
                 timeStart = DateTime.Now;
                 state = TypeProcess.Started;
-                var action = new Action(workAction.Tick);
-                UtilityAsync.Execute(action, Stop);
+                UtilityAsync.Execute(workAction.Start, Stop);
             }
             catch (Exception ex)
             {
@@ -166,5 +200,6 @@ namespace Library.Code
                 UtilityError.Write(ex);
             }
         }
+        
     }
 }

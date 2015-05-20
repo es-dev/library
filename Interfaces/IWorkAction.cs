@@ -9,9 +9,9 @@ namespace Library.Interfaces
 {
     public interface IWorkAction
     {
-        void Tick();
         string Name { get; }
         TimeSpan Interval { get; }
         HttpContext Context { get; set; }
+        void Start();
     }
 }
