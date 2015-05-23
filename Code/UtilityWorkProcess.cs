@@ -39,6 +39,7 @@ namespace Library.Code
                                         var workAction = (IWorkAction)Activator.CreateInstance(typeWorkAction);
                                         workAction.Context = context;
                                         var workProcess = new WorkProcess(workAction);
+                                        workProcess.Name = assembly.GetName().Name;
                                         workProcesses.Add(workProcess);
                                     }
                                 }

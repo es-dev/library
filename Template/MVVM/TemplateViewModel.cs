@@ -87,13 +87,7 @@ namespace Library.Template.MVVM
         {
             try
             {
-                var pKeyName=UtilityPOCO.PrimaryKeyName;
-                var pKeyValue = UtilityPOCO.GetValue(newModel, pKeyName);
-                UtilityPOCO.SetValue(model, pKeyName, pKeyValue);
-
-                var dtoKeyName = UtilityPOCO.DtoKeyName;
-                var dtoKeyValue = UtilityPOCO.GetValue(newModel, dtoKeyName);
-                UtilityPOCO.SetValue(model, dtoKeyName, dtoKeyValue);
+                UtilityPOCO.Copy(newModel, model);
 
             }
             catch (Exception ex)

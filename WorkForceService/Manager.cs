@@ -12,6 +12,7 @@ using Gizmox.WebGUI.Forms;
 using Library.Template.MVVM;
 using Library.Code;
 using Library.Interfaces;
+using System.Linq;
 
 #endregion
 
@@ -63,6 +64,83 @@ namespace Library.WorkForceService
                     editState.Value = obj.State;
                     editLastWork.Value = obj.LastWork.ToString("dd/MM/yyyy HH:mm:ss");
                     editNextWork.Value = obj.LastWork.Add(obj.Interval).ToString("dd/MM/yyyy HH:mm:ss");
+                    BindView(obj.WorkProcesses);
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void BindView(IList<WorkProcess> workProcesses)
+        {
+            try
+            {
+                if (workProcesses != null && workProcesses.Count >= 1)
+                {
+                    foreach(var workProcess in workProcesses)
+                    {
+                        var item = GetItem(workProcess);
+                        BindView(item, workProcess);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private ListViewItem GetItem(WorkProcess workProcess)
+        {
+            try
+            {
+                var item = (from ListViewItem q in editWorkProcesses.Items where q.Tag != null && GetWorkProcess(q) == workProcess select q).FirstOrDefault();
+                return item;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        private WorkProcess GetWorkProcess(ListViewItem item)
+        {
+            try
+            {
+                var workProcess = (WorkProcess)item.Tag;
+                return workProcess;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+        }
+
+        private void BindView(ListViewItem item, WorkProcess workProcess)
+        {
+            try
+            {
+                if (item == null)
+                {
+                    item = new ListViewItem();
+                    item.Tag = workProcess;
+                    item.SubItems.Add(workProcess.Name);
+                    item.SubItems.Add(workProcess.WorkAction.Name);
+                    item.SubItems.Add(workProcess.TimeStart.ToString());
+                    item.SubItems.Add(workProcess.Interval.ToString());
+                    item.SubItems.Add(workProcess.State.ToString());
+
+                    editWorkProcesses.Items.Add(item);                    
+                }
+                else
+                {
+                    item.SubItems[clmLastRunning.Index].Text = workProcess.TimeStart.ToString();
+                    item.SubItems[clmInterval.Index].Text  = workProcess.Interval.ToString();
+                    item.SubItems[clmState.Index].Text= workProcess.State.ToString();
                 }
             }
             catch (Exception ex)

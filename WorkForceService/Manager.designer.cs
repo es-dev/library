@@ -39,6 +39,13 @@ namespace Library.WorkForceService
             this.editLastWork = new Library.Template.Controls.TemplateEditText();
             this.editNextWork = new Library.Template.Controls.TemplateEditText();
             this.timerWorkForce = new Gizmox.WebGUI.Forms.Timer(this.components);
+            this.editWorkProcesses = new Gizmox.WebGUI.Forms.ListView();
+            this.clmWorkProcess = ((Gizmox.WebGUI.Forms.ColumnHeader)(new Gizmox.WebGUI.Forms.ColumnHeader()));
+            this.clmWorkAction = ((Gizmox.WebGUI.Forms.ColumnHeader)(new Gizmox.WebGUI.Forms.ColumnHeader()));
+            this.clmLastRunning = ((Gizmox.WebGUI.Forms.ColumnHeader)(new Gizmox.WebGUI.Forms.ColumnHeader()));
+            this.clmInterval = ((Gizmox.WebGUI.Forms.ColumnHeader)(new Gizmox.WebGUI.Forms.ColumnHeader()));
+            this.clmState = ((Gizmox.WebGUI.Forms.ColumnHeader)(new Gizmox.WebGUI.Forms.ColumnHeader()));
+            this.label1 = new Gizmox.WebGUI.Forms.Label();
             this.container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infoSubtitleImage)).BeginInit();
             this.panelCommands.SuspendLayout();
@@ -48,6 +55,8 @@ namespace Library.WorkForceService
             // 
             // container
             // 
+            this.container.Controls.Add(this.label1);
+            this.container.Controls.Add(this.editWorkProcesses);
             this.container.Controls.Add(this.editNextWork);
             this.container.Controls.Add(this.editLastWork);
             this.container.Controls.Add(this.editState);
@@ -60,6 +69,8 @@ namespace Library.WorkForceService
             this.container.Controls.SetChildIndex(this.editState, 0);
             this.container.Controls.SetChildIndex(this.editLastWork, 0);
             this.container.Controls.SetChildIndex(this.editNextWork, 0);
+            this.container.Controls.SetChildIndex(this.editWorkProcesses, 0);
+            this.container.Controls.SetChildIndex(this.label1, 0);
             // 
             // imgSeparator2
             // 
@@ -152,6 +163,62 @@ namespace Library.WorkForceService
             this.timerWorkForce.Interval = 1000;
             this.timerWorkForce.Tick += new System.EventHandler(this.timerWorkForce_Tick);
             // 
+            // editWorkProcesses
+            // 
+            this.editWorkProcesses.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Bottom) 
+            | Gizmox.WebGUI.Forms.AnchorStyles.Left) 
+            | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
+            this.editWorkProcesses.BackColor = System.Drawing.Color.Transparent;
+            this.editWorkProcesses.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.None;
+            this.editWorkProcesses.Columns.AddRange(new Gizmox.WebGUI.Forms.ColumnHeader[] {
+            this.clmWorkProcess,
+            this.clmWorkAction,
+            this.clmLastRunning,
+            this.clmInterval,
+            this.clmState});
+            this.editWorkProcesses.DataMember = null;
+            this.editWorkProcesses.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editWorkProcesses.FullRowSelect = true;
+            this.editWorkProcesses.Location = new System.Drawing.Point(44, 387);
+            this.editWorkProcesses.Name = "editWorkProcesses";
+            this.editWorkProcesses.Size = new System.Drawing.Size(822, 201);
+            this.editWorkProcesses.TabIndex = 1002;
+            // 
+            // clmWorkProcess
+            // 
+            this.clmWorkProcess.Text = "Processo";
+            this.clmWorkProcess.Width = 214;
+            // 
+            // clmWorkAction
+            // 
+            this.clmWorkAction.Text = "Azione";
+            this.clmWorkAction.Width = 295;
+            // 
+            // clmLastRunning
+            // 
+            this.clmLastRunning.Text = "Ultima esecuzione";
+            this.clmLastRunning.Width = 126;
+            // 
+            // clmInterval
+            // 
+            this.clmInterval.Text = "Intervallo";
+            this.clmInterval.Width = 78;
+            // 
+            // clmState
+            // 
+            this.clmState.Text = "Stato";
+            this.clmState.Width = 70;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Gray;
+            this.label1.Location = new System.Drawing.Point(41, 355);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(544, 27);
+            this.label1.TabIndex = 1003;
+            this.label1.Text = "PROCESSI IN ESECUZIONE";
+            // 
             // Manager
             // 
             this.Text = "Manager1";
@@ -174,6 +241,13 @@ namespace Library.WorkForceService
         private Template.Controls.TemplateEditText editNextWork;
         private Template.Controls.TemplateEditText editLastWork;
         private Timer timerWorkForce;
+        private ListView editWorkProcesses;
+        private ColumnHeader clmWorkProcess;
+        private ColumnHeader clmWorkAction;
+        private ColumnHeader clmLastRunning;
+        private ColumnHeader clmInterval;
+        private ColumnHeader clmState;
+        private Label label1;
 
 
     }

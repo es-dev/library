@@ -213,6 +213,27 @@ namespace Library.Code
             return false;
         }
 
+        public static void Copy(object entity, object dto)
+        {
+            try
+            {
+                if (entity != null)
+                {
+                    var properties = entity.GetType().GetProperties();
+                    foreach (var property in properties)
+                    {
+                        var propertyName = property.Name;
+                        var value = GetValue(entity, propertyName);
+                        SetValue(dto, propertyName, value);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
         public static void Clone(object entity, object dto)
         {
             try
@@ -397,8 +418,8 @@ namespace Library.Code
         {
             try
             {
-                var key = GetValue(entity, primaryKeyName);
-                return key;
+                var primaryKeyValue = GetValue(entity, primaryKeyName);
+                return primaryKeyValue;
             }
             catch (Exception ex)
             {
@@ -411,8 +432,8 @@ namespace Library.Code
         {
             try
             {
-                var key = GetValue(entity, primaryKeyName);
-                var dtoKey = primaryKeyName + "=" + key;
+                var primaryKeyValue = GetValue(entity, primaryKeyName);
+                var dtoKey = primaryKeyName + "=" + primaryKeyValue;
                 return dtoKey;
             }
             catch (Exception ex)
