@@ -227,6 +227,7 @@ namespace Library.Template.MVVM
                 {
                     editing = true;
                     creating = true;
+                    SetNewValue(model);
                 }
                 SetEditing(editing, deleting);
             }
@@ -253,6 +254,8 @@ namespace Library.Template.MVVM
             }
             return false;
         }
+
+        public virtual void SetNewValue(object model) { }
 
         public virtual void BindView(object model) { }
 

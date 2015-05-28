@@ -73,5 +73,19 @@ namespace Library.Template.Dashboard
                 UtilityError.Write(ex);
             }
         }
+
+        private void btnEnterpriseManager_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var space = new WorkForceService.Manager();
+                space.Model = UtilityWorkFlow.Read(); 
+                AddSpace(space);
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
 	}
 }

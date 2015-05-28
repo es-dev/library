@@ -8,6 +8,14 @@ using System.Collections;
 
 namespace Library.Code
 {
+    public enum TypeProcess
+    {
+        None,
+        Started,
+        Running,
+        Stopped
+    }
+
     public enum TypeFormat
     {
         None,

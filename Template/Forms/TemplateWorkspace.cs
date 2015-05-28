@@ -17,6 +17,65 @@ namespace Library.Template.Forms
 {
     public partial class TemplateWorkspace : TemplateBase, IWorkspace
 	{
+        private string livello = null;
+        public string Livello
+        {
+            get
+            {
+                livello = editLivello.Text;
+                return livello;
+            }
+            set
+            {
+                livello = value;
+                editLivello.Text = livello;
+            }
+        }
+
+        private string statoConnessione = null;
+        public string StatoConnessione
+        {
+            get
+            {
+                statoConnessione = editStatoConnessione.Text;
+                return statoConnessione;
+            }
+            set
+            {
+                statoConnessione = value;
+                editStatoConnessione.Text = statoConnessione;
+            }
+        }
+
+        private string nickame = null;
+        public string Nickname
+        {
+            get
+            {
+                nickame = btnModifyAccount.Text;
+                return nickame;
+            }
+            set
+            {
+                nickame = value;
+                btnModifyAccount.Text = nickame;
+            }
+        }
+
+        private string ragioneSociale = null;
+        public string RagioneSociale
+        {
+            get
+            {
+                ragioneSociale = editRagioneSociale.Text;
+                return ragioneSociale;
+            }
+            set
+            {
+                ragioneSociale = value;
+                editRagioneSociale.Text = ragioneSociale;
+            }
+        }
 
 		public TemplateWorkspace()
 		{
@@ -100,5 +159,45 @@ namespace Library.Template.Forms
                 UtilityError.Write(ex);
             }
         }
+
+       
+        private void btnAccount_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                panelAccount.Visible = !panelAccount.Visible;
+                panelAccount.BringToFront();
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void btnCloseAccount_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                panelAccount.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Logout();
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        public virtual void Logout() { }
     }
 }

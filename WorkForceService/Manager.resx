@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,16 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="pictureBox1.Image" xml:space="preserve">
+  <data name="imgLogin.Image" xml:space="preserve">
+    <value>workinprogress.gif</value>
+  </data>
+  <data name="imgSeparator2.Image" xml:space="preserve">
     <value>separator_vr.png</value>
-  </data>
-  <data name="btnCloseAccount.Image" xml:space="preserve">
-    <value>metrostyle.black.Undo.png</value>
-  </data>
-  <data name="btnModifyAccount.Image" xml:space="preserve">
-    <value>metrostyle.lightblue.Edit.png</value>
-  </data>
-  <data name="imgAccount.Image" xml:space="preserve">
-    <value>userunknow.png</value>
   </data>
 </root>

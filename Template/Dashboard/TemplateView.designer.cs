@@ -30,12 +30,14 @@ namespace Library.Template.Dashboard
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.btnProgetto = new Library.Controls.ButtonSeparatorV();
+            this.btnEnterpriseManager = new Library.Controls.ButtonSeparatorV();
             this.btnManualeOperativo = new Library.Controls.ButtonSeparatorV();
             this.btnCreateTicket = new Library.Controls.ButtonSeparatorV();
             this.btnLogAttivita = new Library.Controls.ButtonSeparatorV();
             this.btnSendBug = new Library.Controls.ButtonSeparatorV();
             this.panelCommands.SuspendLayout();
+            this.panelAdvancedSearch.SuspendLayout();
+            this.panelOrderBy.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelCommands
@@ -44,12 +46,12 @@ namespace Library.Template.Dashboard
             this.panelCommands.Controls.Add(this.btnLogAttivita);
             this.panelCommands.Controls.Add(this.btnCreateTicket);
             this.panelCommands.Controls.Add(this.btnManualeOperativo);
-            this.panelCommands.Controls.Add(this.btnProgetto);
+            this.panelCommands.Controls.Add(this.btnEnterpriseManager);
             this.panelCommands.Controls.SetChildIndex(this.btnHome, 0);
             this.panelCommands.Controls.SetChildIndex(this.btnRefresh, 0);
             this.panelCommands.Controls.SetChildIndex(this.btnClose, 0);
             this.panelCommands.Controls.SetChildIndex(this.btnAdd, 0);
-            this.panelCommands.Controls.SetChildIndex(this.btnProgetto, 0);
+            this.panelCommands.Controls.SetChildIndex(this.btnEnterpriseManager, 0);
             this.panelCommands.Controls.SetChildIndex(this.btnManualeOperativo, 0);
             this.panelCommands.Controls.SetChildIndex(this.btnCreateTicket, 0);
             this.panelCommands.Controls.SetChildIndex(this.btnLogAttivita, 0);
@@ -60,18 +62,19 @@ namespace Library.Template.Dashboard
             this.btnAdd.Location = new System.Drawing.Point(1, 210);
             this.btnAdd.Visible = false;
             // 
-            // btnProgetto
+            // btnEnterpriseManager
             // 
-            this.btnProgetto.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
-            this.btnProgetto.BackColor = System.Drawing.Color.Transparent;
-            this.btnProgetto.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
-            this.btnProgetto.ImageButton = "";
-            this.btnProgetto.ImageSeparator = "Images.separator_ht_small.png";
-            this.btnProgetto.Location = new System.Drawing.Point(0, 144);
-            this.btnProgetto.Name = "btnProgetto";
-            this.btnProgetto.Size = new System.Drawing.Size(100, 72);
-            this.btnProgetto.TabIndex = 2;
-            this.btnProgetto.TextButton = "Enteprise Manager";
+            this.btnEnterpriseManager.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
+            this.btnEnterpriseManager.BackColor = System.Drawing.Color.Transparent;
+            this.btnEnterpriseManager.ForeColorButton = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
+            this.btnEnterpriseManager.ImageButton = "";
+            this.btnEnterpriseManager.ImageSeparator = "Images.separator_ht_small.png";
+            this.btnEnterpriseManager.Location = new System.Drawing.Point(0, 144);
+            this.btnEnterpriseManager.Name = "btnEnterpriseManager";
+            this.btnEnterpriseManager.Size = new System.Drawing.Size(100, 72);
+            this.btnEnterpriseManager.TabIndex = 2;
+            this.btnEnterpriseManager.TextButton = "Enteprise Manager";
+            this.btnEnterpriseManager.Click += new Library.Controls.ButtonSeparatorV.ButtonSeparatorClick(this.btnEnterpriseManager_Click);
             // 
             // btnManualeOperativo
             // 
@@ -128,11 +131,15 @@ namespace Library.Template.Dashboard
             // TemplateView
             // 
             this.Opened += new Library.Interfaces.OpenHandler(this.TemplateView_Opened);
+            this.Controls.SetChildIndex(this.panelOrderBy, 0);
+            this.Controls.SetChildIndex(this.panelAdvancedSearch, 0);
             this.Controls.SetChildIndex(this.txtSearch, 0);
             this.Controls.SetChildIndex(this.btnOrderBy, 0);
             this.Controls.SetChildIndex(this.btnAdvancedSearch, 0);
             this.Controls.SetChildIndex(this.panelCommands, 0);
             this.panelCommands.ResumeLayout(false);
+            this.panelAdvancedSearch.ResumeLayout(false);
+            this.panelOrderBy.ResumeLayout(false);
             this.ResumeLayout(false);
 
 		}
@@ -142,7 +149,7 @@ namespace Library.Template.Dashboard
         private Library.Controls.ButtonSeparatorV btnLogAttivita;
         private Library.Controls.ButtonSeparatorV btnCreateTicket;
         private Library.Controls.ButtonSeparatorV btnManualeOperativo;
-        private Library.Controls.ButtonSeparatorV btnProgetto;
+        private Library.Controls.ButtonSeparatorV btnEnterpriseManager;
         private Library.Controls.ButtonSeparatorV btnSendBug;
 	}
 }
