@@ -51,13 +51,13 @@ namespace Library.Template.Forms
         {
             get
             {
-                title = infoTitle.Text;
+                title = editTitle.Text;
                 return title;
             }
             set
             {
                 title = value;
-                infoTitle.Text = title;
+                editTitle.Text = title;
             }
         }
 
@@ -66,13 +66,28 @@ namespace Library.Template.Forms
         {
             get
             {
-                version = infoVersion.Text;
+                version = editVersion.Text;
                 return version;
             }
             set
             {
                 version = value;
-                infoVersion.Text = version;
+                editVersion.Text = version;
+            }
+        }
+
+        private string softwareHouse = "ESD - Engineering System Development";
+        public string SoftwareHouse
+        {
+            get
+            {
+                softwareHouse = editSoftwareHouse.Text;
+                return softwareHouse;
+            }
+            set
+            {
+                softwareHouse = value;
+                editSoftwareHouse.Text = softwareHouse;
             }
         }
 

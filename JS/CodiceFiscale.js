@@ -8,7 +8,7 @@
 
 $('#$vwgId$').unbind('keydown');
 $('#$vwgId$').bind('keydown', function (e) {
-    if ((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105) || (e.keyCode in editingKeys)) {
+    if ((e.keyCode >= 48 && e.keyCode <= 90) || (e.keyCode >= 96 && e.keyCode <= 105) || (e.keyCode in editingKeys)) {
         var text = $(this).val();
         if (text != null) {
             var length = text.length;

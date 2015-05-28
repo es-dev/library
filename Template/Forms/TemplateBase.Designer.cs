@@ -42,14 +42,13 @@ namespace Library.Template.Forms
             this.btnCondizioniUtilizzo = new Gizmox.WebGUI.Forms.ToolStripButton();
             this.toolStripSeparator1 = new Gizmox.WebGUI.Forms.ToolStripSeparator();
             this.btnPrivacy = new Gizmox.WebGUI.Forms.ToolStripButton();
-            this.infoTitle = new Gizmox.WebGUI.Forms.Label();
-            this.infoVersion = new Gizmox.WebGUI.Forms.Label();
+            this.editTitle = new Gizmox.WebGUI.Forms.Label();
+            this.editVersion = new Gizmox.WebGUI.Forms.Label();
             this.lblVersione = new Gizmox.WebGUI.Forms.Label();
             this.imgSeparator1 = new Gizmox.WebGUI.Forms.PictureBox();
             this.btnCloseInfo = new Gizmox.WebGUI.Forms.Button();
             this.lblProfilo = new Gizmox.WebGUI.Forms.Label();
-            this.infoAzienda = new Gizmox.WebGUI.Forms.Label();
-            this.lblAzienda = new Gizmox.WebGUI.Forms.Label();
+            this.editSoftwareHouse = new Gizmox.WebGUI.Forms.Label();
             this.lblTitleInfo = new Gizmox.WebGUI.Forms.Label();
             this.imgInfo = new Gizmox.WebGUI.Forms.PictureBox();
             this.panelInfo = new Gizmox.WebGUI.Forms.Panel();
@@ -169,30 +168,30 @@ namespace Library.Template.Forms
             this.btnPrivacy.Size = new System.Drawing.Size(91, 17);
             this.btnPrivacy.Text = "Privacy e cookie";
             // 
-            // infoTitle
+            // editTitle
             // 
-            this.infoTitle.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
-            this.infoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
-            this.infoTitle.BorderColor = new Gizmox.WebGUI.Forms.BorderColor(System.Drawing.Color.Silver);
-            this.infoTitle.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.FixedSingle;
-            this.infoTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.infoTitle.ForeColor = System.Drawing.Color.White;
-            this.infoTitle.Location = new System.Drawing.Point(558, 42);
-            this.infoTitle.Name = "infoTitle";
-            this.infoTitle.Size = new System.Drawing.Size(351, 32);
-            this.infoTitle.TabIndex = 4;
-            this.infoTitle.Text = "TITLE";
-            this.infoTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.editTitle.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
+            this.editTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(100)))));
+            this.editTitle.BorderColor = new Gizmox.WebGUI.Forms.BorderColor(System.Drawing.Color.Silver);
+            this.editTitle.BorderStyle = Gizmox.WebGUI.Forms.BorderStyle.FixedSingle;
+            this.editTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editTitle.ForeColor = System.Drawing.Color.White;
+            this.editTitle.Location = new System.Drawing.Point(558, 42);
+            this.editTitle.Name = "editTitle";
+            this.editTitle.Size = new System.Drawing.Size(351, 32);
+            this.editTitle.TabIndex = 4;
+            this.editTitle.Text = "TITLE";
+            this.editTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // infoVersion
+            // editVersion
             // 
-            this.infoVersion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.infoVersion.ForeColor = System.Drawing.Color.Black;
-            this.infoVersion.Location = new System.Drawing.Point(204, 117);
-            this.infoVersion.Name = "infoVersion";
-            this.infoVersion.Size = new System.Drawing.Size(178, 18);
-            this.infoVersion.TabIndex = 1;
-            this.infoVersion.Text = "1.0.0";
+            this.editVersion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editVersion.ForeColor = System.Drawing.Color.Black;
+            this.editVersion.Location = new System.Drawing.Point(204, 117);
+            this.editVersion.Name = "editVersion";
+            this.editVersion.Size = new System.Drawing.Size(178, 18);
+            this.editVersion.TabIndex = 1;
+            this.editVersion.Text = "1.0.0";
             // 
             // lblVersione
             // 
@@ -239,25 +238,15 @@ namespace Library.Template.Forms
             this.lblProfilo.TabIndex = 1;
             this.lblProfilo.Text = "Profilo:";
             // 
-            // infoAzienda
+            // editSoftwareHouse
             // 
-            this.infoAzienda.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.infoAzienda.ForeColor = System.Drawing.Color.Black;
-            this.infoAzienda.Location = new System.Drawing.Point(145, 61);
-            this.infoAzienda.Name = "infoAzienda";
-            this.infoAzienda.Size = new System.Drawing.Size(246, 18);
-            this.infoAzienda.TabIndex = 1;
-            this.infoAzienda.Text = "Ragione sociale azienda";
-            // 
-            // lblAzienda
-            // 
-            this.lblAzienda.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAzienda.ForeColor = System.Drawing.Color.DimGray;
-            this.lblAzienda.Location = new System.Drawing.Point(81, 61);
-            this.lblAzienda.Name = "lblAzienda";
-            this.lblAzienda.Size = new System.Drawing.Size(64, 18);
-            this.lblAzienda.TabIndex = 1;
-            this.lblAzienda.Text = "Azienda:";
+            this.editSoftwareHouse.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editSoftwareHouse.ForeColor = System.Drawing.Color.Black;
+            this.editSoftwareHouse.Location = new System.Drawing.Point(81, 61);
+            this.editSoftwareHouse.Name = "editSoftwareHouse";
+            this.editSoftwareHouse.Size = new System.Drawing.Size(307, 18);
+            this.editSoftwareHouse.TabIndex = 1;
+            this.editSoftwareHouse.Text = "Software house";
             // 
             // lblTitleInfo
             // 
@@ -289,13 +278,12 @@ namespace Library.Template.Forms
             this.panelInfo.Controls.Add(this.lblTitleInfo);
             this.panelInfo.Controls.Add(this.lblPoweredBy);
             this.panelInfo.Controls.Add(this.btnInfoAzienda);
-            this.panelInfo.Controls.Add(this.infoVersion);
+            this.panelInfo.Controls.Add(this.editVersion);
             this.panelInfo.Controls.Add(this.lblVersione);
             this.panelInfo.Controls.Add(this.imgSeparator1);
             this.panelInfo.Controls.Add(this.btnCloseInfo);
             this.panelInfo.Controls.Add(this.lblProfilo);
-            this.panelInfo.Controls.Add(this.infoAzienda);
-            this.panelInfo.Controls.Add(this.lblAzienda);
+            this.panelInfo.Controls.Add(this.editSoftwareHouse);
             this.panelInfo.Controls.Add(this.imgInfo);
             this.panelInfo.Location = new System.Drawing.Point(510, 42);
             this.panelInfo.Name = "panelInfo";
@@ -323,9 +311,9 @@ namespace Library.Template.Forms
             this.btnInfoAzienda.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnInfoAzienda.Location = new System.Drawing.Point(139, 85);
             this.btnInfoAzienda.Name = "btnInfoAzienda";
-            this.btnInfoAzienda.Size = new System.Drawing.Size(181, 25);
+            this.btnInfoAzienda.Size = new System.Drawing.Size(221, 25);
             this.btnInfoAzienda.TabIndex = 2;
-            this.btnInfoAzienda.Text = "    Informazioni aziendali";
+            this.btnInfoAzienda.Text = "    Informazioni softwarehouse";
             this.btnInfoAzienda.Click += new System.EventHandler(this.btnInfoAzienda_Click);
             // 
             // imgLogoSoftware
@@ -372,7 +360,7 @@ namespace Library.Template.Forms
             this.Controls.Add(this.container);
             this.Controls.Add(this.imgSeparator2);
             this.Controls.Add(this.imgLogoSoftware);
-            this.Controls.Add(this.infoTitle);
+            this.Controls.Add(this.editTitle);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.imgLogoESD);
             this.Controls.Add(this.btnInformazioni);
@@ -396,19 +384,14 @@ namespace Library.Template.Forms
         private ToolStripButton btnCondizioniUtilizzo;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripSeparator toolStripSeparator2;
-        public Button bntPortaleWebAziendale;
-        public Button btnSupportoTecnico;
-        public Button btnInformazioni;
         public ToolStrip toolStrip;
         public ToolStripButton btnPrivacy;
-        public Label infoTitle;
-        private Label infoVersion;
+        private Label editVersion;
         private Label lblVersione;
         private PictureBox imgSeparator1;
         private Button btnCloseInfo;
         private Label lblProfilo;
-        private Label infoAzienda;
-        private Label lblAzienda;
+        private Label editSoftwareHouse;
         private Label lblTitleInfo;
         private PictureBox imgInfo;
         private Button btnInfoAzienda;
@@ -418,6 +401,10 @@ namespace Library.Template.Forms
         private PictureBox imgLogoESD;
         private PictureBox imgLogoSoftware;
         public Panel container;
+        private Label editTitle;
+        public Button bntPortaleWebAziendale;
+        public Button btnSupportoTecnico;
+        public Button btnInformazioni;
 
 
     }

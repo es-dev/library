@@ -113,7 +113,7 @@ namespace Library.Code
                             var collectionsReference = collections;
                             if(isOwner)
                             {
-                                referencesReference = false;
+                                referencesReference = true;
                                 collectionsReference = false;
                             }
 
