@@ -400,8 +400,11 @@ namespace Library.Code
         {
             try
             {
-                var text = GetDecimal(value, "€");
-                return text;
+                if (value != null)
+                {
+                    var text = GetDecimal(value, "€");
+                    return text;
+                }
             }
             catch (Exception ex)
             {
