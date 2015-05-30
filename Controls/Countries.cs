@@ -236,7 +236,9 @@ namespace Library.Controls
             {
                 try
                 {
-                    var codeDescription = description + " (" + code + ")";
+                    var codeDescription = description;
+                    if(code!=null && code.Length>0)
+                        codeDescription += " (" + code + ")";
                     return codeDescription;
                 }
                 catch (Exception ex)

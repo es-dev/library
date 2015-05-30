@@ -140,16 +140,22 @@ namespace Library.Code
                     {
                         var propertyName = property.Name;
                         var typeDtoItem = GetTypeItem(dto, propertyName);
-                        var typeDtoCollection = typeof(List<>).MakeGenericType(typeDtoItem);
-                        var dtoCollection = (IList)Activator.CreateInstance(typeDtoCollection);
-                        var entityCollection = (IEnumerable)GetValue(entity, propertyName);
-                        foreach (var entityItem in entityCollection)
+                        if (typeDtoItem != null)
                         {
-                            var dtoItem = Assemble(entityItem, typeDtoItem, recursive, references, collections, entity);
-                            if (dtoItem != null)
-                                dtoCollection.Add(dtoItem);
+                            var typeDtoCollection = typeof(List<>).MakeGenericType(typeDtoItem);
+                            var dtoCollection = (IList)Activator.CreateInstance(typeDtoCollection);
+                            var entityCollection = (IEnumerable)GetValue(entity, propertyName);
+                            if (entityCollection != null)
+                            {
+                                foreach (var entityItem in entityCollection)
+                                {
+                                    var dtoItem = Assemble(entityItem, typeDtoItem, recursive, references, collections, entity);
+                                    if (dtoItem != null)
+                                        dtoCollection.Add(dtoItem);
+                                }
+                                SetValue(dto, propertyName, dtoCollection);
+                            }
                         }
-                        SetValue(dto, propertyName, dtoCollection);
                     }
                 }
             }

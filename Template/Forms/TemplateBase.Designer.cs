@@ -401,10 +401,10 @@ namespace Library.Template.Forms
         private PictureBox imgLogoESD;
         private PictureBox imgLogoSoftware;
         public Panel container;
-        private Label editTitle;
         public Button bntPortaleWebAziendale;
         public Button btnSupportoTecnico;
         public Button btnInformazioni;
+        public Label editTitle;
 
 
     }

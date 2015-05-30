@@ -37,7 +37,7 @@ namespace Library.Template.Forms
             this.editRagioneSociale = new Gizmox.WebGUI.Forms.Label();
             this.editStatoConnessione = new Gizmox.WebGUI.Forms.Label();
             this.lblStatoConnessione = new Gizmox.WebGUI.Forms.Label();
-            this.pictureBox1 = new Gizmox.WebGUI.Forms.PictureBox();
+            this.imgSeparatorV = new Gizmox.WebGUI.Forms.PictureBox();
             this.btnCloseAccount = new Gizmox.WebGUI.Forms.Button();
             this.btnLogout = new Gizmox.WebGUI.Forms.Button();
             this.lblDatiUtente = new Gizmox.WebGUI.Forms.Label();
@@ -47,7 +47,7 @@ namespace Library.Template.Forms
             this.lblTitleAccount = new Gizmox.WebGUI.Forms.Label();
             this.imgAccount = new Gizmox.WebGUI.Forms.PictureBox();
             this.panelAccount = new Gizmox.WebGUI.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgSeparatorV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgAccount)).BeginInit();
             this.panelAccount.SuspendLayout();
             this.SuspendLayout();
@@ -72,6 +72,11 @@ namespace Library.Template.Forms
             // btnInformazioni
             // 
             this.btnInformazioni.Location = new System.Drawing.Point(716, 3);
+            // 
+            // editTitle
+            // 
+            this.editTitle.Location = new System.Drawing.Point(453, 42);
+            this.editTitle.Size = new System.Drawing.Size(462, 32);
             // 
             // btnAccount
             // 
@@ -133,16 +138,16 @@ namespace Library.Template.Forms
             this.lblStatoConnessione.TabIndex = 1;
             this.lblStatoConnessione.Text = "Stato:";
             // 
-            // pictureBox1
+            // imgSeparatorV
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = new Gizmox.WebGUI.Common.Resources.ImageResourceHandle(resources.GetString("pictureBox1.Image"));
-            this.pictureBox1.Location = new System.Drawing.Point(74, 50);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(4, 105);
-            this.pictureBox1.SizeMode = Gizmox.WebGUI.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
+            this.imgSeparatorV.BackColor = System.Drawing.Color.Transparent;
+            this.imgSeparatorV.Image = new Gizmox.WebGUI.Common.Resources.ImageResourceHandle(resources.GetString("imgSeparatorV.Image"));
+            this.imgSeparatorV.Location = new System.Drawing.Point(74, 50);
+            this.imgSeparatorV.Name = "imgSeparatorV";
+            this.imgSeparatorV.Size = new System.Drawing.Size(4, 105);
+            this.imgSeparatorV.SizeMode = Gizmox.WebGUI.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgSeparatorV.TabIndex = 8;
+            this.imgSeparatorV.TabStop = false;
             // 
             // btnCloseAccount
             // 
@@ -244,7 +249,7 @@ namespace Library.Template.Forms
             this.panelAccount.Controls.Add(this.editRagioneSociale);
             this.panelAccount.Controls.Add(this.editStatoConnessione);
             this.panelAccount.Controls.Add(this.lblStatoConnessione);
-            this.panelAccount.Controls.Add(this.pictureBox1);
+            this.panelAccount.Controls.Add(this.imgSeparatorV);
             this.panelAccount.Controls.Add(this.btnCloseAccount);
             this.panelAccount.Controls.Add(this.btnLogout);
             this.panelAccount.Controls.Add(this.lblDatiUtente);
@@ -263,6 +268,7 @@ namespace Library.Template.Forms
             // 
             this.Controls.Add(this.panelAccount);
             this.Controls.Add(this.btnAccount);
+            this.Controls.SetChildIndex(this.editTitle, 0);
             this.Controls.SetChildIndex(this.bntPortaleWebAziendale, 0);
             this.Controls.SetChildIndex(this.btnSupportoTecnico, 0);
             this.Controls.SetChildIndex(this.btnInformazioni, 0);
@@ -271,7 +277,7 @@ namespace Library.Template.Forms
             this.Controls.SetChildIndex(this.btnAccount, 0);
             this.Controls.SetChildIndex(this.panelAccount, 0);
             this.Controls.SetChildIndex(this.panelInfo, 0);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgSeparatorV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgAccount)).EndInit();
             this.panelAccount.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -285,7 +291,7 @@ namespace Library.Template.Forms
         private Gizmox.WebGUI.Forms.Label editRagioneSociale;
         private Gizmox.WebGUI.Forms.Label editStatoConnessione;
         private Gizmox.WebGUI.Forms.Label lblStatoConnessione;
-        private Gizmox.WebGUI.Forms.PictureBox pictureBox1;
+        private Gizmox.WebGUI.Forms.PictureBox imgSeparatorV;
         private Gizmox.WebGUI.Forms.Button btnCloseAccount;
         private Gizmox.WebGUI.Forms.Button btnLogout;
         private Gizmox.WebGUI.Forms.Label lblDatiUtente;
