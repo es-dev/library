@@ -102,9 +102,10 @@ namespace Library.Template.Scheduler
                         {
                             var itemOfDay = itemsOfDay[i];
                             var dataOfDay = itemOfDay.Start;
+                            var duration = itemOfDay.End.Subtract(itemOfDay.Start);
                             itemOfDay.Start = dataOfDay.AddHours(hour).AddMinutes(minute);
-                            itemOfDay.End = itemOfDay.Start.AddHours(1);
-                            hour += 2;
+                            itemOfDay.End = itemOfDay.Start.Add(duration);
+                            hour += (int)duration.TotalHours + 1;
                             if (hour > scheduleBox.WorkEndHour)
                             {
                                 hour = scheduleBox.WorkStartHour;

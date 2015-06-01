@@ -278,6 +278,7 @@ namespace Library.Template.Scheduler
             this.scheduleBox.DisplayMonthHeader = false;
             this.scheduleBox.FirstDate = new System.DateTime(2015, 4, 9, 21, 56, 39, 719);
             this.scheduleBox.FirstDayOfWeek = Gizmox.WebGUI.Forms.Day.Monday;
+            this.scheduleBox.ForeColor = System.Drawing.Color.Black;
             this.scheduleBox.HourFormat = Gizmox.WebGUI.Forms.ScheduleBoxHourFormat.Clock12H;
             this.scheduleBox.Location = new System.Drawing.Point(141, 79);
             this.scheduleBox.Name = "scheduleBox";
