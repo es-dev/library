@@ -22,8 +22,8 @@ namespace Library.Code
                 var assembly = context.GetType().Assembly;
                 var assemblyName = assembly.GetName();
                 string pathAssemby = assemblyName.Name;
-                if(relativeNamespace!=null && relativeNamespace.Length>0)
-                    pathAssemby = pathAssemby.Replace(relativeNamespace+".","");
+                if (relativeNamespace != null && relativeNamespace.Length > 0)
+                    pathAssemby = pathAssemby.Replace(relativeNamespace + ".", "");
                 string pathResource = pathAssemby + "." + pathRelativeResource + ".";
                 string pathFile = pathResource + fileNameResource;
                 var stream = assembly.GetManifestResourceStream(pathFile);
@@ -220,7 +220,7 @@ namespace Library.Code
         {
             try
             {
-                if (control != null && label != null && label.Length>0)
+                if (control != null && label != null && label.Length > 0)
                 {
                     var site = control.Site;
                     if (site != null)
@@ -270,7 +270,7 @@ namespace Library.Code
                 UtilityError.Write(ex);
             }
         }
-       
+
         public static Point GetLocation(Control control)
         {
             try
@@ -345,13 +345,13 @@ namespace Library.Code
                             control.Left = left;
                         }
                         var parent = control.Parent;
-                        if (parent!=null)
+                        if (parent != null)
                         {
                             parent.Controls.Remove(control);
                             control.Visible = true;
                             jqContainer.Tag = "exist";
                         }
-                        
+
                         parentForm.Controls.Add(jqContainer);
                         parentForm.Controls.Add(control);
                         jqContainer.BringToFront();
@@ -378,7 +378,7 @@ namespace Library.Code
                     {
                         parentForm.Controls.Remove(jqContainer);
                         var tag = (string)jqContainer.Tag;
-                        if (tag!="exist")
+                        if (tag != "exist")
                             parentForm.Controls.Remove(control);
                         else
                             control.Visible = false;
@@ -396,8 +396,8 @@ namespace Library.Code
             try
             {
                 var groupControl = control;
-                if(groupControl is IGroupControl)
-                    groupControl=control.Parent;
+                if (groupControl is IGroupControl)
+                    groupControl = control.Parent;
 
                 var container = groupControl.Parent;
                 var controls = (from Control q in container.Controls where q is IGroupControl && q != groupControl select (IGroupControl)q).ToList();
@@ -456,5 +456,56 @@ namespace Library.Code
             }
         }
 
+        public static void SetTooltipText(IEnumerable<Control> controls, ToolTip toolTip)
+        {
+            try
+            {
+                if (controls != null)
+                {
+                    foreach (var control in controls)
+                        SetTooltipText(control, toolTip);
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        public static void SetTooltipText(Control control, ToolTip tooltip)
+        {
+            try
+            {
+                if (control != null && control.GetType() == typeof(Label))
+                {
+                    var text = control.Text;
+                    var textEllippsis = text;
+                    if (text != null && text.Length > 0)
+                    {
+                        var chars = text.ToCharArray().Count();
+                        var charsVisible = chars;
+                        var width = control.Width;
+                        var dW = control.Font.SizeInPoints;
+                        if (dW != null)
+                            charsVisible = (int)(width / dW);
+
+                        if (charsVisible < chars)
+                        {
+                            var length = charsVisible-3;
+                            if (length <= 0)
+                                length = 1;
+                            textEllippsis = text.Substring(0, length) + "...";
+                            tooltip.SetToolTip(control, text);
+                        }
+                    }
+                    control.Text = textEllippsis;
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
     }
+
 }
