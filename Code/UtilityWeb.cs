@@ -456,14 +456,18 @@ namespace Library.Code
             }
         }
 
-        public static void SetTooltipText(IEnumerable<Control> controls, ToolTip toolTip)
+        public static void SetTooltipText(Control.ControlCollection controls, ToolTip toolTip)
         {
             try
             {
                 if (controls != null)
                 {
-                    foreach (var control in controls)
+                    foreach (Control control in controls)
+                    {
                         SetTooltipText(control, toolTip);
+                        if (control.HasChildren)
+                            SetTooltipText(control.Controls, toolTip);
+                    }
                 }
             }
             catch (Exception ex)
@@ -478,27 +482,36 @@ namespace Library.Code
             {
                 if (control != null && control.GetType() == typeof(Label))
                 {
-                    var text = control.Text;
-                    var textEllippsis = text;
-                    if (text != null && text.Length > 0)
+                    var label = (Label)control;
+                    if (!label.AutoSize)
                     {
-                        var chars = text.ToCharArray().Count();
-                        var charsVisible = chars;
-                        var width = control.Width;
-                        var dW = control.Font.SizeInPoints;
-                        if (dW != null)
-                            charsVisible = (int)(width / dW);
-
-                        if (charsVisible < chars)
+                        var text = control.Text;
+                        if (text != null && text.Length > 0)
                         {
-                            var length = charsVisible-3;
-                            if (length <= 0)
-                                length = 1;
-                            textEllippsis = text.Substring(0, length) + "...";
-                            tooltip.SetToolTip(control, text);
+                            var chars = text.ToCharArray().Count();
+                            var charsVisible = chars;
+                            var width = control.Width;
+                            var height = control.Height;
+                            var dW = control.Font.SizeInPoints;
+                            var dH = dW;
+                            if (dW != 0)
+                            {
+                                var rows = (int)(height / dH);
+                                var cols = (int)(width / dW);
+                                charsVisible = rows * cols;
+                            }
+
+                            if (charsVisible < chars)
+                            {
+                                var length = charsVisible - 3;
+                                if (length <= 0)
+                                    length = 1;
+                                var textEllippsis = text.Substring(0, length) + "...";
+                                control.Text = textEllippsis;
+                                tooltip.SetToolTip(control, text);
+                            }
                         }
                     }
-                    control.Text = textEllippsis;
                 }
             }
             catch (Exception ex)

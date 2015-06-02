@@ -133,6 +133,20 @@ namespace Library.Template.MVVM
             {
                 model = value;
                 BindView(model);
+                BindViewTooltip();
+            }
+        }
+
+        private void BindViewTooltip()
+        {
+            try
+            {
+                var controls = this.Controls;
+                UtilityWeb.SetTooltipText(controls, toolTip);
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
             }
         }
 
