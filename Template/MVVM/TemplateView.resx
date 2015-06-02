@@ -123,23 +123,11 @@
   <data name="imgSeparator.Image" xml:space="preserve">
     <value>separator_ht.png</value>
   </data>
-  <data name="btnCancelAdvancedSearch.Image" xml:space="preserve">
-    <value>close24.png</value>
-  </data>
   <data name="btnCloseAdvancedSearch.BackgroundImage" xml:space="preserve">
     <value>back24.png</value>
   </data>
-  <data name="btnConfirmAdvancedSearch.Image" xml:space="preserve">
-    <value>confirm24.png</value>
-  </data>
-  <data name="btnCancelOrderBy.Image" xml:space="preserve">
-    <value>close24.png</value>
-  </data>
   <data name="btnCloseOrderBy.BackgroundImage" xml:space="preserve">
     <value>back24.png</value>
-  </data>
-  <data name="btnConfirmOrderBy.Image" xml:space="preserve">
-    <value>confirm24.png</value>
   </data>
   <data name="optDescending.Image" xml:space="preserve">
     <value>descending.png</value>

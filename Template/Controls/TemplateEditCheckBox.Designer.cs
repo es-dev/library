@@ -34,6 +34,10 @@ namespace Library.Template.Controls
             this.editControl = new Library.Controls.CheckButton();
             this.SuspendLayout();
             // 
+            // editLabel
+            // 
+            this.editLabel.TabIndex = 999;
+            // 
             // editControl
             // 
             this.editControl.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
@@ -47,6 +51,7 @@ namespace Library.Template.Controls
             this.editControl.Text = null;
             this.editControl.TextFalse = "";
             this.editControl.TextTrue = "";
+            this.editControl.TrueWidth = 104;
             this.editControl.Value = null;
             // 
             // TemplateEditCheckBox

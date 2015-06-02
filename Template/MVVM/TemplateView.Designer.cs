@@ -275,7 +275,6 @@ namespace Library.Template.MVVM
             this.btnCancelAdvancedSearch.CustomStyle = "F";
             this.btnCancelAdvancedSearch.FlatStyle = Gizmox.WebGUI.Forms.FlatStyle.Flat;
             this.btnCancelAdvancedSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelAdvancedSearch.Image = new Gizmox.WebGUI.Common.Resources.ImageResourceHandle(resources.GetString("btnCancelAdvancedSearch.Image"));
             this.btnCancelAdvancedSearch.Location = new System.Drawing.Point(134, 210);
             this.btnCancelAdvancedSearch.Name = "btnCancelAdvancedSearch";
             this.btnCancelAdvancedSearch.Size = new System.Drawing.Size(158, 30);
@@ -306,7 +305,6 @@ namespace Library.Template.MVVM
             this.btnConfirmAdvancedSearch.CustomStyle = "F";
             this.btnConfirmAdvancedSearch.FlatStyle = Gizmox.WebGUI.Forms.FlatStyle.Flat;
             this.btnConfirmAdvancedSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmAdvancedSearch.Image = new Gizmox.WebGUI.Common.Resources.ImageResourceHandle(resources.GetString("btnConfirmAdvancedSearch.Image"));
             this.btnConfirmAdvancedSearch.Location = new System.Drawing.Point(300, 210);
             this.btnConfirmAdvancedSearch.Name = "btnConfirmAdvancedSearch";
             this.btnConfirmAdvancedSearch.Size = new System.Drawing.Size(122, 30);
@@ -322,7 +320,6 @@ namespace Library.Template.MVVM
             this.btnCancelOrderBy.CustomStyle = "F";
             this.btnCancelOrderBy.FlatStyle = Gizmox.WebGUI.Forms.FlatStyle.Flat;
             this.btnCancelOrderBy.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelOrderBy.Image = new Gizmox.WebGUI.Common.Resources.ImageResourceHandle(resources.GetString("btnCancelOrderBy.Image"));
             this.btnCancelOrderBy.Location = new System.Drawing.Point(148, 210);
             this.btnCancelOrderBy.Name = "btnCancelOrderBy";
             this.btnCancelOrderBy.Size = new System.Drawing.Size(187, 30);
@@ -353,7 +350,6 @@ namespace Library.Template.MVVM
             this.btnConfirmOrderBy.CustomStyle = "F";
             this.btnConfirmOrderBy.FlatStyle = Gizmox.WebGUI.Forms.FlatStyle.Flat;
             this.btnConfirmOrderBy.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmOrderBy.Image = new Gizmox.WebGUI.Common.Resources.ImageResourceHandle(resources.GetString("btnConfirmOrderBy.Image"));
             this.btnConfirmOrderBy.Location = new System.Drawing.Point(343, 210);
             this.btnConfirmOrderBy.Name = "btnConfirmOrderBy";
             this.btnConfirmOrderBy.Size = new System.Drawing.Size(118, 30);
@@ -383,27 +379,28 @@ namespace Library.Template.MVVM
             // 
             // optDescending
             // 
-            this.optDescending.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
+            this.optDescending.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Bottom | Gizmox.WebGUI.Forms.AnchorStyles.Left)));
             this.optDescending.Cursor = Gizmox.WebGUI.Forms.Cursors.Hand;
             this.optDescending.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.optDescending.Image = new Gizmox.WebGUI.Common.Resources.ImageResourceHandle(resources.GetString("optDescending.Image"));
-            this.optDescending.Location = new System.Drawing.Point(392, 3);
+            this.optDescending.Location = new System.Drawing.Point(56, 217);
             this.optDescending.Name = "optDescending";
-            this.optDescending.Size = new System.Drawing.Size(44, 31);
+            this.optDescending.Size = new System.Drawing.Size(32, 16);
             this.optDescending.TabIndex = 2;
             this.optDescending.Tag = "orderBy";
             this.toolTip.SetToolTip(this.optDescending, "Ordinamento decrescente");
             // 
             // optAscending
             // 
-            this.optAscending.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
+            this.optAscending.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((Gizmox.WebGUI.Forms.AnchorStyles.Bottom | Gizmox.WebGUI.Forms.AnchorStyles.Left)));
+            this.optAscending.BackgroundImageLayout = Gizmox.WebGUI.Forms.ImageLayout.Stretch;
             this.optAscending.Checked = true;
             this.optAscending.Cursor = Gizmox.WebGUI.Forms.Cursors.Hand;
             this.optAscending.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.optAscending.Image = new Gizmox.WebGUI.Common.Resources.ImageResourceHandle(resources.GetString("optAscending.Image"));
-            this.optAscending.Location = new System.Drawing.Point(347, 3);
+            this.optAscending.Location = new System.Drawing.Point(9, 217);
             this.optAscending.Name = "optAscending";
-            this.optAscending.Size = new System.Drawing.Size(44, 31);
+            this.optAscending.Size = new System.Drawing.Size(32, 16);
             this.optAscending.TabIndex = 2;
             this.optAscending.Tag = "orderBy";
             this.toolTip.SetToolTip(this.optAscending, "Ordinamento crescente");
@@ -418,13 +415,13 @@ namespace Library.Template.MVVM
             this.lblTitleOrderBy.Size = new System.Drawing.Size(343, 44);
             this.lblTitleOrderBy.TabIndex = 1;
             this.lblTitleOrderBy.Tag = "orderBy";
-            this.lblTitleOrderBy.Text = "Seleziona un tipo di ordinamento...";
+            this.lblTitleOrderBy.Text = "Seleziona un ordinamento...";
             // 
             // TemplateView
             // 
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.panelAdvancedSearch);
             this.Controls.Add(this.panelOrderBy);
+            this.Controls.Add(this.panelAdvancedSearch);
             this.Controls.Add(this.editCount);
             this.Controls.Add(this.imgSeparator);
             this.Controls.Add(this.btnAdvancedSearch);
@@ -467,9 +464,9 @@ namespace Library.Template.MVVM
         public Button btnConfirmOrderBy;
         public Label lblTitleAdvancedSearch;
         public Label lblTitleOrderBy;
+        private ToolTip toolTip;
         public RadioButton optDescending;
         public RadioButton optAscending;
-        private ToolTip toolTip;
 
 
     }

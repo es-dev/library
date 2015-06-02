@@ -34,19 +34,23 @@ namespace Library.Template.Controls
             this.editControl = new Library.Controls.TextProgress();
             this.SuspendLayout();
             // 
+            // editLabel
+            // 
+            this.editLabel.TabIndex = 999;
+            // 
             // editControl
             // 
             this.editControl.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Bottom) 
             | Gizmox.WebGUI.Forms.AnchorStyles.Left) 
             | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
             this.editControl.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
-            this.editControl.BackColor = System.Drawing.Color.DimGray;
+            this.editControl.BackColor = System.Drawing.Color.Transparent;
             this.editControl.Location = new System.Drawing.Point(100, 0);
             this.editControl.Mask = "---";
             this.editControl.Name = "editControl";
             this.editControl.ReadOnly = false;
             this.editControl.Size = new System.Drawing.Size(350, 30);
-            this.editControl.TabIndex = 3;
+            this.editControl.TabIndex = 0;
             this.editControl.Text = null;
             this.editControl.Value = null;
             // 

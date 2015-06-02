@@ -34,6 +34,10 @@ namespace Library.Template.Controls
             this.editControl = new Library.Controls.TimeIntervals();
             this.SuspendLayout();
             // 
+            // editLabel
+            // 
+            this.editLabel.TabIndex = 999;
+            // 
             // editControl
             // 
             this.editControl.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Bottom) 
@@ -54,10 +58,10 @@ namespace Library.Template.Controls
             this.editControl.Size = new System.Drawing.Size(350, 30);
             this.editControl.StartInterval = System.TimeSpan.Parse("07:00:00");
             this.editControl.TabIndex = 0;
-            this.editControl.Text = ":";
+            this.editControl.Text = null;
             this.editControl.Value = null;
             // 
-            // TemplateEditOra
+            // TemplateEditTime
             // 
             this.Controls.Add(this.editControl);
             this.Size = new System.Drawing.Size(481, 32);

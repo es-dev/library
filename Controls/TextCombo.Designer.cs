@@ -60,7 +60,7 @@ namespace Library.Controls
             this.btnCombo.Location = new System.Drawing.Point(305, 4);
             this.btnCombo.Name = "btnCombo";
             this.btnCombo.Size = new System.Drawing.Size(24, 24);
-            this.btnCombo.TabIndex = 1;
+            this.btnCombo.TabIndex = 999;
             this.btnCombo.TabStop = false;
             this.btnCombo.Text = "...";
             this.toolTip.SetToolTip(this.btnCombo, "Fai clic per selezionare una voce dall\'archivio dati...");

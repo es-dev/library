@@ -55,7 +55,7 @@ namespace Library.Controls
             this.editProgressBar.Location = new System.Drawing.Point(96, 1);
             this.editProgressBar.Name = "editProgressBar";
             this.editProgressBar.Size = new System.Drawing.Size(242, 28);
-            this.editProgressBar.TabIndex = 1;
+            this.editProgressBar.TabIndex = 999;
             // 
             // TextProgress
             // 

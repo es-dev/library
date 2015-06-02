@@ -34,6 +34,10 @@ namespace Library.Template.Controls
             this.editControl = new Library.Controls.TextDropDown();
             this.SuspendLayout();
             // 
+            // editLabel
+            // 
+            this.editLabel.TabIndex = 999;
+            // 
             // editControl
             // 
             this.editControl.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Bottom) 

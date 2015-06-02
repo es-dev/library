@@ -138,13 +138,7 @@
   <data name="btnNext.BackgroundImage" xml:space="preserve">
     <value>right_arrow.png</value>
   </data>
-  <data name="btnCancelAdvancedSearch.Image" xml:space="preserve">
-    <value>close24.png</value>
-  </data>
   <data name="btnCloseAdvancedSearch.BackgroundImage" xml:space="preserve">
     <value>back24.png</value>
-  </data>
-  <data name="btnConfirmAdvancedSearch.Image" xml:space="preserve">
-    <value>confirm24.png</value>
   </data>
 </root>

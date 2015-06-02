@@ -35,6 +35,10 @@ namespace Library.Template.Controls
             this.editControl = new Library.Controls.TextBox();
             this.SuspendLayout();
             // 
+            // editLabel
+            // 
+            this.editLabel.TabIndex = 999;
+            // 
             // editControl
             // 
             this.editControl.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Bottom) 
@@ -42,7 +46,7 @@ namespace Library.Template.Controls
             | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
             this.editControl.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
             this.editControl.BackColor = System.Drawing.Color.Transparent;
-            this.editControl.Behavior = TypeBehavior.Text;
+            this.editControl.Behavior = Library.Code.TypeBehavior.Text;
             this.editControl.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editControl.Location = new System.Drawing.Point(100, 0);
             this.editControl.Mask = "---";

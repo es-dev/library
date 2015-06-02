@@ -37,6 +37,7 @@ namespace Library.Template.Controls
             // 
             // editLabel
             // 
+            this.editLabel.TabIndex = 999;
             this.editLabel.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             // 
             // editControl
@@ -46,18 +47,19 @@ namespace Library.Template.Controls
             | Gizmox.WebGUI.Forms.AnchorStyles.Right)));
             this.editControl.AutoValidate = Gizmox.WebGUI.Forms.AutoValidate.EnablePreventFocusChange;
             this.editControl.BackColor = System.Drawing.Color.Transparent;
+            this.editControl.Description = null;
             this.editControl.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editControl.Location = new System.Drawing.Point(100, 0);
             this.editControl.Mask = "---";
             this.editControl.Name = "editControl";
             this.editControl.ReadOnly = false;
             this.editControl.Size = new System.Drawing.Size(350, 30);
-            this.editControl.State = TypeState.None;
+            this.editControl.State = Library.Code.TypeState.None;
             this.editControl.TabIndex = 0;
             this.editControl.Text = null;
             this.editControl.Value = null;
             // 
-            // TemplateEditStato
+            // TemplateEditState
             // 
             this.Controls.Add(this.editControl);
             this.Text = "";

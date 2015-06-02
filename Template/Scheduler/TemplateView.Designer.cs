@@ -431,7 +431,6 @@ namespace Library.Template.Scheduler
             this.btnCancelAdvancedSearch.CustomStyle = "F";
             this.btnCancelAdvancedSearch.FlatStyle = Gizmox.WebGUI.Forms.FlatStyle.Flat;
             this.btnCancelAdvancedSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelAdvancedSearch.Image = new Gizmox.WebGUI.Common.Resources.ImageResourceHandle(resources.GetString("btnCancelAdvancedSearch.Image"));
             this.btnCancelAdvancedSearch.Location = new System.Drawing.Point(132, 208);
             this.btnCancelAdvancedSearch.Name = "btnCancelAdvancedSearch";
             this.btnCancelAdvancedSearch.Size = new System.Drawing.Size(158, 30);
@@ -462,7 +461,6 @@ namespace Library.Template.Scheduler
             this.btnConfirmAdvancedSearch.CustomStyle = "F";
             this.btnConfirmAdvancedSearch.FlatStyle = Gizmox.WebGUI.Forms.FlatStyle.Flat;
             this.btnConfirmAdvancedSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmAdvancedSearch.Image = new Gizmox.WebGUI.Common.Resources.ImageResourceHandle(resources.GetString("btnConfirmAdvancedSearch.Image"));
             this.btnConfirmAdvancedSearch.Location = new System.Drawing.Point(298, 208);
             this.btnConfirmAdvancedSearch.Name = "btnConfirmAdvancedSearch";
             this.btnConfirmAdvancedSearch.Size = new System.Drawing.Size(122, 30);
@@ -482,7 +480,7 @@ namespace Library.Template.Scheduler
             this.panelAdvancedSearch.Controls.Add(this.btnCancelAdvancedSearch);
             this.panelAdvancedSearch.Controls.Add(this.btnCloseAdvancedSearch);
             this.panelAdvancedSearch.Controls.Add(this.btnConfirmAdvancedSearch);
-            this.panelAdvancedSearch.Location = new System.Drawing.Point(424, 67);
+            this.panelAdvancedSearch.Location = new System.Drawing.Point(418, 66);
             this.panelAdvancedSearch.Name = "panelAdvancedSearch";
             this.panelAdvancedSearch.Size = new System.Drawing.Size(433, 249);
             this.panelAdvancedSearch.TabIndex = 13;

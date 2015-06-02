@@ -37,6 +37,7 @@ namespace Library.Template.Controls
             // 
             // editLabel
             // 
+            this.editLabel.TabIndex = 999;
             this.editLabel.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             // 
             // editControl
@@ -52,12 +53,13 @@ namespace Library.Template.Controls
             this.editControl.Name = "editControl";
             this.editControl.ReadOnly = false;
             this.editControl.Size = new System.Drawing.Size(350, 30);
-            this.editControl.TypeReport = TypeReport.None;
             this.editControl.TabIndex = 0;
             this.editControl.Text = null;
+            this.editControl.TypeReport = Library.Code.TypeReport.None;
+            this.editControl.Url = null;
             this.editControl.Value = null;
             // 
-            // TemplateEditStato
+            // TemplateEditLink
             // 
             this.Controls.Add(this.editControl);
             this.Text = "";

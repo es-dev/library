@@ -34,6 +34,10 @@ namespace Library.Template.Controls
             this.editControl = new Library.Controls.TextCountry();
             this.SuspendLayout();
             // 
+            // editLabel
+            // 
+            this.editLabel.TabIndex = 999;
+            // 
             // editControl
             // 
             this.editControl.Anchor = ((Gizmox.WebGUI.Forms.AnchorStyles)((((Gizmox.WebGUI.Forms.AnchorStyles.Top | Gizmox.WebGUI.Forms.AnchorStyles.Bottom) 
@@ -50,7 +54,7 @@ namespace Library.Template.Controls
             this.editControl.Text = null;
             this.editControl.Value = null;
             // 
-            // TemplateEditComuneProvincia
+            // TemplateEditCountry
             // 
             this.Controls.Add(this.editControl);
             this.Text = "";
