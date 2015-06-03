@@ -216,21 +216,24 @@ namespace Library.Controls
         {
             try
             {
-                var splits = text.Split(new string[] {"/"}, StringSplitOptions.None);
-                if (splits.Length >= 1)
+                if (text != null)
                 {
-                    string day = splits[0];
-                    editDay.Text = day;
-                }
-                if (splits.Length >= 2)
-                {
-                    string month = splits[1];
-                    editMonth.Text = month;
-                }
-                if (splits.Length >= 3)
-                {
-                    string year = splits[2];
-                    editYear.Text = year;
+                    var splits = text.Split(new string[] { "/" }, StringSplitOptions.None);
+                    if (splits.Length >= 1)
+                    {
+                        string day = splits[0];
+                        editDay.Text = day;
+                    }
+                    if (splits.Length >= 2)
+                    {
+                        string month = splits[1];
+                        editMonth.Text = month;
+                    }
+                    if (splits.Length >= 3)
+                    {
+                        string year = splits[2];
+                        editYear.Text = year;
+                    }
                 }
             }
             catch (Exception ex)

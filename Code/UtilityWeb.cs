@@ -462,7 +462,7 @@ namespace Library.Code
             {
                 if (controls != null)
                 {
-                    foreach (Control control in controls)
+                    foreach(Control control in controls)
                     {
                         SetTooltipText(control, toolTip);
                         if (control.HasChildren)
@@ -488,26 +488,13 @@ namespace Library.Code
                         var text = control.Text;
                         if (text != null && text.Length > 0)
                         {
-                            var chars = text.ToCharArray().Count();
-                            var charsVisible = chars;
-                            var width = control.Width;
-                            var height = control.Height;
-                            var dW = control.Font.SizeInPoints;
-                            var dH = dW;
-                            if (dW != 0)
+                            var font = control.Font;
+                            var graphics = GetGraphics(font);
+                            var sizeControl = control.Size;
+                            bool overtext = OverText(graphics, text, font, sizeControl);
+                            if (overtext)
                             {
-                                var rows = (int)(height / dH);
-                                var cols = (int)(width / dW);
-                                charsVisible = rows * cols;
-                            }
-
-                            if (charsVisible < chars)
-                            {
-                                var length = charsVisible - 3;
-                                if (length <= 0)
-                                    length = 1;
-                                var textEllippsis = text.Substring(0, length) + "...";
-                                control.Text = textEllippsis;
+                                control.Text = GetTextEllipsis(graphics, text, font, sizeControl);
                                 tooltip.SetToolTip(control, text);
                             }
                         }
@@ -518,6 +505,91 @@ namespace Library.Code
             {
                 UtilityError.Write(ex);
             }
+        }
+
+        private static bool OverText(Graphics graphics, string text, System.Drawing.Font font, System.Drawing.Size sizeControl)
+        {
+            try
+            {
+                var sizeLine = graphics.MeasureString(text, font);
+                if (IsGreaterDimension(sizeLine.Width, sizeControl.Width) || IsGreaterDimension(sizeLine.Height, sizeControl.Height))
+                {
+                    var sizeText = graphics.MeasureString(text, font, sizeControl.Width);
+                    if (IsGreaterDimension(sizeText.Height, sizeControl.Height))
+                        return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
+
+        }
+
+        private static Graphics GetGraphics(System.Drawing.Font font)
+        {
+            try
+            {
+                var label = new System.Windows.Forms.Label();
+                label.Font = font;
+                var graphics = label.CreateGraphics();
+                return graphics;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+            
+        }
+
+        private static bool IsGreaterDimension(float great, float less)
+        {
+            try
+            {
+                var TOL = 2;
+                var greater = (great > less + TOL);
+                return greater;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
+        }
+
+        private static string GetTextEllipsis(Graphics graphics, string text, Font font, Size sizeControl)
+        {
+            try
+            {
+                string textEllipsis = null;
+                string textLine = null;
+                var chars = text.ToCharArray();
+                foreach (var _char in chars)
+                {
+                    textLine += _char;
+                    bool overtext = OverText(graphics, textLine, font, sizeControl);
+                    if (overtext)
+                        break;
+                    else
+                        textEllipsis = textLine;
+                }
+
+                if (textEllipsis == null)
+                    textEllipsis = text;
+
+                var length = textEllipsis.Length;
+                if (length > 3)
+                    textEllipsis = textEllipsis.Substring(0, length - 3) + "...";
+                return textEllipsis;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
         }
     }
 
