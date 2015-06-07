@@ -491,7 +491,7 @@ namespace Library.Code
                             var font = control.Font;
                             var graphics = GetGraphics(font);
                             var sizeControl = control.Size;
-                            bool overtext = OverText(graphics, text, font, sizeControl);
+                            bool overtext = IsOverText(graphics, text, font, sizeControl);
                             if (overtext)
                             {
                                 control.Text = GetTextEllipsis(graphics, text, font, sizeControl);
@@ -507,18 +507,23 @@ namespace Library.Code
             }
         }
 
-        private static bool OverText(Graphics graphics, string text, System.Drawing.Font font, System.Drawing.Size sizeControl)
+        private static bool IsOverText(Graphics graphics, string text, System.Drawing.Font font, System.Drawing.Size sizeControl)
         {
             try
             {
-                var sizeLine = graphics.MeasureString(text, font);
-                if (IsGreaterDimension(sizeLine.Width, sizeControl.Width) || IsGreaterDimension(sizeLine.Height, sizeControl.Height))
+                if (text != null && font != null && sizeControl != null && graphics!=null)
                 {
-                    var sizeText = graphics.MeasureString(text, font, sizeControl.Width);
-                    if (IsGreaterDimension(sizeText.Height, sizeControl.Height))
-                        return true;
+                    var sizeLine = graphics.MeasureString(text, font);
+                    if (sizeLine != null)
+                    {
+                        if (IsGreaterDimension(sizeLine.Width, sizeControl.Width) || IsGreaterDimension(sizeLine.Height, sizeControl.Height))
+                        {
+                            var sizeText = graphics.MeasureString(text, font, sizeControl.Width);
+                            if (IsGreaterDimension(sizeText.Height, sizeControl.Height))
+                                return true;
+                        }
+                    }
                 }
-                return false;
             }
             catch (Exception ex)
             {
@@ -570,7 +575,7 @@ namespace Library.Code
                 foreach (var _char in chars)
                 {
                     textLine += _char;
-                    bool overtext = OverText(graphics, textLine, font, sizeControl);
+                    bool overtext = IsOverText(graphics, textLine, font, sizeControl);
                     if (overtext)
                         break;
                     else
