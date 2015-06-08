@@ -31,8 +31,6 @@ namespace Library.WorkForceService
             {
                 base.Init();
                 btnDelete.Visible = false;
-                //btnSave.Visible = false;
-                //btnUpdateCancel.Visible = false;
             }
             catch (Exception ex)
             {
@@ -61,10 +59,11 @@ namespace Library.WorkForceService
                 if(model!=null)
                 {
                     var obj = (IWorkFlow)model;
-                    editState.Value = obj.State;
-                    editLastWork.Value = obj.LastWork.ToString("dd/MM/yyyy HH:mm:ss");
-                    editNextWork.Value = obj.LastWork.Add(obj.Interval).ToString("dd/MM/yyyy HH:mm:ss");
-                    BindView(obj.WorkProcesses);
+                    editStato.Value = obj.State;
+                    editUltimoControllo.Value = obj.LastWork.ToString("dd/MM/yyyy HH:mm:ss");
+                    editProssimoControllo.Value = obj.LastWork.Add(obj.Interval).ToString("dd/MM/yyyy HH:mm:ss");
+                    BindViewWorkProcesses(obj.WorkProcesses);
+                    BindViewWorkLogs(obj.WorkProcesses);
                 }
             }
             catch (Exception ex)
@@ -73,7 +72,86 @@ namespace Library.WorkForceService
             }
         }
 
-        private void BindView(IList<WorkProcess> workProcesses)
+        private void BindViewWorkLogs(IList<WorkProcess> workProcesses)
+        {
+            try
+            {
+                if (workProcesses != null && workProcesses.Count >= 1)
+                {
+                    var logs=GetWorkLogs(workProcesses);
+                    if (logs != null && logs.Count >= 1)
+                    {
+                        foreach (var log in logs)
+                        {
+                            var exist = ((from ListViewItem q in editLogs.Items where IsEqual((WorkLog)q.Tag, log) select q).Count() >= 1);
+                            if (!exist)
+                            {
+                                var item = new ListViewItem();
+                                item.SubItems.Add(log.Date.ToString());
+                                item.SubItems.Add(log.Action);
+                                item.SubItems.Add(log.Description);
+                                item.SubItems.Add(log.State);
+                                item.Tag = log;
+
+                                editLogs.Items.Insert(0, item);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        private bool IsEqual(WorkLog tagLog, WorkLog log)
+        {
+            try
+            {
+                if(tagLog!=null)
+                {
+                    var equal = (tagLog.Date == log.Date && tagLog.Action == log.Action);
+                    return equal;
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
+        }
+
+        private static IList<WorkLog> GetWorkLogs(IList<WorkProcess> workProcesses)
+        {
+            try
+            {
+                var logs = new List<WorkLog>();
+                foreach (var workProcess in workProcesses)
+                {
+                    var workAction = workProcess.WorkAction;
+                    if (workAction != null)
+                    {
+                        var logsWorkAction = workAction.Logs;
+                        if (logsWorkAction != null && logsWorkAction.Count >= 1)
+                        {
+                            logs.AddRange(logsWorkAction);
+                        }
+                    }
+                }
+                var workLogs = (from q in logs orderby q.Date ascending select q).Take(20).ToList();
+
+                return workLogs;
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return null;
+            
+        }
+
+        private void BindViewWorkProcesses(IList<WorkProcess> workProcesses)
         {
             try
             {
@@ -92,11 +170,28 @@ namespace Library.WorkForceService
             }
         }
 
+        public override void BindModel(object model)
+        {
+            try
+            {
+                var obj = (IWorkFlow)model;
+                var enabled = UtilityValidation.GetBoolean(editStato.Value);
+                if (enabled)
+                    obj.Start();
+                else
+                    obj.Stop();
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
         private ListViewItem GetItem(WorkProcess workProcess)
         {
             try
             {
-                var item = (from ListViewItem q in editWorkProcesses.Items where q.Tag != null && GetWorkProcess(q) == workProcess select q).FirstOrDefault();
+                var item = (from ListViewItem q in editProcessi.Items where q.Tag != null && GetWorkProcess(q) == workProcess select q).FirstOrDefault();
                 return item;
             }
             catch (Exception ex)
@@ -129,18 +224,16 @@ namespace Library.WorkForceService
                     item = new ListViewItem();
                     item.Tag = workProcess;
                     item.SubItems.Add(workProcess.Name);
-                    item.SubItems.Add(workProcess.WorkAction.Name);
+                    item.SubItems.Add(workProcess.WorkAction.Description);
                     item.SubItems.Add(workProcess.TimeStart.ToString());
                     item.SubItems.Add(workProcess.Interval.ToString());
-                    item.SubItems.Add(workProcess.State.ToString());
 
-                    editWorkProcesses.Items.Add(item);                    
+                    editProcessi.Items.Add(item);                    
                 }
                 else
                 {
                     item.SubItems[clmLastRunning.Index].Text = workProcess.TimeStart.ToString();
                     item.SubItems[clmInterval.Index].Text  = workProcess.Interval.ToString();
-                    item.SubItems[clmState.Index].Text= workProcess.State.ToString();
                 }
             }
             catch (Exception ex)

@@ -31,7 +31,6 @@ namespace Library.Code
                             var typeWorkActions = (from q in types where q.GetInterface("Library.Interfaces.IWorkAction") != null select q).ToList();
                             if (typeWorkActions != null)
                             {
-                                
                                 foreach (var typeWorkAction in typeWorkActions)
                                 {
                                     if (typeWorkAction != null)
@@ -118,8 +117,26 @@ namespace Library.Code
         {
             get
             {
+                interval = GetInterval();
                 return interval;
             }
+        }
+
+        private TimeSpan GetInterval()
+        {
+            try
+            {
+                if (workAction != null)
+                {
+                    var interval = workAction.Interval;
+                    return interval;
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return new TimeSpan(0, 5, 0);
         }
 
         private HttpContext context = null;

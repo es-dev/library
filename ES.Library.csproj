@@ -233,7 +233,9 @@
     <Reference Include="System">
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Core">
       <Private>True</Private>
     </Reference>
@@ -273,6 +275,7 @@
     <Compile Include="Code\UtilityJQuery.cs" />
     <Compile Include="Code\UtilityMessage.cs" />
     <Compile Include="Code\UtilityPOCO.cs" />
+    <Compile Include="Code\UtilityWorkAction.cs" />
     <Compile Include="Code\UtilityWorkProcess.cs" />
     <Compile Include="Code\UtilityReport.cs" />
     <Compile Include="Code\UtilitySpace.cs" />

@@ -8,12 +8,16 @@ using System.Web;
 
 namespace Library.Interfaces
 {
-    public interface IWorkProcess : IWorkAction
+    public interface IWorkProcess 
     {
+        string Name { get; }
+        TimeSpan Interval { get; }
+        HttpContext Context { get; set; }
         TypeProcess State { get; }
         bool Timeout { get; }
         DateTime TimeStart { get; }
         DateTime TimeStop { get; }
+        void Start();
         void Stop();
         IWorkAction WorkAction { get; }
     }
