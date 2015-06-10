@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Library.Code
 {
@@ -17,10 +18,11 @@ namespace Library.Code
                 var pathErrorLog = GetPathErrorLog();
                 if (!Directory.Exists(pathErrorLog))
                     Directory.CreateDirectory(pathErrorLog);
-                string pathFileErrorLog = pathErrorLog + "\\" + DateTime.Today.ToString("ddMMyyyy") + ".txt";
+
+                var pathFileErrorLog = pathErrorLog + "\\" + DateTime.Today.ToString("ddMMyyyy") + ".txt";
                 if (!File.Exists(pathFileErrorLog))
                 {
-                    Stream stream = File.Create(pathFileErrorLog);
+                    var stream = File.Create(pathFileErrorLog);
                     stream.Close();
                 }
                 var urlSource = GetUrlSourceError();
@@ -98,9 +100,22 @@ namespace Library.Code
         {
             try
             {
-                var pathRoot = System.Web.HttpContext.Current.Request.PhysicalApplicationPath;
-                var pathErrorLog = pathRoot + "ErrorLog";
-                return pathErrorLog;
+                string pathRoot = null;
+                var context = HttpContext.Current;
+                if (context != null)
+                {
+                    var request = context.Request;
+                    if (request != null)
+                        pathRoot = request.PhysicalApplicationPath;
+                }
+                if (pathRoot == null)
+                    pathRoot = System.AppDomain.CurrentDomain.BaseDirectory;
+          
+                if (pathRoot != null)
+                {
+                    var pathErrorLog = pathRoot + "ErrorLog";
+                    return pathErrorLog;
+                }
             }
             catch (Exception)
             {

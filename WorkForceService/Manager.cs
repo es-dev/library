@@ -43,7 +43,7 @@ namespace Library.WorkForceService
             try
             {
                 infoSubtitle.Text = "Enterprise Manager";
-                infoSubtitleImage.Image = "Images.dashboard.account.png";
+                infoSubtitleImage.Image = "Images.wfsmanager.png";
                 infoTitle.Text = "WORK FORCE MANAGER";
             }
             catch (Exception ex)
