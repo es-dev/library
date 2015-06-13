@@ -31,6 +31,8 @@ namespace Library.WorkForceService
             {
                 base.Init();
                 btnDelete.Visible = false;
+                btnSave.Visible = false;
+                btnUpdateCancel.Visible = false;
             }
             catch (Exception ex)
             {
@@ -60,8 +62,8 @@ namespace Library.WorkForceService
                 {
                     var obj = (IWorkFlow)model;
                     editStato.Value = obj.State;
-                    editUltimoControllo.Value = obj.LastWork.ToString("dd/MM/yyyy HH:mm:ss");
-                    editProssimoControllo.Value = obj.LastWork.Add(obj.Interval).ToString("dd/MM/yyyy HH:mm:ss");
+                    editUltimoControllo.Value = (obj.LastWork>DateTime.MinValue? obj.LastWork.ToString("dd/MM/yyyy HH:mm:ss"): "In attesa di calcolo...");
+                    editProssimoControllo.Value = (obj.LastWork>DateTime.MinValue? obj.LastWork.Add(obj.Interval).ToString("dd/MM/yyyy HH:mm:ss"):"In attesa di calcolo...");
                     BindViewWorkProcesses(obj.WorkProcesses);
                     BindViewWorkLogs(obj.WorkProcesses);
                 }
