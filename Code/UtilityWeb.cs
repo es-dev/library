@@ -324,6 +324,63 @@ namespace Library.Code
                 var parentForm = GetParentForm(owner);
                 if (parentForm != null)
                 {
+                    var jqForm = new Form();
+                    jqForm.FormBorderStyle = FormBorderStyle.None;
+                    jqForm.Size = control.Size;
+                    control.Top = 0;
+                    control.Left = 0;
+                    control.Visible = true;
+                    if (position == JQTypePosition.Center)
+                    {
+                        jqForm.StartPosition = FormStartPosition.CenterScreen;
+                        jqForm.Top = (parentForm.Height - control.Height) / 2;
+                        jqForm.Left = (parentForm.Width - control.Width) / 2;
+                    }
+                    else if (position == JQTypePosition.Docked)
+                    {
+                        jqForm.StartPosition = FormStartPosition.Manual;
+                        var location = GetLocation(owner);
+                        int left = location.X;
+                        if (left + control.Width > parentForm.Width)
+                            left = location.X - (control.Width - owner.Width);
+                        int top = location.Y + owner.Height;
+                        if (top + control.Height > parentForm.Height)
+                            top = location.Y - control.Height;
+                        jqForm.Top = top;
+                        jqForm.Left = left;
+                    }
+
+                    jqForm.Controls.Add(control);
+                    jqForm.ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        public static void RemoveJQControl(Control control)
+        {
+            try
+            {
+                var jqForm = GetParentForm(control);
+                if (jqForm != null)
+                    jqForm.Close();
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+        }
+
+        public static void ShowJQControl(Control owner, Control control, JQTypePosition position = JQTypePosition.Center)
+        {
+            try
+            {
+                var parentForm = GetParentForm(owner);
+                if (parentForm != null)
+                {
                     var jqContainer = GetJQContainer(parentForm);
                     if (jqContainer != null)
                     {
@@ -366,7 +423,7 @@ namespace Library.Code
             }
         }
 
-        public static void RemoveJQControl(Control control)
+        public static void HideJQControl(Control control)
         {
             try
             {

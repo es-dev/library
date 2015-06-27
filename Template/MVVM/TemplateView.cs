@@ -577,7 +577,7 @@ namespace Library.Template.MVVM
         {
             try
             {
-                UtilityWeb.AddJQControl(btnAdvancedSearch, panelAdvancedSearch, JQTypePosition.Docked);
+                UtilityWeb.ShowJQControl(btnAdvancedSearch, panelAdvancedSearch, JQTypePosition.Docked);
 
             }
             catch (Exception ex)
@@ -590,7 +590,7 @@ namespace Library.Template.MVVM
         {
             try
             {
-                UtilityWeb.RemoveJQControl(panelAdvancedSearch);
+                UtilityWeb.HideJQControl(panelAdvancedSearch);
             }
             catch (Exception ex)
             {
@@ -604,7 +604,7 @@ namespace Library.Template.MVVM
             {
                 SetAdvancedSearch();
                 RefreshItems();
-                UtilityWeb.RemoveJQControl(panelAdvancedSearch);
+                UtilityWeb.HideJQControl(panelAdvancedSearch);
             }
             catch (Exception ex)
             {
@@ -634,7 +634,7 @@ namespace Library.Template.MVVM
                 ClearAdvancedSearch();
                 RefreshItems();
                 SetAdvancedSearch();
-                UtilityWeb.RemoveJQControl(panelAdvancedSearch);
+                UtilityWeb.HideJQControl(panelAdvancedSearch);
             }
             catch (Exception ex)
             {
@@ -685,7 +685,7 @@ namespace Library.Template.MVVM
         {
             try
             {
-                UtilityWeb.RemoveJQControl(panelOrderBy);
+                UtilityWeb.HideJQControl(panelOrderBy);
             }
             catch (Exception ex)
             {
@@ -699,7 +699,7 @@ namespace Library.Template.MVVM
             {
                 SetOrderBy();
                 RefreshItems();
-                UtilityWeb.RemoveJQControl(panelOrderBy);
+                UtilityWeb.HideJQControl(panelOrderBy);
             }
             catch (Exception ex)
             {
@@ -730,7 +730,7 @@ namespace Library.Template.MVVM
                 optAscending.Checked = true;
                 RefreshItems();
                 SetOrderBy();
-                UtilityWeb.RemoveJQControl(panelOrderBy);
+                UtilityWeb.HideJQControl(panelOrderBy);
             }
             catch (Exception ex)
             {
@@ -755,7 +755,7 @@ namespace Library.Template.MVVM
         {
             try
             {
-               UtilityWeb.AddJQControl(btnOrderBy, panelOrderBy, JQTypePosition.Docked);
+               UtilityWeb.ShowJQControl(btnOrderBy, panelOrderBy, JQTypePosition.Docked);
             }
             catch (Exception ex)
             {

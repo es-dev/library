@@ -543,7 +543,7 @@ namespace Library.Template.MVVM
             {
                 if (viewModel != null && model != null)
                 {
-                    bool performed = viewModel.Delete(model);  //todo: inserire conferma eliminazione + inserire proprietà deleting
+                    bool performed = viewModel.Delete(model);  
                     if (performed)
                     {
                         editing = false;
