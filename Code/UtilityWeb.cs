@@ -157,17 +157,30 @@ namespace Library.Code
             {
                 if (context != null)
                 {
-                    var url = context.Request.Url.AbsoluteUri;
-                    if (url != null && url.Length > 0)
+                    var request = context.Request;
+                    if (request != null)
                     {
-                        var pos = url.IndexOf("Route");
-                        if (pos > 0)
+                        var uri = request.Url;
+                        if (uri != null)
                         {
-                            var rootUrl = url.Substring(0, pos - 1);
-                            return rootUrl;
+                            var url = uri.AbsoluteUri;
+                            if (url != null && url.Length > 0)
+                            {
+                                var pos = url.IndexOf("Route");
+                                if (pos > 0)
+                                {
+                                    var rootUrl = url.Substring(0, pos - 1);
+                                    return rootUrl;
+                                }
+                                else
+                                {
+                                    var relativePath = uri.PathAndQuery;
+                                    if (relativePath != null)
+                                        url = url.Replace(relativePath, "");
+                                    return url;
+                                }
+                            }
                         }
-                        else
-                            return url;
                     }
                 }
             }

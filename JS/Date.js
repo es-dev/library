@@ -44,7 +44,7 @@
                     }
                     else if (length == 2 && !(e.keyCode in editingKeys)) {
                         $("#$vwgYearId$").focus();
-                        }
+                    }
                     return true;
                 }
             }

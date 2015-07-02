@@ -82,8 +82,6 @@ namespace Library.Controls
                     if (direction == TypeDirection.Horizontal)
                     {
                         panelMessage.Top = (this.Height - panelMessage.Height) / 2;
-                        //panelMessage.Height = 220;
-                        //panelMessage.MinimumSize = new Size(300, 300);
                         panelMessage.Anchor = AnchorStyles.Right | AnchorStyles.Left;
                     }
                     else if (direction == TypeDirection.Vertical)
@@ -93,7 +91,6 @@ namespace Library.Controls
                         panelMessage.Left = margin;
                         panelMessage.Width = this.Width - (margin * 2);
                         panelMessage.Height = this.Height;
-                        //panelMessage.MinimumSize = new Size(300, 300);
                         panelMessage.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Left;
                     }
                 }

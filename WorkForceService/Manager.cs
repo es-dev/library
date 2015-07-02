@@ -129,7 +129,10 @@ namespace Library.WorkForceService
                 {
                     foreach (var log in logs)
                     {
-                        var exist = ((from ListViewItem q in editLogs.Items where q.Tag!=null && ((WorkLog)q.Tag).Date == log.Date && ((WorkLog)q.Tag).Action == log.Action select q).Count() >= 1);
+                        var exist = ((from ListViewItem q in editLogs.Items where q.Tag != null && 
+                                          ((WorkLog)q.Tag).Date == log.Date && 
+                                          ((WorkLog)q.Tag).Action == log.Action && 
+                                          ((WorkLog)q.Tag).Description == log.Description select q).Count() >= 1);
                         if (!exist)
                         {
                             var item = new ListViewItem();

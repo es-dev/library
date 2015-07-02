@@ -10,7 +10,7 @@ namespace Library.Code
 {
     public class UtilityAsync
     {
-        public static void Execute(Action action, Action callback=null, int interval = 250, ResourceHandle icon=null, params Control[] controls)
+        public static void Execute(Action action, Action callback=null, int interval = 1000, ResourceHandle icon=null, params Control[] controls)
         {
             try
             {
@@ -33,9 +33,6 @@ namespace Library.Code
             {
                 try
                 {
-                    timer = new Gizmox.WebGUI.Forms.Timer();
-                    timer.Interval = interval;
-                    timer.Start();
                     this.controls = controls;
                     if(controls!=null)
                     {
@@ -44,6 +41,8 @@ namespace Library.Code
                         if(icon!=null)
                             errorProvider.Icon=icon;
                     }
+                    timer = new Gizmox.WebGUI.Forms.Timer();
+                    timer.Interval = interval;
                 }
                 catch (Exception ex)
                 {
@@ -60,6 +59,7 @@ namespace Library.Code
                         if (controls != null)
                             Editing(true);
                         action.BeginInvoke(new AsyncCallback(Stop), callback);
+                        timer.Start();
                     }
                 }
                 catch (Exception ex)
