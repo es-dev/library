@@ -350,6 +350,12 @@
     <Compile Include="Controls\SwitchButton.Designer.cs">
       <DependentUpon>SwitchButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TextUpload.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TextUpload.Designer.cs">
+      <DependentUpon>TextUpload.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TextProgress.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -459,6 +465,12 @@
     </Compile>
     <Compile Include="Template\Controls\TemplateEditCodiceFiscale.Designer.cs">
       <DependentUpon>TemplateEditCodiceFiscale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Template\Controls\TemplateEditUpload.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Template\Controls\TemplateEditUpload.designer.cs">
+      <DependentUpon>TemplateEditUpload.cs</DependentUpon>
     </Compile>
     <Compile Include="Template\Controls\TemplateEditCombo.cs">
       <SubType>UserControl</SubType>
@@ -675,6 +687,9 @@
     <EmbeddedResource Include="Controls\SwitchButton.resx">
       <DependentUpon>SwitchButton.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TextUpload.resx">
+      <DependentUpon>TextUpload.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\TextProgress.resx">
       <DependentUpon>TextProgress.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -727,6 +742,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditCodiceFiscale.resx">
       <DependentUpon>TemplateEditCodiceFiscale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Template\Controls\TemplateEditUpload.resx">
+      <DependentUpon>TemplateEditUpload.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Template\Controls\TemplateEditCombo.resx">
       <DependentUpon>TemplateEditCombo.cs</DependentUpon>

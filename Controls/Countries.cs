@@ -201,29 +201,29 @@ namespace Library.Controls
                 }
             }
 
-            private string codeDescription = null;
-            public string CodeDescription
+            private string descriptionCode = null;
+            public string DescriptionCode
             {
                 get
                 {
-                    codeDescription = GetCodeDescription();
-                    return codeDescription;
+                    descriptionCode = GetDescriptionCode();
+                    return descriptionCode;
                 }
                 set
                 {
-                    codeDescription = value;
-                    SetCodeDescription(codeDescription);
+                    descriptionCode = value;
+                    SetDescriptionCode(descriptionCode);
                 }
             }
 
-            private void SetCodeDescription(string codeDescription)
+            private void SetDescriptionCode(string descriptionCode)
             {
                 try
                 {
-                    if (codeDescription != null && codeDescription.Length > 0)
+                    if (descriptionCode != null && descriptionCode.Length > 0)
                     {
-                        description = GetDescription(codeDescription);
-                        code = GetCode(codeDescription);
+                        description = GetDescription(descriptionCode);
+                        code = GetCode(descriptionCode);
                     }
                 }
                 catch (Exception ex)
@@ -232,14 +232,14 @@ namespace Library.Controls
                 }
             }
 
-            private string GetCodeDescription()
+            private string GetDescriptionCode()
             {
                 try
                 {
-                    var codeDescription = description;
+                    var descriptionCode = description;
                     if(code!=null && code.Length>0)
-                        codeDescription += " (" + code + ")";
-                    return codeDescription;
+                        descriptionCode += " (" + code + ")";
+                    return descriptionCode;
                 }
                 catch (Exception ex)
                 {
@@ -248,11 +248,11 @@ namespace Library.Controls
                 return null;
             }
 
-            public static string GetDescription(string codeDescription)
+            public static string GetDescription(string descriptionCode)
             {
                 try
                 {
-                    var splits = codeDescription.Split(new string[] { "(" }, StringSplitOptions.RemoveEmptyEntries);
+                    var splits = descriptionCode.Split(new string[] { "(" }, StringSplitOptions.RemoveEmptyEntries);
                     if (splits.Length >= 1)
                     {
                         var description = splits[0].Trim();
@@ -266,11 +266,11 @@ namespace Library.Controls
                 return null;
             }
 
-            public static string GetCode(string codeDescription)
+            public static string GetCode(string descriptionCode)
             {
                 try
                 {
-                    var splits = codeDescription.Split(new string[] { "(" }, StringSplitOptions.RemoveEmptyEntries);
+                    var splits = descriptionCode.Split(new string[] { "(" }, StringSplitOptions.RemoveEmptyEntries);
                     if (splits.Length >= 2)
                     {
                         var code = splits[1].Replace(")", "").Trim();
@@ -324,8 +324,8 @@ namespace Library.Controls
                         var splits = text.Split(new string[] { separator }, StringSplitOptions.RemoveEmptyEntries);
                         if (splits.Length >= 1)
                         {
-                            codeDescription = splits[0];
-                            SetCodeDescription(codeDescription);
+                            descriptionCode = splits[0];
+                            SetDescriptionCode(descriptionCode);
                         }
                         if (splits.Length >= 2)
                             county = splits[1];
@@ -337,13 +337,13 @@ namespace Library.Controls
                 }
             }
 
-            public City(string codeDescription, string county)
+            public City(string descriptionCode, string county)
             {
                 try
                 {
-                    this.codeDescription = codeDescription;
+                    this.descriptionCode = descriptionCode;
                     this.county = county;
-                    SetCodeDescription(codeDescription);
+                    SetDescriptionCode(descriptionCode);
 
                 }
                 catch (Exception ex)
@@ -370,8 +370,13 @@ namespace Library.Controls
             {
                 try
                 {
-                    var codeDescription = GetCodeDescription();
-                    var text = codeDescription + separator + county;
+                    string text = null;
+                    var descriptionCode = GetDescriptionCode();
+                    if (descriptionCode != null && descriptionCode.Length > 0)
+                        text = descriptionCode;
+                    if(county!=null && county.Length>0)
+                        text += separator + county;
+
                     return text;
                 }
                 catch (Exception ex)

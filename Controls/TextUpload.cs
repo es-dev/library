@@ -12,19 +12,21 @@ using Gizmox.WebGUI.Forms;
 using Library.Code;
 using Library.Interfaces;
 using Gizmox.WebGUI.Common.Interfaces;
+using Gizmox.WebGUI.Common.Resources;
+using System.IO;
 
 #endregion
 
 namespace Library.Controls
 {
-    public partial class TextCountry : UserControl, IJQControl, IMaskControl
+    public partial class TextUpload : UserControl, IJQControl, IMaskControl
     {
         private string GetJQScript()
         {
             try
             {
                 var jquery = new UtilityJQuery();
-                var jqscript = jquery.GetCountries(editCity, editCounty, mask);
+                var jqscript = jquery.GetMask(editText, mask);
                 return jqscript;
             }
             catch (Exception ex)
@@ -33,7 +35,7 @@ namespace Library.Controls
             }
             return null;
         }
-
+        
         protected override void Render(IContext objContext, IResponseWriter objWriter, long lngRequestID)
         {
             try
@@ -65,7 +67,7 @@ namespace Library.Controls
 
         }
 
-        public TextCountry()
+        public TextUpload()
         {
             InitializeComponent();
         }
@@ -90,22 +92,20 @@ namespace Library.Controls
         {
             try
             {
-                editCity.ReadOnly = readOnly;
-                btnCombo.Visible = !readOnly;
-                editCounty.ReadOnly = readOnly;
-                toolTip.SetToolTip(editCity, readOnly ? null : "Scrivi le iniziali di un comune e premi il tasto INVIO per avviare la ricerca nell'archivio dati...");
+                editText.ReadOnly = readOnly;
+                btnUpload.Visible = !readOnly;
             }
             catch (Exception ex)
             {
                 UtilityError.Write(ex);
-            }
+            } 
         }
 
         private bool GetReadOnly()
         {
             try
             {
-                var readOnly = editCity.ReadOnly;
+                var readOnly = editText.ReadOnly;
                 return readOnly;
             }
             catch (Exception ex)
@@ -134,9 +134,8 @@ namespace Library.Controls
             try
             {
                 base.BackColor = backColor;
-                editCity.BackColor = backColor;
-                btnCombo.BackColor = backColor;
-                editCounty.BackColor = backColor;
+                editText.BackColor=backColor;
+                btnUpload.BackColor=backColor;
             }
             catch (Exception ex)
             {
@@ -159,38 +158,26 @@ namespace Library.Controls
             }
         }
 
-
         private void SetText(string text)
         {
             try
             {
-                var codeDescription = mask;
-                var county = mask;
-                if (text != null && text.Length > 0)
-                {
-                    var city = new Countries.City(text);
-                    codeDescription = city.DescriptionCode;
-                    county = city.County;
-                }
-                editCity.Text = (codeDescription == null || codeDescription.Length == 0 ? mask : codeDescription);
-                editCounty.Text = (county == null || county.Length == 0 ? mask : county);
+                editText.Text = (text == null || text.Length == 0 ? mask : text);
             }
             catch (Exception ex)
             {
                 UtilityError.Write(ex);
             }
         }
-
+        
         private string GetText()
         {
             try
             {
-                var city = (Countries.City)editCity.Tag;
-                if(city!=null)
-                {
-                    var text = city.ToString();
-                    return text;
-                }
+                var text = editText.Text.Replace(mask,null);
+                if (text != null && text.Length == 0)
+                    text = null;
+                return text;
             }
             catch (Exception ex)
             {
@@ -218,7 +205,7 @@ namespace Library.Controls
         {
             try
             {
-                var value = (Countries.City)editCity.Tag;
+                var value = GetText();
                 return value;
             }
             catch (Exception ex)
@@ -232,12 +219,8 @@ namespace Library.Controls
         {
             try
             {
-                var city = (Countries.City)value;
-                string text = null;
-                if (city != null)
-                    text = city.ToString();
+                var text = (string)value;
                 SetText(text);
-                editCity.Tag = city;
             }
             catch (Exception ex)
             {
@@ -258,20 +241,84 @@ namespace Library.Controls
             }
         }
 
-        private void btnCombo_Click(object sender, EventArgs e)
+        private string repository = null;
+        public string Repository
+        {
+            get
+            {
+                return repository;
+            }
+            set
+            {
+                repository = value;
+            }
+        }
+
+        private string title = null;
+        public string Title
+        {
+            get
+            {
+                return title;
+            }
+            set
+            {
+                title = value;
+            }
+        }
+
+        private string filter = null;
+        public string Filter
+        {
+            get
+            {
+                return filter;
+            }
+            set
+            {
+                filter = value;
+            }
+        }
+
+        private void TextUpload_Click(object sender, EventArgs e)
         {
             try
             {
-                try
-                {
-                    var countries = new Countries(this);
-                    countries.Confirm += Countries_Confirm;
+                openFile.Title = title;
+                openFile.Filter = filter;
+                openFile.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            } 
+        }
 
-                    UtilityWeb.AddJQControl(btnCombo, countries, JQTypePosition.Docked);
-                }
-                catch (Exception ex)
+        public delegate void FileUploadHandler(FileHandle file);
+        public event FileUploadHandler FileUploaded;
+
+        private void openFile_FileOk(object sender, CancelEventArgs e)
+        {
+            try
+            {
+                var file = openFile.File;
+                if (file != null)
                 {
-                    UtilityError.Write(ex);
+                    var pathRoot = UtilityWeb.GetRootPath(Context);
+                    var fileName = file.OriginalFileName.Replace(" ", "_");
+                    if (fileName != null && fileName.Length > 0 && repository != null && repository.Length > 0)
+                    {
+                        var pathRepository = pathRoot + repository;
+                        if (!Directory.Exists(pathRepository))
+                            Directory.CreateDirectory(pathRepository);
+
+                        var pathFileName = pathRepository + @"\" + fileName;
+                        file.SaveAs(pathFileName);
+                        text = fileName;
+                        SetText(text);
+                        if (FileUploaded != null)
+                            FileUploaded(file);
+                    }
                 }
             }
             catch (Exception ex)
@@ -280,45 +327,6 @@ namespace Library.Controls
             }
         }
 
-        public delegate void ConfirmlHanlder(Countries.City value);
-        public event ConfirmlHanlder Confirm;
-
-        void Countries_Confirm(Countries.City value)
-        {
-            try
-            {
-                if (value != null)
-                {
-                    SetValue(value);
-                    if (Confirm != null)
-                        Confirm(value);
-                }
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-        }
-
-
-        private void editCity_EnterKeyDown(object objSender, KeyEventArgs objArgs)
-        {
-            try
-            {
-                if (objArgs.KeyCode == Keys.Enter)
-                {
-                    var search = editCity.Text;
-                    var countries = new Countries(this, search);
-                    countries.Confirm += Countries_Confirm;
-
-                    UtilityWeb.AddJQControl(editCity, countries, JQTypePosition.Docked);
-                }
-            }
-            catch (Exception ex)
-            {
-                UtilityError.Write(ex);
-            }
-        }
 
 
     }
