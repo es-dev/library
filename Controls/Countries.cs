@@ -20,6 +20,11 @@ namespace Library.Controls
     {
         private Control owner = null;
 
+        public Countries()
+        {
+            InitializeComponent();
+        }
+
         public Countries(Control owner, string search=null)
         {
             InitializeComponent();

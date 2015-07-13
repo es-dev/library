@@ -64,11 +64,28 @@ namespace Library.Template.Controls
             try
             {
                 base.MaskControl = editControl;
+                editControl.FileUploaded += editControl_FileUploaded;
             }
             catch (Exception ex)
             {
                 UtilityError.Write(ex);
             } 
+        }
+
+        public delegate void FileUploadHandler(FileHandle file);
+        public event FileUploadHandler FileUploaded;
+
+        void editControl_FileUploaded(FileHandle file)
+        {
+            try
+            {
+                if (FileUploaded != null)
+                    FileUploaded(file);
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
         }
 
         public new string Value

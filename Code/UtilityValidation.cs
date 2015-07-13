@@ -495,5 +495,22 @@ namespace Library.Code
             return false;
         }
 
+
+        public static bool IsValidUri(string url)
+        {
+            try
+            {
+                if (url != null && url.Length > 0)
+                {
+                    var valid = Uri.IsWellFormedUriString(url, UriKind.Absolute);
+                    return valid;
+                }
+            }
+            catch (Exception ex)
+            {
+                UtilityError.Write(ex);
+            }
+            return false;
+        }
     }
 }

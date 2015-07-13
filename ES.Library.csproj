@@ -269,6 +269,7 @@
   <ItemGroup>
     <Compile Include="Code\UtilityAsync.cs" />
     <Compile Include="Code\UtilityCollections.cs" />
+    <Compile Include="Code\UtilityCountries.cs" />
     <Compile Include="Code\UtilityEmail.cs" />
     <Compile Include="Code\UtilityEnum.cs" />
     <Compile Include="Code\UtilityError.cs" />
